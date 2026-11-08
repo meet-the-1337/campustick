@@ -5,237 +5,260 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
   <!-- SEO & OPEN GRAPH METADATA -->
-  <title>CampusTick · CodeChef Coursework Clearance & Certification</title>
+  <title>campus.tick · CodeChef Coursework Clearance & Certification</title>
   <meta name="description" content="Instant 100% CodeChef Machine Learning coursework clearance and verified certificate delivery for engineering students. Tension ni leni veere, aapan baithe aan!">
   <meta name="keywords" content="CampusTick, CodeChef, Machine Learning, Coursework Clearance, Verified Certificate, Engineering">
   <meta name="author" content="CampusTick">
-  <meta name="theme-color" content="#4f46e5">
+  <meta name="theme-color" content="#090A0E">
   <link rel="canonical" href="https://meet-the-1337.github.io/campustick/">
 
-  <!-- OpenGraph / WhatsApp / Instagram Previews -->
+  <!-- OpenGraph / Social Previews -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="CampusTick">
+  <meta property="og:site_name" content="campus.tick">
   <meta property="og:url" content="https://meet-the-1337.github.io/campustick/">
-  <meta property="og:title" content="CampusTick · CodeChef Coursework Clearance & Certification">
+  <meta property="og:title" content="campus.tick · CodeChef Coursework Clearance & Certification">
   <meta property="og:description" content="100% verified CodeChef lab clearance and official certificate delivered directly before 8:00 AM. Tension ni leni veere, aapan baithe aan 😎">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
 
   <!-- Favicon SVG -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'%3E%3Cpath d='M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E2F952'%3E%3Cpath d='M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'/%3E%3C/svg%3E">
 
-  <!-- Tailwind CSS & Professional Google Typography -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Typography: Space Grotesk (Headlines) + JetBrains Mono (Prices/Badges) + Plus Jakarta Sans (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            heading: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
-            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
           colors: {
-            brand: {
-              50: '#eef2ff',
-              100: '#e0e7ff',
-              500: '#6366f1',
-              600: '#4f46e5',
-              700: '#4338ca',
-            }
+            obsidian: '#090A0E',
+            panel: '#12141A',
+            panelLight: '#181B24',
+            lime: '#E2F952',
+            limeHover: '#CBE62F',
+            borderLine: '#272A34',
+            crimson: '#FF3B30',
+            textMute: 'rgba(255, 255, 255, 0.56)',
+            textDim: 'rgba(255, 255, 255, 0.35)',
           }
         }
       }
     }
   </script>
+
   <style>
+    :root {
+      --bg: #090A0E;
+      --panel: #12141A;
+      --lime: #E2F952;
+      --border: #272A34;
+      --text: #F4F5F7;
+      --mute: rgba(255, 255, 255, 0.56);
+    }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: #fafafa;
-      color: #111827;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
       -webkit-font-smoothing: antialiased;
     }
-    h1, h2, h3, h4, .font-heading {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      letter-spacing: -0.025em;
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.03em;
     }
-    .num-clean {
-      font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
-      font-variant-numeric: normal;
+    .font-mono-jb {
+      font-family: 'JetBrains Mono', monospace;
     }
     input:focus, textarea:focus, select:focus {
       outline: none;
-      border-color: #4f46e5 !important;
-      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12) !important;
+      border-color: #E2F952 !important;
+      box-shadow: 0 0 0 2px rgba(226, 249, 82, 0.2) !important;
     }
     .card-selected {
-      border-color: #4f46e5 !important;
-      background-color: #ffffff !important;
-      box-shadow: 0 0 0 1px #4f46e5, 0 4px 14px -2px rgba(79, 70, 229, 0.08) !important;
+      border-color: #E2F952 !important;
+      background-color: #161922 !important;
+      box-shadow: 0 0 0 1px #E2F952, 0 4px 20px -2px rgba(226, 249, 82, 0.12) !important;
     }
     .card-inactive {
-      background-color: #ffffff;
-      border-color: #e5e7eb;
+      background-color: #12141A;
+      border-color: #272A34;
     }
     .card-inactive:hover {
-      border-color: #cbd5e1;
+      border-color: #3e4453;
     }
-    @keyframes pulse-slow {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.85; transform: scale(1.02); }
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
     }
-    .animate-pulse-slow {
-      animation: pulse-slow 3s infinite ease-in-out;
+    ::-webkit-scrollbar-track {
+      background: #090A0E;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #272A34;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3e4453;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-indigo-100 selection:text-indigo-900 bg-[#fafafa]">
+<body class="min-h-screen flex flex-col justify-between selection:bg-[#E2F952] selection:text-black bg-[#090A0E] text-[#F4F5F7]">
 
-  <!-- TOP HEADER NAVBAR -->
-  <header class="bg-white/95 backdrop-blur-md border-b border-gray-100 sticky top-0 z-40 transition-all shadow-sm">
+  <!-- TOP RUNNING TICKER / LIVE RADAR -->
+  <div class="bg-[#E2F952] text-black font-mono-jb text-xs font-extrabold py-2 px-4 flex items-center justify-between border-b-2 border-black uppercase tracking-wider">
+    <div class="flex items-center gap-2 max-w-6xl mx-auto w-full px-2">
+      <span class="inline-block w-2.5 h-2.5 bg-black rounded-full animate-ping"></span>
+      <span>⚡ OVERNIGHT LAB CLEARANCE RADAR: GUARANTEED BEFORE 8:00 AM • 100% GENUINE SERVER-SIDE GREEN TICKS</span>
+    </div>
+  </div>
+
+  <!-- STICKY HEADER NAVBAR -->
+  <header class="bg-[#090A0E]/90 backdrop-blur-md border-b border-[#272A34] sticky top-0 z-40 transition-all">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <a href="#" class="flex items-center gap-2.5">
-          <div class="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-200 font-bold">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-            </svg>
+        <a href="#" class="flex items-center gap-2.5 group">
+          <div class="w-8 h-8 rounded-lg bg-[#E2F952] flex items-center justify-center text-black font-mono-jb font-black text-sm shadow-[0_0_12px_rgba(226,249,82,0.4)]">
+            CT
           </div>
-          <span class="text-xl font-black text-gray-900 tracking-tight font-heading">Campus<span class="text-indigo-600">Tick</span></span>
+          <span class="text-xl font-black text-white tracking-tight font-display">campus<span class="text-[#E2F952]">.tick</span></span>
         </a>
-        <span class="hidden md:inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100">
+        <span class="hidden md:inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono-jb font-bold bg-[#181B24] text-[#E2F952] border border-[#272A34]">
           CAMPUS • 2028 & 2027
         </span>
       </div>
       
-      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-600">
-        <a href="#how-it-works" class="hover:text-indigo-600 transition-colors">How We Solve</a>
-        <a href="#courses" class="hover:text-indigo-600 transition-colors">Courses</a>
-        <a href="#offers" class="hover:text-indigo-600 transition-colors">Offers & Pricing</a>
-        <a href="#order" class="hover:text-indigo-600 transition-colors">Order Now</a>
+      <nav class="hidden md:flex items-center gap-7 text-xs font-mono-jb font-semibold text-gray-400">
+        <a href="#how-it-works" class="hover:text-[#E2F952] transition-colors">How We Solve</a>
+        <a href="#courses" class="hover:text-[#E2F952] transition-colors">Courses</a>
+        <a href="#offers" class="hover:text-[#E2F952] transition-colors">Offers & Pricing</a>
+        <a href="#order" class="hover:text-[#E2F952] transition-colors">Order Now</a>
       </nav>
 
       <div class="flex items-center gap-2.5">
-        <a href="#order" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm shadow-indigo-200 transition-all">
+        <a href="#order" class="px-4 py-2 rounded-lg bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-xs tracking-tight transition-all shadow-[0_0_15px_rgba(226,249,82,0.25)]">
           Clear My Labs ⚡
         </a>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="relative overflow-hidden pt-12 pb-16 lg:pt-16 lg:pb-20 border-b border-gray-100 bg-white">
+  <!-- HERO SECTION (DARK INDUSTRIAL SPLIT) -->
+  <section class="relative overflow-hidden pt-12 pb-16 lg:pt-16 lg:pb-20 border-b border-[#272A34] bg-[#090A0E]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
         <!-- LEFT HERO CONTENT -->
         <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold tracking-wide">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            GUARANTEED BEFORE 8:00 AM • 100% GENUINE PLATFORM CLEARANCE
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#12141A] text-[#E2F952] border border-[#272A34] text-xs font-mono-jb font-bold tracking-wide">
+            <span class="w-2 h-2 rounded-full bg-[#E2F952] animate-pulse"></span>
+            OVERNIGHT DELIVERY • BEFORE 8:00 AM GUARANTEED
           </div>
 
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-[1.15] font-heading">
-            CodeChef Ni Ho Reha? <br class="hidden sm:inline"/>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-700 to-purple-600">
-              Kar Dewan Ge 💻
-            </span>
+          <h1 class="text-4xl sm:text-5xl lg:text-[3.75rem] font-bold text-white leading-[1.02] font-display">
+            CodeChef ni <br/>
+            ho reha? <br/>
+            <span class="text-[#E2F952]">Kar dewan ge.</span>
           </h1>
 
-          <p class="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl font-medium">
+          <p class="text-base sm:text-lg text-gray-400 leading-relaxed max-w-xl font-medium">
             Tension ni leni veere, aapan baithe aan 😎 Complete hands-off lab problem clearance on CodeChef with genuine server-side green ticks, official PRO completion certificate, and verified unmanipulated proof.
           </p>
 
-          <!-- 4 VALUE PILLARS -->
-          <div class="grid grid-cols-2 gap-3.5 pt-2 max-w-lg">
-            <div class="flex items-start gap-2.5 p-3 rounded-xl bg-gray-50 border border-gray-100">
-              <div class="text-indigo-600 mt-0.5 font-bold">⚡</div>
+          <!-- 4 VALUE TILES (DARK INDUSTRIAL TACTILE) -->
+          <div class="grid grid-cols-2 gap-3 max-w-lg pt-1">
+            <div class="flex items-start gap-2.5 p-3.5 rounded-xl bg-[#12141A] border border-[#272A34]">
+              <span class="text-[#E2F952] text-sm">⚡</span>
               <div>
-                <div class="text-xs font-bold text-gray-900 font-heading">Before 8 AM</div>
+                <div class="text-xs font-bold text-white font-mono-jb">Before 8 AM</div>
                 <div class="text-[11px] text-gray-500">Ready before class</div>
               </div>
             </div>
-            <div class="flex items-start gap-2.5 p-3 rounded-xl bg-gray-50 border border-gray-100">
-              <div class="text-indigo-600 mt-0.5 font-bold">🎓</div>
+            <div class="flex items-start gap-2.5 p-3.5 rounded-xl bg-[#12141A] border border-[#272A34]">
+              <span class="text-[#E2F952] text-sm">🎓</span>
               <div>
-                <div class="text-xs font-bold text-gray-900 font-heading">Official Cert</div>
+                <div class="text-xs font-bold text-white font-mono-jb">Official Cert</div>
                 <div class="text-[11px] text-gray-500">PRO completion ID</div>
               </div>
             </div>
-            <div class="flex items-start gap-2.5 p-3 rounded-xl bg-gray-50 border border-gray-100">
-              <div class="text-indigo-600 mt-0.5 font-bold">🔒</div>
+            <div class="flex items-start gap-2.5 p-3.5 rounded-xl bg-[#12141A] border border-[#272A34]">
+              <span class="text-[#E2F952] text-sm">🔒</span>
               <div>
-                <div class="text-xs font-bold text-gray-900 font-heading">100% Private</div>
+                <div class="text-xs font-bold text-white font-mono-jb">100% Private</div>
                 <div class="text-[11px] text-gray-500">Zero-knowledge creds</div>
               </div>
             </div>
-            <div class="flex items-start gap-2.5 p-3 rounded-xl bg-gray-50 border border-gray-100">
-              <div class="text-indigo-600 mt-0.5 font-bold">✅</div>
+            <div class="flex items-start gap-2.5 p-3.5 rounded-xl bg-[#12141A] border border-[#272A34]">
+              <span class="text-[#E2F952] text-sm">✅</span>
               <div>
-                <div class="text-xs font-bold text-gray-900 font-heading">Real Green Ticks</div>
+                <div class="text-xs font-bold text-white font-mono-jb">Real Green Ticks</div>
                 <div class="text-[11px] text-gray-500">Zero DOM fake tricks</div>
               </div>
             </div>
           </div>
 
           <div class="pt-2 flex flex-wrap items-center gap-4">
-            <a href="#order" class="px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm shadow-md shadow-indigo-200 transition-all flex items-center gap-2">
+            <a href="#order" class="px-6 py-3.5 rounded-xl bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-xs tracking-tight transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(226,249,82,0.25)]">
               <span>Submit Details & Start Work</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
               </svg>
             </a>
-            <a href="#offers" class="px-5 py-3.5 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-sm transition-all">
+            <a href="#offers" class="px-5 py-3.5 rounded-xl bg-[#12141A] hover:bg-[#181B24] text-white border border-[#272A34] font-mono-jb font-bold text-xs transition-all">
               View All Offers (from ₹20)
             </a>
           </div>
         </div>
 
-        <!-- RIGHT HERO STATS / CERTIFICATE MOCKUP CARD -->
+        <!-- RIGHT HERO STATS / INDUSTRIAL TELEMETRY TERMINAL -->
         <div class="lg:col-span-5">
-          <div class="bg-gradient-to-br from-indigo-900 via-indigo-950 to-slate-900 rounded-2xl p-6 text-white shadow-xl relative overflow-hidden border border-indigo-800/40">
-            <!-- Background Glow -->
-            <div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-indigo-500/20 blur-3xl pointer-events-none"></div>
-
-            <div class="flex items-center justify-between pb-4 border-b border-indigo-800/60">
+          <div class="bg-[#12141A] rounded-2xl p-6 text-white shadow-2xl relative overflow-hidden border border-[#272A34]">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-[#272A34]">
               <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                <span class="text-xs font-bold uppercase tracking-wider text-indigo-300">Live Delivery Feed</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#E2F952] animate-pulse"></span>
+                <span class="text-xs font-mono-jb font-bold uppercase tracking-wider text-[#E2F952]">Live Solver Radar</span>
               </div>
-              <span class="text-xs text-indigo-300 font-semibold">2026 Batch</span>
+              <span class="text-xs font-mono-jb text-gray-400">2026 Batch</span>
             </div>
 
             <div class="mt-5 space-y-4">
               <!-- Metric Tile -->
-              <div class="p-3.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                <div class="text-[11px] text-indigo-300 uppercase font-semibold">Recent Student Results</div>
-                <div class="text-2xl font-black text-white mt-1 num-clean">268 / 268 (100%)</div>
-                <div class="text-xs text-emerald-400 font-medium mt-0.5">All 7 Modules Cleared • Certificate Claimed</div>
+              <div class="p-4 rounded-xl bg-[#090A0E] border border-[#272A34]">
+                <div class="text-[10px] text-gray-400 font-mono-jb uppercase tracking-wider">Recent Batch Results</div>
+                <div class="text-3xl font-black text-white mt-1 font-display tracking-tight">268 / 268 (100%)</div>
+                <div class="text-xs text-[#E2F952] font-mono-jb font-medium mt-1">All 7 Modules Cleared • Certificate Claimed</div>
               </div>
 
               <!-- Student Testimonial Chips (Anonymized for Privacy) -->
-              <div class="space-y-2 text-xs">
-                <div class="p-2.5 rounded-lg bg-white/5 flex items-center justify-between">
-                  <span class="font-medium text-gray-200">H. G. (hg****_be24)</span>
-                  <span class="text-emerald-400 font-bold">100% Solved ✅</span>
+              <div class="space-y-2 text-xs font-mono-jb">
+                <div class="p-2.5 rounded-lg bg-[#090A0E] border border-[#272A34] flex items-center justify-between">
+                  <span class="text-gray-300">H. G. (hg****_be24)</span>
+                  <span class="text-[#E2F952] font-bold">100% Solved ✅</span>
                 </div>
-                <div class="p-2.5 rounded-lg bg-white/5 flex items-center justify-between">
-                  <span class="font-medium text-gray-200">P. D. (pd****_be24)</span>
-                  <span class="text-emerald-400 font-bold">Certified 🎓</span>
+                <div class="p-2.5 rounded-lg bg-[#090A0E] border border-[#272A34] flex items-center justify-between">
+                  <span class="text-gray-300">P. D. (pd****_be24)</span>
+                  <span class="text-[#E2F952] font-bold">Certified 🎓</span>
                 </div>
-                <div class="p-2.5 rounded-lg bg-white/5 flex items-center justify-between">
-                  <span class="font-medium text-gray-200">K. C. (ke****)</span>
-                  <span class="text-emerald-400 font-bold">Module 4 Done ✅</span>
+                <div class="p-2.5 rounded-lg bg-[#090A0E] border border-[#272A34] flex items-center justify-between">
+                  <span class="text-gray-300">K. C. (ke****)</span>
+                  <span class="text-[#E2F952] font-bold">Module 4 Done ✅</span>
                 </div>
               </div>
 
-              <div class="p-3 rounded-xl bg-indigo-600/30 border border-indigo-500/40 text-center">
-                <span class="text-xs font-bold text-indigo-200">Overnight Express:</span>
-                <div class="text-sm font-extrabold text-white">Guaranteed Done Before 8:00 AM 🚀</div>
+              <div class="p-3.5 rounded-xl bg-[#E2F952]/10 border border-[#E2F952]/30 text-center">
+                <span class="text-xs font-mono-jb font-bold text-[#E2F952]">Overnight Express:</span>
+                <div class="text-sm font-black text-white font-display mt-0.5">Guaranteed Done Before 8:00 AM 🚀</div>
               </div>
             </div>
+
           </div>
         </div>
 
@@ -243,268 +266,292 @@
     </div>
   </section>
 
-  <!-- HOW WE SOLVE (METHODOLOGY & ZERO-SLOP GUARANTEE) -->
-  <section id="how-it-works" class="py-16 bg-[#fafafa] border-b border-gray-100">
+  <!-- EMERGENCY VIVA RADAR ALERT STRIP (INSPIRED BY CAMPUS.KABADI EXAM RADAR) -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 -mt-6 relative z-10">
+    <div class="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[#FF3B30]/40 bg-[#12141A] p-5 shadow-xl">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-[#FF3B30]/15 border border-[#FF3B30]/30 flex items-center justify-center text-[#FF3B30] text-xl font-bold">
+          🚨
+        </div>
+        <div>
+          <h2 class="text-base font-bold text-white font-display tracking-wide">Emergency Lab Viva or Evaluation Tomorrow?</h2>
+          <p class="text-xs font-mono-jb text-gray-400 mt-0.5">Orders placed tonight are processed on container nodes and cleared before 8:00 AM.</p>
+        </div>
+      </div>
+      <a href="#order" class="px-4 py-2 rounded-lg bg-[#FF3B30] hover:bg-red-600 text-white font-mono-jb font-bold text-xs tracking-tight transition-all">
+        Claim 8:00 AM Slot ⚡
+      </a>
+    </div>
+  </section>
+
+  <!-- HOW WE SOLVE (AUTONOMOUS ENGINE) -->
+  <section id="how-it-works" class="py-16 bg-[#090A0E] border-b border-[#272A34]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
       <div class="max-w-2xl mb-12">
-        <div class="text-xs font-extrabold uppercase tracking-wider text-indigo-600 mb-2">Autonomous Solver Engine</div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 font-heading">How We Clear Your CodeChef Without Manual Labor</h2>
-        <p class="text-sm text-gray-500 mt-2">
+        <div class="text-xs font-mono-jb font-extrabold uppercase tracking-wider text-[#E2F952] mb-2">Autonomous Solver Engine</div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">How We Clear Your CodeChef Without Manual Labor</h2>
+        <p class="text-sm text-gray-400 mt-2">
           We do not use inspect-element, fake SVGs, or fragile DOM tricks. Our automated engine executes genuine test cases directly inside CodeChef's isolated containers.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         <!-- Step 1 -->
-        <div class="bg-white p-5 rounded-2xl border border-gray-200/90 shadow-sm relative">
-          <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-extrabold text-sm mb-4">
+        <div class="bg-[#12141A] p-6 rounded-2xl border border-[#272A34] relative">
+          <div class="w-10 h-10 rounded-xl bg-[#181B24] border border-[#272A34] text-[#E2F952] flex items-center justify-center font-mono-jb font-extrabold text-sm mb-4">
             01
           </div>
-          <h3 class="text-sm font-bold text-gray-900 font-heading mb-1.5">Curriculum Audit</h3>
-          <p class="text-xs text-gray-500 leading-relaxed">
+          <h3 class="text-base font-bold text-white font-display mb-2">Curriculum Audit</h3>
+          <p class="text-xs text-gray-400 leading-relaxed font-sans">
             Engine inspects your live syllabus API, identifies exactly which problems are unattempted or failed, and skips already solved questions.
           </p>
         </div>
 
         <!-- Step 2 -->
-        <div class="bg-white p-5 rounded-2xl border border-gray-200/90 shadow-sm relative">
-          <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-extrabold text-sm mb-4">
+        <div class="bg-[#12141A] p-6 rounded-2xl border border-[#272A34] relative">
+          <div class="w-10 h-10 rounded-xl bg-[#181B24] border border-[#272A34] text-[#E2F952] flex items-center justify-center font-mono-jb font-extrabold text-sm mb-4">
             02
           </div>
-          <h3 class="text-sm font-bold text-gray-900 font-heading mb-1.5">Container Injection</h3>
-          <p class="text-xs text-gray-500 leading-relaxed">
-            Automated base64 terminal sequencing injects model files (`model.py`, `main.py`) directly into CodeChef's Web IDE workspace.
+          <h3 class="text-base font-bold text-white font-display mb-2">Container Injection</h3>
+          <p class="text-xs text-gray-400 leading-relaxed font-sans">
+            Automated base64 terminal sequencing injects model files (<code class="text-[#E2F952]">model.py</code>, <code class="text-[#E2F952]">main.py</code>) directly into CodeChef's Web IDE workspace.
           </p>
         </div>
 
         <!-- Step 3 -->
-        <div class="bg-white p-5 rounded-2xl border border-gray-200/90 shadow-sm relative">
-          <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-extrabold text-sm mb-4">
+        <div class="bg-[#12141A] p-6 rounded-2xl border border-[#272A34] relative">
+          <div class="w-10 h-10 rounded-xl bg-[#181B24] border border-[#272A34] text-[#E2F952] flex items-center justify-center font-mono-jb font-extrabold text-sm mb-4">
             03
           </div>
-          <h3 class="text-sm font-bold text-gray-900 font-heading mb-1.5">Server Test Pass</h3>
-          <p class="text-xs text-gray-500 leading-relaxed">
+          <h3 class="text-base font-bold text-white font-display mb-2">Server Test Pass</h3>
+          <p class="text-xs text-gray-400 leading-relaxed font-sans">
             All grading test-cases execute on CodeChef's servers. Our watchdog polls until 100% test-case clearance is verified.
           </p>
         </div>
 
         <!-- Step 4 -->
-        <div class="bg-white p-5 rounded-2xl border border-gray-200/90 shadow-sm relative">
-          <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-extrabold text-sm mb-4">
+        <div class="bg-[#12141A] p-6 rounded-2xl border border-[#272A34] relative">
+          <div class="w-10 h-10 rounded-xl bg-[#181B24] border border-[#272A34] text-[#E2F952] flex items-center justify-center font-mono-jb font-extrabold text-sm mb-4">
             04
           </div>
-          <h3 class="text-sm font-bold text-gray-900 font-heading mb-1.5">Official Proof & Cert</h3>
-          <p class="text-xs text-gray-500 leading-relaxed">
+          <h3 class="text-base font-bold text-white font-display mb-2">Official Proof & Cert</h3>
+          <p class="text-xs text-gray-400 leading-relaxed font-sans">
             Official PRO certificate claimed and downloaded in PDF/PNG, plus full unmanipulated syllabus screenshot sent straight to your DM.
           </p>
         </div>
       </div>
+
     </div>
   </section>
 
   <!-- COURSES WE OFFER -->
-  <section id="courses" class="py-16 bg-white border-b border-gray-100">
+  <section id="courses" class="py-16 bg-[#090A0E] border-b border-[#272A34]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
       <div class="max-w-2xl mb-12">
-        <div class="text-xs font-extrabold uppercase tracking-wider text-indigo-600 mb-2">Available Curriculums</div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 font-heading">What Courses Do We Offer?</h2>
-        <p class="text-sm text-gray-500 mt-2">
+        <div class="text-xs font-mono-jb font-extrabold uppercase tracking-wider text-[#E2F952] mb-2">Available Curriculums</div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">What Courses Do We Offer?</h2>
+        <p class="text-sm text-gray-400 mt-2">
           Specialized for university engineering & computer science lab requirements.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Course 1 -->
-        <div class="p-5 rounded-2xl border border-indigo-100 bg-indigo-50/30 flex flex-col justify-between">
+        
+        <!-- Course 1: ML -->
+        <div class="p-6 rounded-2xl border border-[#E2F952]/40 bg-[#12141A] flex flex-col justify-between shadow-[0_0_20px_rgba(226,249,82,0.05)]">
           <div>
-            <div class="inline-flex px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-100 text-indigo-700 mb-2">
+            <div class="inline-flex px-2 py-0.5 rounded text-[10px] font-mono-jb font-bold bg-[#E2F952] text-black mb-3">
               MOST POPULAR
             </div>
-            <h3 class="text-base font-extrabold text-gray-900 font-heading">Machine Learning</h3>
-            <p class="text-xs font-semibold text-indigo-600 mb-3">UML501 • 7 Modules (268 Problems)</p>
-            <ul class="text-xs text-gray-600 space-y-1.5 mb-4">
-              <li class="flex items-center gap-1.5">✓ Linear & Polynomial Regression</li>
-              <li class="flex items-center gap-1.5">✓ Decision Trees & Random Forests</li>
-              <li class="flex items-center gap-1.5">✓ Titanic Survival Project</li>
-              <li class="flex items-center gap-1.5">✓ K-Means, PCA & DBSCAN</li>
-              <li class="flex items-center gap-1.5">✓ Sentiment Analysis & Perceptrons</li>
+            <h3 class="text-lg font-bold text-white font-display">Machine Learning</h3>
+            <p class="text-xs font-mono-jb text-[#E2F952] mb-3">UML501 • 7 Modules (268 Problems)</p>
+            <ul class="text-xs text-gray-400 space-y-1.5 mb-5 font-sans">
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Linear & Polynomial Regression</li>
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Decision Trees & Random Forests</li>
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Titanic Survival Project</li>
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> K-Means, PCA & DBSCAN</li>
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Sentiment Analysis & Perceptrons</li>
             </ul>
           </div>
-          <a href="#order" onclick="selectTier('bundle')" class="w-full text-center py-2 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition-all">
+          <a href="#order" onclick="selectTier('bundle')" class="w-full text-center py-2.5 px-3 rounded-xl bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-xs transition-all">
             Full Course ₹250
           </a>
         </div>
 
-        <!-- Course 2 -->
-        <div class="p-5 rounded-2xl border border-gray-200 bg-white flex flex-col justify-between shadow-sm">
+        <!-- Course 2: DSA -->
+        <div class="p-6 rounded-2xl border border-[#272A34] bg-[#12141A] flex flex-col justify-between">
           <div>
-            <div class="inline-flex px-2 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-700 mb-2">
+            <div class="inline-flex px-2 py-0.5 rounded text-[10px] font-mono-jb font-bold bg-[#181B24] text-gray-300 border border-[#272A34] mb-3">
               CSE / COE
             </div>
-            <h3 class="text-base font-extrabold text-gray-900 font-heading">Data Structures (DSA)</h3>
-            <p class="text-xs font-semibold text-gray-500 mb-3">UCS406 • C++ Problem Sets</p>
-            <ul class="text-xs text-gray-600 space-y-1.5 mb-4">
-              <li class="flex items-center gap-1.5">✓ Linked Lists, Stacks & Queues</li>
-              <li class="flex items-center gap-1.5">✓ Binary Search Trees & Heaps</li>
-              <li class="flex items-center gap-1.5">✓ Dynamic Programming & Recursion</li>
-              <li class="flex items-center gap-1.5">✓ Graph Algorithms & Traversal</li>
+            <h3 class="text-lg font-bold text-white font-display">Data Structures (DSA)</h3>
+            <p class="text-xs font-mono-jb text-gray-400 mb-3">UCS406 • C++ Problem Sets</p>
+            <ul class="text-xs text-gray-400 space-y-1.5 mb-5 font-sans">
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Linked Lists, Stacks & Queues</li>
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Binary Search Trees & Heaps</li>
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Dynamic Programming & Recursion</li>
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Graph Algorithms & Traversal</li>
             </ul>
           </div>
-          <a href="#order" onclick="selectTier('bundle')" class="w-full text-center py-2 px-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold text-xs transition-all">
+          <a href="#order" onclick="selectTier('bundle')" class="w-full text-center py-2.5 px-3 rounded-xl bg-[#181B24] hover:bg-[#222632] text-white border border-[#272A34] font-mono-jb font-bold text-xs transition-all">
             Select Course
           </a>
         </div>
 
-        <!-- Course 3 -->
-        <div class="p-5 rounded-2xl border border-gray-200 bg-white flex flex-col justify-between shadow-sm">
+        <!-- Course 3: DBMS -->
+        <div class="p-6 rounded-2xl border border-[#272A34] bg-[#12141A] flex flex-col justify-between">
           <div>
-            <div class="inline-flex px-2 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-700 mb-2">
+            <div class="inline-flex px-2 py-0.5 rounded text-[10px] font-mono-jb font-bold bg-[#181B24] text-gray-300 border border-[#272A34] mb-3">
               DATABASE LAB
             </div>
-            <h3 class="text-base font-extrabold text-gray-900 font-heading">DBMS Labs</h3>
-            <p class="text-xs font-semibold text-gray-500 mb-3">UCS310 • SQL & Relational Models</p>
-            <ul class="text-xs text-gray-600 space-y-1.5 mb-4">
-              <li class="flex items-center gap-1.5">✓ Complex Nested SQL Queries</li>
-              <li class="flex items-center gap-1.5">✓ Joins, Group By & Aggregations</li>
-              <li class="flex items-center gap-1.5">✓ Normalization (1NF to BCNF)</li>
-              <li class="flex items-center gap-1.5">✓ Triggers & Stored Procedures</li>
+            <h3 class="text-lg font-bold text-white font-display">DBMS Labs</h3>
+            <p class="text-xs font-mono-jb text-gray-400 mb-3">UCS310 • SQL & Relational Models</p>
+            <ul class="text-xs text-gray-400 space-y-1.5 mb-5 font-sans">
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Complex Nested SQL Queries</li>
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Joins, Group By & Aggregations</li>
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Normalization (1NF to BCNF)</li>
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Triggers & Stored Procedures</li>
             </ul>
           </div>
-          <a href="#order" onclick="selectTier('bundle')" class="w-full text-center py-2 px-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold text-xs transition-all">
+          <a href="#order" onclick="selectTier('bundle')" class="w-full text-center py-2.5 px-3 rounded-xl bg-[#181B24] hover:bg-[#222632] text-white border border-[#272A34] font-mono-jb font-bold text-xs transition-all">
             Select Course
           </a>
         </div>
 
-        <!-- Course 4 -->
-        <div class="p-5 rounded-2xl border border-gray-200 bg-white flex flex-col justify-between shadow-sm">
+        <!-- Course 4: Programming -->
+        <div class="p-6 rounded-2xl border border-[#272A34] bg-[#12141A] flex flex-col justify-between">
           <div>
-            <div class="inline-flex px-2 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-700 mb-2">
+            <div class="inline-flex px-2 py-0.5 rounded text-[10px] font-mono-jb font-bold bg-[#181B24] text-gray-300 border border-[#272A34] mb-3">
               1ST YEAR
             </div>
-            <h3 class="text-base font-extrabold text-gray-900 font-heading">Computer Programming</h3>
-            <p class="text-xs font-semibold text-gray-500 mb-3">UES012 • C & C++ Fundamentals</p>
-            <ul class="text-xs text-gray-600 space-y-1.5 mb-4">
-              <li class="flex items-center gap-1.5">✓ Pointers, Memory & Structs</li>
-              <li class="flex items-center gap-1.5">✓ File Handling & Strings</li>
-              <li class="flex items-center gap-1.5">✓ All 12 Weekly Lab Sheets</li>
-              <li class="flex items-center gap-1.5">✓ Lab Evaluation & Viva Ready</li>
+            <h3 class="text-lg font-bold text-white font-display">Computer Programming</h3>
+            <p class="text-xs font-mono-jb text-gray-400 mb-3">UES012 • C & C++ Fundamentals</p>
+            <ul class="text-xs text-gray-400 space-y-1.5 mb-5 font-sans">
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Pointers, Memory & Structs</li>
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> File Handling & Strings</li>
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> All 12 Weekly Lab Sheets</li>
+              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Lab Evaluation & Viva Ready</li>
             </ul>
           </div>
-          <a href="#order" onclick="selectTier('bundle')" class="w-full text-center py-2 px-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold text-xs transition-all">
+          <a href="#order" onclick="selectTier('bundle')" class="w-full text-center py-2.5 px-3 rounded-xl bg-[#181B24] hover:bg-[#222632] text-white border border-[#272A34] font-mono-jb font-bold text-xs transition-all">
             Select Course
           </a>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- SPECIAL OFFERS & PRICING -->
-  <section id="offers" class="py-16 bg-[#fafafa] border-b border-gray-100">
+  <!-- SPECIAL OFFERS & PRICING BENTO -->
+  <section id="offers" class="py-16 bg-[#090A0E] border-b border-[#272A34]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
       <div class="max-w-2xl mb-12">
-        <div class="text-xs font-extrabold uppercase tracking-wider text-indigo-600 mb-2">Pricing & Special Offers</div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 font-heading">Clearance Plans That Fit Your Exact Needs</h2>
-        <p class="text-sm text-gray-500 mt-2">
+        <div class="text-xs font-mono-jb font-extrabold uppercase tracking-wider text-[#E2F952] mb-2">Pricing & Special Offers</div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">Clearance Plans That Fit Your Exact Needs</h2>
+        <p class="text-sm text-gray-400 mt-2">
           From full 7-module course packages to finishing the last 2-3 stubborn problems you're stuck on.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <!-- OFFER 1: COMPLETE COURSE (HERO) -->
-        <div class="bg-white rounded-2xl p-6 border-2 border-indigo-600 shadow-lg relative flex flex-col justify-between">
-          <div class="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-indigo-600 text-white font-extrabold text-[11px] uppercase tracking-wider shadow-sm">
+        <!-- OFFER 1: COMPLETE COURSE (HERO CARD) -->
+        <div class="bg-[#12141A] rounded-2xl p-6 border-2 border-[#E2F952] shadow-2xl relative flex flex-col justify-between">
+          <div class="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-[#E2F952] text-black font-mono-jb font-black text-[10px] uppercase tracking-wider">
             Best Value (Save ₹135)
           </div>
           <div>
-            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider">All 7 Modules</div>
-            <h3 class="text-xl font-extrabold text-gray-900 font-heading mt-1">Complete Course</h3>
-            <div class="flex items-baseline gap-2 mt-4">
-              <span class="text-3xl font-black text-gray-900 num-clean">₹250</span>
-              <span class="text-sm text-gray-400 line-through num-clean">₹385</span>
+            <div class="text-xs font-mono-jb font-bold text-gray-400 uppercase tracking-wider">All 7 Modules</div>
+            <h3 class="text-2xl font-bold text-white font-display mt-1">Complete Course</h3>
+            <div class="flex items-baseline gap-2 mt-4 font-mono-jb">
+              <span class="text-4xl font-black text-[#E2F952]">₹250</span>
+              <span class="text-sm text-gray-500 line-through">₹385</span>
             </div>
-            <p class="text-xs text-gray-500 mt-2">Everything taken care of from start to finish.</p>
+            <p class="text-xs text-gray-400 mt-2">Everything taken care of from start to finish.</p>
 
-            <ul class="mt-6 space-y-2.5 text-xs text-gray-600">
+            <ul class="mt-6 space-y-2.5 text-xs text-gray-300 font-sans">
               <li class="flex items-center gap-2 font-medium">
-                <span class="text-emerald-600 font-bold">✓</span> 100% of all 268 problems solved
+                <span class="text-[#E2F952] font-bold">✓</span> 100% of all 268 problems solved
               </li>
               <li class="flex items-center gap-2 font-medium">
-                <span class="text-emerald-600 font-bold">✓</span> Official CodeChef PRO Certificate
+                <span class="text-[#E2F952] font-bold">✓</span> Official CodeChef PRO Certificate
               </li>
               <li class="flex items-center gap-2 font-medium">
-                <span class="text-emerald-600 font-bold">✓</span> Full unmanipulated syllabus screenshot
+                <span class="text-[#E2F952] font-bold">✓</span> Full unmanipulated syllabus screenshot
               </li>
               <li class="flex items-center gap-2 font-medium">
-                <span class="text-emerald-600 font-bold">✓</span> 100% Private & zero-knowledge
+                <span class="text-[#E2F952] font-bold">✓</span> 100% Private & zero-knowledge
               </li>
             </ul>
           </div>
-          <a href="#order" onclick="selectTier('bundle')" class="mt-8 block text-center py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs shadow-md shadow-indigo-100 transition-all">
+          <a href="#order" onclick="selectTier('bundle')" class="mt-8 block text-center py-3.5 px-4 rounded-xl bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-xs shadow-[0_0_20px_rgba(226,249,82,0.25)] transition-all">
             Choose Complete Course
           </a>
         </div>
 
         <!-- OFFER 2: INDIVIDUAL MODULES -->
-        <div class="bg-white rounded-2xl p-6 border border-gray-200/90 shadow-sm flex flex-col justify-between">
+        <div class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34] shadow-sm flex flex-col justify-between">
           <div>
-            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider">Modular Pick & Mix</div>
-            <h3 class="text-xl font-extrabold text-gray-900 font-heading mt-1">Individual Modules</h3>
-            <div class="flex items-baseline gap-2 mt-4">
-              <span class="text-3xl font-black text-gray-900 num-clean">From ₹20</span>
+            <div class="text-xs font-mono-jb font-bold text-gray-400 uppercase tracking-wider">Modular Pick & Mix</div>
+            <h3 class="text-2xl font-bold text-white font-display mt-1">Individual Modules</h3>
+            <div class="flex items-baseline gap-2 mt-4 font-mono-jb">
+              <span class="text-4xl font-black text-white">From ₹20</span>
             </div>
-            <p class="text-xs text-gray-500 mt-2">Select only the specific modules you need cleared.</p>
+            <p class="text-xs text-gray-400 mt-2">Select only the specific modules you need cleared.</p>
 
-            <ul class="mt-6 space-y-2.5 text-xs text-gray-600">
+            <ul class="mt-6 space-y-2.5 text-xs text-gray-400 font-mono-jb">
               <li class="flex items-center justify-between font-medium">
                 <span>Module 1 & 2 (Intro & Data):</span>
-                <span class="font-bold text-gray-900 num-clean">₹20 / ₹30</span>
+                <span class="font-bold text-[#E2F952]">₹20 / ₹30</span>
               </li>
               <li class="flex items-center justify-between font-medium">
                 <span>Module 3 & 4 (Regression & Class):</span>
-                <span class="font-bold text-gray-900 num-clean">₹60 / ₹90</span>
+                <span class="font-bold text-[#E2F952]">₹60 / ₹90</span>
               </li>
               <li class="flex items-center justify-between font-medium">
                 <span>Module 5 (Titanic Project):</span>
-                <span class="font-bold text-gray-900 num-clean">₹25</span>
+                <span class="font-bold text-[#E2F952]">₹25</span>
               </li>
               <li class="flex items-center justify-between font-medium">
                 <span>Module 6 & 7 (Unsupervised & Proj):</span>
-                <span class="font-bold text-gray-900 num-clean">₹85 / ₹75</span>
+                <span class="font-bold text-[#E2F952]">₹85 / ₹75</span>
               </li>
             </ul>
           </div>
-          <a href="#order" onclick="selectTier('individual')" class="mt-8 block text-center py-3 px-4 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-900 font-extrabold text-xs transition-all">
+          <a href="#order" onclick="selectTier('individual')" class="mt-8 block text-center py-3.5 px-4 rounded-xl bg-[#181B24] hover:bg-[#222632] text-white border border-[#272A34] font-mono-jb font-extrabold text-xs transition-all">
             Select Individual Modules
           </a>
         </div>
 
         <!-- OFFER 3: 90%+ FINISHER BOOSTER -->
-        <div class="bg-white rounded-2xl p-6 border border-gray-200/90 shadow-sm flex flex-col justify-between">
+        <div class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34] shadow-sm flex flex-col justify-between">
           <div>
-            <div class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Already Done Most?</div>
-            <h3 class="text-xl font-extrabold text-gray-900 font-heading mt-1">Finisher Booster</h3>
-            <div class="flex items-baseline gap-2 mt-4">
-              <span class="text-3xl font-black text-gray-900 num-clean">₹50 – ₹100</span>
+            <div class="text-xs font-mono-jb font-bold text-[#E2F952] uppercase tracking-wider">Already Done Most?</div>
+            <h3 class="text-2xl font-bold text-white font-display mt-1">Finisher Booster</h3>
+            <div class="flex items-baseline gap-2 mt-4 font-mono-jb">
+              <span class="text-4xl font-black text-white">₹50 – ₹100</span>
             </div>
-            <p class="text-xs text-gray-500 mt-2">For students stuck on the last few container labs.</p>
+            <p class="text-xs text-gray-400 mt-2">For students stuck on the last few container labs.</p>
 
-            <ul class="mt-6 space-y-2.5 text-xs text-gray-600">
+            <ul class="mt-6 space-y-2.5 text-xs text-gray-300 font-sans">
               <li class="flex items-center gap-2 font-medium">
-                <span class="text-emerald-600 font-bold">✓</span> <strong>95%+ Completed:</strong> Just ₹50
+                <span class="text-[#E2F952] font-bold">✓</span> <strong>95%+ Completed:</strong> Just ₹50
               </li>
               <li class="flex items-center gap-2 font-medium">
-                <span class="text-emerald-600 font-bold">✓</span> <strong>90%–94% Completed:</strong> Just ₹100
+                <span class="text-[#E2F952] font-bold">✓</span> <strong>90%–94% Completed:</strong> Just ₹100
               </li>
               <li class="flex items-center gap-2 font-medium">
-                <span class="text-emerald-600 font-bold">✓</span> Clears stubborn labs (ERUIOQ, YTQAI122)
+                <span class="text-[#E2F952] font-bold">✓</span> Clears stubborn labs (ERUIOQ, YTQAI122)
               </li>
               <li class="flex items-center gap-2 font-medium">
-                <span class="text-emerald-600 font-bold">✓</span> Claims your official PRO Certificate
+                <span class="text-[#E2F952] font-bold">✓</span> Claims your official PRO Certificate
               </li>
             </ul>
           </div>
-          <a href="#order" onclick="selectTier('booster')" class="mt-8 block text-center py-3 px-4 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-900 font-extrabold text-xs transition-all">
+          <a href="#order" onclick="selectTier('booster')" class="mt-8 block text-center py-3.5 px-4 rounded-xl bg-[#181B24] hover:bg-[#222632] text-white border border-[#272A34] font-mono-jb font-extrabold text-xs transition-all">
             Choose Booster Plan
           </a>
         </div>
@@ -514,16 +561,16 @@
   </section>
 
   <!-- MAIN ORDER & CHECKOUT SECTION -->
-  <section id="order" class="py-16 bg-white border-b border-gray-100">
+  <section id="order" class="py-16 bg-[#090A0E] border-b border-[#272A34]">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
       
       <div class="mb-10 text-center max-w-xl mx-auto">
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-100 mb-3">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono-jb font-bold bg-[#12141A] text-[#E2F952] border border-[#272A34] mb-3">
           Instant Intake & Clearance
         </span>
-        <h2 class="text-3xl font-black text-gray-900 font-heading">Submit Details & Get Started</h2>
-        <p class="text-sm text-gray-500 mt-1.5">
-          Enter your details, select your modules, and pay via <code class="text-indigo-600 font-bold">razorpay.me/@campustick</code>. Work begins immediately!
+        <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">Submit Details & Get Started</h2>
+        <p class="text-sm text-gray-400 mt-1.5 font-sans">
+          Enter your details, select your modules, and pay via <code class="text-[#E2F952] font-mono-jb font-bold">razorpay.me/@campustick</code>. Work begins immediately!
         </p>
       </div>
 
@@ -534,36 +581,36 @@
         <div class="lg:col-span-7 space-y-6">
 
           <!-- 1. CUSTOMER CREDENTIALS -->
-          <section class="bg-white rounded-2xl p-5 border border-gray-200/90 shadow-sm">
+          <section class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34]">
             <div class="flex items-center justify-between mb-4">
-              <h3 class="text-sm font-bold text-gray-900 font-heading">1. Customer Credentials</h3>
-              <span class="text-xs text-gray-400 font-normal">* Strictly Confidential</span>
+              <h3 class="text-sm font-bold text-white font-mono-jb uppercase tracking-wider">1. Customer Credentials</h3>
+              <span class="text-xs text-gray-500 font-mono-jb">* Strictly Confidential</span>
             </div>
 
-            <div class="space-y-3.5">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-medium text-gray-700 mb-1" for="igHandle">
-                    Instagram ID <span class="text-indigo-600">*</span>
+                  <label class="block text-xs font-mono-jb text-gray-400 mb-1" for="igHandle">
+                    Instagram ID <span class="text-[#E2F952]">*</span>
                   </label>
-                  <input type="text" id="igHandle" required placeholder="@your.handle" class="w-full h-10 text-xs rounded-xl border border-gray-200 px-3 text-gray-900 placeholder-gray-400 transition-all bg-white">
+                  <input type="text" id="igHandle" required placeholder="@your.handle" class="w-full h-11 text-xs rounded-xl border border-[#272A34] px-3.5 text-white placeholder-gray-600 bg-[#090A0E] transition-all">
                 </div>
 
                 <div>
-                  <label class="block text-xs font-medium text-gray-700 mb-1" for="ccUsername">
-                    CodeChef Username <span class="text-indigo-600">*</span>
+                  <label class="block text-xs font-mono-jb text-gray-400 mb-1" for="ccUsername">
+                    CodeChef Username <span class="text-[#E2F952]">*</span>
                   </label>
-                  <input type="text" id="ccUsername" required placeholder="xyz_be24" class="w-full h-10 text-xs rounded-xl border border-gray-200 px-3 text-gray-900 placeholder-gray-400 transition-all bg-white">
+                  <input type="text" id="ccUsername" required placeholder="xyz_be24" class="w-full h-11 text-xs rounded-xl border border-[#272A34] px-3.5 text-white placeholder-gray-600 bg-[#090A0E] transition-all">
                 </div>
               </div>
 
               <div>
-                <label class="block text-xs font-medium text-gray-700 mb-1" for="ccPassword">
-                  CodeChef Password <span class="text-indigo-600">*</span>
+                <label class="block text-xs font-mono-jb text-gray-400 mb-1" for="ccPassword">
+                  CodeChef Password <span class="text-[#E2F952]">*</span>
                 </label>
                 <div class="relative">
-                  <input type="password" id="ccPassword" required placeholder="••••••••" class="w-full h-10 text-xs rounded-xl border border-gray-200 pl-3 pr-10 text-gray-900 placeholder-gray-400 transition-all bg-white">
-                  <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 transition-colors">
+                  <input type="password" id="ccPassword" required placeholder="••••••••" class="w-full h-11 text-xs rounded-xl border border-[#272A34] pl-3.5 pr-10 text-white placeholder-gray-600 bg-[#090A0E] transition-all">
+                  <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-500 hover:text-white transition-colors">
                     <svg id="eyeIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
@@ -573,23 +620,23 @@
               </div>
 
               <div>
-                <label class="block text-xs font-medium text-gray-700 mb-1" for="whatsappNumber">
-                  WhatsApp Number <span class="text-gray-400 font-normal">(for instant delivery alert)</span>
+                <label class="block text-xs font-mono-jb text-gray-400 mb-1" for="whatsappNumber">
+                  WhatsApp Number <span class="text-gray-500 font-normal">(for instant delivery alert)</span>
                 </label>
-                <input type="tel" id="whatsappNumber" placeholder="+91 98765 43210" class="w-full h-10 text-xs rounded-xl border border-gray-200 px-3 text-gray-900 placeholder-gray-400 transition-all bg-white">
+                <input type="tel" id="whatsappNumber" placeholder="+91 98765 43210" class="w-full h-11 text-xs rounded-xl border border-[#272A34] px-3.5 text-white placeholder-gray-600 bg-[#090A0E] transition-all">
               </div>
 
-              <p class="text-[11px] text-gray-400 pt-1">
+              <p class="text-[11px] text-gray-500 pt-1 font-mono-jb">
                 🔒 Credentials are encrypted, used exclusively for your coursework, and purged upon delivery.
               </p>
             </div>
           </section>
 
           <!-- 2. SERVICE & MODULE SELECTION -->
-          <section class="bg-white rounded-2xl p-5 border border-gray-200/90 shadow-sm">
+          <section class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34]">
             <div class="flex items-center justify-between mb-4">
-              <h3 class="text-sm font-bold text-gray-900 font-heading">2. Select Your Plan</h3>
-              <span class="text-xs text-gray-400 font-normal">Choose one</span>
+              <h3 class="text-sm font-bold text-white font-mono-jb uppercase tracking-wider">2. Select Your Plan</h3>
+              <span class="text-xs text-gray-500 font-mono-jb">Choose one</span>
             </div>
 
             <div class="space-y-3">
@@ -598,13 +645,13 @@
               <label id="bundleCard" onclick="selectTier('bundle')" class="card-selected block p-4 rounded-xl border cursor-pointer transition-all">
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-3">
-                    <input type="radio" name="serviceTier" id="tierBundle" value="bundle" checked class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                    <input type="radio" name="serviceTier" id="tierBundle" value="bundle" checked class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
                     <div>
-                      <div class="text-xs font-bold text-gray-900 font-heading">Complete ML Course (Modules 1–7)</div>
-                      <div class="text-[11px] text-gray-500">All 268 problems • 100% Green Ticks • Certificate included</div>
+                      <div class="text-xs font-bold text-white font-display">Complete ML Course (Modules 1–7)</div>
+                      <div class="text-[11px] text-gray-400">All 268 problems • 100% Green Ticks • Certificate included</div>
                     </div>
                   </div>
-                  <div class="text-sm font-black text-indigo-600 num-clean">₹250</div>
+                  <div class="text-sm font-black text-[#E2F952] font-mono-jb">₹250</div>
                 </div>
               </label>
 
@@ -612,57 +659,57 @@
               <div id="individualCard" class="card-inactive p-4 rounded-xl border transition-all">
                 <label onclick="selectTier('individual')" class="flex items-center justify-between cursor-pointer">
                   <div class="flex items-center gap-3">
-                    <input type="radio" name="serviceTier" id="tierIndividual" value="individual" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                    <input type="radio" name="serviceTier" id="tierIndividual" value="individual" class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
                     <div>
-                      <div class="text-xs font-bold text-gray-900 font-heading">Individual Modules</div>
-                      <div class="text-[11px] text-gray-500">Pick specific modules you want cleared</div>
+                      <div class="text-xs font-bold text-white font-display">Individual Modules</div>
+                      <div class="text-[11px] text-gray-400">Pick specific modules you want cleared</div>
                     </div>
                   </div>
-                  <div class="text-xs font-semibold text-indigo-600 num-clean">From ₹20</div>
+                  <div class="text-xs font-semibold text-[#E2F952] font-mono-jb">From ₹20</div>
                 </label>
 
                 <!-- 7-MODULE SELECTION GRID -->
-                <div id="individualModulesBox" class="mt-4 pt-3.5 border-t border-gray-100 hidden">
+                <div id="individualModulesBox" class="mt-4 pt-3.5 border-t border-[#272A34] hidden">
                   <div class="grid grid-cols-4 sm:grid-cols-7 gap-2">
-                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-gray-200 hover:border-indigo-400 bg-gray-50/50 cursor-pointer text-center has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/60 transition-all">
-                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-indigo-600 rounded mb-1" data-mod="M1" data-price="20" onchange="updateCalculations()">
-                      <span class="text-[11px] font-bold text-gray-900">M1</span>
-                      <span class="text-[10px] text-gray-500 font-medium num-clean">₹20</span>
+                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-[#272A34] hover:border-[#E2F952] bg-[#090A0E] cursor-pointer text-center has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
+                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-[#E2F952] rounded mb-1 accent-[#E2F952]" data-mod="M1" data-price="20" onchange="updateCalculations()">
+                      <span class="text-[11px] font-bold text-white font-mono-jb">M1</span>
+                      <span class="text-[10px] text-gray-400 font-mono-jb">₹20</span>
                     </label>
-                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-gray-200 hover:border-indigo-400 bg-gray-50/50 cursor-pointer text-center has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/60 transition-all">
-                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-indigo-600 rounded mb-1" data-mod="M2" data-price="30" onchange="updateCalculations()">
-                      <span class="text-[11px] font-bold text-gray-900">M2</span>
-                      <span class="text-[10px] text-gray-500 font-medium num-clean">₹30</span>
+                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-[#272A34] hover:border-[#E2F952] bg-[#090A0E] cursor-pointer text-center has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
+                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-[#E2F952] rounded mb-1 accent-[#E2F952]" data-mod="M2" data-price="30" onchange="updateCalculations()">
+                      <span class="text-[11px] font-bold text-white font-mono-jb">M2</span>
+                      <span class="text-[10px] text-gray-400 font-mono-jb">₹30</span>
                     </label>
-                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-gray-200 hover:border-indigo-400 bg-gray-50/50 cursor-pointer text-center has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/60 transition-all">
-                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-indigo-600 rounded mb-1" data-mod="M3" data-price="60" onchange="updateCalculations()">
-                      <span class="text-[11px] font-bold text-gray-900">M3</span>
-                      <span class="text-[10px] text-gray-500 font-medium num-clean">₹60</span>
+                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-[#272A34] hover:border-[#E2F952] bg-[#090A0E] cursor-pointer text-center has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
+                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-[#E2F952] rounded mb-1 accent-[#E2F952]" data-mod="M3" data-price="60" onchange="updateCalculations()">
+                      <span class="text-[11px] font-bold text-white font-mono-jb">M3</span>
+                      <span class="text-[10px] text-gray-400 font-mono-jb">₹60</span>
                     </label>
-                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-gray-200 hover:border-indigo-400 bg-gray-50/50 cursor-pointer text-center has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/60 transition-all">
-                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-indigo-600 rounded mb-1" data-mod="M4" data-price="90" onchange="updateCalculations()">
-                      <span class="text-[11px] font-bold text-gray-900">M4</span>
-                      <span class="text-[10px] text-gray-500 font-medium num-clean">₹90</span>
+                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-[#272A34] hover:border-[#E2F952] bg-[#090A0E] cursor-pointer text-center has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
+                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-[#E2F952] rounded mb-1 accent-[#E2F952]" data-mod="M4" data-price="90" onchange="updateCalculations()">
+                      <span class="text-[11px] font-bold text-white font-mono-jb">M4</span>
+                      <span class="text-[10px] text-gray-400 font-mono-jb">₹90</span>
                     </label>
-                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-gray-200 hover:border-indigo-400 bg-gray-50/50 cursor-pointer text-center has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/60 transition-all">
-                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-indigo-600 rounded mb-1" data-mod="M5" data-price="25" onchange="updateCalculations()">
-                      <span class="text-[11px] font-bold text-gray-900">M5</span>
-                      <span class="text-[10px] text-gray-500 font-medium num-clean">₹25</span>
+                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-[#272A34] hover:border-[#E2F952] bg-[#090A0E] cursor-pointer text-center has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
+                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-[#E2F952] rounded mb-1 accent-[#E2F952]" data-mod="M5" data-price="25" onchange="updateCalculations()">
+                      <span class="text-[11px] font-bold text-white font-mono-jb">M5</span>
+                      <span class="text-[10px] text-gray-400 font-mono-jb">₹25</span>
                     </label>
-                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-gray-200 hover:border-indigo-400 bg-gray-50/50 cursor-pointer text-center has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/60 transition-all">
-                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-indigo-600 rounded mb-1" data-mod="M6" data-price="85" onchange="updateCalculations()">
-                      <span class="text-[11px] font-bold text-gray-900">M6</span>
-                      <span class="text-[10px] text-gray-500 font-medium num-clean">₹85</span>
+                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-[#272A34] hover:border-[#E2F952] bg-[#090A0E] cursor-pointer text-center has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
+                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-[#E2F952] rounded mb-1 accent-[#E2F952]" data-mod="M6" data-price="85" onchange="updateCalculations()">
+                      <span class="text-[11px] font-bold text-white font-mono-jb">M6</span>
+                      <span class="text-[10px] text-gray-400 font-mono-jb">₹85</span>
                     </label>
-                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-gray-200 hover:border-indigo-400 bg-gray-50/50 cursor-pointer text-center has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/60 transition-all col-span-2 sm:col-span-1">
-                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-indigo-600 rounded mb-1" data-mod="M7" data-price="75" onchange="updateCalculations()">
-                      <span class="text-[11px] font-bold text-gray-900">M7</span>
-                      <span class="text-[10px] text-gray-500 font-medium num-clean">₹75</span>
+                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-[#272A34] hover:border-[#E2F952] bg-[#090A0E] cursor-pointer text-center has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all col-span-2 sm:col-span-1">
+                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-[#E2F952] rounded mb-1 accent-[#E2F952]" data-mod="M7" data-price="75" onchange="updateCalculations()">
+                      <span class="text-[11px] font-bold text-white font-mono-jb">M7</span>
+                      <span class="text-[10px] text-gray-400 font-mono-jb">₹75</span>
                     </label>
                   </div>
-                  <div class="mt-3 p-2 bg-indigo-50/60 border border-indigo-100 rounded-lg flex items-center justify-between text-xs text-indigo-900 font-medium">
-                    <span>Individual sum: <strong class="num-clean font-bold">₹385</strong></span>
-                    <span class="font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-[11px]">Save ₹135 with Full Course</span>
+                  <div class="mt-3 p-2.5 bg-[#090A0E] border border-[#272A34] rounded-lg flex items-center justify-between text-xs text-gray-300 font-mono-jb">
+                    <span>Individual sum: <strong class="text-white">₹385</strong></span>
+                    <span class="text-[#E2F952] font-bold bg-[#E2F952]/10 px-2 py-0.5 rounded text-[11px]">Save ₹135 with Full Course</span>
                   </div>
                 </div>
               </div>
@@ -671,38 +718,38 @@
               <div id="boosterCard" class="card-inactive p-4 rounded-xl border transition-all">
                 <label onclick="selectTier('booster')" class="flex items-center justify-between cursor-pointer">
                   <div class="flex items-center gap-3">
-                    <input type="radio" name="serviceTier" id="tierBooster" value="booster" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                    <input type="radio" name="serviceTier" id="tierBooster" value="booster" class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
                     <div>
-                      <div class="text-xs font-bold text-gray-900 font-heading">Finisher Booster</div>
-                      <div class="text-[11px] text-gray-500">Stuck at 90%+ or 95%+ completion</div>
+                      <div class="text-xs font-bold text-white font-display">Finisher Booster</div>
+                      <div class="text-[11px] text-gray-400">Stuck at 90%+ or 95%+ completion</div>
                     </div>
                   </div>
-                  <div class="text-xs font-semibold text-indigo-600 num-clean" id="boosterPriceBadge">₹50</div>
+                  <div class="text-xs font-semibold text-[#E2F952] font-mono-jb" id="boosterPriceBadge">₹50</div>
                 </label>
 
                 <!-- NESTED BOOSTER CONFIG -->
-                <div id="boosterConfigBox" class="mt-4 pt-3.5 border-t border-gray-100 hidden space-y-3.5">
+                <div id="boosterConfigBox" class="mt-4 pt-3.5 border-t border-[#272A34] hidden space-y-3">
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    <label class="flex items-center justify-between p-3 rounded-xl border border-gray-200 cursor-pointer bg-white has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/70 transition-all">
+                    <label class="flex items-center justify-between p-3 rounded-xl border border-[#272A34] cursor-pointer bg-[#090A0E] has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
                       <div class="flex items-center gap-2.5">
-                        <input type="radio" name="boosterPctOption" value="95" checked onchange="updateCalculations()" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                        <input type="radio" name="boosterPctOption" value="95" checked onchange="updateCalculations()" class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
                         <div>
-                          <div class="text-xs font-bold text-gray-900 font-heading">95% and above</div>
-                          <div class="text-[10px] text-gray-500">Clear final 2-3 container labs</div>
+                          <div class="text-xs font-bold text-white font-mono-jb">95% and above</div>
+                          <div class="text-[10px] text-gray-400">Clear final 2-3 container labs</div>
                         </div>
                       </div>
-                      <span class="text-xs font-bold text-indigo-600 num-clean">₹50</span>
+                      <span class="text-xs font-bold text-[#E2F952] font-mono-jb">₹50</span>
                     </label>
 
-                    <label class="flex items-center justify-between p-3 rounded-xl border border-gray-200 cursor-pointer bg-white has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/70 transition-all">
+                    <label class="flex items-center justify-between p-3 rounded-xl border border-[#272A34] cursor-pointer bg-[#090A0E] has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
                       <div class="flex items-center gap-2.5">
-                        <input type="radio" name="boosterPctOption" value="90" onchange="updateCalculations()" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                        <input type="radio" name="boosterPctOption" value="90" onchange="updateCalculations()" class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
                         <div>
-                          <div class="text-xs font-bold text-gray-900 font-heading">90% to 94.9%</div>
-                          <div class="text-[10px] text-gray-500">Finish all remaining modules</div>
+                          <div class="text-xs font-bold text-white font-mono-jb">90% to 94.9%</div>
+                          <div class="text-[10px] text-gray-400">Finish all remaining modules</div>
                         </div>
                       </div>
-                      <span class="text-xs font-bold text-indigo-600 num-clean">₹100</span>
+                      <span class="text-xs font-bold text-[#E2F952] font-mono-jb">₹100</span>
                     </label>
                   </div>
                 </div>
@@ -712,43 +759,43 @@
           </section>
 
           <!-- 3. DELIVERY SPEED (BEFORE 8:00 AM OPTION) -->
-          <section class="bg-white rounded-2xl p-5 border border-gray-200/90 shadow-sm">
+          <section class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34]">
             <div class="flex items-center justify-between mb-4">
-              <h3 class="text-sm font-bold text-gray-900 font-heading">3. Delivery Speed</h3>
-              <span class="text-xs text-gray-400 font-normal">Select turnaround</span>
+              <h3 class="text-sm font-bold text-white font-mono-jb uppercase tracking-wider">3. Delivery Speed</h3>
+              <span class="text-xs text-gray-500 font-mono-jb">Select turnaround</span>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <!-- EXPRESS BEFORE 8 AM -->
-              <label id="speedEmergencyCard" onclick="selectSpeed('emergency')" class="card-selected p-3.5 rounded-xl border cursor-pointer transition-all flex flex-col justify-between">
+              <label id="speedEmergencyCard" onclick="selectSpeed('emergency')" class="card-selected p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between">
                 <div class="flex items-start justify-between">
                   <div class="flex items-center gap-2.5">
-                    <input type="radio" name="deliverySpeed" id="speedEmergency" value="emergency" checked class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                    <input type="radio" name="deliverySpeed" id="speedEmergency" value="emergency" checked class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
                     <div>
-                      <div class="text-xs font-bold text-gray-900 font-heading">⚡ Done Before 8:00 AM</div>
-                      <div class="text-[11px] text-indigo-600 font-semibold">Guaranteed overnight completion</div>
+                      <div class="text-xs font-bold text-white font-display">⚡ Done Before 8:00 AM</div>
+                      <div class="text-[11px] text-[#E2F952] font-mono-jb">Guaranteed overnight completion</div>
                     </div>
                   </div>
-                  <span class="text-xs font-bold text-indigo-600 num-clean">+₹50</span>
+                  <span class="text-xs font-bold text-[#E2F952] font-mono-jb">+₹50</span>
                 </div>
-                <div class="mt-3 text-[11px] text-gray-500 border-t border-gray-100 pt-2">
+                <div class="mt-3 text-[11px] text-gray-400 border-t border-[#272A34] pt-2 font-mono-jb">
                   Cleared before morning lab attendance begins!
                 </div>
               </label>
 
               <!-- STANDARD DELIVERY -->
-              <label id="speedStandardCard" onclick="selectSpeed('standard')" class="card-inactive p-3.5 rounded-xl border cursor-pointer transition-all flex flex-col justify-between">
+              <label id="speedStandardCard" onclick="selectSpeed('standard')" class="card-inactive p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between">
                 <div class="flex items-start justify-between">
                   <div class="flex items-center gap-2.5">
-                    <input type="radio" name="deliverySpeed" id="speedStandard" value="standard" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                    <input type="radio" name="deliverySpeed" id="speedStandard" value="standard" class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
                     <div>
-                      <div class="text-xs font-bold text-gray-900 font-heading">Standard Delivery</div>
-                      <div class="text-[11px] text-gray-500">24 – 48 Hours turnaround</div>
+                      <div class="text-xs font-bold text-white font-display">Standard Delivery</div>
+                      <div class="text-[11px] text-gray-400">24 – 48 Hours turnaround</div>
                     </div>
                   </div>
-                  <span class="text-xs font-bold text-gray-500 num-clean">FREE</span>
+                  <span class="text-xs font-bold text-gray-400 font-mono-jb">FREE</span>
                 </div>
-                <div class="mt-3 text-[11px] text-gray-500 border-t border-gray-100 pt-2">
+                <div class="mt-3 text-[11px] text-gray-400 border-t border-[#272A34] pt-2 font-mono-jb">
                   Queued in standard execution batch.
                 </div>
               </label>
@@ -756,82 +803,82 @@
           </section>
 
           <!-- 4. ORDER NOTES -->
-          <section class="bg-white rounded-2xl p-5 border border-gray-200/90 shadow-sm">
-            <h3 class="text-sm font-bold text-gray-900 font-heading mb-2">Special Instructions / Viva Deadline</h3>
-            <textarea id="orderNotes" rows="2" placeholder="e.g. My lab viva is at 9:00 AM tomorrow morning, please prioritize Module 4!" class="w-full text-xs rounded-xl border border-gray-200 p-3 text-gray-900 placeholder-gray-400 bg-white"></textarea>
+          <section class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34]">
+            <h3 class="text-sm font-bold text-white font-mono-jb uppercase tracking-wider mb-2">Special Instructions / Viva Deadline</h3>
+            <textarea id="orderNotes" rows="2" placeholder="e.g. My lab viva is at 9:00 AM tomorrow morning, please prioritize Module 4!" class="w-full text-xs rounded-xl border border-[#272A34] p-3 text-white placeholder-gray-600 bg-[#090A0E] font-sans"></textarea>
           </section>
 
         </div>
 
         <!-- RIGHT COLUMN: ORDER SUMMARY & PAYMENT DISPATCH (5 COLS) -->
         <div class="lg:col-span-5 sticky top-20 space-y-4">
-          <div class="bg-white rounded-2xl p-5 border border-gray-200/90 shadow-sm">
-            <h3 class="text-sm font-bold text-gray-900 font-heading mb-4">Order Summary</h3>
+          <div class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34] shadow-2xl">
+            <h3 class="text-sm font-bold text-white font-mono-jb uppercase tracking-wider mb-4">Order Summary</h3>
 
-            <div class="space-y-3 text-xs border-b border-gray-100 pb-4">
+            <div class="space-y-3 text-xs border-b border-[#272A34] pb-4">
               <div class="flex items-start justify-between">
                 <div>
-                  <div class="font-bold text-gray-900" id="summaryItemTitle">Complete ML Course</div>
-                  <div class="text-[11px] text-gray-500" id="summaryItemDesc">All 7 Modules (268 Problems)</div>
+                  <div class="font-bold text-white font-display" id="summaryItemTitle">Complete ML Course</div>
+                  <div class="text-[11px] text-gray-400 font-sans" id="summaryItemDesc">All 7 Modules (268 Problems)</div>
                 </div>
-                <span class="font-bold text-gray-900 num-clean" id="summaryItemPrice">₹250</span>
+                <span class="font-bold text-[#E2F952] font-mono-jb" id="summaryItemPrice">₹250</span>
               </div>
 
-              <div class="flex items-center justify-between text-gray-600">
+              <div class="flex items-center justify-between text-gray-400 font-mono-jb">
                 <span>Delivery:</span>
-                <span id="summaryDelivery" class="font-bold text-indigo-600 num-clean">+₹50 (Before 8 AM)</span>
+                <span id="summaryDelivery" class="font-bold text-[#E2F952]">+₹50 (Before 8 AM)</span>
               </div>
 
-              <div class="flex items-center justify-between text-gray-600">
+              <div class="flex items-center justify-between text-gray-400 font-mono-jb">
                 <span>Discount / Promo:</span>
-                <span id="summaryDiscount" class="font-medium text-gray-500 num-clean">₹0</span>
+                <span id="summaryDiscount" class="font-medium text-gray-500">₹0</span>
               </div>
             </div>
 
             <!-- TOTAL AMOUNT -->
             <div class="flex items-baseline justify-between pt-4 mb-5">
-              <span class="text-sm font-extrabold text-gray-900 font-heading">Total Amount</span>
+              <span class="text-sm font-extrabold text-white font-display">Total Amount</span>
               <div class="text-right">
-                <span class="text-2xl font-black text-indigo-600 num-clean" id="summaryTotal">₹300</span>
-                <span class="block text-[10px] text-gray-400">All taxes & fees included</span>
+                <span class="text-3xl font-black text-[#E2F952] font-mono-jb" id="summaryTotal">₹300</span>
+                <span class="block text-[10px] text-gray-500 font-mono-jb">All taxes & fees included</span>
               </div>
             </div>
 
             <!-- COUPON CODE BOX -->
             <div class="mb-5">
               <div class="flex gap-2">
-                <input type="text" id="couponInput" placeholder="Promo code (e.g. CAMPUS2028)" class="flex-1 h-9 text-xs rounded-lg border border-gray-200 px-3 uppercase text-gray-900 font-semibold bg-white">
-                <button type="button" onclick="applyCoupon()" class="px-3.5 h-9 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-xs transition-colors">
+                <input type="text" id="couponInput" placeholder="Promo code (e.g. CAMPUS2028)" class="flex-1 h-10 text-xs rounded-xl border border-[#272A34] px-3.5 uppercase text-white font-mono-jb font-semibold bg-[#090A0E]">
+                <button type="button" onclick="applyCoupon()" class="px-4 h-10 rounded-xl bg-[#181B24] hover:bg-[#222632] text-white border border-[#272A34] font-mono-jb font-bold text-xs transition-colors">
                   Apply
                 </button>
               </div>
-              <p id="couponMsg" class="text-[11px] mt-1.5 hidden"></p>
+              <p id="couponMsg" class="text-[11px] mt-1.5 hidden font-mono-jb"></p>
             </div>
 
-            <!-- SUBMIT BUTTON -->
-            <button type="submit" id="payButton" class="w-full py-3.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm shadow-md shadow-indigo-200 transition-all flex items-center justify-center gap-2">
+            <!-- SUBMIT BUTTON (ACID LIME HIGH VOLTAGE) -->
+            <button type="submit" id="payButton" class="w-full py-4 px-4 rounded-xl bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-sm tracking-tight transition-all flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(226,249,82,0.3)]">
               <span id="payBtnLabel">PAY ₹300 VIA RAZORPAY</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
               </svg>
             </button>
 
-            <div class="mt-4 pt-3 border-t border-gray-100 text-center space-y-1">
-              <p class="text-[11px] text-gray-500 flex items-center justify-center gap-1.5 font-medium">
-                <span>🛡️</span> Verified on <code class="text-gray-900 font-bold">razorpay.me/@campustick</code>
+            <div class="mt-4 pt-3.5 border-t border-[#272A34] text-center space-y-1">
+              <p class="text-[11px] text-gray-400 font-mono-jb flex items-center justify-center gap-1.5">
+                <span>🛡️</span> Verified on <code class="text-white font-bold">razorpay.me/@campustick</code>
               </p>
-              <p class="text-[10px] text-gray-400">
+              <p class="text-[10px] text-gray-500">
                 100% money-back guarantee if 100% green ticks are not achieved.
               </p>
             </div>
           </div>
 
           <!-- TRUST BADGE -->
-          <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 flex items-center gap-3">
+          <div class="p-4 rounded-xl bg-[#12141A] border border-[#272A34] text-xs text-gray-300 flex items-center gap-3">
             <span class="text-xl">🤝</span>
             <div>
-              <div class="font-bold">Strict Confidentiality</div>
-              <div class="text-[11px] text-emerald-700">Your details are never shared with peers or professors.</div>
+              <div class="font-bold text-white font-display">Strict Confidentiality</div>
+              <div class="text-[11px] text-gray-400 font-sans">Your details are never shared with peers or professors.</div>
             </div>
           </div>
         </div>
@@ -840,12 +887,12 @@
     </div>
   </section>
 
-  <!-- INTERACTIVE PAYMENT MODAL (RAZORPAY.ME + UPI + LIVE VERIFICATION) -->
-  <div id="paymentModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/70 backdrop-blur-sm hidden">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-gray-200 relative max-h-[90vh] overflow-y-auto">
+  <!-- INTERACTIVE PAYMENT MODAL (DARK INDUSTRIAL THEME) -->
+  <div id="paymentModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+    <div class="bg-[#12141A] rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#272A34] relative max-h-[90vh] overflow-y-auto">
       
       <!-- Close Button -->
-      <button onclick="closeModal('paymentModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+      <button onclick="closeModal('paymentModal')" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
@@ -854,100 +901,100 @@
       <!-- Modal State 1: Awaiting Payment & UTR Submission -->
       <div id="modalStepPayment">
         <div class="flex items-center gap-2.5 mb-3">
-          <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold">
+          <div class="w-8 h-8 rounded-lg bg-[#E2F952]/10 text-[#E2F952] border border-[#E2F952]/30 flex items-center justify-center font-bold">
             💳
           </div>
-          <h3 class="text-lg font-bold text-gray-900 font-heading">Complete Payment on Razorpay</h3>
+          <h3 class="text-lg font-bold text-white font-display">Complete Payment on Razorpay</h3>
         </div>
 
-        <p class="text-xs text-gray-600 mb-4">
-          Your order <strong class="text-indigo-600 num-clean" id="resOrderId">ORD-XXXXXX</strong> is registered! Please pay the exact amount below using our verified Razorpay handle:
+        <p class="text-xs text-gray-400 mb-4 font-sans">
+          Your order <strong class="text-[#E2F952] font-mono-jb" id="resOrderId">ORD-XXXXXX</strong> is registered! Please pay the exact amount below using our verified Razorpay handle:
         </p>
 
         <!-- EXACT AMOUNT BOX -->
-        <div class="p-4 rounded-xl bg-indigo-50 border border-indigo-200 text-center mb-5">
-          <div class="text-xs text-indigo-800 font-semibold uppercase tracking-wider">Amount to Pay</div>
-          <div class="text-3xl font-black text-indigo-700 mt-1 num-clean" id="resAmount">₹300</div>
-          <div class="text-[11px] text-indigo-600 mt-1">Recipient: <span class="font-bold">razorpay.me/@campustick</span></div>
+        <div class="p-4 rounded-xl bg-[#090A0E] border border-[#272A34] text-center mb-5">
+          <div class="text-xs text-gray-400 font-mono-jb uppercase tracking-wider">Amount to Pay</div>
+          <div class="text-3xl font-black text-[#E2F952] mt-1 font-mono-jb" id="resAmount">₹300</div>
+          <div class="text-[11px] text-gray-400 font-mono-jb mt-1">Recipient: <span class="text-white font-bold">razorpay.me/@campustick</span></div>
         </div>
 
         <!-- 1-CLICK RAZORPAY.ME LINK BUTTON -->
         <div class="space-y-3 mb-5">
-          <a id="rzpPayBtn" href="https://razorpay.me/@campustick" target="_blank" class="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs shadow-md shadow-indigo-100 flex items-center justify-center gap-2 transition-all">
+          <a id="rzpPayBtn" href="https://razorpay.me/@campustick" target="_blank" class="w-full py-3.5 px-4 rounded-xl bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-xs shadow-[0_0_20px_rgba(226,249,82,0.25)] flex items-center justify-center gap-2 transition-all">
             <span>Open razorpay.me/@campustick (₹<span id="rzpAmountLabel">300</span>)</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
             </svg>
           </a>
 
           <!-- UPI DIRECT INTENT (FOR GPay / PhonePe / Paytm / CRED) -->
-          <a id="upiPayLink" href="#" class="w-full py-2.5 px-4 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold text-xs flex items-center justify-center gap-2 transition-all">
+          <a id="upiPayLink" href="#" class="w-full py-3 px-4 rounded-xl bg-[#181B24] hover:bg-[#222632] text-white border border-[#272A34] font-mono-jb font-bold text-xs flex items-center justify-center gap-2 transition-all">
             <span>Pay Directly via UPI App (GPay / PhonePe)</span>
           </a>
         </div>
 
         <!-- PAYMENT VERIFICATION INPUT -->
-        <div class="p-4 rounded-xl bg-gray-50 border border-gray-200 mb-4">
-          <label class="block text-xs font-bold text-gray-900 mb-1" for="utrInput">
+        <div class="p-4 rounded-xl bg-[#090A0E] border border-[#272A34] mb-4">
+          <label class="block text-xs font-mono-jb font-bold text-white mb-1.5" for="utrInput">
             Enter UPI UTR / Transaction ID or Reference:
           </label>
-          <input type="text" id="utrInput" placeholder="e.g. 412389745612 or Razorpay Payment ID" class="w-full h-10 text-xs rounded-lg border border-gray-300 px-3 text-gray-900 font-medium bg-white mb-2">
+          <input type="text" id="utrInput" placeholder="e.g. 412389745612 or Razorpay Payment ID" class="w-full h-11 text-xs rounded-xl border border-[#272A34] px-3.5 text-white font-mono-jb bg-[#12141A] mb-2.5">
           
-          <button type="button" onclick="verifyAndConfirmPayment()" class="w-full py-2.5 px-3 rounded-lg bg-gray-900 hover:bg-black text-white font-bold text-xs transition-colors flex items-center justify-center gap-2">
+          <button type="button" onclick="verifyAndConfirmPayment()" class="w-full py-3 px-3 rounded-xl bg-white hover:bg-gray-100 text-black font-mono-jb font-extrabold text-xs transition-colors flex items-center justify-center gap-2">
             <span id="verifyBtnLabel">Verify Payment & Confirm Order</span>
           </button>
         </div>
 
-        <p class="text-[11px] text-gray-400 text-center">
+        <p class="text-[11px] text-gray-500 font-mono-jb text-center">
           Payment details will be matched against our real-time merchant feed.
         </p>
       </div>
 
       <!-- Modal State 2: Payment Accepted & "Done Before 8:00 AM" Confirmation -->
       <div id="modalStepConfirmed" class="hidden text-center py-2">
-        <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mx-auto mb-3 shadow-inner">
+        <div class="w-14 h-14 rounded-full bg-[#E2F952]/15 border border-[#E2F952]/40 text-[#E2F952] flex items-center justify-center text-2xl mx-auto mb-3 shadow-[0_0_20px_rgba(226,249,82,0.2)]">
           ✅
         </div>
 
-        <h3 class="text-xl font-black text-gray-900 font-heading">Payment Accepted & Confirmed!</h3>
-        <p class="text-xs text-gray-600 mt-1 max-w-sm mx-auto">
-          We got your payment of <strong class="text-emerald-700 num-clean" id="confirmedAmount">₹300</strong>. Your credentials are safe with us!
+        <h3 class="text-2xl font-black text-white font-display">Payment Accepted & Confirmed!</h3>
+        <p class="text-xs text-gray-400 mt-1 max-w-sm mx-auto font-sans">
+          We got your payment of <strong class="text-[#E2F952] font-mono-jb" id="confirmedAmount">₹300</strong>. Your credentials are safe with us!
         </p>
 
         <!-- PROMISE BANNER: DONE BEFORE 8:00 AM -->
-        <div class="mt-4 p-4 rounded-xl bg-gradient-to-r from-indigo-50 via-purple-50 to-indigo-50 border border-indigo-200 text-left">
-          <div class="flex items-center gap-2 text-indigo-900 font-black text-sm">
+        <div class="mt-5 p-5 rounded-xl bg-[#090A0E] border border-[#E2F952]/40 text-left">
+          <div class="flex items-center gap-2 text-[#E2F952] font-black text-sm font-mono-jb">
             <span>⚡</span>
             <span>GUARANTEED BEFORE 8:00 AM TOMORROW</span>
           </div>
-          <p class="text-xs text-indigo-800 mt-1.5 leading-relaxed font-medium">
-            Veere relax, your CodeChef coursework will be <strong>100% completed with green ticks before 8:00 AM</strong>. Your official certificate and verified syllabus proof will be delivered straight to your Instagram DM!
+          <p class="text-xs text-gray-300 mt-2 leading-relaxed font-sans">
+            Veere relax, your CodeChef coursework will be <strong class="text-white">100% completed with green ticks before 8:00 AM</strong>. Your official certificate and verified syllabus proof will be delivered straight to your Instagram DM!
           </p>
 
           <!-- COUNTDOWN TIMER TO 8:00 AM -->
-          <div class="mt-3 pt-2.5 border-t border-indigo-200/60 flex items-center justify-between text-xs font-bold text-indigo-900">
+          <div class="mt-4 pt-3 border-t border-[#272A34] flex items-center justify-between text-xs font-mono-jb font-bold text-gray-400">
             <span>Time until 8:00 AM:</span>
-            <span id="countdown8am" class="num-clean text-indigo-700 font-black bg-white px-2 py-0.5 rounded shadow-sm">Calculating...</span>
+            <span id="countdown8am" class="text-[#E2F952] font-black bg-[#12141A] px-2.5 py-1 rounded border border-[#272A34] shadow-sm">Calculating...</span>
           </div>
         </div>
 
-        <!-- COPYABLE DISPATCH RECEIPT -->
-        <div class="mt-4 p-3 bg-gray-50 border border-gray-200 rounded-xl text-left text-xs font-mono text-gray-800 select-all relative">
-          <div class="text-[10px] text-gray-400 font-sans uppercase font-bold mb-1">Your Order Receipt:</div>
-          <div id="confirmedReceiptText" class="whitespace-pre-line text-[11px] leading-tight"></div>
+        <!-- COPYABLE DISPATCH RECEIPT (MONOSPACE INDUSTRIAL BLOCK) -->
+        <div class="mt-4 p-3.5 bg-[#090A0E] border border-[#272A34] rounded-xl text-left text-xs font-mono-jb text-gray-300 select-all relative">
+          <div class="text-[10px] text-gray-500 font-mono-jb uppercase font-bold mb-1">Your Order Receipt:</div>
+          <div id="confirmedReceiptText" class="whitespace-pre-line text-[11px] leading-tight text-gray-300"></div>
         </div>
 
         <!-- 1-CLICK INSTAGRAM / WHATSAPP DISPATCH BUTTONS -->
-        <div class="grid grid-cols-2 gap-2.5 mt-4">
-          <a id="igDmBtn" href="https://ig.me/m/campus.tick" target="_blank" class="py-2.5 px-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-95 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-sm">
+        <div class="grid grid-cols-2 gap-3 mt-4">
+          <a id="igDmBtn" href="https://ig.me/m/campus.tick" target="_blank" class="py-3 px-3 rounded-xl bg-[#181B24] hover:bg-[#222632] border border-[#272A34] text-white font-mono-jb font-bold text-xs flex items-center justify-center gap-1.5 transition-all">
             <span>Open Instagram DM</span>
           </a>
-          <a id="whatsappBtn" href="#" target="_blank" class="py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-sm">
+          <a id="whatsappBtn" href="#" target="_blank" class="py-3 px-3 rounded-xl bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all shadow-[0_0_15px_rgba(226,249,82,0.2)]">
             <span>Open WhatsApp</span>
           </a>
         </div>
 
-        <button onclick="closeModal('paymentModal')" class="mt-4 text-xs font-semibold text-gray-500 hover:text-gray-800">
+        <button onclick="closeModal('paymentModal')" class="mt-4 text-xs font-mono-jb text-gray-500 hover:text-white transition-colors">
           Close Window
         </button>
       </div>
@@ -956,47 +1003,47 @@
   </div>
 
   <!-- FOOTER -->
-  <footer class="bg-white border-t border-gray-100 py-10 mt-16 text-xs text-gray-500">
+  <footer class="bg-[#090A0E] border-t border-[#272A34] py-12 mt-16 text-xs text-gray-500 font-mono-jb">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
       
       <div class="flex items-center gap-2.5">
-        <div class="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-xs">
+        <div class="w-7 h-7 rounded-lg bg-[#E2F952] flex items-center justify-center text-black font-bold text-xs">
           CT
         </div>
         <div>
-          <div class="font-extrabold text-gray-900 font-heading">CampusTick</div>
-          <div class="text-[11px]">Academic Reference & CodeChef Lab Clearance</div>
+          <div class="font-extrabold text-white font-display">campus<span class="text-[#E2F952]">.tick</span></div>
+          <div class="text-[11px] text-gray-500">Academic Reference & CodeChef Lab Clearance</div>
         </div>
       </div>
 
-      <div class="flex flex-wrap items-center justify-center gap-6 text-gray-600 font-medium">
-        <a href="#how-it-works" class="hover:text-indigo-600">How It Works</a>
-        <a href="#courses" class="hover:text-indigo-600">Courses</a>
-        <a href="#offers" class="hover:text-indigo-600">Offers</a>
-        <button onclick="openPolicy('terms')" class="hover:text-indigo-600">Terms</button>
-        <button onclick="openPolicy('privacy')" class="hover:text-indigo-600">Privacy Policy</button>
-        <button onclick="openPolicy('refund')" class="hover:text-indigo-600">Refund Guarantee</button>
-        <button onclick="openPolicy('contact')" class="hover:text-indigo-600">Contact Support</button>
+      <div class="flex flex-wrap items-center justify-center gap-6 text-gray-400 font-medium">
+        <a href="#how-it-works" class="hover:text-[#E2F952] transition-colors">How It Works</a>
+        <a href="#courses" class="hover:text-[#E2F952] transition-colors">Courses</a>
+        <a href="#offers" class="hover:text-[#E2F952] transition-colors">Offers</a>
+        <button onclick="openPolicy('terms')" class="hover:text-[#E2F952] transition-colors">Terms</button>
+        <button onclick="openPolicy('privacy')" class="hover:text-[#E2F952] transition-colors">Privacy</button>
+        <button onclick="openPolicy('refund')" class="hover:text-[#E2F952] transition-colors">Refund Guarantee</button>
+        <button onclick="openPolicy('contact')" class="hover:text-[#E2F952] transition-colors">Contact</button>
       </div>
 
-      <div class="text-right text-[11px]">
-        <div>© 2026 CampusTick. Built for students.</div>
-        <div class="text-gray-400">Patiala, Punjab • 24/7 exam cycle support</div>
+      <div class="text-right text-[11px] text-gray-500">
+        <div>© 2026 campus.tick. Built for students.</div>
+        <div class="text-gray-600">Patiala, Punjab • 24/7 exam cycle support</div>
       </div>
 
     </div>
   </footer>
 
   <!-- POLICY MODAL -->
-  <div id="policyModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm hidden">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-xl border border-gray-200 relative max-h-[85vh] overflow-y-auto">
-      <button onclick="closePolicy()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+  <div id="policyModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+    <div class="bg-[#12141A] rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#272A34] relative max-h-[85vh] overflow-y-auto">
+      <button onclick="closePolicy()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
       </button>
-      <h3 id="policyTitle" class="text-lg font-bold text-gray-900 font-heading mb-3">Policy</h3>
-      <div id="policyContent" class="text-xs text-gray-600 space-y-3 leading-relaxed"></div>
+      <h3 id="policyTitle" class="text-lg font-bold text-white font-display mb-3">Policy</h3>
+      <div id="policyContent" class="text-xs text-gray-400 space-y-3 leading-relaxed font-sans"></div>
     </div>
   </div>
 
@@ -1046,8 +1093,8 @@
       const emCard = document.getElementById('speedEmergencyCard');
       const stCard = document.getElementById('speedStandardCard');
 
-      emCard.className = (speed === 'emergency') ? 'card-selected p-3.5 rounded-xl border cursor-pointer transition-all flex flex-col justify-between' : 'card-inactive p-3.5 rounded-xl border cursor-pointer transition-all flex flex-col justify-between';
-      stCard.className = (speed === 'standard') ? 'card-selected p-3.5 rounded-xl border cursor-pointer transition-all flex flex-col justify-between' : 'card-inactive p-3.5 rounded-xl border cursor-pointer transition-all flex flex-col justify-between';
+      emCard.className = (speed === 'emergency') ? 'card-selected p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between' : 'card-inactive p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between';
+      stCard.className = (speed === 'standard') ? 'card-selected p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between' : 'card-inactive p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between';
 
       updateCalculations();
     }
@@ -1057,16 +1104,16 @@
       const msg = document.getElementById('couponMsg');
       const val = input.value.trim().toUpperCase();
 
-      if (val === 'CAMPUS2028' || val === 'TIET2028' || val === 'CODECHEF100' || val === 'CAMPUS1337') {
+      if (val === 'CAMPUS2028' || val === 'STUDENT2028' || val === 'CODECHEF100' || val === 'CAMPUS1337') {
         appliedDiscount = 30;
         appliedCouponCode = val;
         msg.textContent = `Promo applied! ₹30 discount saved.`;
-        msg.className = "text-[11px] mt-1.5 text-emerald-600 font-bold block";
+        msg.className = "text-[11px] mt-1.5 text-[#E2F952] font-mono-jb font-bold block";
       } else if (val) {
         appliedDiscount = 0;
         appliedCouponCode = null;
         msg.textContent = "Invalid promo code.";
-        msg.className = "text-[11px] mt-1.5 text-red-500 block";
+        msg.className = "text-[11px] mt-1.5 text-[#FF3B30] font-mono-jb block";
       } else {
         appliedDiscount = 0;
         appliedCouponCode = null;
@@ -1111,19 +1158,19 @@
       const delEl = document.getElementById('summaryDelivery');
       if (currentSpeed === 'emergency') {
         delEl.textContent = "+₹50 (Before 8 AM)";
-        delEl.className = "font-bold text-indigo-600 num-clean";
+        delEl.className = "font-bold text-[#E2F952] font-mono-jb";
       } else {
         delEl.textContent = "FREE (24–48h)";
-        delEl.className = "font-medium text-gray-500 num-clean";
+        delEl.className = "font-medium text-gray-500 font-mono-jb";
       }
 
       const discEl = document.getElementById('summaryDiscount');
       if (discount > 0) {
         discEl.textContent = `-₹${discount}`;
-        discEl.className = "font-bold text-emerald-600 num-clean";
+        discEl.className = "font-bold text-[#E2F952] font-mono-jb";
       } else {
         discEl.textContent = "₹0";
-        discEl.className = "font-medium text-gray-500 num-clean";
+        discEl.className = "font-medium text-gray-500 font-mono-jb";
       }
 
       document.getElementById('summaryTotal').textContent = `₹${finalTotal}`;
@@ -1186,7 +1233,7 @@
       document.getElementById('payBtnLabel').textContent = "REGISTERING ORDER...";
 
       // Order summary text
-      const orderSummary = `🎓 CampusTick Clearance Order\n` +
+      const orderSummary = `🎓 campus.tick Clearance Order\n` +
         `━━━━━━━━━━━━━━━━━━━━\n` +
         `📦 Order ID: ${orderId}\n` +
         `👤 Instagram: @${ig}\n` +
@@ -1202,7 +1249,7 @@
         navigator.clipboard.writeText(orderSummary).catch(() => {});
       }
 
-      // Present interactive payment & verification modal immediately
+      // Present interactive payment modal immediately
       showPaymentModal(payload);
       btn.disabled = false;
       updateCalculations();
@@ -1334,9 +1381,9 @@
       terms: {
         title: "Terms and Conditions",
         body: `
-          <p><strong>1. Introduction:</strong> Welcome to CampusTick. By accessing our platform and placing an order for machine learning coursework clearance or academic reference solutions, you agree to comply with and be bound by these terms.</p>
-          <p><strong>2. Services Provided:</strong> CampusTick provides technical problem resolution, algorithmic test execution, and verifiable completion certification for university coursework modules.</p>
-          <p><strong>3. Confidentiality:</strong> CampusTick operates with zero-knowledge credential architecture. Credentials provided during checkout are strictly isolated, used exclusively to complete requested modules, and purged upon fulfillment.</p>
+          <p><strong>1. Introduction:</strong> Welcome to campus.tick. By accessing our platform and placing an order for machine learning coursework clearance or academic reference solutions, you agree to comply with and be bound by these terms.</p>
+          <p><strong>2. Services Provided:</strong> campus.tick provides technical problem resolution, algorithmic test execution, and verifiable completion certification for university coursework modules.</p>
+          <p><strong>3. Confidentiality:</strong> campus.tick operates with zero-knowledge credential architecture. Credentials provided during checkout are strictly isolated, used exclusively to complete requested modules, and purged upon fulfillment.</p>
         `
       },
       privacy: {
@@ -1350,7 +1397,7 @@
       refund: {
         title: "Cancellation and Refund Policy",
         body: `
-          <p><strong>1. 100% Satisfaction Guarantee:</strong> If CampusTick fails to achieve 100% test-case clearance or the agreed module completion on your CodeChef profile, you are entitled to an immediate 100% refund.</p>
+          <p><strong>1. 100% Satisfaction Guarantee:</strong> If campus.tick fails to achieve 100% test-case clearance or the agreed module completion on your CodeChef profile, you are entitled to an immediate 100% refund.</p>
           <p><strong>2. Cancellation Window:</strong> You may cancel your order at any time before our autonomous solver begins processing your modules.</p>
           <p><strong>3. Refund Timeline:</strong> Approved refunds are credited directly back to the original payment source within 24–48 hours.</p>
         `
@@ -1361,7 +1408,7 @@
           <p>For order status, instant delivery verification, or support inquiries:</p>
           <p><strong>Instagram Direct:</strong> @campus.tick</p>
           <p><strong>Support Availability:</strong> 24/7 during university examination and evaluation cycles.</p>
-          <p><strong>Registered Address:</strong> CampusTick Academic Services, Patiala, Punjab, India - 147004.</p>
+          <p><strong>Registered Address:</strong> campus.tick Academic Services, Patiala, Punjab, India - 147004.</p>
         `
       }
     };
