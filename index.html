@@ -88,80 +88,17 @@
         <span class="text-[20px] font-bold text-[#20232d] tracking-[-0.6px]">CampusTick</span>
       </a>
 
-      <!-- Right Actions: Track Request & Replies + 48h SLA -->
+      <!-- Right Action: Track Request & Replies -->
       <div class="flex items-center gap-2 sm:gap-3">
-        <!-- NEW: Track Request Status & Replies Button -->
-        <button type="button" id="headerStatusLookupBtn" onclick="openRequestStatusModal()" class="px-3 py-1.5 rounded-[6px] bg-[#6366f1] hover:bg-[#5053d4] text-white font-medium text-[12px] flex items-center gap-1.5 transition-colors shadow-sm cursor-pointer">
+        <button type="button" id="headerStatusLookupBtn" onclick="openRequestStatusModal()" class="px-3.5 py-2 rounded-[6px] bg-[#6366f1] hover:bg-[#5053d4] text-white font-medium text-[12px] sm:text-[13px] flex items-center gap-1.5 transition-colors shadow-sm cursor-pointer">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
           </svg>
           <span>Track Request & Replies</span>
         </button>
-
-        <!-- 48h SLA Button -->
-        <button type="button" id="headerTrackerBtn" onclick="toggleTrackerView()" class="px-2.5 py-1.5 rounded-[6px] bg-[#f7f7ff] hover:bg-[#eef2ff] text-[#5053d4] border border-[#6366f1]/20 font-medium text-[12px] flex items-center gap-1.5 transition-colors cursor-pointer">
-          <span>⏱️</span>
-          <span class="hidden sm:inline">Track 48h SLA</span>
-          <span class="sm:hidden">SLA</span>
-        </button>
       </div>
     </div>
   </header>
-
-  <!-- LIVE 48-HOUR ORDER SLA WATCHDOG SECTION -->
-  <section id="liveTrackerSection" class="hidden border-b border-[#e5e7eb] bg-[#f7f7ff] py-6 transition-all duration-300">
-    <div class="max-w-[1200px] mx-auto px-6 lg:px-[100px]">
-      <div class="bg-white rounded-[10px] p-6 border border-[#6366f1] shadow-lg shadow-indigo-50 relative overflow-hidden">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div>
-            <div class="flex items-center gap-2 mb-2 flex-wrap">
-              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#f7f7ff] text-[#5053d4] border border-[#6366f1]/30 flex items-center gap-1.5" id="trackerStatusBadge">
-                <span class="w-2 h-2 rounded-full bg-[#6366f1] animate-ping"></span>
-                48-Hour Live Turnaround SLA Active
-              </span>
-              <span class="text-xs text-[#6b7080] font-medium" id="trackerOrderIdDisplay">ORD-XXXXXX</span>
-            </div>
-            <h2 class="text-xl sm:text-2xl font-bold text-[#20232d] flex items-center gap-2">
-              <span id="trackerCustomerName">@username</span>'s Coursework Countdown
-            </h2>
-            <p class="text-xs text-[#6b7080] mt-1" id="trackerSubtext">
-              Standard Turnaround: Guaranteed 100% completion & verified certificate within 48 Hours.
-            </p>
-          </div>
-
-          <!-- COUNTDOWN DISPLAY TILES -->
-          <div class="flex items-center gap-3">
-            <div class="bg-[#f7f7ff] border border-[#e5e7eb] rounded-[6px] px-3.5 py-2.5 text-center min-w-[70px]">
-              <div class="text-2xl sm:text-3xl font-bold text-[#5053d4] num-clean" id="timerHours">48</div>
-              <div class="text-[10px] font-medium text-[#6b7080] uppercase tracking-wider mt-0.5">Hours</div>
-            </div>
-            <span class="text-xl font-bold text-[#979ba7]">:</span>
-            <div class="bg-[#f7f7ff] border border-[#e5e7eb] rounded-[6px] px-3.5 py-2.5 text-center min-w-[70px]">
-              <div class="text-2xl sm:text-3xl font-bold text-[#5053d4] num-clean" id="timerMinutes">00</div>
-              <div class="text-[10px] font-medium text-[#6b7080] uppercase tracking-wider mt-0.5">Mins</div>
-            </div>
-            <span class="text-xl font-bold text-[#979ba7]">:</span>
-            <div class="bg-[#f7f7ff] border border-[#e5e7eb] rounded-[6px] px-3.5 py-2.5 text-center min-w-[70px]">
-              <div class="text-2xl sm:text-3xl font-bold text-[#5053d4] num-clean" id="timerSeconds">00</div>
-              <div class="text-[10px] font-medium text-[#6b7080] uppercase tracking-wider mt-0.5">Secs</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PROGRESS BAR & DEADLINE -->
-        <div class="mt-5 pt-4 border-t border-[#e5e7eb]">
-          <div class="flex items-center justify-between text-xs mb-2">
-            <span class="font-medium text-[#20232d]" id="trackerProgressPercentText">48 Hours Remaining out of 48h SLA</span>
-            <span class="text-[#6b7080]" id="timerDeadlineDisplay">Calculating deadline...</span>
-          </div>
-          <div class="w-full bg-[#fafafb] rounded-full h-2.5 border border-[#e5e7eb] overflow-hidden">
-            <div id="trackerProgressBar" class="bg-[#6366f1] h-full rounded-full transition-all duration-1000" style="width: 2%;"></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
 
   <!-- MAIN CHECKOUT CONTENT (Exact Match: pt-40px, pb-32px, px-[100px]) -->
   <main class="max-w-[1200px] mx-auto w-full px-6 lg:px-[100px] pt-10 pb-12 flex-1">
@@ -275,7 +212,7 @@
             <!-- OPTION 1: Complete Course (Full Course - No Proof Required) -->
             <label id="cardComplete" onclick="selectService('complete')" class="border border-[#6366f1] bg-[#f7f7ff] rounded-[10px] px-3.5 py-2.5 flex items-center justify-between cursor-pointer transition-all hover:border-[#6366f1]">
               <div class="flex items-center gap-2.5">
-                <input type="radio" name="serviceOption" id="radioComplete" value="complete" checked class="w-4 h-4 text-[#6366f1] focus:ring-[#6366f1]">
+                <input type="radio" name="serviceOption" id="radioComplete" value="complete" onchange="selectService('complete')" checked class="w-4 h-4 text-[#6366f1] focus:ring-[#6366f1]">
                 <div>
                   <div class="text-[13px] font-semibold text-[#20232d]">Complete course</div>
                   <div class="text-[11px] text-[#6b7080]">All 7 modules • No screenshot required</div>
@@ -288,7 +225,7 @@
             <div id="cardIndividual" class="border border-[#e5e7eb] bg-white rounded-[10px] transition-all">
               <label onclick="selectService('individual')" class="px-3.5 py-2.5 flex items-center justify-between cursor-pointer">
                 <div class="flex items-center gap-2.5">
-                  <input type="radio" name="serviceOption" id="radioIndividual" value="individual" class="w-4 h-4 text-[#6366f1] focus:ring-[#6366f1]">
+                  <input type="radio" name="serviceOption" id="radioIndividual" value="individual" onchange="selectService('individual')" class="w-4 h-4 text-[#6366f1] focus:ring-[#6366f1]">
                   <div>
                     <div class="text-[13px] font-semibold text-[#20232d]">Individual modules</div>
                     <div class="text-[11px] text-[#6b7080]">Select the modules you have or need</div>
@@ -593,13 +530,303 @@
 
     </form>
 
-    <!-- Bottom Footer (Exact Match) -->
-    <div class="mt-16 text-center text-[12px] text-[#6b7080] flex items-center justify-center gap-1.5">
-      <svg class="w-3.5 h-3.5 text-[#6b7080]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-      </svg>
-      <span>Secure checkout · For engineering students</span>
+    <!-- PLATFORM HOW IT WORKS & GUIDES -->
+    <section class="mt-16 pt-12 border-t border-[#e5e7eb]">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#f7f7ff] text-[#5053d4] border border-[#6366f1]/20 inline-block mb-2.5">
+          Step-by-Step Workflow
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-[#20232d] tracking-tight">How CampusTick Works</h2>
+        <p class="text-sm text-[#6b7080] mt-2">Clear your Machine Learning coursework on CodeChef with 100% confidential, verified solutions in four easy steps.</p>
+      </div>
+
+      <!-- 4 Step Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Step 1 -->
+        <div class="p-5 rounded-[10px] border border-[#e5e7eb] bg-white hover:border-[#6366f1]/40 transition-all shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-[6px] bg-[#f7f7ff] text-[#5053d4] font-bold text-sm flex items-center justify-center mb-3 border border-[#6366f1]/20">
+              01
+            </div>
+            <h3 class="text-[15px] font-bold text-[#20232d] mb-1.5">Choose Your Scope</h3>
+            <p class="text-[12px] text-[#6b7080] leading-relaxed">
+              Select Complete Course (all 7 modules), pick specific individual modules (M1–M7 line), or slide the remaining test cases bar if you're already 90%+ done.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-[#f3f4f6] text-[11px] font-medium text-[#5053d4]">
+            Tailored student pricing
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-5 rounded-[10px] border border-[#e5e7eb] bg-white hover:border-[#6366f1]/40 transition-all shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-[6px] bg-[#f7f7ff] text-[#5053d4] font-bold text-sm flex items-center justify-center mb-3 border border-[#6366f1]/20">
+              02
+            </div>
+            <h3 class="text-[15px] font-bold text-[#20232d] mb-1.5">Instant Order or Quote</h3>
+            <p class="text-[12px] text-[#6b7080] leading-relaxed">
+              Pay directly for immediate high-speed execution, or attach your syllabus screenshot to request a custom discount review from the owner.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-[#f3f4f6] text-[11px] font-medium text-[#5053d4]">
+            Guaranteed 24h review SLA
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-5 rounded-[10px] border border-[#e5e7eb] bg-white hover:border-[#6366f1]/40 transition-all shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-[6px] bg-[#f7f7ff] text-[#5053d4] font-bold text-sm flex items-center justify-center mb-3 border border-[#6366f1]/20">
+              03
+            </div>
+            <h3 class="text-[15px] font-bold text-[#20232d] mb-1.5">Track Live Status</h3>
+            <p class="text-[12px] text-[#6b7080] leading-relaxed">
+              Copy your Request ID with 1 click. Check your request status, read owner replies, and upload UPI payment proofs anytime via the top header.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-[#f3f4f6] text-[11px] font-medium text-[#5053d4]">
+            Transparent tracking
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="p-5 rounded-[10px] border border-[#e5e7eb] bg-white hover:border-[#6366f1]/40 transition-all shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-[6px] bg-[#f7f7ff] text-[#5053d4] font-bold text-sm flex items-center justify-center mb-3 border border-[#6366f1]/20">
+              04
+            </div>
+            <h3 class="text-[15px] font-bold text-[#20232d] mb-1.5">100% Verified Delivery</h3>
+            <p class="text-[12px] text-[#6b7080] leading-relaxed">
+              Our automated solver clears all problems and submits authentic test cases directly on your CodeChef account with green ticks and valid certificates.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-[#f3f4f6] text-[11px] font-medium text-emerald-600">
+            ✓ Genuine platform results
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FREQUENTLY ASKED QUESTIONS SECTION -->
+    <section class="mt-16 pt-10 border-t border-[#e5e7eb]">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <span class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#f7f7ff] text-[#5053d4] border border-[#6366f1]/20 inline-block mb-2.5">
+          Knowledge Base & FAQ
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-[#20232d] tracking-tight">Frequently Asked Questions</h2>
+        <p class="text-sm text-[#6b7080] mt-2">Everything you need to know about our service, pricing tiers, payment proofs, and privacy guarantees.</p>
+      </div>
+
+      <!-- FAQ Accordion List -->
+      <div class="max-w-3xl mx-auto space-y-3">
+        <!-- FAQ 1 -->
+        <div class="border border-[#e5e7eb] rounded-[8px] bg-white overflow-hidden transition-all hover:border-[#6366f1]/40">
+          <button type="button" onclick="toggleFaqItem(1)" class="w-full p-4 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+            <span class="text-[14px] font-semibold text-[#20232d] flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-[#f7f7ff] text-[#5053d4] text-[11px] font-bold flex items-center justify-center shrink-0">1</span>
+              <span>How does CampusTick work from start to finish?</span>
+            </span>
+            <svg id="faq-icon-1" class="w-4 h-4 text-[#6b7080] transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="faq-ans-1" class="hidden px-4 pb-4 pt-1 text-[13px] text-[#6b7080] leading-relaxed border-t border-[#f3f4f6]">
+            CampusTick provides an automated, confidential pipeline to solve and verify your Machine Learning coursework on CodeChef. First, select your service scope (Complete Course, Individual Modules, or Remaining Test Cases). Enter your CodeChef credentials and Instagram handle. If requesting a custom quote/discount, attach your syllabus screenshot and enter your college email. You can pay directly or submit to the review queue. Once logged, copy your Request ID to track status in real-time. Upon payment confirmation, our solver runs and achieves 100% verified test-case completion on your account.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="border border-[#e5e7eb] rounded-[8px] bg-white overflow-hidden transition-all hover:border-[#6366f1]/40">
+          <button type="button" onclick="toggleFaqItem(2)" class="w-full p-4 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+            <span class="text-[14px] font-semibold text-[#20232d] flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-[#f7f7ff] text-[#5053d4] text-[11px] font-bold flex items-center justify-center shrink-0">2</span>
+              <span>What is the difference between Complete Course, Individual Modules, and Remaining Test Cases?</span>
+            </span>
+            <svg id="faq-icon-2" class="w-4 h-4 text-[#6b7080] transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="faq-ans-2" class="hidden px-4 pb-4 pt-1 text-[13px] text-[#6b7080] leading-relaxed border-t border-[#f3f4f6]">
+            <p class="mb-2"><strong>• Complete Course (₹250):</strong> Solves all 7 modules (268 total problems) from 0% to 100% completion. Best bundled value for students starting from scratch.</p>
+            <p class="mb-2"><strong>• Individual Modules (From ₹15):</strong> Pick only the specific modules you need cleared (M1: ₹15, M2: ₹20, M3: ₹30, M4: ₹75, M5: ₹15, M6: ₹70, M7: ₹75). If all modules are selected, total is ₹300.</p>
+            <p><strong>• Remaining Test Cases (₹15–₹150):</strong> If you have already solved 90% to 99% on your own and only have a few failing edge cases, slide the slider to your current percentage. You pay a small prorated amount (₹150 at 90%, down to just ₹15 at 99%).</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="border border-[#e5e7eb] rounded-[8px] bg-white overflow-hidden transition-all hover:border-[#6366f1]/40">
+          <button type="button" onclick="toggleFaqItem(3)" class="w-full p-4 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+            <span class="text-[14px] font-semibold text-[#20232d] flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-[#f7f7ff] text-[#5053d4] text-[11px] font-bold flex items-center justify-center shrink-0">3</span>
+              <span>Why is College Email only required for discount and custom quote reviews?</span>
+            </span>
+            <svg id="faq-icon-3" class="w-4 h-4 text-[#6b7080] transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="faq-ans-3" class="hidden px-4 pb-4 pt-1 text-[13px] text-[#6b7080] leading-relaxed border-t border-[#f3f4f6]">
+            For direct Complete Course orders, no college email is required at all — only your Instagram and CodeChef credentials. When requesting custom quotes or discounts, our owner personally audits your syllabus screenshots. To prevent queue spam, duplicate flooding, and abuse, college email is mandatory and restricted to <strong>one active request per email address</strong>. This guarantees genuine students receive rapid review turnarounds.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="border border-[#e5e7eb] rounded-[8px] bg-white overflow-hidden transition-all hover:border-[#6366f1]/40">
+          <button type="button" onclick="toggleFaqItem(4)" class="w-full p-4 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+            <span class="text-[14px] font-semibold text-[#20232d] flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-[#f7f7ff] text-[#5053d4] text-[11px] font-bold flex items-center justify-center shrink-0">4</span>
+              <span>How do I track my request status and view the owner's customized quote?</span>
+            </span>
+            <svg id="faq-icon-4" class="w-4 h-4 text-[#6b7080] transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="faq-ans-4" class="hidden px-4 pb-4 pt-1 text-[13px] text-[#6b7080] leading-relaxed border-t border-[#f3f4f6]">
+            Click the <strong>"Track Request & Replies"</strong> button in the top navigation bar. Enter your Request ID (e.g. <code>ORD-B2F9A1</code>) or your College Email ID. The modal will display your live status, the exact timestamp when you submitted, the owner's customized reply/quote, and the countdown for our 24-hour reply commitment.
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="border border-[#e5e7eb] rounded-[8px] bg-white overflow-hidden transition-all hover:border-[#6366f1]/40">
+          <button type="button" onclick="toggleFaqItem(5)" class="w-full p-4 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+            <span class="text-[14px] font-semibold text-[#20232d] flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-[#f7f7ff] text-[#5053d4] text-[11px] font-bold flex items-center justify-center shrink-0">5</span>
+              <span>How long does it take to get a reply or completed coursework?</span>
+            </span>
+            <svg id="faq-icon-5" class="w-4 h-4 text-[#6b7080] transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="faq-ans-5" class="hidden px-4 pb-4 pt-1 text-[13px] text-[#6b7080] leading-relaxed border-t border-[#f3f4f6]">
+            <p class="mb-2"><strong>• Review Inquiries:</strong> We maintain a guaranteed <strong>24-hour reply SLA</strong>. The owner will review your syllabus and post your final quote directly on your tracking card.</p>
+            <p><strong>• Coursework Completion:</strong> Standard Turnaround delivers complete coursework within <strong>24 to 48 hours</strong>. Express Priority Turnaround prioritizes your account in our runner pipeline, finishing in <strong>2 to 4 hours</strong>.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="border border-[#e5e7eb] rounded-[8px] bg-white overflow-hidden transition-all hover:border-[#6366f1]/40">
+          <button type="button" onclick="toggleFaqItem(6)" class="w-full p-4 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+            <span class="text-[14px] font-semibold text-[#20232d] flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-[#f7f7ff] text-[#5053d4] text-[11px] font-bold flex items-center justify-center shrink-0">6</span>
+              <span>How do I complete payment and submit proof (Transaction ID / UTR & Screenshot)?</span>
+            </span>
+            <svg id="faq-icon-6" class="w-4 h-4 text-[#6b7080] transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="faq-ans-6" class="hidden px-4 pb-4 pt-1 text-[13px] text-[#6b7080] leading-relaxed border-t border-[#f3f4f6]">
+            You can pay directly through Razorpay (Cards, Net Banking, Wallets) or via UPI Apps (Google Pay, PhonePe, Paytm). After payment, simply paste your 12-digit UPI UTR / Transaction ID in the payment modal and optionally attach your payment screenshot. You can also submit or update payment proof anytime using the "Track Request & Replies" modal. Once submitted, your status automatically updates to <strong>ACCEPTED</strong>.
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="border border-[#e5e7eb] rounded-[8px] bg-white overflow-hidden transition-all hover:border-[#6366f1]/40">
+          <button type="button" onclick="toggleFaqItem(7)" class="w-full p-4 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+            <span class="text-[14px] font-semibold text-[#20232d] flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-[#f7f7ff] text-[#5053d4] text-[11px] font-bold flex items-center justify-center shrink-0">7</span>
+              <span>Are my CodeChef credentials and academic details confidential?</span>
+            </span>
+            <svg id="faq-icon-7" class="w-4 h-4 text-[#6b7080] transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="faq-ans-7" class="hidden px-4 pb-4 pt-1 text-[13px] text-[#6b7080] leading-relaxed border-t border-[#f3f4f6]">
+            Yes, 100% strictly confidential. We maintain an uncompromising student anonymity guarantee. Your credentials are used exclusively by our automated runners to execute coursework, encrypted during transmission, never shared or published, and purged after order completion.
+          </div>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="border border-[#e5e7eb] rounded-[8px] bg-white overflow-hidden transition-all hover:border-[#6366f1]/40">
+          <button type="button" onclick="toggleFaqItem(8)" class="w-full p-4 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+            <span class="text-[14px] font-semibold text-[#20232d] flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-[#f7f7ff] text-[#5053d4] text-[11px] font-bold flex items-center justify-center shrink-0">8</span>
+              <span>Who can I contact if I have questions or need instant support?</span>
+            </span>
+            <svg id="faq-icon-8" class="w-4 h-4 text-[#6b7080] transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="faq-ans-8" class="hidden px-4 pb-4 pt-1 text-[13px] text-[#6b7080] leading-relaxed border-t border-[#f3f4f6]">
+            Our primary support channel is direct messaging on Instagram at <a href="https://ig.me/m/campus.tick" target="_blank" class="text-[#6366f1] font-semibold hover:underline">@campus.tick</a>. You can DM us anytime with your Request ID, questions regarding custom module combinations, or urgent deadlines. Our team monitors DMs around the clock and responds promptly.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST & CONFIDENTIALITY PILLARS -->
+    <section class="mt-14 py-8 px-6 rounded-[10px] bg-[#fafafb] border border-[#e5e7eb]">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+        <div>
+          <div class="text-2xl mb-1.5">🔒</div>
+          <div class="text-[14px] font-bold text-[#20232d]">100% Student Anonymity</div>
+          <div class="text-[11px] text-[#6b7080] mt-1">Credentials encrypted & never shared</div>
+        </div>
+        <div>
+          <div class="text-2xl mb-1.5">⏱️</div>
+          <div class="text-[14px] font-bold text-[#20232d]">24h Reply Guarantee</div>
+          <div class="text-[11px] text-[#6b7080] mt-1">Prompt syllabus review & quotes</div>
+        </div>
+        <div>
+          <div class="text-2xl mb-1.5">🎯</div>
+          <div class="text-[14px] font-bold text-[#20232d]">Genuine Platform Solutions</div>
+          <div class="text-[11px] text-[#6b7080] mt-1">100% green ticks on CodeChef</div>
+        </div>
+        <div>
+          <div class="text-2xl mb-1.5">💬</div>
+          <div class="text-[14px] font-bold text-[#20232d]">Fast Instagram Support</div>
+          <div class="text-[11px] text-[#6b7080] mt-1">Real human support @campus.tick</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- COMPREHENSIVE PLATFORM FOOTER -->
+  <footer class="border-t border-[#e5e7eb] bg-white mt-16 py-12">
+    <div class="max-w-[1200px] mx-auto px-6 lg:px-[100px]">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-8">
+        
+        <!-- Brand Info (Col 1-5) -->
+        <div class="md:col-span-5 space-y-3">
+          <div class="flex items-center gap-[9px]">
+            <div class="w-[26px] h-[26px] rounded-[6px] bg-[#6366f1] flex items-center justify-center text-white shadow-sm shrink-0">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <span class="text-[18px] font-bold text-[#20232d] tracking-tight">CampusTick</span>
+          </div>
+          <p class="text-[12px] text-[#6b7080] leading-relaxed max-w-sm">
+            Automated, confidential, and transparent coursework assistance for engineering students. Built to deliver authentic platform completion and peace of mind.
+          </p>
+          <div class="flex items-center gap-2 pt-1">
+            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              All Systems Operational
+            </span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-[#f7f7ff] text-[#5053d4] border border-[#6366f1]/20">
+              🔒 256-Bit SSL Encrypted
+            </span>
+          </div>
+        </div>
+
+        <!-- Quick Navigation Links (Col 6-8) -->
+        <div class="md:col-span-3 space-y-2">
+          <div class="text-[12px] font-bold uppercase tracking-wider text-[#20232d]">Quick Links</div>
+          <ul class="space-y-1.5 text-[12px] text-[#6b7080]">
+            <li><a href="#checkoutForm" class="hover:text-[#6366f1] transition-colors">Select Course & Order</a></li>
+            <li><button type="button" onclick="openRequestStatusModal()" class="hover:text-[#6366f1] transition-colors text-left cursor-pointer">Track Request & Replies</button></li>
+            <li><a href="#faq-ans-1" onclick="toggleFaqItem(1)" class="hover:text-[#6366f1] transition-colors">How It Works</a></li>
+            <li><a href="https://ig.me/m/campus.tick" target="_blank" class="hover:text-[#6366f1] transition-colors">Direct Instagram Support</a></li>
+          </ul>
+        </div>
+
+        <!-- Transparency & Confidentiality (Col 9-12) -->
+        <div class="md:col-span-4 space-y-2">
+          <div class="text-[12px] font-bold uppercase tracking-wider text-[#20232d]">Confidentiality Policy</div>
+          <p class="text-[11px] text-[#6b7080] leading-relaxed">
+            CampusTick operates strictly as an independent academic reference utility. Student credentials are encrypted, processed in memory, and never redistributed. All CodeChef trademarks belong to their respective holders.
+          </p>
+          <div class="text-[11px] text-[#5053d4] font-medium pt-1">
+            Official Instagram: <a href="https://ig.me/m/campus.tick" target="_blank" class="underline font-semibold hover:text-[#4338ca]">@campus.tick</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-6 border-t border-[#e5e7eb] flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#6b7080]">
+        <div class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <span>100% Verified CodeChef Submissions · Dedicated to Engineering Students</span>
+        </div>
+        <div>
+          © 2026 CampusTick. All rights reserved.
+        </div>
+      </div>
     </div>
+  </footer>
 
     <!-- 1. FIELD INTENTION INFO POPOVER / MODAL -->
   <div id="fieldInfoModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/40 backdrop-blur-[2px] hidden" onclick="closeFieldInfoModal(event)">
@@ -659,6 +886,9 @@
         <div class="flex items-center justify-between flex-wrap gap-2">
           <div class="flex items-center gap-2">
             <span class="text-[12px] font-mono font-bold text-[#5053d4]" id="resultOrderId">ORD-XXXXXX</span>
+            <button type="button" onclick="copyTextToClipboard(document.getElementById('resultOrderId').textContent, this)" class="px-1.5 py-0.5 rounded bg-white hover:bg-[#eef2ff] border border-[#e5e7eb] text-[10px] font-sans font-semibold text-[#5053d4] cursor-pointer flex items-center gap-1 shadow-xs">
+              <span>📋</span><span>Copy</span>
+            </button>
             <span class="text-[11px] text-[#6b7080]" id="resultCreatedAt">📅 Nov 13, 2026</span>
           </div>
           <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200" id="resultStatusBadge">PENDING REVIEW</span>
@@ -753,8 +983,8 @@
             <span>Direct Message on Instagram</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           </a>
-          <button type="button" onclick="loadFoundOrderToWatchdog(); closeModal('requestStatusModal')" class="py-2 px-3 rounded-[6px] bg-white hover:bg-[#eef2ff] border border-[#6366f1]/30 text-[#5053d4] text-[12px] font-semibold transition-colors cursor-pointer">
-            View Live SLA Timer
+          <button type="button" onclick="closeModal('requestStatusModal')" class="py-2 px-3 rounded-[6px] bg-white hover:bg-[#eef2ff] border border-[#6366f1]/30 text-[#5053d4] text-[12px] font-semibold transition-colors cursor-pointer">
+            Close
           </button>
         </div>
       </div>
@@ -762,12 +992,93 @@
     </div>
   </div>
 
-  </main>
+  <!-- 3. REQUEST CREATED & CONFIRMATION MODAL (Proper Copy Interface, 0 Blank Page) -->
+  <div id="requestCreatedModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm hidden" onclick="closeModalOnBackdrop(event, 'requestCreatedModal')">
+    <div class="bg-white rounded-[12px] max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-[#e5e7eb] relative max-h-[92vh] overflow-y-auto animate-in fade-in zoom-in duration-200" onclick="event.stopPropagation()">
+      <button type="button" onclick="closeModal('requestCreatedModal')" class="absolute top-4 right-4 text-[#979ba7] hover:text-[#20232d] p-1 rounded-md hover:bg-gray-100 transition-colors cursor-pointer">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
 
-  <!-- INTERACTIVE PAYMENT MODAL -->
+      <!-- Header Icon & Badge -->
+      <div class="text-center mb-5">
+        <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mx-auto mb-3 shadow-xs">
+          ✓
+        </div>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-bold uppercase tracking-wider border border-emerald-200 mb-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Request Successfully Logged
+        </div>
+        <h3 class="text-xl sm:text-2xl font-bold text-[#20232d]">Your Syllabus Audit is Queued!</h3>
+        <p class="text-xs sm:text-[13px] text-[#6b7080] mt-1.5 max-w-md mx-auto">
+          We received your syllabus proof and registered your request in our review queue. The owner will review your syllabus and provide your final quote within 24 hours.
+        </p>
+      </div>
+
+      <!-- PROMINENT COPY REQUEST ID BOX -->
+      <div class="p-4 rounded-[10px] bg-[#f7f7ff] border-2 border-[#6366f1]/30 mb-5 text-center relative overflow-hidden">
+        <div class="text-[11px] font-bold uppercase tracking-wider text-[#5053d4] mb-1">
+          Your Request Tracking ID
+        </div>
+        <div class="flex items-center justify-center gap-2 sm:gap-3 my-2 flex-wrap">
+          <span class="text-2xl sm:text-3xl font-extrabold text-[#20232d] font-mono tracking-wider select-all" id="createdModalOrderId">
+            ORD-XXXXXX
+          </span>
+          <button type="button" id="copyCreatedOrderIdBtn" onclick="copyCreatedOrderId()" class="px-3.5 py-2 rounded-[6px] bg-[#6366f1] hover:bg-[#5053d4] text-white text-[12px] font-semibold flex items-center gap-1.5 transition-all shadow-sm cursor-pointer shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+            <span id="copyCreatedOrderIdText">Copy Request ID</span>
+          </button>
+        </div>
+        <div class="text-[11px] text-[#6b7080] flex items-center justify-center gap-1 mt-1">
+          <span>💡</span>
+          <span>Save this ID! You can track your owner quote anytime via the top header.</span>
+        </div>
+      </div>
+
+      <!-- REQUEST SUMMARY DETAILS -->
+      <div class="border border-[#e5e7eb] rounded-[8px] p-3.5 sm:p-4 bg-[#fafafb] space-y-2.5 mb-5 text-[12px]">
+        <div class="flex justify-between items-center py-1 border-b border-[#e5e7eb]">
+          <span class="text-[#6b7080]">Selected Scope:</span>
+          <span class="font-semibold text-[#20232d]" id="createdModalScope">Individual Modules</span>
+        </div>
+        <div class="flex justify-between items-center py-1 border-b border-[#e5e7eb]" id="createdModalEmailRow">
+          <span class="text-[#6b7080]">College Email:</span>
+          <span class="font-semibold text-[#20232d]" id="createdModalEmail">student@college.edu</span>
+        </div>
+        <div class="flex justify-between items-center py-1 border-b border-[#e5e7eb]">
+          <span class="text-[#6b7080]">Instagram Handle:</span>
+          <span class="font-semibold text-[#20232d]" id="createdModalIg">@student</span>
+        </div>
+        <div class="flex justify-between items-center py-1 border-b border-[#e5e7eb]">
+          <span class="text-[#6b7080]">CodeChef Username:</span>
+          <span class="font-semibold text-[#20232d]" id="createdModalCodechef">username</span>
+        </div>
+        <div class="flex justify-between items-center py-1">
+          <span class="text-[#6b7080]">Guaranteed Reply SLA:</span>
+          <span class="font-bold text-[#5053d4] flex items-center gap-1">
+            <span>⏱️</span>
+            <span>Within 24 Hours</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="flex flex-col sm:flex-row gap-2.5">
+        <button type="button" onclick="openTrackerWithCreatedId()" class="flex-1 py-2.5 px-4 rounded-[6px] bg-[#6366f1] hover:bg-[#5053d4] text-white text-center text-[12px] font-semibold transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <span>Track Status Now</span>
+        </button>
+        <a id="createdModalIgLink" href="https://ig.me/m/campus.tick" target="_blank" class="flex-1 py-2.5 px-4 rounded-[6px] bg-white hover:bg-[#eef2ff] border border-[#6366f1]/30 text-[#5053d4] text-center text-[12px] font-semibold transition-all flex items-center justify-center gap-1.5">
+          <span>💬 Direct Message on IG</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 4. INTERACTIVE PAYMENT MODAL -->
   <div id="paymentModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm hidden">
     <div class="bg-white rounded-[10px] max-w-md w-full p-6 shadow-2xl border border-[#e5e7eb] relative max-h-[90vh] overflow-y-auto">
-      <button type="button" onclick="closeModal('paymentModal')" class="absolute top-4 right-4 text-[#979ba7] hover:text-[#20232d]">
+      <button type="button" onclick="closeModal('paymentModal')" class="absolute top-4 right-4 text-[#979ba7] hover:text-[#20232d] cursor-pointer">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
@@ -779,9 +1090,19 @@
           <div class="w-8 h-8 rounded-[6px] bg-[#f7f7ff] text-[#5053d4] flex items-center justify-center font-bold">💳</div>
           <h3 class="text-[17px] font-bold text-[#20232d]">Complete Payment on Razorpay</h3>
         </div>
-        <p class="text-xs text-[#6b7080] mb-4">
-          Order registered: <strong class="text-[#5053d4]" id="resOrderId">ORD-XXXXXX</strong>. Please pay the exact amount below:
-        </p>
+        
+        <!-- PROMINENT COPY ORDER ID BOX -->
+        <div class="flex items-center justify-between p-3 rounded-[8px] bg-[#f7f7ff] border border-[#6366f1]/20 mb-4">
+          <div>
+            <div class="text-[10px] text-[#6b7080] uppercase tracking-wider font-semibold">Your Order ID</div>
+            <div class="text-base font-bold text-[#5053d4] font-mono tracking-wide" id="resOrderId">ORD-XXXXXX</div>
+          </div>
+          <button type="button" id="copyPaymentOrderIdBtn" onclick="copyPaymentOrderId()" class="px-2.5 py-1.5 rounded-[4px] bg-white hover:bg-[#eef2ff] border border-[#6366f1]/30 text-[#5053d4] text-[11px] font-semibold flex items-center gap-1 cursor-pointer transition-all shadow-xs">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+            <span id="copyPaymentOrderIdText">Copy ID</span>
+          </button>
+        </div>
+
         <div class="p-4 rounded-[6px] bg-[#f7f7ff] border border-[#6366f1]/20 text-center mb-5">
           <div class="text-xs text-[#6b7080] font-medium uppercase tracking-wider">Amount to Pay</div>
           <div class="text-3xl font-bold text-[#5053d4] mt-1 num-clean" id="resAmount">₹250</div>
@@ -824,12 +1145,17 @@
         <p class="text-xs text-[#6b7080] mt-1 max-w-sm mx-auto">
           We got your payment of <strong class="text-emerald-700" id="confirmedAmount">₹250</strong>. Your credentials are safe with us!
         </p>
-        <div class="mt-4 p-3 bg-[#fafafb] border border-[#e5e7eb] rounded-[6px] text-left text-xs font-mono text-[#20232d] select-all">
-          <div class="text-[10px] text-[#6b7080] font-sans uppercase font-bold mb-1">Your Order Receipt:</div>
+        <div class="mt-4 p-3 bg-[#fafafb] border border-[#e5e7eb] rounded-[6px] text-left text-xs font-mono text-[#20232d] select-all relative">
+          <div class="flex items-center justify-between mb-1">
+            <div class="text-[10px] text-[#6b7080] font-sans uppercase font-bold">Your Order Receipt:</div>
+            <button type="button" onclick="copyReceiptText(this)" class="px-2 py-0.5 rounded bg-white hover:bg-[#eef2ff] border border-[#e5e7eb] text-[10px] font-sans font-semibold text-[#5053d4] cursor-pointer flex items-center gap-1">
+              <span>📋</span><span>Copy Receipt</span>
+            </button>
+          </div>
           <div id="confirmedReceiptText" class="whitespace-pre-line text-[11px] leading-tight"></div>
         </div>
-        <button type="button" onclick="closeModal('paymentModal')" class="mt-4 px-4 py-2 rounded-[6px] bg-[#6366f1] text-white text-xs font-semibold">
-          Done & Track 48h SLA
+        <button type="button" onclick="closeModal('paymentModal')" class="mt-4 px-4 py-2 rounded-[6px] bg-[#6366f1] hover:bg-[#5053d4] text-white text-xs font-semibold cursor-pointer">
+          Done
         </button>
       </div>
 
@@ -1695,27 +2021,8 @@
       if (btn) btn.disabled = false;
       if (btnText) btnText.textContent = "📩 Request Discount & Submit to Queue";
 
-      // Pre-fill owner email notification
-      const subject = encodeURIComponent(`[DISCOUNT QUEUE] @${creds.ig} - CodeChef ML (${modulesSelected.join(', ')})`);
-      const body = encodeURIComponent(
-        `Hi CampusTick Owner,\n\nA new student requested a discount review in your Supabase Queue:\n\n` +
-        `• Order ID: ${orderId}\n` +
-        `• Instagram: @${creds.ig}\n` +
-        `• CodeChef Username: ${creds.user}\n` +
-        `• Password: ${creds.pass}\n` +
-        `• Tier: ${State.selectedTier}\n` +
-        `• Scope: ${modulesSelected.join(', ')}\n` +
-        `• Proof Attached: ${State.uploadedScreenshots.length} screenshot(s)\n` +
-        `• Notes: ${notes}\n\n` +
-        `Please check their syllabus and DM them on Instagram with their final quote!`
-      );
-      window.open(`mailto:${SUPABASE_CONFIG.OWNER_EMAIL}?subject=${subject}&body=${body}`, '_blank');
-
-      // Reveal Live SLA Watchdog
-      revealLiveTimer();
-
-      alert(`✅ Your discount request has been added to our Review Queue!\n\nOrder ID: ${orderId}\nInstagram: @${creds.ig}\nCodeChef: ${creds.user}\n\nYour 48-Hour Live Turnaround Watchdog has started below. The owner will review your syllabus and message you with your final price!`);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Open polished confirmation modal with 1-click copy interface (0 blank pages)
+      openRequestCreatedModal(payload);
     }
 
     // --- 11. 48-HOUR LIVE WATCHDOG TIMER ---
@@ -1882,11 +2189,6 @@
 
       showPaymentModal(payload);
 
-      // Open Razorpay handle in background
-      try {
-        window.open("https://razorpay.me/@campustick", '_blank');
-      } catch (e) {}
-
       // Serverless sync with anti-spam sentry
       try {
         fetch('/api/submit-request', {
@@ -2005,6 +2307,128 @@
         `Veere relax! We got your payment. Your credentials are 100% confidential. Your CodeChef coursework will be completed with green ticks & verified certificate! 🚀`;
 
       document.getElementById('confirmedReceiptText').textContent = receipt;
+    }
+
+    // --- 13. UNIVERSAL CLIPBOARD COPY ENGINE ---
+    function copyTextToClipboard(text, btnElement, defaultLabel, successLabel) {
+      if (!text) return;
+      const finish = () => {
+        if (btnElement) {
+          const origHtml = btnElement.innerHTML;
+          btnElement.classList.add('!bg-emerald-600', '!text-white', '!border-emerald-600');
+          btnElement.innerHTML = `<span>✓</span><span>${successLabel || 'Copied!'}</span>`;
+          setTimeout(() => {
+            btnElement.classList.remove('!bg-emerald-600', '!text-white', '!border-emerald-600');
+            btnElement.innerHTML = origHtml;
+          }, 2200);
+        }
+      };
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(finish).catch(() => fallbackCopy(text, finish));
+      } else {
+        fallbackCopy(text, finish);
+      }
+    }
+
+    function fallbackCopy(text, cb) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      ta.style.top = '0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try {
+        document.execCommand('copy');
+        if (cb) cb();
+      } catch (err) {
+        console.warn('Copy fallback error:', err);
+      }
+      document.body.removeChild(ta);
+    }
+
+    function copyCreatedOrderId() {
+      const orderId = document.getElementById('createdModalOrderId')?.textContent?.trim();
+      const btn = document.getElementById('copyCreatedOrderIdBtn');
+      copyTextToClipboard(orderId, btn, 'Copy Request ID', 'Copied!');
+    }
+
+    function copyPaymentOrderId() {
+      const orderId = document.getElementById('resOrderId')?.textContent?.trim();
+      const btn = document.getElementById('copyPaymentOrderIdBtn');
+      copyTextToClipboard(orderId, btn, 'Copy ID', 'Copied!');
+    }
+
+    function copyReceiptText(btn) {
+      const receipt = document.getElementById('confirmedReceiptText')?.textContent?.trim();
+      copyTextToClipboard(receipt, btn, 'Copy Receipt', 'Copied!');
+    }
+
+    // --- 14. REQUEST CREATED MODAL CONTROLLER ---
+    function openRequestCreatedModal(data) {
+      const modal = document.getElementById('requestCreatedModal');
+      if (!modal) return;
+
+      document.getElementById('createdModalOrderId').textContent = data.id || 'ORD-XXXXXX';
+      
+      let scopeText = "Complete Course";
+      if (Array.isArray(data.modules)) {
+        scopeText = data.modules.join(', ');
+      } else if (data.modules) {
+        scopeText = data.modules;
+      }
+      document.getElementById('createdModalScope').textContent = scopeText;
+
+      const emailRow = document.getElementById('createdModalEmailRow');
+      const emailVal = document.getElementById('createdModalEmail');
+      if (data.email) {
+        emailRow.classList.remove('hidden');
+        emailVal.textContent = data.email;
+      } else {
+        emailRow.classList.add('hidden');
+      }
+
+      document.getElementById('createdModalIg').textContent = data.ig_handle ? ('@' + data.ig_handle) : '-';
+      document.getElementById('createdModalCodechef').textContent = data.codechef_username || '-';
+
+      modal.classList.remove('hidden');
+    }
+
+    function openTrackerWithCreatedId() {
+      const orderId = document.getElementById('createdModalOrderId')?.textContent?.trim();
+      closeModal('requestCreatedModal');
+      openRequestStatusModal();
+      if (orderId) {
+        const input = document.getElementById('statusLookupInput');
+        if (input) {
+          input.value = orderId;
+          lookupRequestStatus();
+        }
+      }
+    }
+
+    // --- 15. FAQ ACCORDION TOGGLE ---
+    function toggleFaqItem(id) {
+      const ans = document.getElementById(`faq-ans-${id}`);
+      const icon = document.getElementById(`faq-icon-${id}`);
+      if (!ans) return;
+
+      const isHidden = ans.classList.contains('hidden');
+      if (isHidden) {
+        ans.classList.remove('hidden');
+        if (icon) icon.style.transform = 'rotate(180deg)';
+      } else {
+        ans.classList.add('hidden');
+        if (icon) icon.style.transform = 'rotate(0deg)';
+      }
+    }
+
+    function closeModalOnBackdrop(event, id) {
+      if (event.target.id === id) {
+        closeModal(id);
+      }
     }
 
     function closeModal(id) {
