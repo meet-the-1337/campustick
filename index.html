@@ -1173,6 +1173,67 @@
       OWNER_EMAIL: window.CAMPUS_TICK_OWNER_EMAIL || "support@campustick.internal"
     };
 
+    // SUPABASE STORAGE ENGINE
+    async function uploadImageToSupabaseStorage(fileOrDataUrl, filename) {
+      if (!fileOrDataUrl) return null;
+      try {
+        let blob;
+        let contentType = 'image/png';
+        if (fileOrDataUrl instanceof Blob || fileOrDataUrl instanceof File) {
+          blob = fileOrDataUrl;
+          contentType = fileOrDataUrl.type || 'image/png';
+        } else if (typeof fileOrDataUrl === 'string' && fileOrDataUrl.startsWith('data:')) {
+          const parts = fileOrDataUrl.split(',');
+          const mimeMatch = parts[0].match(/:(.*?);/);
+          contentType = mimeMatch ? mimeMatch[1] : 'image/png';
+          const bstr = atob(parts[1]);
+          let n = bstr.length;
+          const u8arr = new Uint8Array(n);
+          while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+          }
+          blob = new Blob([u8arr], { type: contentType });
+        } else {
+          return null;
+        }
+
+        const cleanFilename = filename.replace(/[^a-zA-Z0-9._-]/g, '_');
+        const uploadUrl = `${SUPABASE_CONFIG.URL}/storage/v1/object/order-proofs/${cleanFilename}`;
+        const res = await fetch(uploadUrl, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_CONFIG.ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_CONFIG.ANON_KEY}`,
+            'Content-Type': contentType,
+            'x-upsert': 'true'
+          },
+          body: blob
+        });
+
+        if (res.ok) {
+          return `${SUPABASE_CONFIG.URL}/storage/v1/object/public/order-proofs/${cleanFilename}`;
+        } else {
+          console.warn("Storage upload note:", res.status);
+          return null;
+        }
+      } catch (err) {
+        console.warn("Storage upload exception:", err);
+        return null;
+      }
+    }
+
+    async function uploadScreenshotsToStorage(orderId, prefix = 'syllabus') {
+      if (!State.uploadedScreenshots || State.uploadedScreenshots.length === 0) return null;
+      const urls = [];
+      for (let i = 0; i < State.uploadedScreenshots.length; i++) {
+        const item = State.uploadedScreenshots[i];
+        const filename = `${orderId}_${prefix}_${i + 1}.png`;
+        const url = await uploadImageToSupabaseStorage(item.file || item.url, filename);
+        if (url) urls.push(url);
+      }
+      return urls.length > 0 ? urls.join(', ') : null;
+    }
+
     // STATE STORE
     const State = {
       selectedTier: 'complete', // 'complete' | 'individual' | 'remaining'
@@ -1451,7 +1512,7 @@
         if (!file.type.startsWith('image/')) return;
         const reader = new FileReader();
         reader.onload = (e) => {
-          State.uploadedScreenshots.push({ name: file.name, url: e.target.result });
+          State.uploadedScreenshots.push({ name: file.name, url: e.target.result, file: file });
           
           const statusText = document.getElementById('uploadStatusText');
           if (statusText) statusText.textContent = `${State.uploadedScreenshots.length} screenshot(s) attached`;
@@ -1687,7 +1748,12 @@
       const btn = document.getElementById('trackSubmitPaymentBtn');
       const btnText = document.getElementById('trackSubmitPaymentBtnText');
       if (btn) btn.disabled = true;
-      if (btnText) btnText.textContent = "Recording Payment Proof...";
+      if (btnText) btnText.textContent = "Uploading Proof & Verifying...";
+
+      let paymentProofUrl = null;
+      if (trackPaymentScreenshotData) {
+        paymentProofUrl = await uploadImageToSupabaseStorage(trackPaymentScreenshotData, `${State.foundOrder.id}_payment.png`);
+      }
 
       try {
         const resp = await fetch('/api/confirm-payment', {
@@ -1696,7 +1762,7 @@
           body: JSON.stringify({
             id: State.foundOrder.id,
             utr: utr,
-            payment_screenshot: trackPaymentScreenshotData || null
+            payment_screenshot: paymentProofUrl || trackPaymentScreenshotData || null
           })
         });
 
@@ -1708,8 +1774,8 @@
         // Update local found order
         State.foundOrder.utr = utr;
         State.foundOrder.status = 'ACCEPTED';
-        if (trackPaymentScreenshotData) {
-          State.foundOrder.payment_screenshot = trackPaymentScreenshotData;
+        if (paymentProofUrl || trackPaymentScreenshotData) {
+          State.foundOrder.payment_screenshot = paymentProofUrl || trackPaymentScreenshotData;
         }
 
         State.currentOrder = State.foundOrder;
@@ -1945,7 +2011,7 @@
       const btn = document.getElementById('reviewDiscountBtn');
       const btnText = document.getElementById('reviewDiscountBtnText');
       if (btn) btn.disabled = true;
-      if (btnText) btnText.textContent = "⏳ Adding to Review Queue...";
+      if (btnText) btnText.textContent = "⏳ Uploading Proof & Submitting...";
 
       const orderId = "ORD-" + Math.random().toString(36).substring(2, 8).toUpperCase();
       let modulesSelected = [];
@@ -1960,6 +2026,12 @@
       const notes = document.getElementById('orderNotes')?.value?.trim() || "";
       const phone = document.getElementById('whatsappNumber')?.value?.trim() || null;
 
+      // Upload screenshots to Supabase Storage
+      let uploadedScreenshotUrls = null;
+      if (State.uploadedScreenshots && State.uploadedScreenshots.length > 0) {
+        uploadedScreenshotUrls = await uploadScreenshotsToStorage(orderId, 'syllabus');
+      }
+
       const payload = {
         id: orderId,
         email: creds.email,
@@ -1971,7 +2043,7 @@
         speed: State.selectedDeliverySpeed,
         coupon: State.appliedCoupon,
         amount: amount,
-        screenshot: `${State.uploadedScreenshots.length} screenshot(s) attached`,
+        screenshot: uploadedScreenshotUrls || `${State.uploadedScreenshots.length} screenshot(s) attached`,
         notes: `[DISCOUNT_QUEUE] Tier: ${State.selectedTier} | Notes: ${notes}`,
         status: 'PENDING',
         created_at: new Date().toISOString()
@@ -2167,6 +2239,12 @@
         modulesList = [`REMAINING_${State.remainingPercentage}PCT`];
       }
 
+      // If user uploaded syllabus screenshots, upload to Supabase Storage
+      let uploadedScreenshotUrls = null;
+      if (State.uploadedScreenshots && State.uploadedScreenshots.length > 0) {
+        uploadedScreenshotUrls = await uploadScreenshotsToStorage(orderId, 'syllabus');
+      }
+
       const payload = {
         id: orderId,
         email: creds.email,
@@ -2178,7 +2256,7 @@
         speed: State.selectedDeliverySpeed,
         coupon: State.appliedCoupon,
         amount: amount,
-        screenshot: State.uploadedScreenshots.length > 0 ? `${State.uploadedScreenshots.length} screenshot(s)` : null,
+        screenshot: uploadedScreenshotUrls || (State.uploadedScreenshots.length > 0 ? `${State.uploadedScreenshots.length} screenshot(s)` : null),
         notes: notes,
         status: 'PENDING',
         created_at: new Date().toISOString()
@@ -2237,10 +2315,11 @@
       }
 
       const vBtn = document.getElementById('verifyBtnLabel');
-      if (vBtn) vBtn.textContent = "VERIFYING TRANSACTION...";
+      if (vBtn) vBtn.textContent = "UPLOADING PROOF & VERIFYING...";
 
       // Check optional payment screenshot from modal
       let modalScreenshot = null;
+      let paymentProofUrl = null;
       const modalFileInput = document.getElementById('modalPaymentScreenshotInput');
       if (modalFileInput && modalFileInput.files && modalFileInput.files[0]) {
         try {
@@ -2250,14 +2329,18 @@
             reader.onerror = () => resolve(null);
             reader.readAsDataURL(modalFileInput.files[0]);
           });
+          if (modalScreenshot && State.currentOrder) {
+            paymentProofUrl = await uploadImageToSupabaseStorage(modalScreenshot, `${State.currentOrder.id}_payment.png`);
+          }
         } catch (e) {}
       }
 
       if (State.currentOrder) {
         State.currentOrder.utr = utr;
         State.currentOrder.status = 'ACCEPTED';
-        if (modalScreenshot) {
-          State.currentOrder.payment_screenshot = modalScreenshot;
+        const finalProof = paymentProofUrl || modalScreenshot || null;
+        if (finalProof) {
+          State.currentOrder.payment_screenshot = finalProof;
         }
 
         // Serverless confirm payment endpoint
@@ -2267,7 +2350,7 @@
           body: JSON.stringify({
             id: State.currentOrder.id,
             utr: utr,
-            payment_screenshot: modalScreenshot || null
+            payment_screenshot: finalProof
           })
         }).catch(() => {
           fetch(`${SUPABASE_CONFIG.URL}/rest/v1/orders?id=eq.${State.currentOrder.id}`, {
@@ -2279,7 +2362,7 @@
             },
             body: JSON.stringify({
               utr: utr,
-              payment_screenshot: modalScreenshot || null,
+              payment_screenshot: finalProof,
               status: 'ACCEPTED'
             })
           }).catch(() => {});
