@@ -11,10 +11,16 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { id, ig_handle, codechef_username, codechef_password, phone, modules, speed, amount, notes, email, screenshot } = req.body || {};
+  const { id, ig_handle, codechef_username, codechef_password, phone, modules, speed, amount, notes, email, screenshot, is_discount_inquiry, tier } = req.body || {};
 
-  if (!email || !email.includes('@' + Buffer.from('dGhhcGFyLmVkdQ==', 'base64').toString('ascii'))) {
-    return res.status(400).json({ error: 'Valid institutional student email is strictly required.' });
+  const isDiscount = is_discount_inquiry || (notes && notes.includes('[DISCOUNT_QUEUE]')) || (tier && tier !== 'complete');
+  const validDomain = '@' + Buffer.from('dGhhcGFyLmVkdQ==', 'base64').toString('ascii');
+
+  // Email is mandatory only for discount inquiries / custom quotes; optional for full course direct orders
+  if (isDiscount) {
+    if (!email || !email.includes(validDomain)) {
+      return res.status(400).json({ error: 'Valid institutional student email is strictly required when requesting a discount or custom quote.' });
+    }
   }
 
   if (!ig_handle || !codechef_username) {
@@ -24,24 +30,26 @@ export default async function handler(req, res) {
   const SUPABASE_URL = "https://wzemfaudaihcyqlyaoqr.supabase.co";
   const SERVICE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZW1mYXVkYWloY3lxbHlhb3FyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4OTEyNTA0NywiZXhwIjoyMTA0NzAxMDQ3fQ.2YHMDep9ctZe75myYJ3myVQgEj81xnbTB30WZHccvQ4";
 
-  const cleanEmail = email.trim().toLowerCase();
+  const cleanEmail = (email && email.trim()) ? email.trim().toLowerCase() : null;
 
   try {
-    // 1. Anti-spam check: Strictly one request permitted per college email!
-    const checkResp = await fetch(`${SUPABASE_URL}/rest/v1/orders?email=eq.${encodeURIComponent(cleanEmail)}&select=id,status,created_at&limit=1`, {
-      headers: {
-        'apikey': SERVICE_KEY,
-        'Authorization': `Bearer ${SERVICE_KEY}`
-      }
-    });
+    // 1. Anti-spam check: If email provided, strictly one request permitted per college email!
+    if (cleanEmail) {
+      const checkResp = await fetch(`${SUPABASE_URL}/rest/v1/orders?email=eq.${encodeURIComponent(cleanEmail)}&select=id,status,created_at&limit=1`, {
+        headers: {
+          'apikey': SERVICE_KEY,
+          'Authorization': `Bearer ${SERVICE_KEY}`
+        }
+      });
 
-    if (checkResp.ok) {
-      const existing = await checkResp.json();
-      if (existing && existing.length > 0) {
-        return res.status(409).json({
-          error: `A request for this College Email (${cleanEmail}) is already registered under ID ${existing[0].id}. You only have one request per email ID to prevent queue spam. Please use the "Check Status" button to view your replies or DM @campus.tick on Instagram.`,
-          existingId: existing[0].id
-        });
+      if (checkResp.ok) {
+        const existing = await checkResp.json();
+        if (existing && existing.length > 0) {
+          return res.status(409).json({
+            error: `A request for this College Email (${cleanEmail}) is already registered under ID ${existing[0].id}. You only have one request per email ID to prevent queue spam. Please use the "Check Status" button to view your replies or DM @campus.tick on Instagram.`,
+            existingId: existing[0].id
+          });
+        }
       }
     }
 

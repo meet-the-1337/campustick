@@ -185,17 +185,16 @@
             <span class="text-[11px] text-[#6b7080]">* Required</span>
           </div>
 
-          <!-- College Email ID Input (Required Anti-Spam Field) -->
+          <!-- College Email ID Input (Required for Discount/Quote Inquiries; Optional for Full Course) -->
           <div>
             <div class="flex items-center justify-between mb-1.5">
-              <label class="block text-[12px] font-medium text-[#20232d] flex items-center gap-1.5 flex-wrap" for="studentEmail">
+              <label class="block text-[12px] font-medium text-[#20232d] flex items-center gap-1.5 flex-wrap" for="studentEmail" id="studentEmailLabel">
                 <span>College Email ID</span>
-                <span class="text-[#6366f1]">*</span>
-                <span class="text-[11px] text-[#6b7080] font-normal">(you only have one request per mail id so be carefull about it)</span>
+                <span id="studentEmailBadge" class="text-[11px] text-[#6b7080] font-normal">(optional for full course)</span>
               </label>
               <button type="button" onclick="showFieldInfo('studentEmail', event)" class="w-4 h-4 rounded-full border border-[#d4d6de] hover:border-[#6366f1] text-[10px] font-bold text-[#979ba7] hover:text-[#6366f1] inline-flex items-center justify-center transition-colors cursor-pointer shrink-0" title="Why we ask for this">i</button>
             </div>
-            <input type="email" id="studentEmail" required placeholder="rollnumber_be24@college.edu" class="w-full h-[40px] text-[13px] rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] placeholder-[#979ba7] bg-white transition-all">
+            <input type="email" id="studentEmail" placeholder="rollnumber_be24@college.edu" class="w-full h-[40px] text-[13px] rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] placeholder-[#979ba7] bg-white transition-all">
           </div>
 
           <!-- Instagram & CodeChef Username Inputs -->
@@ -620,21 +619,31 @@
 
   <!-- 2. TRACK REQUEST STATUS & REPLIES MODAL -->
   <div id="requestStatusModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm hidden" onclick="closeStatusModalOnBackdrop(event)">
-    <div class="bg-white rounded-[10px] max-w-lg w-full p-6 shadow-2xl border border-[#e5e7eb] relative max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+    <div class="bg-white rounded-[10px] max-w-lg w-full p-6 shadow-2xl border border-[#e5e7eb] relative max-h-[92vh] overflow-y-auto" onclick="event.stopPropagation()">
       <button type="button" onclick="closeModal('requestStatusModal')" class="absolute top-4 right-4 text-[#979ba7] hover:text-[#20232d] cursor-pointer">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
 
-      <div class="flex items-center gap-2.5 mb-4">
+      <div class="flex items-center gap-2.5 mb-3">
         <div class="w-9 h-9 rounded-full bg-[#f7f7ff] text-[#5053d4] border border-[#6366f1]/30 flex items-center justify-center font-bold text-base">🔍</div>
         <div>
-          <h3 class="text-[16px] font-semibold text-[#20232d]">Track Request Status & Replies</h3>
+          <h3 class="text-[16px] font-semibold text-[#20232d]">Track Request & Order Status</h3>
           <p class="text-[12px] text-[#6b7080]">Search by Request ID (ORD-XXXXXX) or your College Email</p>
         </div>
       </div>
 
+      <!-- Mode Tabs: Inquiries (1-Day Reply) vs Paid Orders (UTR & Proof) -->
+      <div class="flex border-b border-[#e5e7eb] mb-4 text-[12px]">
+        <button type="button" id="tabInquiryMode" onclick="setTrackerMode('inquiry')" class="flex-1 py-2 font-semibold border-b-2 border-[#6366f1] text-[#5053d4] text-center transition-all cursor-pointer">
+          💬 Quote Inquiry (1-Day Reply)
+        </button>
+        <button type="button" id="tabPaidMode" onclick="setTrackerMode('paid')" class="flex-1 py-2 font-semibold border-b-2 border-transparent text-[#6b7080] hover:text-[#20232d] text-center transition-all cursor-pointer">
+          💳 Paid Order & Proof (UTR Upload)
+        </button>
+      </div>
+
       <!-- Search Bar -->
-      <div class="space-y-2 mb-5">
+      <div class="space-y-2 mb-4">
         <div class="flex gap-2">
           <input type="text" id="statusLookupInput" placeholder="e.g. ORD-B2F9A1 or rollnumber_be24@college.edu" class="flex-1 h-[42px] text-[13px] rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] placeholder-[#979ba7] bg-white focus:outline-none focus:border-[#6366f1]">
           <button type="button" onclick="lookupRequestStatus()" id="statusSearchBtn" class="h-[42px] px-4 rounded-[6px] bg-[#6366f1] hover:bg-[#5053d4] text-white text-[13px] font-semibold transition-all flex items-center gap-1.5 cursor-pointer">
@@ -646,12 +655,15 @@
 
       <!-- Result Card -->
       <div id="statusResultCard" class="hidden border border-[#e5e7eb] rounded-[8px] p-4 bg-[#fafafb] space-y-3.5">
-        <div class="flex items-center justify-between">
-          <span class="text-[12px] font-mono font-bold text-[#5053d4]" id="resultOrderId">ORD-XXXXXX</span>
-          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200" id="resultStatusBadge">PENDING</span>
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div class="flex items-center gap-2">
+            <span class="text-[12px] font-mono font-bold text-[#5053d4]" id="resultOrderId">ORD-XXXXXX</span>
+            <span class="text-[11px] text-[#6b7080]" id="resultCreatedAt">📅 Nov 13, 2026</span>
+          </div>
+          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200" id="resultStatusBadge">PENDING REVIEW</span>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12px] pt-1">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12px] pt-1 border-t border-[#e5e7eb]/80">
           <div>
             <span class="text-[#6b7080] block text-[11px]">College Email:</span>
             <span class="font-medium text-[#20232d] truncate block" id="resultEmail">-</span>
@@ -660,21 +672,78 @@
             <span class="text-[#6b7080] block text-[11px]">Instagram Handle:</span>
             <span class="font-medium text-[#20232d] truncate block" id="resultIg">-</span>
           </div>
-          <div class="sm:col-span-2">
+          <div>
             <span class="text-[#6b7080] block text-[11px]">Requested Scope:</span>
             <span class="font-medium text-[#20232d] truncate block" id="resultScope">-</span>
           </div>
+          <div>
+            <span class="text-[#6b7080] block text-[11px]">Amount / Quote:</span>
+            <span class="font-bold text-[#5053d4] truncate block" id="resultAmount">-</span>
+          </div>
         </div>
 
-        <!-- Owner Reply / Custom Pricing Quote Box -->
-        <div class="p-3.5 rounded-[6px] bg-white border border-[#6366f1]/30 space-y-1.5" id="ownerReplyBox">
-          <div class="flex items-center gap-1.5 text-[12px] font-semibold text-[#5053d4]">
-            <span>💬</span>
-            <span>Owner Reply & Custom Quote:</span>
+        <!-- 1-DAY REPLY COMMITMENT & OWNER REPLY SECTION -->
+        <div class="p-3.5 rounded-[6px] bg-white border border-[#6366f1]/30 space-y-2" id="ownerReplyBox">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1.5 text-[12px] font-semibold text-[#5053d4]">
+              <span>⏱️</span>
+              <span id="replyBoxTitle">1-Day Reply Commitment (24h SLA)</span>
+            </div>
+            <span class="text-[10px] font-bold text-[#6366f1] uppercase px-1.5 py-0.5 rounded bg-[#f7f7ff] border border-[#6366f1]/20" id="replyEtaBadge">Within 24 Hours</span>
           </div>
           <p class="text-[12px] text-[#20232d] leading-relaxed" id="ownerReplyText">
-            ⏳ Your request is currently queued for review. The owner is verifying your syllabus and will message your Instagram DM with your final customized quote!
+            ⏳ We noted your exact request time. The owner is auditing your syllabus and will provide your final customized quote within 1 day!
           </p>
+        </div>
+
+        <!-- PAID ORDER TRACKER & UTR / SCREENSHOT PROOF SECTION -->
+        <div id="paymentProofTrackerSection" class="p-3.5 rounded-[6px] bg-white border border-[#e5e7eb] space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1.5 text-[12px] font-semibold text-[#20232d]">
+              <span>💳</span>
+              <span>Paid Order & Payment Proof:</span>
+            </div>
+            <span id="paymentProofStatusBadge" class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">Awaiting Proof</span>
+          </div>
+
+          <!-- View A: If already verified / UTR recorded -->
+          <div id="trackPaymentVerifiedView" class="hidden space-y-2">
+            <div class="p-2.5 rounded bg-emerald-50 border border-emerald-200 text-[12px] text-emerald-800 space-y-1">
+              <div class="font-bold flex items-center gap-1">✓ Payment Verified & Logged!</div>
+              <div class="font-mono text-[11px]" id="trackVerifiedUtrText">UTR / Txn ID: -</div>
+              <div class="text-[11px] text-emerald-700">Your coursework is actively queued in our 48-Hour Live Turnaround Engine.</div>
+            </div>
+            <div id="trackVerifiedScreenshotPreview" class="hidden">
+              <span class="text-[10px] font-semibold text-[#6b7080] uppercase">Payment Screenshot:</span>
+              <img id="trackVerifiedScreenshotImg" class="h-16 rounded border mt-1 object-cover">
+            </div>
+          </div>
+
+          <!-- View B: Form to submit Payment Screenshot & UTR -->
+          <div id="trackPaymentSubmitForm" class="space-y-2.5">
+            <p class="text-[11px] text-[#6b7080] leading-snug">
+              Already paid for this order? Add your Transaction ID & upload payment screenshot below to confirm:
+            </p>
+            <div>
+              <label class="block text-[11px] font-semibold text-[#20232d] mb-1" for="trackUtrInput">UPI Transaction ID / UTR <span class="text-[#6366f1]">*</span></label>
+              <input type="text" id="trackUtrInput" placeholder="e.g. 412389745612 or Razorpay Payment ID" class="w-full h-[36px] text-[12px] rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] bg-white">
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold text-[#20232d] mb-1">Payment Screenshot Proof <span class="text-[#6366f1]">*</span></label>
+              <div id="trackPaymentDropzone" class="border border-dashed border-[#6366f1]/50 hover:border-[#6366f1] rounded-[6px] p-2.5 bg-[#f7f7ff] text-center cursor-pointer transition-colors">
+                <input type="file" id="trackPaymentFileInput" accept="image/*" class="hidden">
+                <div class="text-[11px] text-[#5053d4] font-medium" id="trackPaymentUploadText">📸 Click or drop payment screenshot here</div>
+              </div>
+              <div id="trackPaymentPreview" class="hidden mt-2 flex items-center gap-2">
+                <img id="trackPaymentThumb" class="h-14 w-14 object-cover rounded border border-[#e5e7eb]">
+                <div class="text-[11px] text-[#6b7080] truncate flex-1" id="trackPaymentThumbName">screenshot.png</div>
+                <button type="button" onclick="clearTrackPaymentScreenshot()" class="text-xs text-red-500 font-bold hover:underline cursor-pointer">Remove</button>
+              </div>
+            </div>
+            <button type="button" onclick="submitTrackPaymentProof()" id="trackSubmitPaymentBtn" class="w-full py-2 px-3 rounded-[6px] bg-[#6366f1] hover:bg-[#5053d4] text-white text-[12px] font-semibold transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <span id="trackSubmitPaymentBtnText">Submit Payment Proof & Confirm</span>
+            </button>
+          </div>
         </div>
 
         <!-- Action Buttons -->
@@ -728,12 +797,20 @@
             <span>Pay Directly via UPI App (GPay / PhonePe)</span>
           </a>
         </div>
-        <div class="p-3.5 rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] mb-3">
-          <label class="block text-xs font-semibold text-[#20232d] mb-1" for="utrInput">
-            Enter UPI UTR / Transaction ID Reference:
-          </label>
-          <input type="text" id="utrInput" placeholder="e.g. 412389745612 or Razorpay Payment ID" class="w-full h-[38px] text-xs rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] font-medium bg-white mb-2">
-          <button type="button" onclick="verifyAndConfirmPayment()" class="w-full py-2.5 px-3 rounded-[6px] bg-[#20232d] hover:bg-black text-white font-semibold text-xs transition-colors flex items-center justify-center gap-2">
+        <div class="p-3.5 rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] mb-3 space-y-2">
+          <div>
+            <label class="block text-xs font-semibold text-[#20232d] mb-1" for="utrInput">
+              Enter UPI UTR / Transaction ID Reference: <span class="text-[#6366f1]">*</span>
+            </label>
+            <input type="text" id="utrInput" placeholder="e.g. 412389745612 or Razorpay Payment ID" class="w-full h-[38px] text-xs rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] font-medium bg-white">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-[#20232d] mb-1">
+              Attach Payment Screenshot (optional):
+            </label>
+            <input type="file" id="modalPaymentScreenshotInput" accept="image/*" class="w-full text-xs text-[#6b7080] file:mr-2 file:py-1 file:px-2.5 file:rounded-[4px] file:border-0 file:text-xs file:font-semibold file:bg-[#6366f1] file:text-white hover:file:bg-[#5053d4] cursor-pointer">
+          </div>
+          <button type="button" onclick="verifyAndConfirmPayment()" class="w-full py-2.5 px-3 rounded-[6px] bg-[#20232d] hover:bg-black text-white font-semibold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer mt-1">
             <span id="verifyBtnLabel">Verify Payment & Confirm Order</span>
           </button>
         </div>
@@ -848,6 +925,20 @@
           ssSection.classList.add('hidden');
         } else {
           ssSection.classList.remove('hidden');
+        }
+      }
+
+      // Dynamic Email Requirement:
+      // "the mail is only required when they are quiring like for discount and all so its not mandatory when person taking full course"
+      const emailInput = document.getElementById('studentEmail');
+      const emailBadge = document.getElementById('studentEmailBadge');
+      if (emailInput && emailBadge) {
+        if (tier === 'complete') {
+          emailInput.removeAttribute('required');
+          emailBadge.innerHTML = '<span class="text-[11px] text-[#6b7080] font-normal">(optional for full course)</span>';
+        } else {
+          emailInput.setAttribute('required', 'required');
+          emailBadge.innerHTML = '<span class="text-[#6366f1] font-bold">*</span> <span class="text-[11px] text-[#6b7080] font-normal">(required for discount/quote review - one request per mail id so be carefull about it)</span>';
         }
       }
 
@@ -1065,24 +1156,49 @@
     }
 
     // --- 9. CREDENTIALS VALIDATION ---
-    function validateCredentials() {
+    function validateCredentials(isDiscountInquiry = false) {
       const ig = document.getElementById('igHandle')?.value?.trim()?.replace(/^@/, '');
       const user = document.getElementById('ccUsername')?.value?.trim();
       const pass = document.getElementById('ccPassword')?.value?.trim();
+      const email = document.getElementById('studentEmail')?.value?.trim()?.toLowerCase() || '';
 
       if (!ig || !user || !pass) {
         alert("Please provide all 3 required fields:\n1. Instagram ID\n2. CodeChef username\n3. CodeChef password");
         return null;
       }
-      return { ig, user, pass };
+
+      const domain = atob('dGhhcGFyLmVkdQ==');
+      const requiresEmail = isDiscountInquiry || State.selectedTier !== 'complete';
+
+      if (requiresEmail) {
+        if (!email) {
+          alert("College Email ID is required when requesting a discount, custom quote, or individual module review.\n\nNote: You only have one request per mail ID, so be careful about it.");
+          document.getElementById('studentEmail')?.focus();
+          return null;
+        }
+        if (!email.includes('@' + domain)) {
+          alert(`Please enter a valid college email ending with @${domain}`);
+          document.getElementById('studentEmail')?.focus();
+          return null;
+        }
+      } else {
+        // Complete course - email is optional, but if entered, validate format
+        if (email && !email.includes('@' + domain)) {
+          alert(`Please enter a valid college email ending with @${domain} (or leave blank for full course)`);
+          document.getElementById('studentEmail')?.focus();
+          return null;
+        }
+      }
+
+      return { ig, user, pass, email: email || null };
     }
 
     // --- 10. DEDICATED DISCOUNT QUEUE SUBMISSION (SUPABASE + OWNER ALERT) ---
     // --- FIELD INTENTIONS CATALOG ---
     const FIELD_INTENTIONS = {
       studentEmail: {
-        title: "Why College Email ID is Required",
-        text: "Anti-Spam Verification: Strictly one request permitted per student college email ID (college institutional email). This prevents duplicate queue spam, protects genuine students, and guarantees our standard 48-hour SLA turnaround time."
+        title: "Why College Email ID is Collected",
+        text: "Anti-Spam Verification: Strictly one inquiry permitted per student college email ID. This email is optional if you are purchasing the Complete Course directly, but strictly required when querying for discounts, custom quotes, or individual module reviews to prevent duplicate queue spam and protect our 1-day reply commitment."
       },
       igHandle: {
         title: "Why Instagram ID is Required",
@@ -1141,11 +1257,177 @@
       if (modal) modal.classList.add('hidden');
     }
 
+    // --- TRACKER MODE & PAYMENT PROOF STATE ---
+    let currentTrackerMode = 'inquiry';
+    let trackPaymentScreenshotData = null;
+
+    function setTrackerMode(mode) {
+      currentTrackerMode = mode;
+      const tabInq = document.getElementById('tabInquiryMode');
+      const tabPaid = document.getElementById('tabPaidMode');
+      const input = document.getElementById('statusLookupInput');
+      const paySection = document.getElementById('paymentProofTrackerSection');
+
+      if (mode === 'inquiry') {
+        if (tabInq) tabInq.className = "flex-1 py-2 font-semibold border-b-2 border-[#6366f1] text-[#5053d4] text-center transition-all cursor-pointer";
+        if (tabPaid) tabPaid.className = "flex-1 py-2 font-semibold border-b-2 border-transparent text-[#6b7080] hover:text-[#20232d] text-center transition-all cursor-pointer";
+        if (input) input.placeholder = "e.g. ORD-B2F9A1 or rollnumber_be24@college.edu";
+      } else {
+        if (tabInq) tabInq.className = "flex-1 py-2 font-semibold border-b-2 border-transparent text-[#6b7080] hover:text-[#20232d] text-center transition-all cursor-pointer";
+        if (tabPaid) tabPaid.className = "flex-1 py-2 font-semibold border-b-2 border-[#6366f1] text-[#5053d4] text-center transition-all cursor-pointer";
+        if (input) input.placeholder = "e.g. ORD-B2F9A1 or UPI Transaction ID / UTR";
+      }
+
+      if (mode === 'paid' && paySection && !paySection.classList.contains('hidden')) {
+        paySection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    function initTrackPaymentHandlers() {
+      const dropzone = document.getElementById('trackPaymentDropzone');
+      const fileInput = document.getElementById('trackPaymentFileInput');
+
+      if (dropzone && fileInput) {
+        dropzone.onclick = () => fileInput.click();
+        dropzone.ondragover = (e) => {
+          e.preventDefault();
+          dropzone.classList.add('border-[#6366f1]', 'bg-[#eef2ff]');
+        };
+        dropzone.ondragleave = () => {
+          dropzone.classList.remove('border-[#6366f1]', 'bg-[#eef2ff]');
+        };
+        dropzone.ondrop = (e) => {
+          e.preventDefault();
+          dropzone.classList.remove('border-[#6366f1]', 'bg-[#eef2ff]');
+          if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+            handleTrackPaymentFile(e.dataTransfer.files[0]);
+          }
+        };
+        fileInput.onchange = (e) => {
+          if (e.target.files && e.target.files[0]) {
+            handleTrackPaymentFile(e.target.files[0]);
+          }
+        };
+      }
+    }
+
+    function handleTrackPaymentFile(file) {
+      if (!file || !file.type.startsWith('image/')) {
+        alert("Please select a valid image file (PNG, JPG, WEBP)");
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        trackPaymentScreenshotData = e.target.result;
+        const preview = document.getElementById('trackPaymentPreview');
+        const thumb = document.getElementById('trackPaymentThumb');
+        const thumbName = document.getElementById('trackPaymentThumbName');
+        const uploadText = document.getElementById('trackPaymentUploadText');
+
+        if (preview && thumb) {
+          preview.classList.remove('hidden');
+          thumb.src = e.target.result;
+          if (thumbName) thumbName.textContent = file.name;
+          if (uploadText) uploadText.textContent = "✓ Screenshot attached (Click to replace)";
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearTrackPaymentScreenshot() {
+      trackPaymentScreenshotData = null;
+      const preview = document.getElementById('trackPaymentPreview');
+      const uploadText = document.getElementById('trackPaymentUploadText');
+      const fileInput = document.getElementById('trackPaymentFileInput');
+      if (preview) preview.classList.add('hidden');
+      if (uploadText) uploadText.textContent = "📸 Click or drop payment screenshot here";
+      if (fileInput) fileInput.value = "";
+    }
+
+    async function submitTrackPaymentProof() {
+      if (!State.foundOrder || !State.foundOrder.id) {
+        alert("No order selected. Please search your Request ID first.");
+        return;
+      }
+
+      const utr = document.getElementById('trackUtrInput')?.value?.trim();
+      if (!utr) {
+        alert("Please enter your UPI Transaction ID / UTR or Razorpay Payment ID reference.");
+        document.getElementById('trackUtrInput')?.focus();
+        return;
+      }
+
+      const btn = document.getElementById('trackSubmitPaymentBtn');
+      const btnText = document.getElementById('trackSubmitPaymentBtnText');
+      if (btn) btn.disabled = true;
+      if (btnText) btnText.textContent = "Recording Payment Proof...";
+
+      try {
+        const resp = await fetch('/api/confirm-payment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            id: State.foundOrder.id,
+            utr: utr,
+            payment_screenshot: trackPaymentScreenshotData || null
+          })
+        });
+
+        if (!resp.ok) {
+          const errData = await resp.json().catch(() => ({}));
+          throw new Error(errData.error || 'Server error confirming payment.');
+        }
+
+        // Update local found order
+        State.foundOrder.utr = utr;
+        State.foundOrder.status = 'ACCEPTED';
+        if (trackPaymentScreenshotData) {
+          State.foundOrder.payment_screenshot = trackPaymentScreenshotData;
+        }
+
+        State.currentOrder = State.foundOrder;
+        localStorage.setItem('campustick_active_order', JSON.stringify(State.foundOrder));
+
+        // Switch UI to verified view
+        const verifiedView = document.getElementById('trackPaymentVerifiedView');
+        const submitForm = document.getElementById('trackPaymentSubmitForm');
+        const proofBadge = document.getElementById('paymentProofStatusBadge');
+        const statusBadge = document.getElementById('resultStatusBadge');
+
+        if (verifiedView) verifiedView.classList.remove('hidden');
+        if (submitForm) submitForm.classList.add('hidden');
+        if (proofBadge) {
+          proofBadge.textContent = "Payment Verified";
+          proofBadge.className = "text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200";
+        }
+        if (statusBadge) {
+          statusBadge.textContent = "ACCEPTED & QUEUED";
+          statusBadge.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-indigo-50 text-[#5053d4] border border-[#6366f1]/30";
+        }
+
+        document.getElementById('trackVerifiedUtrText').textContent = `UTR / Txn ID: ${utr}`;
+        if (trackPaymentScreenshotData) {
+          document.getElementById('trackVerifiedScreenshotPreview').classList.remove('hidden');
+          document.getElementById('trackVerifiedScreenshotImg').src = trackPaymentScreenshotData;
+        }
+
+        revealLiveTimer();
+        alert(`✅ Payment Proof Recorded Successfully!\n\nOrder ID: ${State.foundOrder.id}\nUTR: ${utr}\n\nYour coursework is confirmed and running in our 48-Hour Live Turnaround Engine! 🚀`);
+
+      } catch (err) {
+        alert("Payment confirmation note: " + err.message);
+      } finally {
+        if (btn) btn.disabled = false;
+        if (btnText) btnText.textContent = "Submit Payment Proof & Confirm";
+      }
+    }
+
     // --- REQUEST STATUS LOOKUP & REPLIES ---
     function openRequestStatusModal() {
       const modal = document.getElementById('requestStatusModal');
       if (!modal) return;
       modal.classList.remove('hidden');
+      initTrackPaymentHandlers();
 
       const stored = getStoredOrder();
       const input = document.getElementById('statusLookupInput');
@@ -1201,7 +1483,8 @@
           (stored.id && stored.id.toUpperCase() === query.toUpperCase()) ||
           (stored.email && stored.email.toLowerCase() === query.toLowerCase()) ||
           (stored.codechef_username && stored.codechef_username.toLowerCase() === query.toLowerCase()) ||
-          (stored.ig_handle && stored.ig_handle.toLowerCase() === query.replace(/^@/, '').toLowerCase())
+          (stored.ig_handle && stored.ig_handle.toLowerCase() === query.replace(/^@/, '').toLowerCase()) ||
+          (stored.utr && stored.utr.toLowerCase() === query.toLowerCase())
         )) {
           foundOrder = stored;
         }
@@ -1222,6 +1505,11 @@
       if (card) card.classList.remove('hidden');
       document.getElementById('resultOrderId').textContent = foundOrder.id || 'ORD-UNKNOWN';
       
+      const reqDate = new Date(foundOrder.created_at || Date.now());
+      const formattedTime = reqDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' at ' + reqDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const createdEl = document.getElementById('resultCreatedAt');
+      if (createdEl) createdEl.textContent = `📅 ${formattedTime}`;
+
       const statusEl = document.getElementById('resultStatusBadge');
       const status = (foundOrder.status || 'PENDING').toUpperCase();
       statusEl.textContent = status;
@@ -1234,24 +1522,77 @@
         statusEl.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200";
       }
 
-      document.getElementById('resultEmail').textContent = foundOrder.email || 'Not specified';
+      document.getElementById('resultEmail').textContent = foundOrder.email || 'Not specified (Full course)';
       document.getElementById('resultIg').textContent = foundOrder.ig_handle ? ('@' + foundOrder.ig_handle) : '-';
 
       const scope = Array.isArray(foundOrder.modules) ? foundOrder.modules.join(', ') : (foundOrder.modules || 'Complete Course');
       document.getElementById('resultScope').textContent = scope;
+      document.getElementById('resultAmount').textContent = `₹${foundOrder.amount || 250}`;
 
-      // Owner reply rendering
+      // 1-DAY REPLY COMMITMENT & OWNER REPLY RENDERING
+      const elapsedMs = Math.max(0, Date.now() - reqDate.getTime());
+      const oneDayMs = 24 * 60 * 60 * 1000;
+      const remainingMs = Math.max(0, oneDayMs - elapsedMs);
+
       const replyBox = document.getElementById('ownerReplyBox');
       const replyText = document.getElementById('ownerReplyText');
+      const replyEta = document.getElementById('replyEtaBadge');
+
       if (foundOrder.admin_reply) {
         replyText.textContent = foundOrder.admin_reply;
-        replyBox.className = "p-3.5 rounded-[6px] bg-emerald-50 border border-emerald-200 space-y-1.5";
+        if (replyEta) {
+          replyEta.textContent = "Reply Ready";
+          replyEta.className = "text-[10px] font-bold text-emerald-700 uppercase px-1.5 py-0.5 rounded bg-emerald-50 border border-emerald-200";
+        }
+        replyBox.className = "p-3.5 rounded-[6px] bg-emerald-50 border border-emerald-300 space-y-2";
       } else {
-        replyText.textContent = "⏳ Your request is currently queued for review. The owner is verifying your syllabus screenshots and will message your Instagram DM with your personalized quote!";
-        replyBox.className = "p-3.5 rounded-[6px] bg-white border border-[#6366f1]/30 space-y-1.5";
+        if (replyEta) {
+          if (remainingMs > 0) {
+            const remHrs = Math.min(24, Math.floor(remainingMs / (1000 * 60 * 60)));
+            const remMins = Math.floor((remainingMs % (1000 * 60 * 60)) / (1000 * 60));
+            replyEta.textContent = `${remHrs}h ${remMins}m remaining`;
+            replyEta.className = "text-[10px] font-bold text-[#6366f1] uppercase px-1.5 py-0.5 rounded bg-[#f7f7ff] border border-[#6366f1]/20";
+          } else {
+            replyEta.textContent = "Finalizing Review";
+            replyEta.className = "text-[10px] font-bold text-amber-700 uppercase px-1.5 py-0.5 rounded bg-amber-50 border border-amber-200";
+          }
+        }
+        replyText.textContent = `⏳ We noted your exact request time (${formattedTime}). The owner is auditing your syllabus and will provide your final customized quote within 1 day!`;
+        replyBox.className = "p-3.5 rounded-[6px] bg-white border border-[#6366f1]/30 space-y-2";
+      }
+
+      // PAID ORDER TRACKER & PAYMENT PROOF RENDERING
+      const verifiedView = document.getElementById('trackPaymentVerifiedView');
+      const submitForm = document.getElementById('trackPaymentSubmitForm');
+      const proofBadge = document.getElementById('paymentProofStatusBadge');
+
+      if (foundOrder.utr) {
+        if (verifiedView) verifiedView.classList.remove('hidden');
+        if (submitForm) submitForm.classList.add('hidden');
+        if (proofBadge) {
+          proofBadge.textContent = "Payment Verified";
+          proofBadge.className = "text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200";
+        }
+        document.getElementById('trackVerifiedUtrText').textContent = `UTR / Txn ID: ${foundOrder.utr}`;
+        const prevBox = document.getElementById('trackVerifiedScreenshotPreview');
+        const prevImg = document.getElementById('trackVerifiedScreenshotImg');
+        if (foundOrder.payment_screenshot && prevBox && prevImg) {
+          prevBox.classList.remove('hidden');
+          prevImg.src = foundOrder.payment_screenshot;
+        } else if (prevBox) {
+          prevBox.classList.add('hidden');
+        }
+      } else {
+        if (verifiedView) verifiedView.classList.add('hidden');
+        if (submitForm) submitForm.classList.remove('hidden');
+        if (proofBadge) {
+          proofBadge.textContent = "Awaiting Proof";
+          proofBadge.className = "text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200";
+        }
       }
 
       State.foundOrder = foundOrder;
+      initTrackPaymentHandlers();
     }
 
     function loadFoundOrderToWatchdog() {
@@ -1264,7 +1605,7 @@
     }
 
     async function submitDiscountQueue() {
-      const creds = validateCredentials();
+      const creds = validateCredentials(true);
       if (!creds) return;
 
       // Proof requirement for discount queue
@@ -1309,18 +1650,39 @@
         created_at: new Date().toISOString()
       };
 
-      // Push to Supabase orders table with return=minimal (201 Created)
+      // Submit via Serverless API with anti-spam sentry
       try {
-        await fetch(`${SUPABASE_CONFIG.URL}/rest/v1/orders`, {
+        const resp = await fetch('/api/submit-request', {
           method: 'POST',
-          headers: {
-            'apikey': SUPABASE_CONFIG.ANON_KEY,
-            'Authorization': `Bearer ${SUPABASE_CONFIG.ANON_KEY}`,
-            'Content-Type': 'application/json',
-            'Prefer': 'return=minimal'
-          },
-          body: JSON.stringify(payload)
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...payload,
+            is_discount_inquiry: true,
+            tier: State.selectedTier
+          })
         });
+
+        if (resp.status === 409) {
+          const conflictData = await resp.json();
+          alert(`⚠️ Active Request Found:\n\n${conflictData.error}\n\nPlease click "Track Request & Replies" in the top header and enter your email or Request ID (${conflictData.existingId}) to view your response!`);
+          if (btn) btn.disabled = false;
+          if (btnText) btnText.textContent = "📩 Request Discount & Submit to Queue";
+          return;
+        }
+
+        if (!resp.ok) {
+          console.warn("Serverless queue dispatch warning, trying fallback...");
+          await fetch(`${SUPABASE_CONFIG.URL}/rest/v1/orders`, {
+            method: 'POST',
+            headers: {
+              'apikey': SUPABASE_CONFIG.ANON_KEY,
+              'Authorization': `Bearer ${SUPABASE_CONFIG.ANON_KEY}`,
+              'Content-Type': 'application/json',
+              'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify(payload)
+          });
+        }
       } catch (err) {
         console.warn("Supabase queue note:", err);
       }
@@ -1466,7 +1828,7 @@
     async function handleProceedPayment(e) {
       e.preventDefault();
 
-      const creds = validateCredentials();
+      const creds = validateCredentials(false);
       if (!creds) return;
 
       // Proof requirement for partial courses
@@ -1524,18 +1886,28 @@
         window.open("https://razorpay.me/@campustick", '_blank');
       } catch (e) {}
 
-      // Background sync to Supabase
+      // Serverless sync with anti-spam sentry
       try {
-        fetch(`${SUPABASE_CONFIG.URL}/rest/v1/orders`, {
+        fetch('/api/submit-request', {
           method: 'POST',
-          headers: {
-            'apikey': SUPABASE_CONFIG.ANON_KEY,
-            'Authorization': `Bearer ${SUPABASE_CONFIG.ANON_KEY}`,
-            'Content-Type': 'application/json',
-            'Prefer': 'return=minimal'
-          },
-          body: JSON.stringify(payload)
-        }).catch(err => console.warn("Supabase async dispatch:", err));
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...payload,
+            is_discount_inquiry: false,
+            tier: State.selectedTier
+          })
+        }).catch(() => {
+          fetch(`${SUPABASE_CONFIG.URL}/rest/v1/orders`, {
+            method: 'POST',
+            headers: {
+              'apikey': SUPABASE_CONFIG.ANON_KEY,
+              'Authorization': `Bearer ${SUPABASE_CONFIG.ANON_KEY}`,
+              'Content-Type': 'application/json',
+              'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify(payload)
+          }).catch(err => console.warn("Supabase async dispatch:", err));
+        });
       } catch (e) {}
     }
 
@@ -1564,23 +1936,51 @@
       const vBtn = document.getElementById('verifyBtnLabel');
       if (vBtn) vBtn.textContent = "VERIFYING TRANSACTION...";
 
+      // Check optional payment screenshot from modal
+      let modalScreenshot = null;
+      const modalFileInput = document.getElementById('modalPaymentScreenshotInput');
+      if (modalFileInput && modalFileInput.files && modalFileInput.files[0]) {
+        try {
+          modalScreenshot = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = (e) => resolve(e.target.result);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(modalFileInput.files[0]);
+          });
+        } catch (e) {}
+      }
+
       if (State.currentOrder) {
         State.currentOrder.utr = utr;
         State.currentOrder.status = 'ACCEPTED';
+        if (modalScreenshot) {
+          State.currentOrder.payment_screenshot = modalScreenshot;
+        }
 
-        // Update in Supabase
-        fetch(`${SUPABASE_CONFIG.URL}/rest/v1/orders?id=eq.${State.currentOrder.id}`, {
-          method: 'PATCH',
-          headers: {
-            'apikey': SUPABASE_CONFIG.ANON_KEY,
-            'Authorization': `Bearer ${SUPABASE_CONFIG.ANON_KEY}`,
-            'Content-Type': 'application/json'
-          },
+        // Serverless confirm payment endpoint
+        fetch('/api/confirm-payment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            notes: (State.currentOrder.notes ? State.currentOrder.notes + " | " : "") + `UTR: ${utr}`,
-            status: 'ACCEPTED'
+            id: State.currentOrder.id,
+            utr: utr,
+            payment_screenshot: modalScreenshot || null
           })
-        }).catch(() => {});
+        }).catch(() => {
+          fetch(`${SUPABASE_CONFIG.URL}/rest/v1/orders?id=eq.${State.currentOrder.id}`, {
+            method: 'PATCH',
+            headers: {
+              'apikey': SUPABASE_CONFIG.ANON_KEY,
+              'Authorization': `Bearer ${SUPABASE_CONFIG.ANON_KEY}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              utr: utr,
+              payment_screenshot: modalScreenshot || null,
+              status: 'ACCEPTED'
+            })
+          }).catch(() => {});
+        });
 
         localStorage.setItem('campustick_active_order', JSON.stringify(State.currentOrder));
         revealLiveTimer();

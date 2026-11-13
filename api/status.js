@@ -18,7 +18,7 @@ export default async function handler(req, res) {
   const SERVICE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZW1mYXVkYWloY3lxbHlhb3FyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4OTEyNTA0NywiZXhwIjoyMTA0NzAxMDQ3fQ.2YHMDep9ctZe75myYJ3myVQgEj81xnbTB30WZHccvQ4";
 
   try {
-    let queryUrl = `${SUPABASE_URL}/rest/v1/orders?select=id,status,modules,speed,amount,created_at,admin_reply,notes,email,ig_handle,codechef_username`;
+    let queryUrl = `${SUPABASE_URL}/rest/v1/orders?select=id,status,modules,speed,amount,created_at,admin_reply,notes,email,ig_handle,codechef_username,utr,payment_screenshot`;
     if (id) {
       queryUrl += `&id=eq.${encodeURIComponent(id.trim())}`;
     } else if (email) {
@@ -56,7 +56,9 @@ export default async function handler(req, res) {
         amount: row.amount,
         created_at: row.created_at,
         admin_reply: row.admin_reply || null,
-        notes: row.notes || null
+        notes: row.notes || null,
+        utr: row.utr || null,
+        payment_screenshot: row.payment_screenshot || null
       }
     });
   } catch (err) {
