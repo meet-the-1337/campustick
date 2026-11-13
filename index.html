@@ -44,7 +44,7 @@
           }
         }
       }
-    }
+    };
   </script>
 
   <style>
@@ -61,6 +61,15 @@
     }
     .num-clean {
       font-variant-numeric: tabular-nums;
+    }
+    .slider-thumb::-webkit-slider-thumb {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #6366f1;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     }
   </style>
 </head>
@@ -81,7 +90,7 @@
 
       <!-- Right Actions: Track SLA & Secure Checkout -->
       <div class="flex items-center gap-4">
-        <button type="button" onclick="toggleTrackerView()" class="px-2.5 py-1.5 rounded-[6px] bg-[#f7f7ff] hover:bg-[#eef2ff] text-[#5053d4] border border-[#6366f1]/20 font-medium text-[12px] flex items-center gap-1.5 transition-colors">
+        <button type="button" id="headerTrackerBtn" onclick="toggleTrackerView()" class="px-2.5 py-1.5 rounded-[6px] bg-[#f7f7ff] hover:bg-[#eef2ff] text-[#5053d4] border border-[#6366f1]/20 font-medium text-[12px] flex items-center gap-1.5 transition-colors">
           <span>⏱️</span>
           <span>Track 48h SLA</span>
         </button>
@@ -226,177 +235,183 @@
           </div>
 
           <div class="space-y-3">
-            <!-- OPTION 1: Complete Course -->
-            <label id="cardComplete" onclick="selectService('complete')" class="border border-[#e5e7eb] bg-white rounded-[10px] px-3.5 py-2.5 flex items-center justify-between cursor-pointer transition-all hover:border-[#6366f1]/50">
+            <!-- OPTION 1: Complete Course (Full Course - No Proof Required) -->
+            <label id="cardComplete" onclick="selectService('complete')" class="border border-[#6366f1] bg-[#f7f7ff] rounded-[10px] px-3.5 py-2.5 flex items-center justify-between cursor-pointer transition-all hover:border-[#6366f1]">
               <div class="flex items-center gap-2.5">
-                <input type="radio" name="serviceOption" id="radioComplete" value="complete" class="w-4 h-4 text-[#6366f1] focus:ring-[#6366f1]">
+                <input type="radio" name="serviceOption" id="radioComplete" value="complete" checked class="w-4 h-4 text-[#6366f1] focus:ring-[#6366f1]">
                 <div>
                   <div class="text-[13px] font-semibold text-[#20232d]">Complete course</div>
-                  <div class="text-[11px] text-[#6b7080]">All 7 modules</div>
+                  <div class="text-[11px] text-[#6b7080]">All 7 modules • No screenshot required</div>
                 </div>
               </div>
               <span class="text-[16px] font-semibold text-[#5053d4]">₹250</span>
             </label>
 
-            <!-- OPTION 2: Individual Modules -->
+            <!-- OPTION 2: Individual Modules (M1, M2, M3... Line Selection) -->
             <div id="cardIndividual" class="border border-[#e5e7eb] bg-white rounded-[10px] transition-all">
               <label onclick="selectService('individual')" class="px-3.5 py-2.5 flex items-center justify-between cursor-pointer">
                 <div class="flex items-center gap-2.5">
                   <input type="radio" name="serviceOption" id="radioIndividual" value="individual" class="w-4 h-4 text-[#6366f1] focus:ring-[#6366f1]">
                   <div>
                     <div class="text-[13px] font-semibold text-[#20232d]">Individual modules</div>
-                    <div class="text-[11px] text-[#6b7080]">Select modules individually</div>
+                    <div class="text-[11px] text-[#6b7080]">Select the modules you have or need</div>
                   </div>
                 </div>
-                <span class="text-[12px] font-semibold text-[#5053d4]">From ₹20</span>
+                <span class="text-[12px] font-semibold text-[#5053d4]" id="individualCardPriceLabel">From ₹20</span>
               </label>
 
-              <!-- Individual module checkboxes grid -->
-              <div id="individualModulesGrid" class="hidden px-3.5 pb-3 pt-1 border-t border-[#e5e7eb] mt-1">
+              <!-- M1-M7 Line Module Selector Box -->
+              <div id="individualModulesGrid" class="hidden px-3.5 pb-3.5 pt-2 border-t border-[#e5e7eb] mt-1 space-y-2.5">
+                <div class="text-[11px] text-[#6b7080] font-medium flex items-center justify-between">
+                  <span>Pick your modules:</span>
+                  <span class="text-[#5053d4] font-semibold" id="individualSelectedCountText">0 selected</span>
+                </div>
+                
+                <!-- The M1 M2 M3... Line -->
                 <div class="flex flex-wrap gap-2">
-                  <label class="w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] has-[:checked]:border-[#6366f1] has-[:checked]:bg-[#f7f7ff] flex flex-col items-center justify-center cursor-pointer transition-all">
+                  <button type="button" data-module="M1" onclick="toggleIndividualModule('M1', 40, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
                     <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
-                      <input type="checkbox" class="mod-checkbox w-3 h-3 text-[#6366f1] rounded-[3px]" data-mod="M1" data-price="40" onchange="updateSummaryCalculations()">
+                      <span class="pill-check w-3 h-3 rounded-[3px] border border-[#d4d6de] bg-white inline-block"></span>
                       <span>M1</span>
                     </div>
                     <span class="text-[12px] text-[#6b7080] mt-0.5">₹40</span>
-                  </label>
+                  </button>
 
-                  <label class="w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] has-[:checked]:border-[#6366f1] has-[:checked]:bg-[#f7f7ff] flex flex-col items-center justify-center cursor-pointer transition-all">
+                  <button type="button" data-module="M2" onclick="toggleIndividualModule('M2', 40, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
                     <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
-                      <input type="checkbox" class="mod-checkbox w-3 h-3 text-[#6366f1] rounded-[3px]" data-mod="M2" data-price="40" onchange="updateSummaryCalculations()">
+                      <span class="pill-check w-3 h-3 rounded-[3px] border border-[#d4d6de] bg-white inline-block"></span>
                       <span>M2</span>
                     </div>
                     <span class="text-[12px] text-[#6b7080] mt-0.5">₹40</span>
-                  </label>
+                  </button>
 
-                  <label class="w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] has-[:checked]:border-[#6366f1] has-[:checked]:bg-[#f7f7ff] flex flex-col items-center justify-center cursor-pointer transition-all">
+                  <button type="button" data-module="M3" onclick="toggleIndividualModule('M3', 70, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
                     <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
-                      <input type="checkbox" class="mod-checkbox w-3 h-3 text-[#6366f1] rounded-[3px]" data-mod="M3" data-price="70" onchange="updateSummaryCalculations()">
+                      <span class="pill-check w-3 h-3 rounded-[3px] border border-[#d4d6de] bg-white inline-block"></span>
                       <span>M3</span>
                     </div>
                     <span class="text-[12px] text-[#6b7080] mt-0.5">₹70</span>
-                  </label>
+                  </button>
 
-                  <label class="w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] has-[:checked]:border-[#6366f1] has-[:checked]:bg-[#f7f7ff] flex flex-col items-center justify-center cursor-pointer transition-all">
+                  <button type="button" data-module="M4" onclick="toggleIndividualModule('M4', 80, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
                     <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
-                      <input type="checkbox" class="mod-checkbox w-3 h-3 text-[#6366f1] rounded-[3px]" data-mod="M4" data-price="80" onchange="updateSummaryCalculations()">
+                      <span class="pill-check w-3 h-3 rounded-[3px] border border-[#d4d6de] bg-white inline-block"></span>
                       <span>M4</span>
                     </div>
                     <span class="text-[12px] text-[#6b7080] mt-0.5">₹80</span>
-                  </label>
+                  </button>
 
-                  <label class="w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] has-[:checked]:border-[#6366f1] has-[:checked]:bg-[#f7f7ff] flex flex-col items-center justify-center cursor-pointer transition-all">
+                  <button type="button" data-module="M5" onclick="toggleIndividualModule('M5', 20, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
                     <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
-                      <input type="checkbox" class="mod-checkbox w-3 h-3 text-[#6366f1] rounded-[3px]" data-mod="M5" data-price="20" onchange="updateSummaryCalculations()">
+                      <span class="pill-check w-3 h-3 rounded-[3px] border border-[#d4d6de] bg-white inline-block"></span>
                       <span>M5</span>
                     </div>
                     <span class="text-[12px] text-[#6b7080] mt-0.5">₹20</span>
-                  </label>
+                  </button>
 
-                  <label class="w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] has-[:checked]:border-[#6366f1] has-[:checked]:bg-[#f7f7ff] flex flex-col items-center justify-center cursor-pointer transition-all">
+                  <button type="button" data-module="M6" onclick="toggleIndividualModule('M6', 60, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
                     <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
-                      <input type="checkbox" class="mod-checkbox w-3 h-3 text-[#6366f1] rounded-[3px]" data-mod="M6" data-price="60" onchange="updateSummaryCalculations()">
+                      <span class="pill-check w-3 h-3 rounded-[3px] border border-[#d4d6de] bg-white inline-block"></span>
                       <span>M6</span>
                     </div>
                     <span class="text-[12px] text-[#6b7080] mt-0.5">₹60</span>
-                  </label>
+                  </button>
 
-                  <label class="w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] has-[:checked]:border-[#6366f1] has-[:checked]:bg-[#f7f7ff] flex flex-col items-center justify-center cursor-pointer transition-all">
+                  <button type="button" data-module="M7" onclick="toggleIndividualModule('M7', 50, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
                     <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
-                      <input type="checkbox" class="mod-checkbox w-3 h-3 text-[#6366f1] rounded-[3px]" data-mod="M7" data-price="50" onchange="updateSummaryCalculations()">
+                      <span class="pill-check w-3 h-3 rounded-[3px] border border-[#d4d6de] bg-white inline-block"></span>
                       <span>M7</span>
                     </div>
                     <span class="text-[12px] text-[#6b7080] mt-0.5">₹50</span>
-                  </label>
+                  </button>
                 </div>
               </div>
             </div>
 
-            <!-- OPTION 3: Remaining Test Cases (Active / Pre-selected in Figma) -->
-            <div id="cardRemaining" class="border border-[#6366f1] bg-[#f7f7ff] rounded-[10px] transition-all">
+            <!-- OPTION 3: Remaining Test Cases (90% to 100% Hover Bar: ₹150 down to ₹15) -->
+            <div id="cardRemaining" class="border border-[#e5e7eb] bg-white rounded-[10px] transition-all">
               <label onclick="selectService('remaining')" class="px-3.5 py-2.5 flex items-center justify-between cursor-pointer">
                 <div class="flex items-center gap-2.5">
-                  <input type="radio" name="serviceOption" id="radioRemaining" value="remaining" checked class="w-4 h-4 text-[#6366f1] focus:ring-[#6366f1]">
+                  <input type="radio" name="serviceOption" id="radioRemaining" value="remaining" class="w-4 h-4 text-[#6366f1] focus:ring-[#6366f1]">
                   <div>
                     <div class="text-[13px] font-semibold text-[#20232d]">Remaining test cases</div>
-                    <div class="text-[11px] text-[#6b7080]">Nearly completed modules</div>
+                    <div class="text-[11px] text-[#6b7080]">Course 90% to 100% completed • Dynamic solver rate</div>
                   </div>
                 </div>
-                <span class="text-[16px] font-semibold text-[#5053d4]" id="remainingCardPrice">₹50</span>
+                <span class="text-[16px] font-semibold text-[#5053d4]" id="remainingCardPrice">₹60</span>
               </label>
 
-              <!-- Nested details box (Exact Match from Figma) -->
-              <div id="remainingDetailsBox" class="p-3.5 bg-white border-t border-[#e5e7eb] rounded-b-[10px] space-y-3">
+              <!-- Nested Slider Box (90% = ₹150, 99% = ₹15) -->
+              <div id="remainingDetailsBox" class="hidden p-3.5 bg-[#fafafb] border-t border-[#e5e7eb] rounded-b-[10px] space-y-3">
                 <div class="flex items-center justify-between text-[11px]">
-                  <span class="text-[#6b7080]">Pricing</span>
-                  <span class="font-semibold text-[#5053d4]">90–94.99%: ₹100 · 95–100%: ₹50</span>
+                  <span class="text-[#6b7080] font-medium">Progress Bar:</span>
+                  <span class="font-semibold text-[#5053d4]">90% (₹150) ➔ 99% (₹15)</span>
                 </div>
 
-                <!-- Module Pills -->
-                <div class="flex flex-wrap gap-2">
-                  <button type="button" onclick="selectRemainingMod('M1', this)" class="rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#6366f1] text-[11px] font-medium text-[#20232d] flex items-center justify-center gap-1 shadow-sm">
-                    <span class="w-2.5 h-2.5 rounded-[2px] bg-[#6366f1] inline-block"></span>
-                    <span>M1</span>
-                  </button>
-                  <button type="button" onclick="selectRemainingMod('M2', this)" class="rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#d4d6de] text-[11px] font-medium text-[#6b7080] flex items-center justify-center gap-1">
-                    <span class="w-2.5 h-2.5 rounded-[2px] border border-[#d4d6de] bg-white inline-block"></span>
-                    <span>M2</span>
-                  </button>
-                  <button type="button" onclick="selectRemainingMod('M3', this)" class="rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#d4d6de] text-[11px] font-medium text-[#6b7080] flex items-center justify-center gap-1">
-                    <span class="w-2.5 h-2.5 rounded-[2px] border border-[#d4d6de] bg-white inline-block"></span>
-                    <span>M3</span>
-                  </button>
-                  <button type="button" onclick="selectRemainingMod('M4', this)" class="rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#d4d6de] text-[11px] font-medium text-[#6b7080] flex items-center justify-center gap-1">
-                    <span class="w-2.5 h-2.5 rounded-[2px] border border-[#d4d6de] bg-white inline-block"></span>
-                    <span>M4</span>
-                  </button>
-                  <button type="button" onclick="selectRemainingMod('M5', this)" class="rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#d4d6de] text-[11px] font-medium text-[#6b7080] flex items-center justify-center gap-1">
-                    <span class="w-2.5 h-2.5 rounded-[2px] border border-[#d4d6de] bg-white inline-block"></span>
-                    <span>M5</span>
-                  </button>
-                  <button type="button" onclick="selectRemainingMod('M6', this)" class="rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#d4d6de] text-[11px] font-medium text-[#6b7080] flex items-center justify-center gap-1">
-                    <span class="w-2.5 h-2.5 rounded-[2px] border border-[#d4d6de] bg-white inline-block"></span>
-                    <span>M6</span>
-                  </button>
-                  <button type="button" onclick="selectRemainingMod('M7', this)" class="rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#d4d6de] text-[11px] font-medium text-[#6b7080] flex items-center justify-center gap-1">
-                    <span class="w-2.5 h-2.5 rounded-[2px] border border-[#d4d6de] bg-white inline-block"></span>
-                    <span>M7</span>
-                  </button>
-                </div>
-
-                <!-- Completion Percentage Chip & Slider -->
-                <div class="border border-[#e5e7eb] rounded-[6px] p-2.5 bg-white">
-                  <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-[#6b7080]" id="remModLabel">M1 completion (%)</span>
-                    <span class="font-semibold text-[#20232d]" id="remPctDisplay">96%</span>
+                <!-- Hover/Drag Slider Bar -->
+                <div class="border border-[#e5e7eb] rounded-[6px] p-3 bg-white space-y-2">
+                  <div class="flex items-center justify-between text-[12px]">
+                    <span class="text-[#6b7080] font-medium">Your Completion Rate:</span>
+                    <div class="flex items-center gap-2">
+                      <span class="font-bold text-[#20232d] num-clean text-[13px]" id="remPctDisplay">96% Completed</span>
+                      <span class="px-2 py-0.5 rounded-[4px] bg-[#f7f7ff] text-[#5053d4] border border-[#6366f1]/20 font-bold text-[12px]" id="remPriceBadge">₹60</span>
+                    </div>
                   </div>
-                  <input type="range" id="progressSlider" min="80" max="98" value="96" oninput="handleRemainingSlider(this.value)" class="w-full accent-[#6366f1] h-1.5 bg-[#e5e7eb] rounded-lg cursor-pointer mt-2">
-                </div>
-
-                <!-- Screenshot Upload Box (Exact Figma Copy) -->
-                <div id="dropzone" class="border border-[#e5e7eb] hover:border-[#6366f1] rounded-[6px] p-2.5 flex items-center gap-3 bg-[#fafafb] cursor-pointer transition-colors group">
-                  <input type="file" id="fileInput" multiple accept="image/*" class="hidden">
-                  <div class="w-[32px] h-[32px] rounded-[6px] bg-white border border-[#e5e7eb] flex items-center justify-center shrink-0">
-                    <svg class="w-4 h-4 text-[#6b7080] group-hover:text-[#6366f1] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
-                    </svg>
-                  </div>
-                  <div class="text-left flex-1 min-w-0">
-                    <div class="text-[13px] font-medium text-[#20232d]">Screenshot upload</div>
-                    <div class="text-[11px] text-[#6b7080] truncate" id="uploadStatusText">Upload a completion screenshot for review.</div>
+                  
+                  <input type="range" id="remainingHoverSlider" min="90" max="99" value="96" step="1" oninput="handleRemainingHoverSlider(this.value)" class="w-full accent-[#6366f1] h-2 bg-[#e5e7eb] rounded-lg cursor-pointer slider-thumb">
+                  
+                  <div class="flex justify-between text-[10px] text-[#979ba7] px-0.5">
+                    <span>90% (₹150)</span>
+                    <span>93% (₹105)</span>
+                    <span>96% (₹60)</span>
+                    <span>99% (₹15)</span>
                   </div>
                 </div>
-
-                <!-- Preview Thumbnail Grid -->
-                <div id="previewGrid" class="hidden grid grid-cols-3 gap-2 pt-2"></div>
-
-                <!-- CTA Button to Request Manual Review if Custom Discount Desired -->
-                <button type="button" id="reviewDiscountBtn" onclick="handleDiscountRequest()" class="w-full py-2.5 px-3 rounded-[6px] bg-[#f7f7ff] hover:bg-[#eef2ff] border border-[#6366f1]/30 text-[#5053d4] font-semibold text-[12px] flex items-center justify-center gap-2 transition-all">
-                  <span id="reviewDiscountBtnText">📩 Request Custom Discount (Send to Owner)</span>
-                </button>
               </div>
             </div>
+
+          </div>
+        </div>
+
+        <!-- UNIVERSAL SCREENSHOT PROOF & DISCOUNT QUEUE SECTION (ONLY WHEN NOT FULL COURSE) -->
+        <div id="universalScreenshotSection" class="hidden border border-[#6366f1]/30 bg-[#f7f7ff] rounded-[10px] p-4 space-y-3 transition-all">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-base">📸</span>
+              <h3 class="text-[13px] font-semibold text-[#20232d]">Upload Syllabus Screenshot Proof <span class="text-[#6366f1]">*</span></h3>
+            </div>
+            <span class="px-2 py-0.5 rounded-[4px] bg-white text-[#5053d4] border border-[#6366f1]/20 text-[10px] font-semibold uppercase">Required for verification</span>
+          </div>
+
+          <p class="text-[11px] text-[#6b7080] leading-relaxed">
+            Attach screenshots of your CodeChef syllabus or solved problems. We will verify your genuine progress. If you'd like a custom discount review, click the button below to submit directly to our review queue!
+          </p>
+
+          <!-- Dropzone -->
+          <div id="dropzone" class="border border-dashed border-[#6366f1]/50 hover:border-[#6366f1] rounded-[6px] p-3 flex items-center gap-3 bg-white cursor-pointer transition-colors group">
+            <input type="file" id="fileInput" multiple accept="image/*" class="hidden">
+            <div class="w-[34px] h-[34px] rounded-[6px] bg-[#f7f7ff] border border-[#6366f1]/20 flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4 text-[#5053d4] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+              </svg>
+            </div>
+            <div class="text-left flex-1 min-w-0">
+              <div class="text-[13px] font-medium text-[#20232d]">Upload Syllabus Proof</div>
+              <div class="text-[11px] text-[#6b7080] truncate" id="uploadStatusText">Click or drop screenshots here (PNG, JPG, WEBP)</div>
+            </div>
+          </div>
+
+          <!-- Preview Gallery -->
+          <div id="previewGrid" class="hidden grid grid-cols-3 gap-2 pt-1"></div>
+
+          <!-- Dedicated Discount Queue Submission Button -->
+          <div class="pt-2 border-t border-[#e5e7eb]/80 flex flex-col sm:flex-row items-center gap-2.5">
+            <button type="button" id="reviewDiscountBtn" onclick="submitDiscountQueue()" class="w-full py-2.5 px-3 rounded-[6px] bg-white hover:bg-[#eef2ff] border border-[#6366f1] text-[#5053d4] font-semibold text-[12px] flex items-center justify-center gap-2 transition-all shadow-sm">
+              <span id="reviewDiscountBtnText">📩 Request Discount & Submit to Queue</span>
+            </button>
+            <span class="text-[10px] text-[#6b7080] text-center sm:text-left leading-tight">
+              Owner reviews your queue & contacts you with final customized pricing!
+            </span>
           </div>
         </div>
 
@@ -411,7 +426,7 @@
                 <input type="radio" name="deliveryOption" id="radioDeliveryStd" value="standard" checked class="w-4 h-4 text-[#6366f1] focus:ring-[#6366f1]">
                 <div>
                   <div class="text-[13px] font-medium text-[#20232d]">Standard</div>
-                  <div class="text-[11px] text-[#6b7080]">2–3 days (48h SLA)</div>
+                  <div class="text-[11px] text-[#6b7080]">2–3 days (48h Live SLA)</div>
                 </div>
               </div>
               <span class="text-[12px] font-medium text-[#5053d4]">FREE</span>
@@ -446,7 +461,7 @@
         <div class="bg-[#fafafb] border border-[#e5e7eb] rounded-[10px] p-6 space-y-4">
           <h2 class="text-[16px] font-semibold text-[#20232d]">Order summary</h2>
 
-          <!-- Selected Order Item (Exact Book-open icon + title + price) -->
+          <!-- Selected Order Item -->
           <div class="flex items-center gap-3">
             <div class="w-[40px] h-[44px] rounded-[6px] bg-white border border-[#e5e7eb] flex items-center justify-center shrink-0">
               <svg class="w-5 h-5 text-[#5053d4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -454,10 +469,10 @@
               </svg>
             </div>
             <div class="flex-1 min-w-0">
-              <div class="text-[13px] font-semibold text-[#20232d] truncate" id="summaryItemTitle">Remaining test cases</div>
-              <div class="text-[11px] text-[#6b7080] truncate" id="summaryItemDesc">M1 · 96% complete</div>
+              <div class="text-[13px] font-semibold text-[#20232d] truncate" id="summaryItemTitle">Complete course</div>
+              <div class="text-[11px] text-[#6b7080] truncate" id="summaryItemDesc">All 7 modules (268 Problems)</div>
             </div>
-            <div class="text-[14px] font-medium text-[#20232d] num-clean" id="summaryItemPrice">₹50</div>
+            <div class="text-[14px] font-medium text-[#20232d] num-clean" id="summaryItemPrice">₹250</div>
           </div>
 
           <!-- Divider -->
@@ -479,7 +494,7 @@
           <div class="space-y-3 text-[13px] text-[#6b7080] font-normal pt-1">
             <div class="flex items-center justify-between">
               <span>Service subtotal</span>
-              <span class="text-[#20232d] font-medium num-clean" id="subtotalDisplay">₹50</span>
+              <span class="text-[#20232d] font-medium num-clean" id="subtotalDisplay">₹250</span>
             </div>
             <div class="flex items-center justify-between">
               <span>Standard delivery</span>
@@ -499,16 +514,16 @@
             <span class="text-[14px] font-semibold text-[#20232d]">Total</span>
             <div class="flex items-baseline gap-1.5">
               <span class="text-[11px] text-[#6b7080] font-normal">INR</span>
-              <span class="text-[26px] font-semibold text-[#20232d] tracking-[-0.8px] num-clean" id="summaryTotal">₹50</span>
+              <span class="text-[26px] font-semibold text-[#20232d] tracking-[-0.8px] num-clean" id="summaryTotal">₹250</span>
             </div>
           </div>
 
-          <!-- Primary Pay Button (Exact Match: 48px, bg-[#6366f1], rounded-[6px]) -->
+          <!-- Primary Pay Button -->
           <button type="submit" id="payButton" class="w-full h-[48px] rounded-[6px] bg-[#6366f1] hover:bg-[#5053d4] text-white font-semibold text-[14px] shadow-sm flex items-center justify-center gap-2 transition-all">
             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
             </svg>
-            <span id="payBtnLabel">PAY ₹50</span>
+            <span id="payBtnLabel">PAY ₹250</span>
           </button>
 
           <p class="text-[11px] text-[#6b7080] text-center">
@@ -541,7 +556,7 @@
   <!-- INTERACTIVE PAYMENT MODAL -->
   <div id="paymentModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm hidden">
     <div class="bg-white rounded-[10px] max-w-md w-full p-6 shadow-2xl border border-[#e5e7eb] relative max-h-[90vh] overflow-y-auto">
-      <button onclick="closeModal('paymentModal')" class="absolute top-4 right-4 text-[#979ba7] hover:text-[#20232d]">
+      <button type="button" onclick="closeModal('paymentModal')" class="absolute top-4 right-4 text-[#979ba7] hover:text-[#20232d]">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
@@ -558,12 +573,12 @@
         </p>
         <div class="p-4 rounded-[6px] bg-[#f7f7ff] border border-[#6366f1]/20 text-center mb-5">
           <div class="text-xs text-[#6b7080] font-medium uppercase tracking-wider">Amount to Pay</div>
-          <div class="text-3xl font-bold text-[#5053d4] mt-1 num-clean" id="resAmount">₹50</div>
+          <div class="text-3xl font-bold text-[#5053d4] mt-1 num-clean" id="resAmount">₹250</div>
           <div class="text-[11px] text-[#6b7080] mt-1">Recipient: <span class="font-bold text-[#20232d]">razorpay.me/@campustick</span></div>
         </div>
         <div class="space-y-2.5 mb-5">
           <a id="rzpPayBtn" href="https://razorpay.me/@campustick" target="_blank" class="w-full py-3 px-4 rounded-[6px] bg-[#6366f1] hover:bg-[#5053d4] text-white font-semibold text-xs shadow-sm flex items-center justify-center gap-2 transition-all">
-            <span>Open razorpay.me/@campustick (₹<span id="rzpAmountLabel">50</span>)</span>
+            <span>Open razorpay.me/@campustick (₹<span id="rzpAmountLabel">250</span>)</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
             </svg>
@@ -588,13 +603,13 @@
         <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mx-auto mb-3">✓</div>
         <h3 class="text-lg font-bold text-[#20232d]">Payment Recorded & Confirmed!</h3>
         <p class="text-xs text-[#6b7080] mt-1 max-w-sm mx-auto">
-          We got your payment of <strong class="text-emerald-700" id="confirmedAmount">₹50</strong>. Your credentials are safe with us!
+          We got your payment of <strong class="text-emerald-700" id="confirmedAmount">₹250</strong>. Your credentials are safe with us!
         </p>
         <div class="mt-4 p-3 bg-[#fafafb] border border-[#e5e7eb] rounded-[6px] text-left text-xs font-mono text-[#20232d] select-all">
           <div class="text-[10px] text-[#6b7080] font-sans uppercase font-bold mb-1">Your Order Receipt:</div>
           <div id="confirmedReceiptText" class="whitespace-pre-line text-[11px] leading-tight"></div>
         </div>
-        <button onclick="closeModal('paymentModal')" class="mt-4 px-4 py-2 rounded-[6px] bg-[#6366f1] text-white text-xs font-semibold">
+        <button type="button" onclick="closeModal('paymentModal')" class="mt-4 px-4 py-2 rounded-[6px] bg-[#6366f1] text-white text-xs font-semibold">
           Done & Track 48h SLA
         </button>
       </div>
@@ -606,39 +621,69 @@
   <script src="./campustick_engine.js"></script>
 
   <script>
-    // State
-    let selectedTier = 'remaining'; // 'complete' | 'individual' | 'remaining'
-    let selectedDeliverySpeed = 'standard'; // 'standard' | 'express'
-    let selectedRemainingModule = 'M1';
-    let remainingPercentage = 96;
-    let appliedDiscountAmt = 0;
-    let appliedCoupon = null;
-    let currentOrder = null;
-    let uploadedImages = [];
+    // CONFIGURATION
+    const SUPABASE_CONFIG = {
+      URL: "https://wzemfaudaihcyqlyaoqr.supabase.co",
+      ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZW1mYXVkYWloY3lxbHlhb3FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkxMjUwNDcsImV4cCI6MjEwNDcwMTA0N30.KWJ4nDmrANWqyJ7D7JDGSt-IBf-VHWWabNuoi9HTnb4",
+      OWNER_EMAIL: window.CAMPUS_TICK_OWNER_EMAIL || "support@campustick.internal"
+    };
 
-    // Initialize UI
+    // STATE STORE
+    const State = {
+      selectedTier: 'complete', // 'complete' | 'individual' | 'remaining'
+      selectedDeliverySpeed: 'standard', // 'standard' | 'express'
+      individualModules: {}, // e.g. { 'M1': 40, 'M2': 40 }
+      remainingPercentage: 96,
+      appliedDiscountAmt: 0,
+      appliedCoupon: null,
+      uploadedScreenshots: [],
+      currentOrder: null,
+      timerInterval: null
+    };
+
+    // --- 1. INITIALIZATION ---
     function initUI() {
-      selectService('remaining');
+      selectService('complete');
       updateSummaryCalculations();
+
+      const activeOrder = getStoredOrder();
+      if (activeOrder) {
+        revealLiveTimer();
+      }
+    }
+
+    function getStoredOrder() {
+      try {
+        return JSON.parse(localStorage.getItem('campustick_active_order') || 'null');
+      } catch (e) {
+        return null;
+      }
     }
 
     function togglePasswordVisibility() {
       const p = document.getElementById('ccPassword');
-      p.type = (p.type === 'password') ? 'text' : 'password';
+      if (p) {
+        p.type = (p.type === 'password') ? 'text' : 'password';
+      }
     }
 
+    // --- 2. SERVICE SELECTION LOGIC ---
     function selectService(tier) {
-      selectedTier = tier;
+      State.selectedTier = tier;
+
       document.getElementById('radioComplete').checked = (tier === 'complete');
       document.getElementById('radioIndividual').checked = (tier === 'individual');
       document.getElementById('radioRemaining').checked = (tier === 'remaining');
 
-      // Card Styles
       const cComp = document.getElementById('cardComplete');
       const cInd = document.getElementById('cardIndividual');
       const cRem = document.getElementById('cardRemaining');
+      const indGrid = document.getElementById('individualModulesGrid');
+      const remBox = document.getElementById('remainingDetailsBox');
+      const ssSection = document.getElementById('universalScreenshotSection');
 
-      cComp.className = (tier === 'complete') 
+      // Card Highlighting
+      cComp.className = (tier === 'complete')
         ? "border border-[#6366f1] bg-[#f7f7ff] rounded-[10px] px-3.5 py-2.5 flex items-center justify-between cursor-pointer transition-all"
         : "border border-[#e5e7eb] bg-white rounded-[10px] px-3.5 py-2.5 flex items-center justify-between cursor-pointer transition-all hover:border-[#6366f1]/40";
 
@@ -650,123 +695,174 @@
         ? "border border-[#6366f1] bg-[#f7f7ff] rounded-[10px] transition-all"
         : "border border-[#e5e7eb] bg-white rounded-[10px] transition-all hover:border-[#6366f1]/40";
 
-      document.getElementById('individualModulesGrid').classList.toggle('hidden', tier !== 'individual');
-      document.getElementById('remainingDetailsBox').classList.toggle('hidden', tier !== 'remaining');
+      // Show/Hide Child Pickers
+      if (indGrid) indGrid.classList.toggle('hidden', tier !== 'individual');
+      if (remBox) remBox.classList.toggle('hidden', tier !== 'remaining');
 
-      if (window.CampusTick) {
-        window.CampusTick.State.currentTier = (tier === 'complete') ? 'bundle' : (tier === 'individual' ? 'individual' : 'booster');
+      // UNIVERSAL SCREENSHOT LOGIC:
+      // "actually we dont ask for proof when they take full course or not asking for discounts"
+      // "and the screenshot section is universal comes only when people dont choose full course"
+      if (ssSection) {
+        if (tier === 'complete') {
+          ssSection.classList.add('hidden');
+        } else {
+          ssSection.classList.remove('hidden');
+        }
       }
 
       updateSummaryCalculations();
     }
 
-    function selectRemainingMod(mod, btn) {
-      selectedRemainingModule = mod;
-      document.querySelectorAll('.rem-mod-btn').forEach(b => {
-        b.className = "rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#d4d6de] text-[11px] font-medium text-[#6b7080] flex items-center justify-center gap-1";
-        b.querySelector('span:first-child').className = "w-2.5 h-2.5 rounded-[2px] border border-[#d4d6de] bg-white inline-block";
-      });
-      btn.className = "rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#6366f1] text-[11px] font-medium text-[#20232d] flex items-center justify-center gap-1 shadow-sm";
-      btn.querySelector('span:first-child').className = "w-2.5 h-2.5 rounded-[2px] bg-[#6366f1] inline-block";
+    // --- 3. INDIVIDUAL MODULES (M1, M2, M3... LINE SELECTION) ---
+    function toggleIndividualModule(modName, modPrice, btn) {
+      if (State.individualModules[modName]) {
+        delete State.individualModules[modName];
+        btn.className = "mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer";
+        const chk = btn.querySelector('.pill-check');
+        if (chk) chk.className = "pill-check w-3 h-3 rounded-[3px] border border-[#d4d6de] bg-white inline-block";
+      } else {
+        State.individualModules[modName] = modPrice;
+        btn.className = "mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#f7f7ff] border border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer shadow-sm";
+        const chk = btn.querySelector('.pill-check');
+        if (chk) chk.className = "pill-check w-3 h-3 rounded-[3px] border border-[#6366f1] bg-[#6366f1] inline-block";
+      }
 
-      document.getElementById('remModLabel').textContent = `${mod} completion (%)`;
+      const count = Object.keys(State.individualModules).length;
+      const countEl = document.getElementById('individualSelectedCountText');
+      if (countEl) {
+        countEl.textContent = count > 0 ? `${count} selected` : "0 selected";
+      }
+
       updateSummaryCalculations();
     }
 
-    function handleRemainingSlider(val) {
-      remainingPercentage = parseInt(val, 10);
-      document.getElementById('remPctDisplay').textContent = `${val}%`;
+    // --- 4. REMAINING TEST CASES (HOVER SLIDER 90% = 150, 99% = 15) ---
+    function handleRemainingHoverSlider(val) {
+      const pct = parseInt(val, 10);
+      State.remainingPercentage = pct;
+
+      // Pricing logic: 90% = ₹150, 99% = ₹15 (-₹15 per 1% completed)
+      let price = 150;
+      if (pct >= 99) {
+        price = 15;
+      } else if (pct >= 90) {
+        price = 150 - (pct - 90) * 15;
+      }
+
+      const pctEl = document.getElementById('remPctDisplay');
+      const badgeEl = document.getElementById('remPriceBadge');
+      const cardPriceEl = document.getElementById('remainingCardPrice');
+
+      if (pctEl) pctEl.textContent = `${pct}% Completed`;
+      if (badgeEl) badgeEl.textContent = `₹${price}`;
+      if (cardPriceEl) cardPriceEl.textContent = `₹${price}`;
+
       updateSummaryCalculations();
     }
 
+    // --- 5. DELIVERY SPEED SELECTION ---
     function selectDelivery(speed) {
-      selectedDeliverySpeed = speed;
+      State.selectedDeliverySpeed = speed;
       document.getElementById('radioDeliveryStd').checked = (speed === 'standard');
       document.getElementById('radioDeliveryExp').checked = (speed === 'express');
 
       const cStd = document.getElementById('cardDeliveryStd');
       const cExp = document.getElementById('cardDeliveryExp');
 
-      cStd.className = (speed === 'standard')
-        ? "border border-[#6366f1] bg-[#f7f7ff] rounded-[6px] p-3 flex items-center justify-between cursor-pointer transition-all"
-        : "border border-[#e5e7eb] bg-white rounded-[6px] p-3 flex items-center justify-between cursor-pointer transition-all hover:border-[#6366f1]/40";
+      if (cStd && cExp) {
+        cStd.className = (speed === 'standard')
+          ? "border border-[#6366f1] bg-[#f7f7ff] rounded-[6px] p-3 flex items-center justify-between cursor-pointer transition-all"
+          : "border border-[#e5e7eb] bg-white rounded-[6px] p-3 flex items-center justify-between cursor-pointer transition-all hover:border-[#6366f1]/40";
 
-      cExp.className = (speed === 'express')
-        ? "border border-[#6366f1] bg-[#f7f7ff] rounded-[6px] p-3 flex items-center justify-between cursor-pointer transition-all"
-        : "border border-[#e5e7eb] bg-white rounded-[6px] p-3 flex items-center justify-between cursor-pointer transition-all hover:border-[#6366f1]/40";
-
-      if (window.CampusTick) {
-        window.CampusTick.State.currentSpeed = (speed === 'express') ? 'emergency' : 'standard';
+        cExp.className = (speed === 'express')
+          ? "border border-[#6366f1] bg-[#f7f7ff] rounded-[6px] p-3 flex items-center justify-between cursor-pointer transition-all"
+          : "border border-[#e5e7eb] bg-white rounded-[6px] p-3 flex items-center justify-between cursor-pointer transition-all hover:border-[#6366f1]/40";
       }
 
       updateSummaryCalculations();
     }
 
+    // --- 6. PROMO CODE ENGINE ---
     function applyPromoCode() {
       const input = document.getElementById('couponInput');
       const msg = document.getElementById('couponMsg');
-      const code = input.value.trim().toUpperCase();
+      if (!input || !msg) return;
 
+      const code = input.value.trim().toUpperCase();
       if (code === 'CAMPUS2028' || code === 'TIET2028' || code === 'CAMPUS1337') {
-        appliedDiscountAmt = 30;
-        appliedCoupon = code;
-        msg.textContent = "Promo code applied! Saved ₹30";
+        State.appliedDiscountAmt = 30;
+        State.appliedCoupon = code;
+        msg.textContent = "Promo applied! Saved ₹30";
         msg.className = "text-[11px] text-emerald-600 font-semibold block";
       } else if (code) {
-        appliedDiscountAmt = 0;
-        appliedCoupon = null;
+        State.appliedDiscountAmt = 0;
+        State.appliedCoupon = null;
         msg.textContent = "Invalid promo code";
         msg.className = "text-[11px] text-red-500 block";
       } else {
-        appliedDiscountAmt = 0;
-        appliedCoupon = null;
+        State.appliedDiscountAmt = 0;
+        State.appliedCoupon = null;
         msg.className = "text-[11px] hidden";
       }
+
       updateSummaryCalculations();
     }
 
+    // --- 7. DYNAMIC SUMMARY CALCULATIONS ---
     function updateSummaryCalculations() {
-      let basePrice = 50;
-      let title = "Remaining test cases";
-      let desc = `${selectedRemainingModule} · ${remainingPercentage}% complete`;
+      let basePrice = 250;
+      let title = "Complete course";
+      let desc = "All 7 modules (268 Problems)";
 
-      if (selectedTier === 'complete') {
-        basePrice = 250;
-        title = "Complete course";
-        desc = "All 7 modules (268 Problems)";
-      } else if (selectedTier === 'individual') {
-        const checked = Array.from(document.querySelectorAll('.mod-checkbox:checked'));
-        if (checked.length === 0) {
+      if (State.selectedTier === 'individual') {
+        const mods = Object.keys(State.individualModules);
+        if (mods.length === 0) {
           basePrice = 0;
           title = "Individual modules";
-          desc = "Select modules above";
+          desc = "Select modules from M1–M7 line";
         } else {
-          basePrice = checked.reduce((acc, c) => acc + parseInt(c.getAttribute('data-price') || 0, 10), 0);
-          title = `Individual modules (${checked.length})`;
-          desc = checked.map(c => c.getAttribute('data-mod')).join(', ');
+          basePrice = Object.values(State.individualModules).reduce((a, b) => a + b, 0);
+          title = `Individual modules (${mods.length})`;
+          desc = mods.join(', ');
         }
-      } else if (selectedTier === 'remaining') {
-        basePrice = (remainingPercentage >= 95) ? 50 : 100;
+        const indLabel = document.getElementById('individualCardPriceLabel');
+        if (indLabel) indLabel.textContent = basePrice > 0 ? `₹${basePrice}` : "From ₹20";
+
+      } else if (State.selectedTier === 'remaining') {
+        const pct = State.remainingPercentage;
+        if (pct >= 99) basePrice = 15;
+        else if (pct >= 90) basePrice = 150 - (pct - 90) * 15;
+        else basePrice = 150;
+
         title = "Remaining test cases";
-        desc = `${selectedRemainingModule} · ${remainingPercentage}% complete`;
-        document.getElementById('remainingCardPrice').textContent = `₹${basePrice}`;
+        desc = `${pct}% solved • Final labs clearance`;
       }
 
-      const deliverySurcharge = (selectedDeliverySpeed === 'express') ? 50 : 0;
-      const discount = Math.min(appliedDiscountAmt, basePrice);
+      const deliverySurcharge = (State.selectedDeliverySpeed === 'express') ? 50 : 0;
+      const discount = Math.min(State.appliedDiscountAmt, basePrice);
       const total = Math.max(0, basePrice + deliverySurcharge - discount);
 
-      document.getElementById('summaryItemTitle').textContent = title;
-      document.getElementById('summaryItemDesc').textContent = desc;
-      document.getElementById('summaryItemPrice').textContent = `₹${basePrice}`;
-      document.getElementById('subtotalDisplay').textContent = `₹${basePrice}`;
-      document.getElementById('deliveryDisplay').textContent = (selectedDeliverySpeed === 'express') ? "+₹50" : "FREE";
-      document.getElementById('discountDisplay').textContent = (discount > 0) ? `-₹${discount}` : "₹0";
-      document.getElementById('summaryTotal').textContent = `₹${total}`;
-      document.getElementById('payBtnLabel').textContent = `PAY ₹${total}`;
+      // Update DOM
+      const titleEl = document.getElementById('summaryItemTitle');
+      const descEl = document.getElementById('summaryItemDesc');
+      const priceEl = document.getElementById('summaryItemPrice');
+      const subtotalEl = document.getElementById('subtotalDisplay');
+      const deliveryEl = document.getElementById('deliveryDisplay');
+      const discountEl = document.getElementById('discountDisplay');
+      const totalEl = document.getElementById('summaryTotal');
+      const payLabelEl = document.getElementById('payBtnLabel');
+
+      if (titleEl) titleEl.textContent = title;
+      if (descEl) descEl.textContent = desc;
+      if (priceEl) priceEl.textContent = `₹${basePrice}`;
+      if (subtotalEl) subtotalEl.textContent = `₹${basePrice}`;
+      if (deliveryEl) deliveryEl.textContent = (State.selectedDeliverySpeed === 'express') ? "+₹50" : "FREE";
+      if (discountEl) discountEl.textContent = (discount > 0) ? `-₹${discount}` : "₹0";
+      if (totalEl) totalEl.textContent = `₹${total}`;
+      if (payLabelEl) payLabelEl.textContent = `PAY ₹${total}`;
     }
 
-    // Drag & Drop Screenshot Handling
+    // --- 8. SCREENSHOT DRAG & DROP HANDLING ---
     const dropzone = document.getElementById('dropzone');
     const fileInput = document.getElementById('fileInput');
     const previewGrid = document.getElementById('previewGrid');
@@ -783,66 +879,161 @@
       dropzone.addEventListener('drop', (e) => {
         e.preventDefault();
         dropzone.classList.remove('border-[#6366f1]', 'bg-[#f7f7ff]');
-        handleDropFiles(e.dataTransfer.files);
+        handleFiles(e.dataTransfer.files);
       });
-      fileInput.addEventListener('change', (e) => handleDropFiles(e.target.files));
+      fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
     }
 
-    function handleDropFiles(files) {
+    function handleFiles(files) {
       if (!files || files.length === 0) return;
-      previewGrid.classList.remove('hidden');
+      if (previewGrid) previewGrid.classList.remove('hidden');
 
-      Array.from(files).forEach((file, idx) => {
+      Array.from(files).forEach((file) => {
         if (!file.type.startsWith('image/')) return;
         const reader = new FileReader();
         reader.onload = (e) => {
-          uploadedImages.push({ name: file.name, url: e.target.result });
-          if (window.CampusTick) {
-            window.CampusTick.State.uploadedScreenshots.push({ name: file.name, dataUrl: e.target.result });
-          }
-          document.getElementById('uploadStatusText').textContent = `${uploadedImages.length} screenshot(s) attached`;
+          State.uploadedScreenshots.push({ name: file.name, url: e.target.result });
+          
+          const statusText = document.getElementById('uploadStatusText');
+          if (statusText) statusText.textContent = `${State.uploadedScreenshots.length} screenshot(s) attached`;
 
-          const item = document.createElement('div');
-          item.className = "relative rounded-[6px] overflow-hidden border border-[#e5e7eb] aspect-video bg-white group";
-          item.innerHTML = `
-            <img src="${e.target.result}" class="w-full h-full object-cover">
-            <button type="button" onclick="removeImg(${uploadedImages.length - 1}, this)" class="absolute top-1 right-1 w-4 h-4 rounded-full bg-black/70 hover:bg-red-600 text-white flex items-center justify-center text-[9px]">✕</button>
-          `;
-          previewGrid.appendChild(item);
+          if (previewGrid) {
+            const item = document.createElement('div');
+            item.className = "relative rounded-[6px] overflow-hidden border border-[#e5e7eb] aspect-video bg-white group";
+            item.innerHTML = `
+              <img src="${e.target.result}" class="w-full h-full object-cover">
+              <button type="button" onclick="removeScreenshot(${State.uploadedScreenshots.length - 1}, this)" class="absolute top-1 right-1 w-4 h-4 rounded-full bg-black/70 hover:bg-red-600 text-white flex items-center justify-center text-[9px]">✕</button>
+            `;
+            previewGrid.appendChild(item);
+          }
         };
         reader.readAsDataURL(file);
       });
     }
 
-    function removeImg(idx, btn) {
-      uploadedImages.splice(idx, 1);
-      if (window.CampusTick) {
-        window.CampusTick.State.uploadedScreenshots.splice(idx, 1);
-      }
+    function removeScreenshot(idx, btn) {
+      State.uploadedScreenshots.splice(idx, 1);
       btn.closest('.relative').remove();
-      if (uploadedImages.length === 0) {
-        previewGrid.classList.add('hidden');
-        document.getElementById('uploadStatusText').textContent = "Upload a completion screenshot for review.";
+      const statusText = document.getElementById('uploadStatusText');
+      if (State.uploadedScreenshots.length === 0) {
+        if (previewGrid) previewGrid.classList.add('hidden');
+        if (statusText) statusText.textContent = "Click or drop screenshots here (PNG, JPG, WEBP)";
       } else {
-        document.getElementById('uploadStatusText').textContent = `${uploadedImages.length} screenshot(s) attached`;
+        if (statusText) statusText.textContent = `${State.uploadedScreenshots.length} screenshot(s) attached`;
       }
     }
 
-    function handleDiscountRequest() {
-      const ig = document.getElementById('igHandle').value.trim().replace(/^@/, '');
-      const user = document.getElementById('ccUsername').value.trim();
-      const pass = document.getElementById('ccPassword').value.trim();
+    // --- 9. CREDENTIALS VALIDATION ---
+    function validateCredentials() {
+      const ig = document.getElementById('igHandle')?.value?.trim()?.replace(/^@/, '');
+      const user = document.getElementById('ccUsername')?.value?.trim();
+      const pass = document.getElementById('ccPassword')?.value?.trim();
 
       if (!ig || !user || !pass) {
-        alert("Please provide all 3 required fields:
-1. Instagram ID
-2. CodeChef username
-3. CodeChef password");
+        alert("Please provide all 3 required fields:\n1. Instagram ID\n2. CodeChef username\n3. CodeChef password");
+        return null;
+      }
+      return { ig, user, pass };
+    }
+
+    // --- 10. DEDICATED DISCOUNT QUEUE SUBMISSION (SUPABASE + OWNER ALERT) ---
+    async function submitDiscountQueue() {
+      const creds = validateCredentials();
+      if (!creds) return;
+
+      // Proof requirement for discount queue
+      if (State.uploadedScreenshots.length === 0) {
+        alert("Please upload at least one screenshot of your CodeChef syllabus as proof so we can review your work!");
+        if (fileInput) fileInput.click();
         return;
       }
 
-      if (window.CampusTick && window.CampusTick.requestDiscount) {
-        window.CampusTick.requestDiscount();
+      const btn = document.getElementById('reviewDiscountBtn');
+      const btnText = document.getElementById('reviewDiscountBtnText');
+      if (btn) btn.disabled = true;
+      if (btnText) btnText.textContent = "⏳ Adding to Review Queue...";
+
+      const orderId = "ORD-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+      let modulesSelected = [];
+      if (State.selectedTier === 'individual') {
+        modulesSelected = Object.keys(State.individualModules);
+      } else {
+        modulesSelected = [`REMAINING_${State.remainingPercentage}PCT`];
+      }
+
+      const totalStr = document.getElementById('summaryTotal')?.textContent?.replace(/[^\d]/g, '') || "50";
+      const amount = parseInt(totalStr, 10);
+      const notes = document.getElementById('orderNotes')?.value?.trim() || "";
+      const phone = document.getElementById('whatsappNumber')?.value?.trim() || null;
+
+      const payload = {
+        id: orderId,
+        ig_handle: creds.ig,
+        codechef_username: creds.user,
+        codechef_password: creds.pass,
+        phone: phone,
+        modules: modulesSelected,
+        speed: State.selectedDeliverySpeed,
+        coupon: State.appliedCoupon,
+        amount: amount,
+        screenshot: `${State.uploadedScreenshots.length} screenshot(s) attached`,
+        notes: `[DISCOUNT_QUEUE] Tier: ${State.selectedTier} | Notes: ${notes}`,
+        status: 'PENDING',
+        created_at: new Date().toISOString()
+      };
+
+      // Push to Supabase orders table with return=minimal (201 Created)
+      try {
+        await fetch(`${SUPABASE_CONFIG.URL}/rest/v1/orders`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_CONFIG.ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_CONFIG.ANON_KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.warn("Supabase queue note:", err);
+      }
+
+      // Store in localStorage for 48-Hour Live Turnaround Watchdog
+      localStorage.setItem('campustick_active_order', JSON.stringify(payload));
+      State.currentOrder = payload;
+
+      if (btn) btn.disabled = false;
+      if (btnText) btnText.textContent = "📩 Request Discount & Submit to Queue";
+
+      // Pre-fill owner email notification
+      const subject = encodeURIComponent(`[DISCOUNT QUEUE] @${creds.ig} - CodeChef ML (${modulesSelected.join(', ')})`);
+      const body = encodeURIComponent(
+        `Hi CampusTick Owner,\n\nA new student requested a discount review in your Supabase Queue:\n\n` +
+        `• Order ID: ${orderId}\n` +
+        `• Instagram: @${creds.ig}\n` +
+        `• CodeChef Username: ${creds.user}\n` +
+        `• Password: ${creds.pass}\n` +
+        `• Tier: ${State.selectedTier}\n` +
+        `• Scope: ${modulesSelected.join(', ')}\n` +
+        `• Proof Attached: ${State.uploadedScreenshots.length} screenshot(s)\n` +
+        `• Notes: ${notes}\n\n` +
+        `Please check their syllabus and DM them on Instagram with their final quote!`
+      );
+      window.open(`mailto:${SUPABASE_CONFIG.OWNER_EMAIL}?subject=${subject}&body=${body}`, '_blank');
+
+      // Reveal Live SLA Watchdog
+      revealLiveTimer();
+
+      alert(`✅ Your discount request has been added to our Review Queue!\n\nOrder ID: ${orderId}\nInstagram: @${creds.ig}\nCodeChef: ${creds.user}\n\nYour 48-Hour Live Turnaround Watchdog has started below. The owner will review your syllabus and message you with your final price!`);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // --- 11. 48-HOUR LIVE WATCHDOG TIMER ---
+    function revealLiveTimer() {
+      const section = document.getElementById('liveTrackerSection');
+      if (section) {
+        section.classList.remove('hidden');
+        startLiveTimer();
       }
     }
 
@@ -851,103 +1042,173 @@
       if (!section) return;
 
       if (section.classList.contains('hidden')) {
-        let activeOrder = null;
-        try {
-          activeOrder = JSON.parse(localStorage.getItem('campustick_active_order') || 'null');
-        } catch(e){}
-
-        if (!activeOrder) {
+        let order = getStoredOrder();
+        if (!order) {
           const userLookup = prompt("Enter your Instagram handle or CodeChef username to load your 48-Hour Live Counter:");
           if (!userLookup) return;
-          activeOrder = {
+          order = {
             id: 'ORD-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
             ig_handle: userLookup.trim().replace(/^@/, ''),
             codechef_username: userLookup.trim(),
             status: 'ACCEPTED',
             created_at: new Date().toISOString()
           };
-          localStorage.setItem('campustick_active_order', JSON.stringify(activeOrder));
+          localStorage.setItem('campustick_active_order', JSON.stringify(order));
         }
-
-        if (window.CampusTick) {
-          window.CampusTick.State.activeOrder = activeOrder;
-          window.CampusTick.revealLiveTimer();
-        } else {
-          section.classList.remove('hidden');
-        }
+        State.currentOrder = order;
+        revealLiveTimer();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         section.classList.add('hidden');
       }
     }
 
+    function startLiveTimer() {
+      const order = State.currentOrder || getStoredOrder();
+      if (!order) return;
+
+      const nameEl = document.getElementById('trackerCustomerName');
+      const orderIdEl = document.getElementById('trackerOrderIdDisplay');
+      const badgeEl = document.getElementById('trackerStatusBadge');
+      const subtextEl = document.getElementById('trackerSubtext');
+
+      if (nameEl) nameEl.textContent = `@${(order.ig_handle || '').replace(/^@/, '')}`;
+      if (orderIdEl) orderIdEl.textContent = order.id || 'ORD-ACTIVE';
+
+      if (badgeEl && subtextEl) {
+        if (order.notes && order.notes.includes('[DISCOUNT_QUEUE]')) {
+          badgeEl.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200 flex items-center gap-1.5";
+          badgeEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span> Discount Queue Review In Progress`;
+          subtextEl.textContent = "The owner is reviewing your uploaded syllabus screenshots to calculate your final customized amount.";
+        } else {
+          badgeEl.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#f7f7ff] text-[#5053d4] border border-[#6366f1]/30 flex items-center gap-1.5";
+          badgeEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-[#6366f1] animate-ping"></span> 48-Hour Live Turnaround SLA Active`;
+          subtextEl.textContent = "Standard Turnaround: Guaranteed 100% completion & verified certificate within 48 Hours.";
+        }
+      }
+
+      const createdAt = new Date(order.created_at || Date.now()).getTime();
+      const turnaroundMs = 48 * 60 * 60 * 1000;
+      const deadline = new Date(createdAt + turnaroundMs);
+
+      const deadlineEl = document.getElementById('timerDeadlineDisplay');
+      if (deadlineEl) {
+        deadlineEl.textContent = `Target: ${deadline.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} at ${deadline.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+      }
+
+      if (State.timerInterval) clearInterval(State.timerInterval);
+
+      function tick() {
+        const now = Date.now();
+        const diff = deadline.getTime() - now;
+
+        const hEl = document.getElementById('timerHours');
+        const mEl = document.getElementById('timerMinutes');
+        const sEl = document.getElementById('timerSeconds');
+        const barEl = document.getElementById('trackerProgressBar');
+        const pctEl = document.getElementById('trackerProgressPercentText');
+
+        if (diff <= 0) {
+          if (hEl) hEl.textContent = "00";
+          if (mEl) mEl.textContent = "00";
+          if (sEl) sEl.textContent = "00";
+          if (barEl) barEl.style.width = "100%";
+          if (pctEl) pctEl.textContent = "48-Hour SLA Completed!";
+          return;
+        }
+
+        const hrs = Math.floor(diff / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        if (hEl) hEl.textContent = String(hrs).padStart(2, '0');
+        if (mEl) mEl.textContent = String(mins).padStart(2, '0');
+        if (sEl) sEl.textContent = String(secs).padStart(2, '0');
+
+        const elapsed = now - createdAt;
+        const pct = Math.min(100, Math.max(2, Math.round((elapsed / turnaroundMs) * 100)));
+        if (barEl) barEl.style.width = `${pct}%`;
+        if (pctEl) pctEl.textContent = `${hrs} Hours Remaining out of 48h SLA`;
+      }
+
+      tick();
+      State.timerInterval = setInterval(tick, 1000);
+    }
+
+    // --- 12. PROCEED TO PAYMENT (DIRECT ORDER) ---
     async function handleProceedPayment(e) {
       e.preventDefault();
 
-      const ig = document.getElementById('igHandle').value.trim().replace(/^@/, '');
-      const user = document.getElementById('ccUsername').value.trim();
-      const pass = document.getElementById('ccPassword').value.trim();
-      const phone = document.getElementById('whatsappNumber')?.value?.trim() || null;
-      const notes = document.getElementById('orderNotes')?.value?.trim() || null;
+      const creds = validateCredentials();
+      if (!creds) return;
 
-      if (!ig || !user || !pass) {
-        alert("Please provide your Instagram handle, CodeChef username, and password.");
+      // Proof requirement for partial courses
+      if (State.selectedTier !== 'complete' && State.uploadedScreenshots.length === 0) {
+        alert("Please attach a syllabus screenshot proof for partial coursework clearance.");
+        if (fileInput) fileInput.click();
         return;
       }
 
-      let modules = [];
-      if (selectedTier === 'complete') {
-        modules = ['ALL_MODULES_1_TO_7'];
-      } else if (selectedTier === 'individual') {
-        const checked = Array.from(document.querySelectorAll('.mod-checkbox:checked'));
-        if (checked.length === 0) {
-          alert("Please select at least one module!");
-          return;
-        }
-        modules = checked.map(c => c.getAttribute('data-mod'));
-      } else {
-        modules = [`REMAINING_${selectedRemainingModule}_${remainingPercentage}PCT`];
+      // Check module selection for individual
+      if (State.selectedTier === 'individual' && Object.keys(State.individualModules).length === 0) {
+        alert("Please pick at least one module from the M1–M7 line!");
+        return;
       }
 
-      const totalStr = document.getElementById('summaryTotal').textContent.replace(/[^\d]/g, '');
+      const totalStr = document.getElementById('summaryTotal')?.textContent?.replace(/[^\d]/g, '') || "250";
       const amount = parseInt(totalStr, 10);
       const orderId = "ORD-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+      const phone = document.getElementById('whatsappNumber')?.value?.trim() || null;
+      const notes = document.getElementById('orderNotes')?.value?.trim() || null;
+
+      let modulesList = [];
+      if (State.selectedTier === 'complete') {
+        modulesList = ['ALL_MODULES_1_TO_7'];
+      } else if (State.selectedTier === 'individual') {
+        modulesList = Object.keys(State.individualModules);
+      } else {
+        modulesList = [`REMAINING_${State.remainingPercentage}PCT`];
+      }
 
       const payload = {
         id: orderId,
-        ig_handle: ig,
-        codechef_username: user,
-        codechef_password: pass,
+        ig_handle: creds.ig,
+        codechef_username: creds.user,
+        codechef_password: creds.pass,
         phone: phone,
-        modules: modules,
-        speed: selectedDeliverySpeed,
-        coupon: appliedCoupon,
+        modules: modulesList,
+        speed: State.selectedDeliverySpeed,
+        coupon: State.appliedCoupon,
         amount: amount,
+        screenshot: State.uploadedScreenshots.length > 0 ? `${State.uploadedScreenshots.length} screenshot(s)` : null,
         notes: notes,
-        status: 'PAYMENT_PENDING',
+        status: 'PENDING',
         created_at: new Date().toISOString()
       };
 
-      currentOrder = payload;
+      State.currentOrder = payload;
       localStorage.setItem('campustick_active_order', JSON.stringify(payload));
 
       showPaymentModal(payload);
 
-      // Open Razorpay in background
+      // Open Razorpay handle in background
       try {
         window.open("https://razorpay.me/@campustick", '_blank');
       } catch (e) {}
 
-      // Supabase async dispatch
-      fetch("https://wzemfaudaihcyqlyaoqr.supabase.co/rest/v1/orders", {
-        method: 'POST',
-        headers: {
-          'apikey': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZW1mYXVkYWloY3lxbHlhb3FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkxMjUwNDcsImV4cCI6MjEwNDcwMTA0N30.KWJ4nDmrANWqyJ7D7JDGSt-IBf-VHWWabNuoi9HTnb4",
-          'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZW1mYXVkYWloY3lxbHlhb3FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkxMjUwNDcsImV4cCI6MjEwNDcwMTA0N30.KWJ4nDmrANWqyJ7D7JDGSt-IBf-VHWWabNuoi9HTnb4",
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      }).catch(err => console.warn("Supabase note:", err));
+      // Background sync to Supabase
+      try {
+        fetch(`${SUPABASE_CONFIG.URL}/rest/v1/orders`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_CONFIG.ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_CONFIG.ANON_KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(payload)
+        }).catch(err => console.warn("Supabase async dispatch:", err));
+      } catch (e) {}
     }
 
     function showPaymentModal(data) {
@@ -959,42 +1220,42 @@
       document.getElementById('rzpAmountLabel').textContent = data.amount;
 
       const upiLink = `upi://pay?pa=nwordplaylist@okaxis&pn=CampusTick&am=${data.amount}&cu=INR&tn=${data.id}`;
-      document.getElementById('upiPayLink').href = upiLink;
+      const upiBtn = document.getElementById('upiPayLink');
+      if (upiBtn) upiBtn.href = upiLink;
 
       document.getElementById('paymentModal').classList.remove('hidden');
     }
 
     async function verifyAndConfirmPayment() {
-      const utr = document.getElementById('utrInput').value.trim();
+      const utr = document.getElementById('utrInput')?.value?.trim();
       if (!utr) {
         alert("Please enter your UPI UTR reference or Razorpay payment ID to confirm.");
         return;
       }
 
-      document.getElementById('verifyBtnLabel').textContent = "VERIFYING...";
+      const vBtn = document.getElementById('verifyBtnLabel');
+      if (vBtn) vBtn.textContent = "VERIFYING TRANSACTION...";
 
-      if (currentOrder) {
-        currentOrder.utr = utr;
-        currentOrder.status = 'ACCEPTED';
+      if (State.currentOrder) {
+        State.currentOrder.utr = utr;
+        State.currentOrder.status = 'ACCEPTED';
 
-        fetch(`https://wzemfaudaihcyqlyaoqr.supabase.co/rest/v1/orders?id=eq.${currentOrder.id}`, {
+        // Update in Supabase
+        fetch(`${SUPABASE_CONFIG.URL}/rest/v1/orders?id=eq.${State.currentOrder.id}`, {
           method: 'PATCH',
           headers: {
-            'apikey': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZW1mYXVkYWloY3lxbHlhb3FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkxMjUwNDcsImV4cCI6MjEwNDcwMTA0N30.KWJ4nDmrANWqyJ7D7JDGSt-IBf-VHWWabNuoi9HTnb4",
-            'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZW1mYXVkYWloY3lxbHlhb3FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkxMjUwNDcsImV4cCI6MjEwNDcwMTA0N30.KWJ4nDmrANWqyJ7D7JDGSt-IBf-VHWWabNuoi9HTnb4",
+            'apikey': SUPABASE_CONFIG.ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_CONFIG.ANON_KEY}`,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            notes: (currentOrder.notes ? currentOrder.notes + " | " : "") + `UTR: ${utr}`,
+            notes: (State.currentOrder.notes ? State.currentOrder.notes + " | " : "") + `UTR: ${utr}`,
             status: 'ACCEPTED'
           })
         }).catch(() => {});
 
-        localStorage.setItem('campustick_active_order', JSON.stringify(currentOrder));
-        if (window.CampusTick) {
-          window.CampusTick.State.activeOrder = currentOrder;
-          window.CampusTick.revealLiveTimer();
-        }
+        localStorage.setItem('campustick_active_order', JSON.stringify(State.currentOrder));
+        revealLiveTimer();
       }
 
       await new Promise(r => setTimeout(r, 600));
@@ -1002,24 +1263,17 @@
       document.getElementById('modalStepPayment').classList.add('hidden');
       document.getElementById('modalStepConfirmed').classList.remove('hidden');
 
-      const amt = currentOrder ? currentOrder.amount : 50;
+      const amt = State.currentOrder ? State.currentOrder.amount : 250;
       document.getElementById('confirmedAmount').textContent = `₹${amt}`;
 
-      const receipt = `✅ PAYMENT RECEIVED: ₹${amt}
-` +
-        `📦 Order ID: ${currentOrder ? currentOrder.id : 'ORD-CONFIRMED'}
-` +
-        `👤 Instagram: @${currentOrder ? currentOrder.ig_handle : ''}
-` +
-        `💻 CodeChef: ${currentOrder ? currentOrder.codechef_username : ''}
-` +
-        `⚡ Delivery Guarantee: 48-Hour Live Turnaround SLA
-` +
-        `🔍 UTR Ref: ${utr}
-` +
-        `━━━━━━━━━━━━━━━━━━━━━━━━━━━
-` +
-        `Veere relax! We got your payment. Your credentials are 100% confidential. Your CodeChef coursework will be completed with genuine green ticks & verified certificate! 🚀`;
+      const receipt = `✅ PAYMENT RECORDED: ₹${amt}\n` +
+        `📦 Order ID: ${State.currentOrder ? State.currentOrder.id : 'ORD-CONFIRMED'}\n` +
+        `👤 Instagram: @${State.currentOrder ? State.currentOrder.ig_handle : ''}\n` +
+        `💻 CodeChef: ${State.currentOrder ? State.currentOrder.codechef_username : ''}\n` +
+        `⚡ Delivery Guarantee: 48-Hour Live SLA\n` +
+        `🔍 UTR Ref: ${utr}\n` +
+        `━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+        `Veere relax! We got your payment. Your credentials are 100% confidential. Your CodeChef coursework will be completed with green ticks & verified certificate! 🚀`;
 
       document.getElementById('confirmedReceiptText').textContent = receipt;
     }
