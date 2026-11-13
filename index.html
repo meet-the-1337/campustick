@@ -848,7 +848,7 @@
   <!-- 2. TRACK REQUEST STATUS & REPLIES MODAL -->
   <div id="requestStatusModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm hidden" onclick="closeStatusModalOnBackdrop(event)">
     <div class="bg-white rounded-[10px] max-w-lg w-full p-6 shadow-2xl border border-[#e5e7eb] relative max-h-[92vh] overflow-y-auto" onclick="event.stopPropagation()">
-      <button type="button" onclick="closeModal('requestStatusModal')" class="absolute top-4 right-4 text-[#979ba7] hover:text-[#20232d] cursor-pointer">
+      <button type="button" id="closeStatusModalTopBtn" onclick="closeModal('requestStatusModal')" class="absolute top-4 right-4 text-[#979ba7] hover:text-[#20232d] cursor-pointer">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
 
