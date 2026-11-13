@@ -117,20 +117,20 @@
     if (deliveryEl) {
       if (State.currentSpeed === 'emergency') {
         deliveryEl.textContent = "+₹50 (Before 8 AM)";
-        deliveryEl.className = "font-bold text-[#E2F952] font-mono-jb";
+        deliveryEl.className = "font-bold text-indigo-600 num-clean";
       } else {
         deliveryEl.textContent = "FREE (48-Hour SLA)";
-        deliveryEl.className = "font-medium text-[#E2F952] font-mono-jb";
+        deliveryEl.className = "font-medium text-gray-500 num-clean";
       }
     }
 
     if (discountEl) {
       if (discount > 0) {
         discountEl.textContent = `-₹${discount}`;
-        discountEl.className = "font-bold text-[#E2F952] font-mono-jb";
+        discountEl.className = "font-bold text-emerald-600 num-clean";
       } else {
         discountEl.textContent = "₹0";
-        discountEl.className = "font-medium text-gray-500 font-mono-jb";
+        discountEl.className = "font-medium text-gray-500 num-clean";
       }
     }
 
@@ -266,12 +266,12 @@
 
     if (badgeEl && subtextEl) {
       if (order.status === 'DISCOUNT_REVIEW_PENDING') {
-        badgeEl.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold font-mono-jb uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1.5";
-        badgeEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> Discount Review In Progress`;
+        badgeEl.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200 flex items-center gap-1.5";
+        badgeEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span> Discount Review In Progress`;
         subtextEl.textContent = "The owner is reviewing your uploaded syllabus screenshots to calculate your final discounted amount.";
       } else {
-        badgeEl.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold font-mono-jb uppercase tracking-wider bg-[#E2F952]/15 text-[#E2F952] border border-[#E2F952]/30 flex items-center gap-1.5";
-        badgeEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-[#E2F952] animate-ping"></span> 48-Hour Live Turnaround SLA Active`;
+        badgeEl.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 border border-indigo-200 flex items-center gap-1.5";
+        badgeEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-indigo-600 animate-ping"></span> 48-Hour Live Turnaround SLA Active`;
         subtextEl.textContent = "Standard Turnaround: Guaranteed 100% completion & verified certificate within 48 Hours.";
       }
     }

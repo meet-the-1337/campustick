@@ -1,32 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  
-  <!-- SEO & OPEN GRAPH METADATA -->
-  <title>campus.tick · CodeChef Coursework Clearance & Certification</title>
-  <meta name="description" content="Instant 100% CodeChef Machine Learning coursework clearance and verified certificate delivery for engineering students. Tension ni leni veere, aapan baithe aan!">
-  <meta name="keywords" content="CampusTick, CodeChef, Machine Learning, Coursework Clearance, Verified Certificate, Engineering">
+  <title>CampusTick · Secure Checkout</title>
+  <meta name="description" content="Machine learning coursework clearance for engineering students.">
   <meta name="author" content="CampusTick">
-  <meta name="theme-color" content="#090A0E">
+  <meta name="theme-color" content="#6366f1">
   <link rel="canonical" href="https://campustick-app.vercel.app/">
 
-  <!-- OpenGraph / Social Previews -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="campus.tick">
-  <meta property="og:url" content="https://campustick-app.vercel.app/">
-  <meta property="og:title" content="campus.tick · CodeChef Coursework Clearance & Certification">
-  <meta property="og:description" content="100% verified CodeChef lab clearance and official certificate delivered directly before 8:00 AM. Tension ni leni veere, aapan baithe aan 😎">
-
   <!-- Favicon SVG -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E2F952'%3E%3Cpath d='M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'%3E%3Cpath d='M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'/%3E%3C/svg%3E">
 
-  <!-- Google Typography: Space Grotesk (Headlines) + JetBrains Mono (Prices/Badges) + Plus Jakarta Sans (Body) -->
+  <!-- Inter Google Font matching Figma exactly -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -34,20 +24,23 @@
       theme: {
         extend: {
           fontFamily: {
-            display: ['"Space Grotesk"', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
           },
           colors: {
-            obsidian: '#090A0E',
-            panel: '#12141A',
-            panelLight: '#181B24',
-            lime: '#E2F952',
-            limeHover: '#CBE62F',
-            borderLine: '#272A34',
-            crimson: '#FF3B30',
-            textMute: 'rgba(255, 255, 255, 0.56)',
-            textDim: 'rgba(255, 255, 255, 0.35)',
+            brand: {
+              50: '#f7f7ff',
+              100: '#eef2ff',
+              500: '#6366f1',
+              600: '#5053d4',
+              700: '#4338ca',
+            },
+            ftext: {
+              dark: '#20232d',
+              muted: '#6b7080',
+              placeholder: '#979ba7',
+            },
+            fborder: '#e5e7eb',
+            fbg: '#fafafb',
           }
         }
       }
@@ -55,268 +48,101 @@
   </script>
 
   <style>
-    :root {
-      --bg: #090A0E;
-      --panel: #12141A;
-      --lime: #E2F952;
-      --border: #272A34;
-      --text: #F4F5F7;
-      --mute: rgba(255, 255, 255, 0.56);
-    }
     body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #ffffff;
+      color: #20232d;
       -webkit-font-smoothing: antialiased;
-    }
-    h1, h2, h3, h4, .font-display {
-      font-family: 'Space Grotesk', sans-serif;
-      letter-spacing: -0.03em;
-    }
-    .font-mono-jb {
-      font-family: 'JetBrains Mono', monospace;
     }
     input:focus, textarea:focus, select:focus {
       outline: none;
-      border-color: #E2F952 !important;
-      box-shadow: 0 0 0 2px rgba(226, 249, 82, 0.2) !important;
+      border-color: #6366f1 !important;
+      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15) !important;
     }
-    .card-selected {
-      border-color: #E2F952 !important;
-      background-color: #161922 !important;
-      box-shadow: 0 0 0 1px #E2F952, 0 4px 20px -2px rgba(226, 249, 82, 0.12) !important;
-    }
-    .card-inactive {
-      background-color: #12141A;
-      border-color: #272A34;
-    }
-    .card-inactive:hover {
-      border-color: #3e4453;
-    }
-    /* Custom Scrollbars */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #090A0E;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #272A34;
-      border-radius: 3px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #3e4453;
+    .num-clean {
+      font-variant-numeric: tabular-nums;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-[#E2F952] selection:text-black bg-[#090A0E] text-[#F4F5F7]">
+<body class="min-h-screen bg-white text-[#20232d] flex flex-col justify-between selection:bg-indigo-100 selection:text-indigo-900">
 
-  <!-- TOP RUNNING TICKER / LIVE RADAR -->
-  <div class="bg-[#E2F952] text-black font-mono-jb text-xs font-extrabold py-2 px-4 flex items-center justify-between border-b-2 border-black uppercase tracking-wider">
-    <div class="flex items-center gap-2 max-w-6xl mx-auto w-full px-2">
-      <span class="inline-block w-2.5 h-2.5 bg-black rounded-full animate-ping"></span>
-      <span>⚡ OVERNIGHT LAB CLEARANCE RADAR: GUARANTEED BEFORE 8:00 AM • 100% GENUINE SERVER-SIDE GREEN TICKS</span>
-    </div>
-  </div>
+  <!-- HEADER (Exact Match: 80px, border-b #e5e7eb, px-[100px]) -->
+  <header class="border-b border-[#e5e7eb] bg-white sticky top-0 z-30">
+    <div class="max-w-[1200px] mx-auto h-[80px] px-6 lg:px-[100px] flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-[9px]">
+        <div class="w-[28px] h-[28px] rounded-[6px] bg-[#6366f1] flex items-center justify-center text-white shadow-sm shrink-0">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <span class="text-[20px] font-bold text-[#20232d] tracking-[-0.6px]">CampusTick</span>
+      </a>
 
-  <!-- STICKY HEADER NAVBAR -->
-  <header class="bg-[#090A0E]/90 backdrop-blur-md border-b border-[#272A34] sticky top-0 z-40 transition-all">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <a href="#" class="flex items-center gap-2.5 group">
-          <div class="w-8 h-8 rounded-lg bg-[#E2F952] flex items-center justify-center text-black font-mono-jb font-black text-sm shadow-[0_0_12px_rgba(226,249,82,0.4)]">
-            CT
-          </div>
-          <span class="text-xl font-black text-white tracking-tight font-display">campus<span class="text-[#E2F952]">.tick</span></span>
-        </a>
-        <span class="hidden md:inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono-jb font-bold bg-[#181B24] text-[#E2F952] border border-[#272A34]">
-          CAMPUS • 2028 & 2027
-        </span>
-      </div>
-      
-      <nav class="hidden md:flex items-center gap-7 text-xs font-mono-jb font-semibold text-gray-400">
-        <a href="#how-it-works" class="hover:text-[#E2F952] transition-colors">How We Solve</a>
-        <a href="#courses" class="hover:text-[#E2F952] transition-colors">Courses</a>
-        <a href="#offers" class="hover:text-[#E2F952] transition-colors">Offers & Pricing</a>
-        <a href="#order" class="hover:text-[#E2F952] transition-colors">Order Now</a>
-      </nav>
-
-      <div class="flex items-center gap-2.5">
-        <button type="button" id="toggleTrackerBtn" onclick="toggleTrackerView()" class="px-3 py-2 rounded-lg bg-[#181B24] hover:bg-[#222632] text-gray-300 hover:text-[#E2F952] border border-[#272A34] font-mono-jb font-bold text-xs flex items-center gap-1.5 transition-all">
+      <!-- Right Actions: Track SLA & Secure Checkout -->
+      <div class="flex items-center gap-4">
+        <button type="button" onclick="toggleTrackerView()" class="px-2.5 py-1.5 rounded-[6px] bg-[#f7f7ff] hover:bg-[#eef2ff] text-[#5053d4] border border-[#6366f1]/20 font-medium text-[12px] flex items-center gap-1.5 transition-colors">
           <span>⏱️</span>
           <span>Track 48h SLA</span>
         </button>
-        <a href="#order" class="px-4 py-2 rounded-lg bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-xs tracking-tight transition-all shadow-[0_0_15px_rgba(226,249,82,0.25)]">
-          Clear My Labs ⚡
-        </a>
+        <div class="flex items-center gap-[6px] text-[#6b7080] text-[12px]">
+          <svg class="w-[14px] h-[14px] text-[#6b7080]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+          <span>Secure checkout</span>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- LIVE 48-HOUR ORDER SLA WATCHDOG SECTION -->
-  <section id="liveTrackerSection" class="hidden border-b border-[#272A34] bg-[#0E1017] py-6 transition-all duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="bg-gradient-to-r from-[#12141A] via-[#161922] to-[#12141A] rounded-2xl p-6 border border-[#272A34] shadow-2xl relative overflow-hidden">
-        <div class="absolute -right-10 -top-10 w-44 h-44 bg-[#E2F952]/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+  <section id="liveTrackerSection" class="hidden border-b border-[#e5e7eb] bg-[#f7f7ff] py-6 transition-all duration-300">
+    <div class="max-w-[1200px] mx-auto px-6 lg:px-[100px]">
+      <div class="bg-white rounded-[10px] p-6 border border-[#6366f1] shadow-lg shadow-indigo-50 relative overflow-hidden">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
             <div class="flex items-center gap-2 mb-2 flex-wrap">
-              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold font-mono-jb uppercase tracking-wider bg-[#E2F952]/15 text-[#E2F952] border border-[#E2F952]/30 flex items-center gap-1.5" id="trackerStatusBadge">
-                <span class="w-2 h-2 rounded-full bg-[#E2F952] animate-ping"></span>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#f7f7ff] text-[#5053d4] border border-[#6366f1]/30 flex items-center gap-1.5" id="trackerStatusBadge">
+                <span class="w-2 h-2 rounded-full bg-[#6366f1] animate-ping"></span>
                 48-Hour Live Turnaround SLA Active
               </span>
-              <span class="text-xs text-gray-400 font-mono-jb" id="trackerOrderIdDisplay">ORD-XXXXXX</span>
+              <span class="text-xs text-[#6b7080] font-medium" id="trackerOrderIdDisplay">ORD-XXXXXX</span>
             </div>
-            <h2 class="text-xl sm:text-2xl font-black text-white font-display flex items-center gap-2">
+            <h2 class="text-xl sm:text-2xl font-bold text-[#20232d] flex items-center gap-2">
               <span id="trackerCustomerName">@username</span>'s Coursework Countdown
             </h2>
-            <p class="text-xs text-gray-400 mt-1 font-sans" id="trackerSubtext">
+            <p class="text-xs text-[#6b7080] mt-1" id="trackerSubtext">
               Standard Turnaround: Guaranteed 100% completion & verified certificate within 48 Hours.
             </p>
           </div>
 
-          <!-- Digital Countdown Box -->
-          <div class="bg-[#090A0E] border border-[#272A34] rounded-xl p-4 sm:p-5 text-center min-w-[260px] shadow-inner">
-            <span class="text-[10px] text-gray-500 font-mono-jb font-bold uppercase tracking-wider block mb-1.5">Guaranteed SLA Delivery Timer</span>
-            <div class="text-3xl sm:text-4xl font-black font-mono-jb tracking-tight text-white flex items-center justify-center gap-1" id="countdownClock">
-              <span class="bg-[#181B24] px-2.5 py-1 rounded-lg text-[#E2F952]" id="timerHours">48</span>
-              <span class="text-[#E2F952] font-bold">:</span>
-              <span class="bg-[#181B24] px-2.5 py-1 rounded-lg text-[#E2F952]" id="timerMinutes">00</span>
-              <span class="text-[#E2F952] font-bold">:</span>
-              <span class="bg-[#181B24] px-2.5 py-1 rounded-lg text-[#E2F952]" id="timerSeconds">00</span>
+          <!-- COUNTDOWN DISPLAY TILES -->
+          <div class="flex items-center gap-3">
+            <div class="bg-[#f7f7ff] border border-[#e5e7eb] rounded-[6px] px-3.5 py-2.5 text-center min-w-[70px]">
+              <div class="text-2xl sm:text-3xl font-bold text-[#5053d4] num-clean" id="timerHours">48</div>
+              <div class="text-[10px] font-medium text-[#6b7080] uppercase tracking-wider mt-0.5">Hours</div>
             </div>
-            <div class="text-[11px] text-gray-400 font-mono-jb mt-2 flex items-center justify-center gap-1">
-              <span>🎯</span>
-              <span id="timerDeadlineDisplay">Target: 48 Hours from submission</span>
+            <span class="text-xl font-bold text-[#979ba7]">:</span>
+            <div class="bg-[#f7f7ff] border border-[#e5e7eb] rounded-[6px] px-3.5 py-2.5 text-center min-w-[70px]">
+              <div class="text-2xl sm:text-3xl font-bold text-[#5053d4] num-clean" id="timerMinutes">00</div>
+              <div class="text-[10px] font-medium text-[#6b7080] uppercase tracking-wider mt-0.5">Mins</div>
+            </div>
+            <span class="text-xl font-bold text-[#979ba7]">:</span>
+            <div class="bg-[#f7f7ff] border border-[#e5e7eb] rounded-[6px] px-3.5 py-2.5 text-center min-w-[70px]">
+              <div class="text-2xl sm:text-3xl font-bold text-[#5053d4] num-clean" id="timerSeconds">00</div>
+              <div class="text-[10px] font-medium text-[#6b7080] uppercase tracking-wider mt-0.5">Secs</div>
             </div>
           </div>
         </div>
 
-        <!-- Turnaround Progress Bar -->
-        <div class="mt-5 pt-4 border-t border-[#272A34] relative z-10">
-          <div class="flex items-center justify-between text-xs font-mono-jb text-gray-400 mb-1.5">
-            <span>Turnaround SLA Elapsed</span>
-            <span class="text-[#E2F952] font-bold" id="trackerProgressPercentText">48 Hours Remaining</span>
+        <!-- PROGRESS BAR & DEADLINE -->
+        <div class="mt-5 pt-4 border-t border-[#e5e7eb]">
+          <div class="flex items-center justify-between text-xs mb-2">
+            <span class="font-medium text-[#20232d]" id="trackerProgressPercentText">48 Hours Remaining out of 48h SLA</span>
+            <span class="text-[#6b7080]" id="timerDeadlineDisplay">Calculating deadline...</span>
           </div>
-          <div class="w-full h-2.5 bg-[#090A0E] rounded-full overflow-hidden border border-[#272A34] p-0.5">
-            <div id="trackerProgressBar" class="h-full bg-gradient-to-r from-[#E2F952]/60 to-[#E2F952] rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(226,249,82,0.4)]" style="width: 2%;"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HERO SECTION (DARK INDUSTRIAL SPLIT) -->
-  <section class="relative overflow-hidden pt-12 pb-16 lg:pt-16 lg:pb-20 border-b border-[#272A34] bg-[#090A0E]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        
-        <!-- LEFT HERO CONTENT -->
-        <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#12141A] text-[#E2F952] border border-[#272A34] text-xs font-mono-jb font-bold tracking-wide">
-            <span class="w-2 h-2 rounded-full bg-[#E2F952] animate-pulse"></span>
-            OVERNIGHT DELIVERY • BEFORE 8:00 AM GUARANTEED
-          </div>
-
-          <h1 class="text-4xl sm:text-5xl lg:text-[3.75rem] font-bold text-white leading-[1.02] font-display">
-            CodeChef ni <br/>
-            ho reha? <br/>
-            <span class="text-[#E2F952]">Kar dewan ge.</span>
-          </h1>
-
-          <p class="text-base sm:text-lg text-gray-400 leading-relaxed max-w-xl font-medium">
-            Tension ni leni veere, aapan baithe aan 😎 Complete hands-off lab problem clearance on CodeChef with genuine server-side green ticks, official PRO completion certificate, and verified unmanipulated proof.
-          </p>
-
-          <!-- 4 VALUE TILES (DARK INDUSTRIAL TACTILE) -->
-          <div class="grid grid-cols-2 gap-3 max-w-lg pt-1">
-            <div class="flex items-start gap-2.5 p-3.5 rounded-xl bg-[#12141A] border border-[#272A34]">
-              <span class="text-[#E2F952] text-sm">⚡</span>
-              <div>
-                <div class="text-xs font-bold text-white font-mono-jb">Before 8 AM</div>
-                <div class="text-[11px] text-gray-500">Ready before class</div>
-              </div>
-            </div>
-            <div class="flex items-start gap-2.5 p-3.5 rounded-xl bg-[#12141A] border border-[#272A34]">
-              <span class="text-[#E2F952] text-sm">🎓</span>
-              <div>
-                <div class="text-xs font-bold text-white font-mono-jb">Official Cert</div>
-                <div class="text-[11px] text-gray-500">PRO completion ID</div>
-              </div>
-            </div>
-            <div class="flex items-start gap-2.5 p-3.5 rounded-xl bg-[#12141A] border border-[#272A34]">
-              <span class="text-[#E2F952] text-sm">🔒</span>
-              <div>
-                <div class="text-xs font-bold text-white font-mono-jb">100% Private</div>
-                <div class="text-[11px] text-gray-500">Zero-knowledge creds</div>
-              </div>
-            </div>
-            <div class="flex items-start gap-2.5 p-3.5 rounded-xl bg-[#12141A] border border-[#272A34]">
-              <span class="text-[#E2F952] text-sm">✅</span>
-              <div>
-                <div class="text-xs font-bold text-white font-mono-jb">Real Green Ticks</div>
-                <div class="text-[11px] text-gray-500">Zero DOM fake tricks</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-2 flex flex-wrap items-center gap-4">
-            <a href="#order" class="px-6 py-3.5 rounded-xl bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-xs tracking-tight transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(226,249,82,0.25)]">
-              <span>Submit Details & Start Work</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-              </svg>
-            </a>
-            <a href="#offers" class="px-5 py-3.5 rounded-xl bg-[#12141A] hover:bg-[#181B24] text-white border border-[#272A34] font-mono-jb font-bold text-xs transition-all">
-              View All Offers (from ₹20)
-            </a>
-          </div>
-        </div>
-
-        <!-- RIGHT HERO STATS / INDUSTRIAL TELEMETRY TERMINAL -->
-        <div class="lg:col-span-5">
-          <div class="bg-[#12141A] rounded-2xl p-6 text-white shadow-2xl relative overflow-hidden border border-[#272A34]">
-            
-            <div class="flex items-center justify-between pb-4 border-b border-[#272A34]">
-              <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#E2F952] animate-pulse"></span>
-                <span class="text-xs font-mono-jb font-bold uppercase tracking-wider text-[#E2F952]">Live Solver Radar</span>
-              </div>
-              <span class="text-xs font-mono-jb text-gray-400">2026 Batch</span>
-            </div>
-
-            <div class="mt-5 space-y-4">
-              <!-- Metric Tile -->
-              <div class="p-4 rounded-xl bg-[#090A0E] border border-[#272A34]">
-                <div class="text-[10px] text-gray-400 font-mono-jb uppercase tracking-wider">Recent Batch Results</div>
-                <div class="text-3xl font-black text-white mt-1 font-display tracking-tight">268 / 268 (100%)</div>
-                <div class="text-xs text-[#E2F952] font-mono-jb font-medium mt-1">All 7 Modules Cleared • Certificate Claimed</div>
-              </div>
-
-              <!-- Student Testimonial Chips (Anonymized for Privacy) -->
-              <div class="space-y-2 text-xs font-mono-jb">
-                <div class="p-2.5 rounded-lg bg-[#090A0E] border border-[#272A34] flex items-center justify-between">
-                  <span class="text-gray-300">H. G. (hg****_be24)</span>
-                  <span class="text-[#E2F952] font-bold">100% Solved ✅</span>
-                </div>
-                <div class="p-2.5 rounded-lg bg-[#090A0E] border border-[#272A34] flex items-center justify-between">
-                  <span class="text-gray-300">P. D. (pd****_be24)</span>
-                  <span class="text-[#E2F952] font-bold">Certified 🎓</span>
-                </div>
-                <div class="p-2.5 rounded-lg bg-[#090A0E] border border-[#272A34] flex items-center justify-between">
-                  <span class="text-gray-300">K. C. (ke****)</span>
-                  <span class="text-[#E2F952] font-bold">Module 4 Done ✅</span>
-                </div>
-              </div>
-
-              <div class="p-3.5 rounded-xl bg-[#E2F952]/10 border border-[#E2F952]/30 text-center">
-                <span class="text-xs font-mono-jb font-bold text-[#E2F952]">Overnight Express:</span>
-                <div class="text-sm font-black text-white font-display mt-0.5">Guaranteed Done Before 8:00 AM 🚀</div>
-              </div>
-            </div>
-
+          <div class="w-full bg-[#fafafb] rounded-full h-2.5 border border-[#e5e7eb] overflow-hidden">
+            <div id="trackerProgressBar" class="bg-[#6366f1] h-full rounded-full transition-all duration-1000" style="width: 2%;"></div>
           </div>
         </div>
 
@@ -324,963 +150,623 @@
     </div>
   </section>
 
-  <!-- EMERGENCY VIVA RADAR ALERT STRIP (INSPIRED BY CAMPUS.KABADI EXAM RADAR) -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 -mt-6 relative z-10">
-    <div class="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[#FF3B30]/40 bg-[#12141A] p-5 shadow-xl">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-[#FF3B30]/15 border border-[#FF3B30]/30 flex items-center justify-center text-[#FF3B30] text-xl font-bold">
-          🚨
-        </div>
-        <div>
-          <h2 class="text-base font-bold text-white font-display tracking-wide">Emergency Lab Viva or Evaluation Tomorrow?</h2>
-          <p class="text-xs font-mono-jb text-gray-400 mt-0.5">Orders placed tonight are processed on container nodes and cleared before 8:00 AM.</p>
-        </div>
-      </div>
-      <a href="#order" class="px-4 py-2 rounded-lg bg-[#FF3B30] hover:bg-red-600 text-white font-mono-jb font-bold text-xs tracking-tight transition-all">
-        Claim 8:00 AM Slot ⚡
-      </a>
+  <!-- MAIN CHECKOUT CONTENT (Exact Match: pt-40px, pb-32px, px-[100px]) -->
+  <main class="max-w-[1200px] mx-auto w-full px-6 lg:px-[100px] pt-10 pb-12 flex-1">
+    
+    <!-- Introduction -->
+    <div class="mb-7">
+      <h1 class="text-[28px] font-bold text-[#20232d] tracking-[-0.8px] leading-tight">Checkout</h1>
+      <p class="text-[14px] text-[#6b7080] mt-2">Machine learning resources for engineering students.</p>
     </div>
-  </section>
 
-  <!-- HOW WE SOLVE (AUTONOMOUS ENGINE) -->
-  <section id="how-it-works" class="py-16 bg-[#090A0E] border-b border-[#272A34]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      
-      <div class="max-w-2xl mb-12">
-        <div class="text-xs font-mono-jb font-extrabold uppercase tracking-wider text-[#E2F952] mb-2">Autonomous Solver Engine</div>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">How We Clear Your CodeChef Without Manual Labor</h2>
-        <p class="text-sm text-gray-400 mt-2">
-          We do not use inspect-element, fake SVGs, or fragile DOM tricks. Our automated engine executes genuine test cases directly inside CodeChef's isolated containers.
-        </p>
-      </div>
+    <!-- 2-COLUMN LAYOUT (Exact Match: 576px left column, 376px right column, 48px gap) -->
+    <form id="checkoutForm" onsubmit="handleProceedPayment(event)" class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <!-- Step 1 -->
-        <div class="bg-[#12141A] p-6 rounded-2xl border border-[#272A34] relative">
-          <div class="w-10 h-10 rounded-xl bg-[#181B24] border border-[#272A34] text-[#E2F952] flex items-center justify-center font-mono-jb font-extrabold text-sm mb-4">
-            01
+      <!-- LEFT COLUMN: Order Details (lg:col-span-7 / 576px) -->
+      <div class="lg:col-span-7 space-y-7">
+
+        <!-- 1. CUSTOMER DETAILS -->
+        <div class="space-y-3.5">
+          <div class="flex items-center justify-between">
+            <h2 class="text-[15px] font-semibold text-[#20232d]">Customer details</h2>
+            <span class="text-[11px] text-[#6b7080]">* Required</span>
           </div>
-          <h3 class="text-base font-bold text-white font-display mb-2">Curriculum Audit</h3>
-          <p class="text-xs text-gray-400 leading-relaxed font-sans">
-            Engine inspects your live syllabus API, identifies exactly which problems are unattempted or failed, and skips already solved questions.
+
+          <!-- Instagram & CodeChef Username Inputs -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[12px] font-medium text-[#20232d] mb-1.5" for="igHandle">
+                Instagram ID <span class="text-[#6366f1]">*</span>
+              </label>
+              <input type="text" id="igHandle" required placeholder="@your.username" class="w-full h-[40px] text-[13px] rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] placeholder-[#979ba7] bg-white transition-all">
+            </div>
+
+            <div>
+              <label class="block text-[12px] font-medium text-[#20232d] mb-1.5" for="ccUsername">
+                CodeChef username <span class="text-[#6366f1]">*</span>
+              </label>
+              <input type="text" id="ccUsername" required placeholder="Username" class="w-full h-[40px] text-[13px] rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] placeholder-[#979ba7] bg-white transition-all">
+            </div>
+          </div>
+
+          <!-- CodeChef Password Input with Eye Toggle -->
+          <div>
+            <label class="block text-[12px] font-medium text-[#20232d] mb-1.5" for="ccPassword">
+              CodeChef password <span class="text-[#6b7080] font-normal">(only if necessary)</span> <span class="text-[#6366f1]">*</span>
+            </label>
+            <div class="relative">
+              <input type="password" id="ccPassword" required placeholder="••••••••" class="w-full h-[40px] text-[13px] rounded-[6px] border border-[#e5e7eb] pl-3 pr-10 text-[#20232d] placeholder-[#979ba7] bg-white transition-all">
+              <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-[#979ba7] hover:text-[#20232d] transition-colors">
+                <svg id="eyeIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- WhatsApp Number (optional) -->
+          <div>
+            <label class="block text-[12px] font-medium text-[#20232d] mb-1.5" for="whatsappNumber">
+              WhatsApp number <span class="text-[#6b7080] font-normal">(optional)</span>
+            </label>
+            <input type="tel" id="whatsappNumber" placeholder="+91  98765 43210" class="w-full h-[40px] text-[13px] rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] placeholder-[#979ba7] bg-white transition-all">
+          </div>
+
+          <p class="text-[11px] text-[#6b7080] pt-0.5">
+            We’ll use these details to coordinate your delivery. Strictly confidential.
           </p>
         </div>
 
-        <!-- Step 2 -->
-        <div class="bg-[#12141A] p-6 rounded-2xl border border-[#272A34] relative">
-          <div class="w-10 h-10 rounded-xl bg-[#181B24] border border-[#272A34] text-[#E2F952] flex items-center justify-center font-mono-jb font-extrabold text-sm mb-4">
-            02
+        <!-- 2. SERVICE SELECTION -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <h2 class="text-[15px] font-semibold text-[#20232d]">Service selection</h2>
+            <span class="text-[11px] text-[#6b7080]">Select one option</span>
           </div>
-          <h3 class="text-base font-bold text-white font-display mb-2">Container Injection</h3>
-          <p class="text-xs text-gray-400 leading-relaxed font-sans">
-            Automated base64 terminal sequencing injects model files (<code class="text-[#E2F952]">model.py</code>, <code class="text-[#E2F952]">main.py</code>) directly into CodeChef's Web IDE workspace.
-          </p>
-        </div>
 
-        <!-- Step 3 -->
-        <div class="bg-[#12141A] p-6 rounded-2xl border border-[#272A34] relative">
-          <div class="w-10 h-10 rounded-xl bg-[#181B24] border border-[#272A34] text-[#E2F952] flex items-center justify-center font-mono-jb font-extrabold text-sm mb-4">
-            03
-          </div>
-          <h3 class="text-base font-bold text-white font-display mb-2">Server Test Pass</h3>
-          <p class="text-xs text-gray-400 leading-relaxed font-sans">
-            All grading test-cases execute on CodeChef's servers. Our watchdog polls until 100% test-case clearance is verified.
-          </p>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="bg-[#12141A] p-6 rounded-2xl border border-[#272A34] relative">
-          <div class="w-10 h-10 rounded-xl bg-[#181B24] border border-[#272A34] text-[#E2F952] flex items-center justify-center font-mono-jb font-extrabold text-sm mb-4">
-            04
-          </div>
-          <h3 class="text-base font-bold text-white font-display mb-2">Official Proof & Cert</h3>
-          <p class="text-xs text-gray-400 leading-relaxed font-sans">
-            Official PRO certificate claimed and downloaded in PDF/PNG, plus full unmanipulated syllabus screenshot sent straight to your DM.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- COURSES WE OFFER -->
-  <section id="courses" class="py-16 bg-[#090A0E] border-b border-[#272A34]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      
-      <div class="max-w-2xl mb-12">
-        <div class="text-xs font-mono-jb font-extrabold uppercase tracking-wider text-[#E2F952] mb-2">Available Curriculums</div>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">What Courses Do We Offer?</h2>
-        <p class="text-sm text-gray-400 mt-2">
-          Specialized for university engineering & computer science lab requirements.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- Course 1: ML -->
-        <div class="p-6 rounded-2xl border border-[#E2F952]/40 bg-[#12141A] flex flex-col justify-between shadow-[0_0_20px_rgba(226,249,82,0.05)]">
-          <div>
-            <div class="inline-flex px-2 py-0.5 rounded text-[10px] font-mono-jb font-bold bg-[#E2F952] text-black mb-3">
-              MOST POPULAR
-            </div>
-            <h3 class="text-lg font-bold text-white font-display">Machine Learning</h3>
-            <p class="text-xs font-mono-jb text-[#E2F952] mb-3">UML501 • 7 Modules (268 Problems)</p>
-            <ul class="text-xs text-gray-400 space-y-1.5 mb-5 font-sans">
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Linear & Polynomial Regression</li>
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Decision Trees & Random Forests</li>
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Titanic Survival Project</li>
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> K-Means, PCA & DBSCAN</li>
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Sentiment Analysis & Perceptrons</li>
-            </ul>
-          </div>
-          <a href="#order" onclick="selectTier('bundle')" class="w-full text-center py-2.5 px-3 rounded-xl bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-xs transition-all">
-            Full Course ₹250
-          </a>
-        </div>
-
-        <!-- Course 2: DSA -->
-        <div class="p-6 rounded-2xl border border-[#272A34] bg-[#12141A] flex flex-col justify-between">
-          <div>
-            <div class="inline-flex px-2 py-0.5 rounded text-[10px] font-mono-jb font-bold bg-[#181B24] text-gray-300 border border-[#272A34] mb-3">
-              CSE / COE
-            </div>
-            <h3 class="text-lg font-bold text-white font-display">Data Structures (DSA)</h3>
-            <p class="text-xs font-mono-jb text-gray-400 mb-3">UCS406 • C++ Problem Sets</p>
-            <ul class="text-xs text-gray-400 space-y-1.5 mb-5 font-sans">
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Linked Lists, Stacks & Queues</li>
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Binary Search Trees & Heaps</li>
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Dynamic Programming & Recursion</li>
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Graph Algorithms & Traversal</li>
-            </ul>
-          </div>
-          <a href="#order" onclick="selectTier('bundle')" class="w-full text-center py-2.5 px-3 rounded-xl bg-[#181B24] hover:bg-[#222632] text-white border border-[#272A34] font-mono-jb font-bold text-xs transition-all">
-            Select Course
-          </a>
-        </div>
-
-        <!-- Course 3: DBMS -->
-        <div class="p-6 rounded-2xl border border-[#272A34] bg-[#12141A] flex flex-col justify-between">
-          <div>
-            <div class="inline-flex px-2 py-0.5 rounded text-[10px] font-mono-jb font-bold bg-[#181B24] text-gray-300 border border-[#272A34] mb-3">
-              DATABASE LAB
-            </div>
-            <h3 class="text-lg font-bold text-white font-display">DBMS Labs</h3>
-            <p class="text-xs font-mono-jb text-gray-400 mb-3">UCS310 • SQL & Relational Models</p>
-            <ul class="text-xs text-gray-400 space-y-1.5 mb-5 font-sans">
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Complex Nested SQL Queries</li>
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Joins, Group By & Aggregations</li>
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Normalization (1NF to BCNF)</li>
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Triggers & Stored Procedures</li>
-            </ul>
-          </div>
-          <a href="#order" onclick="selectTier('bundle')" class="w-full text-center py-2.5 px-3 rounded-xl bg-[#181B24] hover:bg-[#222632] text-white border border-[#272A34] font-mono-jb font-bold text-xs transition-all">
-            Select Course
-          </a>
-        </div>
-
-        <!-- Course 4: Programming -->
-        <div class="p-6 rounded-2xl border border-[#272A34] bg-[#12141A] flex flex-col justify-between">
-          <div>
-            <div class="inline-flex px-2 py-0.5 rounded text-[10px] font-mono-jb font-bold bg-[#181B24] text-gray-300 border border-[#272A34] mb-3">
-              1ST YEAR
-            </div>
-            <h3 class="text-lg font-bold text-white font-display">Computer Programming</h3>
-            <p class="text-xs font-mono-jb text-gray-400 mb-3">UES012 • C & C++ Fundamentals</p>
-            <ul class="text-xs text-gray-400 space-y-1.5 mb-5 font-sans">
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Pointers, Memory & Structs</li>
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> File Handling & Strings</li>
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> All 12 Weekly Lab Sheets</li>
-              <li class="flex items-center gap-1.5"><span class="text-[#E2F952]">✓</span> Lab Evaluation & Viva Ready</li>
-            </ul>
-          </div>
-          <a href="#order" onclick="selectTier('bundle')" class="w-full text-center py-2.5 px-3 rounded-xl bg-[#181B24] hover:bg-[#222632] text-white border border-[#272A34] font-mono-jb font-bold text-xs transition-all">
-            Select Course
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- SPECIAL OFFERS & PRICING BENTO -->
-  <section id="offers" class="py-16 bg-[#090A0E] border-b border-[#272A34]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      
-      <div class="max-w-2xl mb-12">
-        <div class="text-xs font-mono-jb font-extrabold uppercase tracking-wider text-[#E2F952] mb-2">Pricing & Special Offers</div>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">Clearance Plans That Fit Your Exact Needs</h2>
-        <p class="text-sm text-gray-400 mt-2">
-          From full 7-module course packages to finishing the last 2-3 stubborn problems you're stuck on.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- OFFER 1: COMPLETE COURSE (HERO CARD) -->
-        <div class="bg-[#12141A] rounded-2xl p-6 border-2 border-[#E2F952] shadow-2xl relative flex flex-col justify-between">
-          <div class="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-[#E2F952] text-black font-mono-jb font-black text-[10px] uppercase tracking-wider">
-            Best Value (Save ₹135)
-          </div>
-          <div>
-            <div class="text-xs font-mono-jb font-bold text-gray-400 uppercase tracking-wider">All 7 Modules</div>
-            <h3 class="text-2xl font-bold text-white font-display mt-1">Complete Course</h3>
-            <div class="flex items-baseline gap-2 mt-4 font-mono-jb">
-              <span class="text-4xl font-black text-[#E2F952]">₹250</span>
-              <span class="text-sm text-gray-500 line-through">₹385</span>
-            </div>
-            <p class="text-xs text-gray-400 mt-2">Everything taken care of from start to finish.</p>
-
-            <ul class="mt-6 space-y-2.5 text-xs text-gray-300 font-sans">
-              <li class="flex items-center gap-2 font-medium">
-                <span class="text-[#E2F952] font-bold">✓</span> 100% of all 268 problems solved
-              </li>
-              <li class="flex items-center gap-2 font-medium">
-                <span class="text-[#E2F952] font-bold">✓</span> Official CodeChef PRO Certificate
-              </li>
-              <li class="flex items-center gap-2 font-medium">
-                <span class="text-[#E2F952] font-bold">✓</span> Full unmanipulated syllabus screenshot
-              </li>
-              <li class="flex items-center gap-2 font-medium">
-                <span class="text-[#E2F952] font-bold">✓</span> 100% Private & zero-knowledge
-              </li>
-            </ul>
-          </div>
-          <a href="#order" onclick="selectTier('bundle')" class="mt-8 block text-center py-3.5 px-4 rounded-xl bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-xs shadow-[0_0_20px_rgba(226,249,82,0.25)] transition-all">
-            Choose Complete Course
-          </a>
-        </div>
-
-        <!-- OFFER 2: INDIVIDUAL MODULES -->
-        <div class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34] shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="text-xs font-mono-jb font-bold text-gray-400 uppercase tracking-wider">Modular Pick & Mix</div>
-            <h3 class="text-2xl font-bold text-white font-display mt-1">Individual Modules</h3>
-            <div class="flex items-baseline gap-2 mt-4 font-mono-jb">
-              <span class="text-4xl font-black text-white">From ₹20</span>
-            </div>
-            <p class="text-xs text-gray-400 mt-2">Select only the specific modules you need cleared.</p>
-
-            <ul class="mt-6 space-y-2.5 text-xs text-gray-400 font-mono-jb">
-              <li class="flex items-center justify-between font-medium">
-                <span>Module 1 & 2 (Intro & Data):</span>
-                <span class="font-bold text-[#E2F952]">₹20 / ₹30</span>
-              </li>
-              <li class="flex items-center justify-between font-medium">
-                <span>Module 3 & 4 (Regression & Class):</span>
-                <span class="font-bold text-[#E2F952]">₹60 / ₹90</span>
-              </li>
-              <li class="flex items-center justify-between font-medium">
-                <span>Module 5 (Titanic Project):</span>
-                <span class="font-bold text-[#E2F952]">₹25</span>
-              </li>
-              <li class="flex items-center justify-between font-medium">
-                <span>Module 6 & 7 (Unsupervised & Proj):</span>
-                <span class="font-bold text-[#E2F952]">₹85 / ₹75</span>
-              </li>
-            </ul>
-          </div>
-          <a href="#order" onclick="selectTier('individual')" class="mt-8 block text-center py-3.5 px-4 rounded-xl bg-[#181B24] hover:bg-[#222632] text-white border border-[#272A34] font-mono-jb font-extrabold text-xs transition-all">
-            Select Individual Modules
-          </a>
-        </div>
-
-        <!-- OFFER 3: 90%+ FINISHER BOOSTER -->
-        <div class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34] shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="text-xs font-mono-jb font-bold text-[#E2F952] uppercase tracking-wider">Already Done Most?</div>
-            <h3 class="text-2xl font-bold text-white font-display mt-1">Finisher Booster</h3>
-            <div class="flex items-baseline gap-2 mt-4 font-mono-jb">
-              <span class="text-4xl font-black text-white">₹50 – ₹100</span>
-            </div>
-            <p class="text-xs text-gray-400 mt-2">For students stuck on the last few container labs.</p>
-
-            <ul class="mt-6 space-y-2.5 text-xs text-gray-300 font-sans">
-              <li class="flex items-center gap-2 font-medium">
-                <span class="text-[#E2F952] font-bold">✓</span> <strong>95%+ Completed:</strong> Just ₹50
-              </li>
-              <li class="flex items-center gap-2 font-medium">
-                <span class="text-[#E2F952] font-bold">✓</span> <strong>90%–94% Completed:</strong> Just ₹100
-              </li>
-              <li class="flex items-center gap-2 font-medium">
-                <span class="text-[#E2F952] font-bold">✓</span> Clears stubborn labs (ERUIOQ, YTQAI122)
-              </li>
-              <li class="flex items-center gap-2 font-medium">
-                <span class="text-[#E2F952] font-bold">✓</span> Claims your official PRO Certificate
-              </li>
-            </ul>
-          </div>
-          <a href="#order" onclick="selectTier('booster')" class="mt-8 block text-center py-3.5 px-4 rounded-xl bg-[#181B24] hover:bg-[#222632] text-white border border-[#272A34] font-mono-jb font-extrabold text-xs transition-all">
-            Choose Booster Plan
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- MAIN ORDER & CHECKOUT SECTION -->
-  <section id="order" class="py-16 bg-[#090A0E] border-b border-[#272A34]">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      
-      <div class="mb-10 text-center max-w-xl mx-auto">
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono-jb font-bold bg-[#12141A] text-[#E2F952] border border-[#272A34] mb-3">
-          Instant Intake & Clearance
-        </span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">Submit Details & Get Started</h2>
-        <p class="text-sm text-gray-400 mt-1.5 font-sans">
-          Enter your details, select your modules, and pay via <code class="text-[#E2F952] font-mono-jb font-bold">razorpay.me/@campustick</code>. Work begins immediately!
-        </p>
-      </div>
-
-      <!-- 2-COLUMN CHECKOUT FORM -->
-      <form id="checkoutForm" onsubmit="handleProceedPayment(event)" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-
-        <!-- LEFT COLUMN: INPUTS & MODULE SELECTION (7 COLS) -->
-        <div class="lg:col-span-7 space-y-6">
-
-          <!-- 1. CUSTOMER CREDENTIALS -->
-          <section class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34]">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="text-sm font-bold text-white font-mono-jb uppercase tracking-wider">1. Customer Credentials</h3>
-              <span class="text-xs text-gray-500 font-mono-jb">* Strictly Confidential</span>
-            </div>
-
-            <div class="space-y-4">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-3">
+            <!-- OPTION 1: Complete Course -->
+            <label id="cardComplete" onclick="selectService('complete')" class="border border-[#e5e7eb] bg-white rounded-[10px] px-3.5 py-2.5 flex items-center justify-between cursor-pointer transition-all hover:border-[#6366f1]/50">
+              <div class="flex items-center gap-2.5">
+                <input type="radio" name="serviceOption" id="radioComplete" value="complete" class="w-4 h-4 text-[#6366f1] focus:ring-[#6366f1]">
                 <div>
-                  <label class="block text-xs font-mono-jb text-gray-400 mb-1" for="igHandle">
-                    Instagram ID <span class="text-[#E2F952]">*</span>
-                  </label>
-                  <input type="text" id="igHandle" required placeholder="@your.handle" class="w-full h-11 text-xs rounded-xl border border-[#272A34] px-3.5 text-white placeholder-gray-600 bg-[#090A0E] transition-all">
-                </div>
-
-                <div>
-                  <label class="block text-xs font-mono-jb text-gray-400 mb-1" for="ccUsername">
-                    CodeChef Username <span class="text-[#E2F952]">*</span>
-                  </label>
-                  <input type="text" id="ccUsername" required placeholder="xyz_be24" class="w-full h-11 text-xs rounded-xl border border-[#272A34] px-3.5 text-white placeholder-gray-600 bg-[#090A0E] transition-all">
+                  <div class="text-[13px] font-semibold text-[#20232d]">Complete course</div>
+                  <div class="text-[11px] text-[#6b7080]">All 7 modules</div>
                 </div>
               </div>
+              <span class="text-[16px] font-semibold text-[#5053d4]">₹250</span>
+            </label>
 
-              <div>
-                <label class="block text-xs font-mono-jb text-gray-400 mb-1" for="ccPassword">
-                  CodeChef Password <span class="text-[#E2F952]">*</span>
-                </label>
-                <div class="relative">
-                  <input type="password" id="ccPassword" required placeholder="••••••••" class="w-full h-11 text-xs rounded-xl border border-[#272A34] pl-3.5 pr-10 text-white placeholder-gray-600 bg-[#090A0E] transition-all">
-                  <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-500 hover:text-white transition-colors">
-                    <svg id="eyeIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                    </svg>
+            <!-- OPTION 2: Individual Modules -->
+            <div id="cardIndividual" class="border border-[#e5e7eb] bg-white rounded-[10px] transition-all">
+              <label onclick="selectService('individual')" class="px-3.5 py-2.5 flex items-center justify-between cursor-pointer">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="serviceOption" id="radioIndividual" value="individual" class="w-4 h-4 text-[#6366f1] focus:ring-[#6366f1]">
+                  <div>
+                    <div class="text-[13px] font-semibold text-[#20232d]">Individual modules</div>
+                    <div class="text-[11px] text-[#6b7080]">Select modules individually</div>
+                  </div>
+                </div>
+                <span class="text-[12px] font-semibold text-[#5053d4]">From ₹20</span>
+              </label>
+
+              <!-- Individual module checkboxes grid -->
+              <div id="individualModulesGrid" class="hidden px-3.5 pb-3 pt-1 border-t border-[#e5e7eb] mt-1">
+                <div class="flex flex-wrap gap-2">
+                  <label class="w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] has-[:checked]:border-[#6366f1] has-[:checked]:bg-[#f7f7ff] flex flex-col items-center justify-center cursor-pointer transition-all">
+                    <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
+                      <input type="checkbox" class="mod-checkbox w-3 h-3 text-[#6366f1] rounded-[3px]" data-mod="M1" data-price="40" onchange="updateSummaryCalculations()">
+                      <span>M1</span>
+                    </div>
+                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹40</span>
+                  </label>
+
+                  <label class="w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] has-[:checked]:border-[#6366f1] has-[:checked]:bg-[#f7f7ff] flex flex-col items-center justify-center cursor-pointer transition-all">
+                    <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
+                      <input type="checkbox" class="mod-checkbox w-3 h-3 text-[#6366f1] rounded-[3px]" data-mod="M2" data-price="40" onchange="updateSummaryCalculations()">
+                      <span>M2</span>
+                    </div>
+                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹40</span>
+                  </label>
+
+                  <label class="w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] has-[:checked]:border-[#6366f1] has-[:checked]:bg-[#f7f7ff] flex flex-col items-center justify-center cursor-pointer transition-all">
+                    <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
+                      <input type="checkbox" class="mod-checkbox w-3 h-3 text-[#6366f1] rounded-[3px]" data-mod="M3" data-price="70" onchange="updateSummaryCalculations()">
+                      <span>M3</span>
+                    </div>
+                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹70</span>
+                  </label>
+
+                  <label class="w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] has-[:checked]:border-[#6366f1] has-[:checked]:bg-[#f7f7ff] flex flex-col items-center justify-center cursor-pointer transition-all">
+                    <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
+                      <input type="checkbox" class="mod-checkbox w-3 h-3 text-[#6366f1] rounded-[3px]" data-mod="M4" data-price="80" onchange="updateSummaryCalculations()">
+                      <span>M4</span>
+                    </div>
+                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹80</span>
+                  </label>
+
+                  <label class="w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] has-[:checked]:border-[#6366f1] has-[:checked]:bg-[#f7f7ff] flex flex-col items-center justify-center cursor-pointer transition-all">
+                    <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
+                      <input type="checkbox" class="mod-checkbox w-3 h-3 text-[#6366f1] rounded-[3px]" data-mod="M5" data-price="20" onchange="updateSummaryCalculations()">
+                      <span>M5</span>
+                    </div>
+                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹20</span>
+                  </label>
+
+                  <label class="w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] has-[:checked]:border-[#6366f1] has-[:checked]:bg-[#f7f7ff] flex flex-col items-center justify-center cursor-pointer transition-all">
+                    <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
+                      <input type="checkbox" class="mod-checkbox w-3 h-3 text-[#6366f1] rounded-[3px]" data-mod="M6" data-price="60" onchange="updateSummaryCalculations()">
+                      <span>M6</span>
+                    </div>
+                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹60</span>
+                  </label>
+
+                  <label class="w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] has-[:checked]:border-[#6366f1] has-[:checked]:bg-[#f7f7ff] flex flex-col items-center justify-center cursor-pointer transition-all">
+                    <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
+                      <input type="checkbox" class="mod-checkbox w-3 h-3 text-[#6366f1] rounded-[3px]" data-mod="M7" data-price="50" onchange="updateSummaryCalculations()">
+                      <span>M7</span>
+                    </div>
+                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹50</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- OPTION 3: Remaining Test Cases (Active / Pre-selected in Figma) -->
+            <div id="cardRemaining" class="border border-[#6366f1] bg-[#f7f7ff] rounded-[10px] transition-all">
+              <label onclick="selectService('remaining')" class="px-3.5 py-2.5 flex items-center justify-between cursor-pointer">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="serviceOption" id="radioRemaining" value="remaining" checked class="w-4 h-4 text-[#6366f1] focus:ring-[#6366f1]">
+                  <div>
+                    <div class="text-[13px] font-semibold text-[#20232d]">Remaining test cases</div>
+                    <div class="text-[11px] text-[#6b7080]">Nearly completed modules</div>
+                  </div>
+                </div>
+                <span class="text-[16px] font-semibold text-[#5053d4]" id="remainingCardPrice">₹50</span>
+              </label>
+
+              <!-- Nested details box (Exact Match from Figma) -->
+              <div id="remainingDetailsBox" class="p-3.5 bg-white border-t border-[#e5e7eb] rounded-b-[10px] space-y-3">
+                <div class="flex items-center justify-between text-[11px]">
+                  <span class="text-[#6b7080]">Pricing</span>
+                  <span class="font-semibold text-[#5053d4]">90–94.99%: ₹100 · 95–100%: ₹50</span>
+                </div>
+
+                <!-- Module Pills -->
+                <div class="flex flex-wrap gap-2">
+                  <button type="button" onclick="selectRemainingMod('M1', this)" class="rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#6366f1] text-[11px] font-medium text-[#20232d] flex items-center justify-center gap-1 shadow-sm">
+                    <span class="w-2.5 h-2.5 rounded-[2px] bg-[#6366f1] inline-block"></span>
+                    <span>M1</span>
+                  </button>
+                  <button type="button" onclick="selectRemainingMod('M2', this)" class="rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#d4d6de] text-[11px] font-medium text-[#6b7080] flex items-center justify-center gap-1">
+                    <span class="w-2.5 h-2.5 rounded-[2px] border border-[#d4d6de] bg-white inline-block"></span>
+                    <span>M2</span>
+                  </button>
+                  <button type="button" onclick="selectRemainingMod('M3', this)" class="rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#d4d6de] text-[11px] font-medium text-[#6b7080] flex items-center justify-center gap-1">
+                    <span class="w-2.5 h-2.5 rounded-[2px] border border-[#d4d6de] bg-white inline-block"></span>
+                    <span>M3</span>
+                  </button>
+                  <button type="button" onclick="selectRemainingMod('M4', this)" class="rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#d4d6de] text-[11px] font-medium text-[#6b7080] flex items-center justify-center gap-1">
+                    <span class="w-2.5 h-2.5 rounded-[2px] border border-[#d4d6de] bg-white inline-block"></span>
+                    <span>M4</span>
+                  </button>
+                  <button type="button" onclick="selectRemainingMod('M5', this)" class="rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#d4d6de] text-[11px] font-medium text-[#6b7080] flex items-center justify-center gap-1">
+                    <span class="w-2.5 h-2.5 rounded-[2px] border border-[#d4d6de] bg-white inline-block"></span>
+                    <span>M5</span>
+                  </button>
+                  <button type="button" onclick="selectRemainingMod('M6', this)" class="rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#d4d6de] text-[11px] font-medium text-[#6b7080] flex items-center justify-center gap-1">
+                    <span class="w-2.5 h-2.5 rounded-[2px] border border-[#d4d6de] bg-white inline-block"></span>
+                    <span>M6</span>
+                  </button>
+                  <button type="button" onclick="selectRemainingMod('M7', this)" class="rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#d4d6de] text-[11px] font-medium text-[#6b7080] flex items-center justify-center gap-1">
+                    <span class="w-2.5 h-2.5 rounded-[2px] border border-[#d4d6de] bg-white inline-block"></span>
+                    <span>M7</span>
                   </button>
                 </div>
-              </div>
 
-              <p class="text-[11px] text-gray-500 pt-1 font-mono-jb">
-                🔒 Strictly Confidential. Only 3 credentials required (Instagram ID, CodeChef Username, Password). No WhatsApp or roll number needed.
-              </p>
-            </div>
-          </section>
-
-          <!-- 2. SERVICE & MODULE SELECTION -->
-          <section class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34]">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="text-sm font-bold text-white font-mono-jb uppercase tracking-wider">2. Select Your Plan</h3>
-              <span class="text-xs text-gray-500 font-mono-jb">Choose one</span>
-            </div>
-
-            <div class="space-y-3">
-
-              <!-- TIER 1: COMPLETE COURSE -->
-              <label id="bundleCard" onclick="selectTier('bundle')" class="card-selected block p-4 rounded-xl border cursor-pointer transition-all">
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-3">
-                    <input type="radio" name="serviceTier" id="tierBundle" value="bundle" checked class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
-                    <div>
-                      <div class="text-xs font-bold text-white font-display">Complete ML Course (Modules 1–7)</div>
-                      <div class="text-[11px] text-gray-400">All 268 problems • 100% Green Ticks • Certificate included</div>
-                    </div>
+                <!-- Completion Percentage Chip & Slider -->
+                <div class="border border-[#e5e7eb] rounded-[6px] p-2.5 bg-white">
+                  <div class="flex items-center justify-between text-[11px]">
+                    <span class="text-[#6b7080]" id="remModLabel">M1 completion (%)</span>
+                    <span class="font-semibold text-[#20232d]" id="remPctDisplay">96%</span>
                   </div>
-                  <div class="text-sm font-black text-[#E2F952] font-mono-jb">₹250</div>
+                  <input type="range" id="progressSlider" min="80" max="98" value="96" oninput="handleRemainingSlider(this.value)" class="w-full accent-[#6366f1] h-1.5 bg-[#e5e7eb] rounded-lg cursor-pointer mt-2">
                 </div>
-              </label>
 
-              <!-- TIER 2: INDIVIDUAL MODULES -->
-              <div id="individualCard" class="card-inactive p-4 rounded-xl border transition-all">
-                <label onclick="selectTier('individual')" class="flex items-center justify-between cursor-pointer">
-                  <div class="flex items-center gap-3">
-                    <input type="radio" name="serviceTier" id="tierIndividual" value="individual" class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
-                    <div>
-                      <div class="text-xs font-bold text-white font-display">Individual Modules</div>
-                      <div class="text-[11px] text-gray-400">Pick specific modules you want cleared</div>
-                    </div>
+                <!-- Screenshot Upload Box (Exact Figma Copy) -->
+                <div id="dropzone" class="border border-[#e5e7eb] hover:border-[#6366f1] rounded-[6px] p-2.5 flex items-center gap-3 bg-[#fafafb] cursor-pointer transition-colors group">
+                  <input type="file" id="fileInput" multiple accept="image/*" class="hidden">
+                  <div class="w-[32px] h-[32px] rounded-[6px] bg-white border border-[#e5e7eb] flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4 text-[#6b7080] group-hover:text-[#6366f1] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                    </svg>
                   </div>
-                  <div class="text-xs font-semibold text-[#E2F952] font-mono-jb">From ₹20</div>
-                </label>
-
-                <!-- 7-MODULE SELECTION GRID -->
-                <div id="individualModulesBox" class="mt-4 pt-3.5 border-t border-[#272A34] hidden">
-                  <div class="grid grid-cols-4 sm:grid-cols-7 gap-2">
-                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-[#272A34] hover:border-[#E2F952] bg-[#090A0E] cursor-pointer text-center has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
-                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-[#E2F952] rounded mb-1 accent-[#E2F952]" data-mod="M1" data-price="20" onchange="updateCalculations()">
-                      <span class="text-[11px] font-bold text-white font-mono-jb">M1</span>
-                      <span class="text-[10px] text-gray-400 font-mono-jb">₹20</span>
-                    </label>
-                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-[#272A34] hover:border-[#E2F952] bg-[#090A0E] cursor-pointer text-center has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
-                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-[#E2F952] rounded mb-1 accent-[#E2F952]" data-mod="M2" data-price="30" onchange="updateCalculations()">
-                      <span class="text-[11px] font-bold text-white font-mono-jb">M2</span>
-                      <span class="text-[10px] text-gray-400 font-mono-jb">₹30</span>
-                    </label>
-                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-[#272A34] hover:border-[#E2F952] bg-[#090A0E] cursor-pointer text-center has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
-                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-[#E2F952] rounded mb-1 accent-[#E2F952]" data-mod="M3" data-price="60" onchange="updateCalculations()">
-                      <span class="text-[11px] font-bold text-white font-mono-jb">M3</span>
-                      <span class="text-[10px] text-gray-400 font-mono-jb">₹60</span>
-                    </label>
-                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-[#272A34] hover:border-[#E2F952] bg-[#090A0E] cursor-pointer text-center has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
-                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-[#E2F952] rounded mb-1 accent-[#E2F952]" data-mod="M4" data-price="90" onchange="updateCalculations()">
-                      <span class="text-[11px] font-bold text-white font-mono-jb">M4</span>
-                      <span class="text-[10px] text-gray-400 font-mono-jb">₹90</span>
-                    </label>
-                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-[#272A34] hover:border-[#E2F952] bg-[#090A0E] cursor-pointer text-center has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
-                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-[#E2F952] rounded mb-1 accent-[#E2F952]" data-mod="M5" data-price="25" onchange="updateCalculations()">
-                      <span class="text-[11px] font-bold text-white font-mono-jb">M5</span>
-                      <span class="text-[10px] text-gray-400 font-mono-jb">₹25</span>
-                    </label>
-                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-[#272A34] hover:border-[#E2F952] bg-[#090A0E] cursor-pointer text-center has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
-                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-[#E2F952] rounded mb-1 accent-[#E2F952]" data-mod="M6" data-price="85" onchange="updateCalculations()">
-                      <span class="text-[11px] font-bold text-white font-mono-jb">M6</span>
-                      <span class="text-[10px] text-gray-400 font-mono-jb">₹85</span>
-                    </label>
-                    <label class="flex flex-col items-center justify-center p-2 rounded-lg border border-[#272A34] hover:border-[#E2F952] bg-[#090A0E] cursor-pointer text-center has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all col-span-2 sm:col-span-1">
-                      <input type="checkbox" class="mod-checkbox w-3.5 h-3.5 text-[#E2F952] rounded mb-1 accent-[#E2F952]" data-mod="M7" data-price="75" onchange="updateCalculations()">
-                      <span class="text-[11px] font-bold text-white font-mono-jb">M7</span>
-                      <span class="text-[10px] text-gray-400 font-mono-jb">₹75</span>
-                    </label>
-                  </div>
-                  <div class="mt-3 p-2.5 bg-[#090A0E] border border-[#272A34] rounded-lg flex items-center justify-between text-xs text-gray-300 font-mono-jb">
-                    <span>Individual sum: <strong class="text-white">₹385</strong></span>
-                    <span class="text-[#E2F952] font-bold bg-[#E2F952]/10 px-2 py-0.5 rounded text-[11px]">Save ₹135 with Full Course</span>
+                  <div class="text-left flex-1 min-w-0">
+                    <div class="text-[13px] font-medium text-[#20232d]">Screenshot upload</div>
+                    <div class="text-[11px] text-[#6b7080] truncate" id="uploadStatusText">Upload a completion screenshot for review.</div>
                   </div>
                 </div>
-              </div>
 
-              <!-- TIER 3: FINISHER BOOSTER / REMAINING -->
-              <div id="boosterCard" class="card-inactive p-4 rounded-xl border transition-all">
-                <label onclick="selectTier('booster')" class="flex items-center justify-between cursor-pointer">
-                  <div class="flex items-center gap-3">
-                    <input type="radio" name="serviceTier" id="tierBooster" value="booster" class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
-                    <div>
-                      <div class="text-xs font-bold text-white font-display">Remaining Test Cases & Cleanup</div>
-                      <div class="text-[11px] text-gray-400">Already partially solved • Select remaining percentage</div>
-                    </div>
-                  </div>
-                  <div class="text-xs font-semibold text-[#E2F952] font-mono-jb" id="boosterPriceBadge">₹80</div>
-                </label>
+                <!-- Preview Thumbnail Grid -->
+                <div id="previewGrid" class="hidden grid grid-cols-3 gap-2 pt-2"></div>
 
-                <!-- NESTED BOOSTER CONFIG WITH SLIDER -->
-                <div id="boosterConfigBox" class="mt-4 pt-3.5 border-t border-[#272A34] hidden space-y-3">
-                  <div class="flex items-center justify-between text-xs font-mono-jb">
-                    <span class="text-gray-400">Already Solved Progress:</span>
-                    <span class="text-[#E2F952] font-bold" id="progressPercentDisplay">90% Solved</span>
-                  </div>
-                  <input type="range" id="progressSlider" min="50" max="98" step="1" value="90" oninput="updateSliderCalculations()" class="w-full accent-[#E2F952] bg-[#090A0E] cursor-pointer">
-                  <div class="flex justify-between text-[10px] text-gray-500 font-mono-jb">
-                    <span>50% Solved (₹140)</span>
-                    <span>80% (₹110)</span>
-                    <span>90% (₹80)</span>
-                    <span>95%+ (₹50)</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </section>
-
-          <!-- 3. DELIVERY SPEED (48-HOUR SLA VS BEFORE 8 AM) -->
-          <section class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34]">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="text-sm font-bold text-white font-mono-jb uppercase tracking-wider">3. Turnaround SLA</h3>
-              <span class="text-xs text-gray-500 font-mono-jb">Guaranteed Delivery</span>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              <!-- STANDARD 48 HOURS SLA -->
-              <label id="speedStandardCard" onclick="selectSpeed('standard')" class="card-selected p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between">
-                <div class="flex items-start justify-between">
-                  <div class="flex items-center gap-2.5">
-                    <input type="radio" name="deliverySpeed" id="speedStandard" value="standard" checked class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
-                    <div>
-                      <div class="text-xs font-bold text-white font-display">Standard 48-Hour SLA</div>
-                      <div class="text-[11px] text-[#E2F952] font-mono-jb">Guaranteed 48-hour delivery</div>
-                    </div>
-                  </div>
-                  <span class="text-xs font-bold text-[#E2F952] font-mono-jb">FREE</span>
-                </div>
-                <div class="mt-3 text-[11px] text-gray-400 border-t border-[#272A34] pt-2 font-mono-jb">
-                  Trackable live 48-hour counter starts immediately.
-                </div>
-              </label>
-
-              <!-- EXPRESS BEFORE 8 AM -->
-              <label id="speedEmergencyCard" onclick="selectSpeed('emergency')" class="card-inactive p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between">
-                <div class="flex items-start justify-between">
-                  <div class="flex items-center gap-2.5">
-                    <input type="radio" name="deliverySpeed" id="speedEmergency" value="emergency" class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
-                    <div>
-                      <div class="text-xs font-bold text-white font-display">⚡ Done Before 8:00 AM</div>
-                      <div class="text-[11px] text-gray-400 font-mono-jb">Emergency overnight shift</div>
-                    </div>
-                  </div>
-                  <span class="text-xs font-bold text-gray-400 font-mono-jb">+₹50</span>
-                </div>
-                <div class="mt-3 text-[11px] text-gray-400 border-t border-[#272A34] pt-2 font-mono-jb">
-                  Cleared before morning lab attendance begins!
-                </div>
-              </label>
-            </div>
-          </section>
-
-          <!-- 4. DISCOUNT & PREVIOUS WORK REVIEW (UPLOAD SCREENSHOTS) -->
-          <section class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34]">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-sm font-bold text-white font-mono-jb uppercase tracking-wider">4. Custom Discount Review</h3>
-              <span class="text-xs text-[#E2F952] font-mono-jb font-bold">Save More</span>
-            </div>
-            <p class="text-xs text-gray-400 mb-4 font-sans leading-relaxed">
-              Already completed some work on CodeChef? Upload screenshots of your solved problems. The owner will review your syllabus and quote a final discounted amount!
-            </p>
-
-            <!-- DROPZONE -->
-            <div id="dropzone" class="border-2 border-dashed border-[#272A34] hover:border-[#E2F952] rounded-xl p-5 text-center cursor-pointer bg-[#090A0E] transition-all group">
-              <input type="file" id="fileInput" multiple accept="image/*" class="hidden">
-              <div class="text-2xl mb-1.5 group-hover:scale-110 transition-transform">📸</div>
-              <div class="text-xs font-bold text-white font-mono-jb">Drop screenshots here or <span class="text-[#E2F952] underline">browse files</span></div>
-              <div class="text-[10px] text-gray-500 mt-1">Attach syllabus or solved problem screenshots</div>
-            </div>
-
-            <!-- PREVIEWS -->
-            <div id="previewGrid" class="grid grid-cols-3 sm:grid-cols-4 gap-2.5 mt-3 hidden"></div>
-
-            <!-- ACTION BUTTON -->
-            <button type="button" id="reviewDiscountBtn" onclick="handleDiscountRequest()" class="mt-4 w-full py-3.5 px-4 rounded-xl bg-[#181B24] hover:bg-[#222632] border border-[#E2F952]/40 text-[#E2F952] font-mono-jb font-extrabold text-xs flex items-center justify-center gap-2 transition-all shadow-sm">
-              <span id="reviewDiscountBtnText">📩 Request Custom Discount (Send to Owner)</span>
-            </button>
-            <p class="text-[10px] text-gray-500 font-mono-jb text-center mt-2">
-              Sends your credentials & screenshots directly to the owner. Begins your 48-Hour Live Timer.
-            </p>
-          </section>
-
-          <!-- 5. ORDER NOTES -->
-          <section class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34]">
-            <h3 class="text-sm font-bold text-white font-mono-jb uppercase tracking-wider mb-2">Special Instructions / Viva Deadline</h3>
-            <textarea id="orderNotes" rows="2" placeholder="e.g. My lab viva is at 9:00 AM tomorrow morning, please prioritize Module 4!" class="w-full text-xs rounded-xl border border-[#272A34] p-3 text-white placeholder-gray-600 bg-[#090A0E] font-sans"></textarea>
-          </section>
-
-        </div>
-
-        <!-- RIGHT COLUMN: ORDER SUMMARY & PAYMENT DISPATCH (5 COLS) -->
-        <div class="lg:col-span-5 sticky top-20 space-y-4">
-          <div class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34] shadow-2xl">
-            <h3 class="text-sm font-bold text-white font-mono-jb uppercase tracking-wider mb-4">Order Summary</h3>
-
-            <div class="space-y-3 text-xs border-b border-[#272A34] pb-4">
-              <div class="flex items-start justify-between">
-                <div>
-                  <div class="font-bold text-white font-display" id="summaryItemTitle">Complete ML Course</div>
-                  <div class="text-[11px] text-gray-400 font-sans" id="summaryItemDesc">All 7 Modules (268 Problems)</div>
-                </div>
-                <span class="font-bold text-[#E2F952] font-mono-jb" id="summaryItemPrice">₹250</span>
-              </div>
-
-              <div class="flex items-center justify-between text-gray-400 font-mono-jb">
-                <span>Delivery:</span>
-                <span id="summaryDelivery" class="font-bold text-[#E2F952]">+₹50 (Before 8 AM)</span>
-              </div>
-
-              <div class="flex items-center justify-between text-gray-400 font-mono-jb">
-                <span>Discount / Promo:</span>
-                <span id="summaryDiscount" class="font-medium text-gray-500">₹0</span>
-              </div>
-            </div>
-
-            <!-- TOTAL AMOUNT -->
-            <div class="flex items-baseline justify-between pt-4 mb-5">
-              <span class="text-sm font-extrabold text-white font-display">Total Amount</span>
-              <div class="text-right">
-                <span class="text-3xl font-black text-[#E2F952] font-mono-jb" id="summaryTotal">₹300</span>
-                <span class="block text-[10px] text-gray-500 font-mono-jb">All taxes & fees included</span>
-              </div>
-            </div>
-
-            <!-- COUPON CODE BOX -->
-            <div class="mb-5">
-              <div class="flex gap-2">
-                <input type="text" id="couponInput" placeholder="Promo code (e.g. CAMPUS2028)" class="flex-1 h-10 text-xs rounded-xl border border-[#272A34] px-3.5 uppercase text-white font-mono-jb font-semibold bg-[#090A0E]">
-                <button type="button" onclick="applyCoupon()" class="px-4 h-10 rounded-xl bg-[#181B24] hover:bg-[#222632] text-white border border-[#272A34] font-mono-jb font-bold text-xs transition-colors">
-                  Apply
+                <!-- CTA Button to Request Manual Review if Custom Discount Desired -->
+                <button type="button" id="reviewDiscountBtn" onclick="handleDiscountRequest()" class="w-full py-2.5 px-3 rounded-[6px] bg-[#f7f7ff] hover:bg-[#eef2ff] border border-[#6366f1]/30 text-[#5053d4] font-semibold text-[12px] flex items-center justify-center gap-2 transition-all">
+                  <span id="reviewDiscountBtnText">📩 Request Custom Discount (Send to Owner)</span>
                 </button>
               </div>
-              <p id="couponMsg" class="text-[11px] mt-1.5 hidden font-mono-jb"></p>
-            </div>
-
-            <!-- SUBMIT BUTTON (ACID LIME HIGH VOLTAGE) -->
-            <button type="submit" id="payButton" class="w-full py-4 px-4 rounded-xl bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-sm tracking-tight transition-all flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(226,249,82,0.3)]">
-              <span id="payBtnLabel">PAY ₹250 VIA RAZORPAY</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-              </svg>
-            </button>
-
-            <!-- OR DISCOUNT REVIEW -->
-            <button type="button" onclick="handleDiscountRequest()" class="mt-2.5 w-full py-2.5 px-3 rounded-xl bg-[#181B24] hover:bg-[#222632] text-gray-300 hover:text-[#E2F952] border border-[#272A34] font-mono-jb font-bold text-xs flex items-center justify-center gap-1.5 transition-all">
-              <span>📩</span>
-              <span>Ask for Discount with Screenshots</span>
-            </button>
-
-            <div class="mt-4 pt-3.5 border-t border-[#272A34] text-center space-y-1">
-              <p class="text-[11px] text-gray-400 font-mono-jb flex items-center justify-center gap-1.5">
-                <span>🛡️</span> Verified on <code class="text-white font-bold">razorpay.me/@campustick</code>
-              </p>
-              <p class="text-[10px] text-gray-500">
-                100% money-back guarantee if 100% green ticks are not achieved.
-              </p>
-            </div>
-          </div>
-
-          <!-- TRUST BADGE -->
-          <div class="p-4 rounded-xl bg-[#12141A] border border-[#272A34] text-xs text-gray-300 flex items-center gap-3">
-            <span class="text-xl">🤝</span>
-            <div>
-              <div class="font-bold text-white font-display">Strict Confidentiality</div>
-              <div class="text-[11px] text-gray-400 font-sans">Your details are never shared with peers or professors.</div>
             </div>
           </div>
         </div>
 
-      </form>
-    </div>
-  </section>
+        <!-- 3. DELIVERY -->
+        <div class="space-y-3">
+          <h2 class="text-[15px] font-semibold text-[#20232d]">Delivery</h2>
 
-  <!-- INTERACTIVE PAYMENT MODAL (DARK INDUSTRIAL THEME) -->
-  <div id="paymentModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
-    <div class="bg-[#12141A] rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#272A34] relative max-h-[90vh] overflow-y-auto">
-      
-      <!-- Close Button -->
-      <button onclick="closeModal('paymentModal')" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <!-- Standard Delivery -->
+            <label id="cardDeliveryStd" onclick="selectDelivery('standard')" class="border border-[#6366f1] bg-[#f7f7ff] rounded-[6px] p-3 flex items-center justify-between cursor-pointer transition-all">
+              <div class="flex items-center gap-2.5">
+                <input type="radio" name="deliveryOption" id="radioDeliveryStd" value="standard" checked class="w-4 h-4 text-[#6366f1] focus:ring-[#6366f1]">
+                <div>
+                  <div class="text-[13px] font-medium text-[#20232d]">Standard</div>
+                  <div class="text-[11px] text-[#6b7080]">2–3 days (48h SLA)</div>
+                </div>
+              </div>
+              <span class="text-[12px] font-medium text-[#5053d4]">FREE</span>
+            </label>
+
+            <!-- Express Delivery -->
+            <label id="cardDeliveryExp" onclick="selectDelivery('express')" class="border border-[#e5e7eb] bg-white rounded-[6px] p-3 flex items-center justify-between cursor-pointer transition-all hover:border-[#6366f1]/40">
+              <div class="flex items-center gap-2.5">
+                <input type="radio" name="deliveryOption" id="radioDeliveryExp" value="express" class="w-4 h-4 text-[#6366f1] focus:ring-[#6366f1]">
+                <div>
+                  <div class="text-[13px] font-medium text-[#20232d]">Express</div>
+                  <div class="text-[11px] text-[#6b7080]">2–3 hours (Before 8 AM)</div>
+                </div>
+              </div>
+              <span class="text-[12px] font-medium text-[#20232d]">+₹50</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 4. ORDER NOTES -->
+        <div class="space-y-1.5">
+          <label class="block text-[12px] font-medium text-[#20232d]" for="orderNotes">
+            Order notes <span class="text-[#6b7080] font-normal">(optional)</span>
+          </label>
+          <input type="text" id="orderNotes" placeholder="Add notes for delivery or review" class="w-full h-[40px] text-[13px] rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] placeholder-[#979ba7] bg-white transition-all">
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: ORDER SUMMARY (lg:col-span-5 / 376px) -->
+      <div class="lg:col-span-5 sticky top-24">
+        <div class="bg-[#fafafb] border border-[#e5e7eb] rounded-[10px] p-6 space-y-4">
+          <h2 class="text-[16px] font-semibold text-[#20232d]">Order summary</h2>
+
+          <!-- Selected Order Item (Exact Book-open icon + title + price) -->
+          <div class="flex items-center gap-3">
+            <div class="w-[40px] h-[44px] rounded-[6px] bg-white border border-[#e5e7eb] flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-[#5053d4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="text-[13px] font-semibold text-[#20232d] truncate" id="summaryItemTitle">Remaining test cases</div>
+              <div class="text-[11px] text-[#6b7080] truncate" id="summaryItemDesc">M1 · 96% complete</div>
+            </div>
+            <div class="text-[14px] font-medium text-[#20232d] num-clean" id="summaryItemPrice">₹50</div>
+          </div>
+
+          <!-- Divider -->
+          <div class="border-b border-[#e5e7eb]"></div>
+
+          <!-- Promo Code Entry -->
+          <div class="space-y-2">
+            <label class="block text-[12px] font-medium text-[#20232d]" for="couponInput">Promo code</label>
+            <div class="flex gap-2">
+              <input type="text" id="couponInput" placeholder="Enter code" class="flex-1 h-[40px] text-[13px] rounded-[6px] border border-[#e5e7eb] px-3 bg-white text-[#20232d] placeholder-[#979ba7] uppercase font-semibold">
+              <button type="button" onclick="applyPromoCode()" class="h-[40px] px-3.5 rounded-[6px] border border-[#e5e7eb] bg-white text-[12px] font-medium text-[#6b7080] hover:text-[#20232d] hover:border-[#6366f1] transition-all">
+                Apply
+              </button>
+            </div>
+            <p id="couponMsg" class="text-[11px] hidden"></p>
+          </div>
+
+          <!-- Pricing Breakdown -->
+          <div class="space-y-3 text-[13px] text-[#6b7080] font-normal pt-1">
+            <div class="flex items-center justify-between">
+              <span>Service subtotal</span>
+              <span class="text-[#20232d] font-medium num-clean" id="subtotalDisplay">₹50</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Standard delivery</span>
+              <span class="text-[#20232d] font-medium num-clean" id="deliveryDisplay">FREE</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Discount</span>
+              <span class="text-[#20232d] font-medium num-clean" id="discountDisplay">₹0</span>
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="border-b border-[#e5e7eb]"></div>
+
+          <!-- Total Amount -->
+          <div class="flex items-baseline justify-between pt-1">
+            <span class="text-[14px] font-semibold text-[#20232d]">Total</span>
+            <div class="flex items-baseline gap-1.5">
+              <span class="text-[11px] text-[#6b7080] font-normal">INR</span>
+              <span class="text-[26px] font-semibold text-[#20232d] tracking-[-0.8px] num-clean" id="summaryTotal">₹50</span>
+            </div>
+          </div>
+
+          <!-- Primary Pay Button (Exact Match: 48px, bg-[#6366f1], rounded-[6px]) -->
+          <button type="submit" id="payButton" class="w-full h-[48px] rounded-[6px] bg-[#6366f1] hover:bg-[#5053d4] text-white font-semibold text-[14px] shadow-sm flex items-center justify-center gap-2 transition-all">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+            <span id="payBtnLabel">PAY ₹50</span>
+          </button>
+
+          <p class="text-[11px] text-[#6b7080] text-center">
+            Review your details before paying.
+          </p>
+        </div>
+
+        <!-- Strict Confidentiality Badge -->
+        <div class="mt-4 p-3.5 rounded-[10px] bg-[#f7f7ff] border border-[#6366f1]/20 flex items-center gap-3 text-[12px] text-[#5053d4]">
+          <span class="text-base">🤝</span>
+          <div>
+            <div class="font-semibold text-[#20232d]">Strict Confidentiality</div>
+            <div class="text-[11px] text-[#6b7080]">Your details are strictly private and never shared.</div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+    <!-- Bottom Footer (Exact Match) -->
+    <div class="mt-16 text-center text-[12px] text-[#6b7080] flex items-center justify-center gap-1.5">
+      <svg class="w-3.5 h-3.5 text-[#6b7080]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+      </svg>
+      <span>Secure checkout · For engineering students</span>
+    </div>
+
+  </main>
+
+  <!-- INTERACTIVE PAYMENT MODAL -->
+  <div id="paymentModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-[10px] max-w-md w-full p-6 shadow-2xl border border-[#e5e7eb] relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeModal('paymentModal')" class="absolute top-4 right-4 text-[#979ba7] hover:text-[#20232d]">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
       </button>
 
-      <!-- Modal State 1: Awaiting Payment & UTR Submission -->
+      <!-- Step 1: Payment info -->
       <div id="modalStepPayment">
         <div class="flex items-center gap-2.5 mb-3">
-          <div class="w-8 h-8 rounded-lg bg-[#E2F952]/10 text-[#E2F952] border border-[#E2F952]/30 flex items-center justify-center font-bold">
-            💳
-          </div>
-          <h3 class="text-lg font-bold text-white font-display">Complete Payment on Razorpay</h3>
+          <div class="w-8 h-8 rounded-[6px] bg-[#f7f7ff] text-[#5053d4] flex items-center justify-center font-bold">💳</div>
+          <h3 class="text-[17px] font-bold text-[#20232d]">Complete Payment on Razorpay</h3>
         </div>
-
-        <p class="text-xs text-gray-400 mb-4 font-sans">
-          Your order <strong class="text-[#E2F952] font-mono-jb" id="resOrderId">ORD-XXXXXX</strong> is registered! Please pay the exact amount below using our verified Razorpay handle:
+        <p class="text-xs text-[#6b7080] mb-4">
+          Order registered: <strong class="text-[#5053d4]" id="resOrderId">ORD-XXXXXX</strong>. Please pay the exact amount below:
         </p>
-
-        <!-- EXACT AMOUNT BOX -->
-        <div class="p-4 rounded-xl bg-[#090A0E] border border-[#272A34] text-center mb-5">
-          <div class="text-xs text-gray-400 font-mono-jb uppercase tracking-wider">Amount to Pay</div>
-          <div class="text-3xl font-black text-[#E2F952] mt-1 font-mono-jb" id="resAmount">₹300</div>
-          <div class="text-[11px] text-gray-400 font-mono-jb mt-1">Recipient: <span class="text-white font-bold">razorpay.me/@campustick</span></div>
+        <div class="p-4 rounded-[6px] bg-[#f7f7ff] border border-[#6366f1]/20 text-center mb-5">
+          <div class="text-xs text-[#6b7080] font-medium uppercase tracking-wider">Amount to Pay</div>
+          <div class="text-3xl font-bold text-[#5053d4] mt-1 num-clean" id="resAmount">₹50</div>
+          <div class="text-[11px] text-[#6b7080] mt-1">Recipient: <span class="font-bold text-[#20232d]">razorpay.me/@campustick</span></div>
         </div>
-
-        <!-- 1-CLICK RAZORPAY.ME LINK BUTTON -->
-        <div class="space-y-3 mb-5">
-          <a id="rzpPayBtn" href="https://razorpay.me/@campustick" target="_blank" class="w-full py-3.5 px-4 rounded-xl bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-xs shadow-[0_0_20px_rgba(226,249,82,0.25)] flex items-center justify-center gap-2 transition-all">
-            <span>Open razorpay.me/@campustick (₹<span id="rzpAmountLabel">300</span>)</span>
+        <div class="space-y-2.5 mb-5">
+          <a id="rzpPayBtn" href="https://razorpay.me/@campustick" target="_blank" class="w-full py-3 px-4 rounded-[6px] bg-[#6366f1] hover:bg-[#5053d4] text-white font-semibold text-xs shadow-sm flex items-center justify-center gap-2 transition-all">
+            <span>Open razorpay.me/@campustick (₹<span id="rzpAmountLabel">50</span>)</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
             </svg>
           </a>
-
-          <!-- UPI DIRECT INTENT (FOR GPay / PhonePe / Paytm / CRED) -->
-          <a id="upiPayLink" href="#" class="w-full py-3 px-4 rounded-xl bg-[#181B24] hover:bg-[#222632] text-white border border-[#272A34] font-mono-jb font-bold text-xs flex items-center justify-center gap-2 transition-all">
+          <a id="upiPayLink" href="#" class="w-full py-2.5 px-4 rounded-[6px] bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 font-medium text-xs flex items-center justify-center gap-2 transition-all">
             <span>Pay Directly via UPI App (GPay / PhonePe)</span>
           </a>
         </div>
-
-        <!-- PAYMENT VERIFICATION INPUT -->
-        <div class="p-4 rounded-xl bg-[#090A0E] border border-[#272A34] mb-4">
-          <label class="block text-xs font-mono-jb font-bold text-white mb-1.5" for="utrInput">
-            Enter UPI UTR / Transaction ID or Reference:
+        <div class="p-3.5 rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] mb-3">
+          <label class="block text-xs font-semibold text-[#20232d] mb-1" for="utrInput">
+            Enter UPI UTR / Transaction ID Reference:
           </label>
-          <input type="text" id="utrInput" placeholder="e.g. 412389745612 or Razorpay Payment ID" class="w-full h-11 text-xs rounded-xl border border-[#272A34] px-3.5 text-white font-mono-jb bg-[#12141A] mb-2.5">
-          
-          <button type="button" onclick="verifyAndConfirmPayment()" class="w-full py-3 px-3 rounded-xl bg-white hover:bg-gray-100 text-black font-mono-jb font-extrabold text-xs transition-colors flex items-center justify-center gap-2">
+          <input type="text" id="utrInput" placeholder="e.g. 412389745612 or Razorpay Payment ID" class="w-full h-[38px] text-xs rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] font-medium bg-white mb-2">
+          <button type="button" onclick="verifyAndConfirmPayment()" class="w-full py-2.5 px-3 rounded-[6px] bg-[#20232d] hover:bg-black text-white font-semibold text-xs transition-colors flex items-center justify-center gap-2">
             <span id="verifyBtnLabel">Verify Payment & Confirm Order</span>
           </button>
         </div>
-
-        <p class="text-[11px] text-gray-500 font-mono-jb text-center">
-          Payment details will be matched against our real-time merchant feed.
-        </p>
       </div>
 
-      <!-- Modal State 2: Payment Accepted & "Done Before 8:00 AM" Confirmation -->
+      <!-- Step 2: Confirmed View -->
       <div id="modalStepConfirmed" class="hidden text-center py-2">
-        <div class="w-14 h-14 rounded-full bg-[#E2F952]/15 border border-[#E2F952]/40 text-[#E2F952] flex items-center justify-center text-2xl mx-auto mb-3 shadow-[0_0_20px_rgba(226,249,82,0.2)]">
-          ✅
-        </div>
-
-        <h3 class="text-2xl font-black text-white font-display">Payment Accepted & Confirmed!</h3>
-        <p class="text-xs text-gray-400 mt-1 max-w-sm mx-auto font-sans">
-          We got your payment of <strong class="text-[#E2F952] font-mono-jb" id="confirmedAmount">₹300</strong>. Your credentials are safe with us!
+        <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mx-auto mb-3">✓</div>
+        <h3 class="text-lg font-bold text-[#20232d]">Payment Recorded & Confirmed!</h3>
+        <p class="text-xs text-[#6b7080] mt-1 max-w-sm mx-auto">
+          We got your payment of <strong class="text-emerald-700" id="confirmedAmount">₹50</strong>. Your credentials are safe with us!
         </p>
-
-        <!-- PROMISE BANNER: DONE BEFORE 8:00 AM -->
-        <div class="mt-5 p-5 rounded-xl bg-[#090A0E] border border-[#E2F952]/40 text-left">
-          <div class="flex items-center gap-2 text-[#E2F952] font-black text-sm font-mono-jb">
-            <span>⚡</span>
-            <span>GUARANTEED BEFORE 8:00 AM TOMORROW</span>
-          </div>
-          <p class="text-xs text-gray-300 mt-2 leading-relaxed font-sans">
-            Veere relax, your CodeChef coursework will be <strong class="text-white">100% completed with green ticks before 8:00 AM</strong>. Your official certificate and verified syllabus proof will be delivered straight to your Instagram DM!
-          </p>
-
-          <!-- COUNTDOWN TIMER TO 8:00 AM -->
-          <div class="mt-4 pt-3 border-t border-[#272A34] flex items-center justify-between text-xs font-mono-jb font-bold text-gray-400">
-            <span>Time until 8:00 AM:</span>
-            <span id="countdown8am" class="text-[#E2F952] font-black bg-[#12141A] px-2.5 py-1 rounded border border-[#272A34] shadow-sm">Calculating...</span>
-          </div>
+        <div class="mt-4 p-3 bg-[#fafafb] border border-[#e5e7eb] rounded-[6px] text-left text-xs font-mono text-[#20232d] select-all">
+          <div class="text-[10px] text-[#6b7080] font-sans uppercase font-bold mb-1">Your Order Receipt:</div>
+          <div id="confirmedReceiptText" class="whitespace-pre-line text-[11px] leading-tight"></div>
         </div>
-
-        <!-- COPYABLE DISPATCH RECEIPT (MONOSPACE INDUSTRIAL BLOCK) -->
-        <div class="mt-4 p-3.5 bg-[#090A0E] border border-[#272A34] rounded-xl text-left text-xs font-mono-jb text-gray-300 select-all relative">
-          <div class="text-[10px] text-gray-500 font-mono-jb uppercase font-bold mb-1">Your Order Receipt:</div>
-          <div id="confirmedReceiptText" class="whitespace-pre-line text-[11px] leading-tight text-gray-300"></div>
-        </div>
-
-        <!-- 1-CLICK INSTAGRAM / WHATSAPP DISPATCH BUTTONS -->
-        <div class="grid grid-cols-2 gap-3 mt-4">
-          <a id="igDmBtn" href="https://ig.me/m/campus.tick" target="_blank" class="py-3 px-3 rounded-xl bg-[#181B24] hover:bg-[#222632] border border-[#272A34] text-white font-mono-jb font-bold text-xs flex items-center justify-center gap-1.5 transition-all">
-            <span>Open Instagram DM</span>
-          </a>
-          <a id="whatsappBtn" href="#" target="_blank" class="py-3 px-3 rounded-xl bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all shadow-[0_0_15px_rgba(226,249,82,0.2)]">
-            <span>Open WhatsApp</span>
-          </a>
-        </div>
-
-        <button onclick="closeModal('paymentModal')" class="mt-4 text-xs font-mono-jb text-gray-500 hover:text-white transition-colors">
-          Close Window
+        <button onclick="closeModal('paymentModal')" class="mt-4 px-4 py-2 rounded-[6px] bg-[#6366f1] text-white text-xs font-semibold">
+          Done & Track 48h SLA
         </button>
       </div>
 
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="bg-[#090A0E] border-t border-[#272A34] py-12 mt-16 text-xs text-gray-500 font-mono-jb">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-      
-      <div class="flex items-center gap-2.5">
-        <div class="w-7 h-7 rounded-lg bg-[#E2F952] flex items-center justify-center text-black font-bold text-xs">
-          CT
-        </div>
-        <div>
-          <div class="font-extrabold text-white font-display">campus<span class="text-[#E2F952]">.tick</span></div>
-          <div class="text-[11px] text-gray-500">Academic Reference & CodeChef Lab Clearance</div>
-        </div>
-      </div>
+  <!-- SCRIPT ENGINE -->
+  <script src="./campustick_engine.js"></script>
 
-      <div class="flex flex-wrap items-center justify-center gap-6 text-gray-400 font-medium">
-        <a href="#how-it-works" class="hover:text-[#E2F952] transition-colors">How It Works</a>
-        <a href="#courses" class="hover:text-[#E2F952] transition-colors">Courses</a>
-        <a href="#offers" class="hover:text-[#E2F952] transition-colors">Offers</a>
-        <button onclick="openPolicy('terms')" class="hover:text-[#E2F952] transition-colors">Terms</button>
-        <button onclick="openPolicy('privacy')" class="hover:text-[#E2F952] transition-colors">Privacy</button>
-        <button onclick="openPolicy('refund')" class="hover:text-[#E2F952] transition-colors">Refund Guarantee</button>
-        <button onclick="openPolicy('contact')" class="hover:text-[#E2F952] transition-colors">Contact</button>
-      </div>
-
-      <div class="text-right text-[11px] text-gray-500">
-        <div>© 2026 campus.tick. Built for students.</div>
-        <div class="text-gray-600">Patiala, Punjab • 24/7 exam cycle support</div>
-      </div>
-
-    </div>
-  </footer>
-
-  <!-- POLICY MODAL -->
-  <div id="policyModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
-    <div class="bg-[#12141A] rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#272A34] relative max-h-[85vh] overflow-y-auto">
-      <button onclick="closePolicy()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-        </svg>
-      </button>
-      <h3 id="policyTitle" class="text-lg font-bold text-white font-display mb-3">Policy</h3>
-      <div id="policyContent" class="text-xs text-gray-400 space-y-3 leading-relaxed font-sans"></div>
-    </div>
-  </div>
-
-  <!-- APPLICATION LOGIC SCRIPT -->
   <script>
-    // Configuration
-    const SUPABASE_URL = "https://wzemfaudaihcyqlyaoqr.supabase.co";
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZW1mYXVkYWloY3lxbHlhb3FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkxMjUwNDcsImV4cCI6MjEwNDcwMTA0N30.KWJ4nDmrANWqyJ7D7JDGSt-IBf-VHWWabNuoi9HTnb4";
-    const RZP_HANDLE_URL = "https://razorpay.me/@campustick";
-    const OWNER_EMAIL = window.CAMPUS_TICK_OWNER_EMAIL || "support@campustick.internal";
+    // State
+    let selectedTier = 'remaining'; // 'complete' | 'individual' | 'remaining'
+    let selectedDeliverySpeed = 'standard'; // 'standard' | 'express'
+    let selectedRemainingModule = 'M1';
+    let remainingPercentage = 96;
+    let appliedDiscountAmt = 0;
+    let appliedCoupon = null;
+    let currentOrder = null;
+    let uploadedImages = [];
 
-    // Application State
-    const state = {
-      currentTier: 'bundle',
-      currentSpeed: 'standard', // Default: 48-Hour SLA
-      appliedDiscount: 0,
-      appliedCouponCode: null,
-      uploadedScreenshots: [],
-      activeOrder: JSON.parse(localStorage.getItem('campustick_active_order') || 'null'),
-      timerInterval: null
-    };
+    // Initialize UI
+    function initUI() {
+      selectService('remaining');
+      updateSummaryCalculations();
+    }
 
-    // Toggle Password Visibility
     function togglePasswordVisibility() {
       const p = document.getElementById('ccPassword');
-      if (p) {
-        p.type = (p.type === 'password') ? 'text' : 'password';
+      p.type = (p.type === 'password') ? 'text' : 'password';
+    }
+
+    function selectService(tier) {
+      selectedTier = tier;
+      document.getElementById('radioComplete').checked = (tier === 'complete');
+      document.getElementById('radioIndividual').checked = (tier === 'individual');
+      document.getElementById('radioRemaining').checked = (tier === 'remaining');
+
+      // Card Styles
+      const cComp = document.getElementById('cardComplete');
+      const cInd = document.getElementById('cardIndividual');
+      const cRem = document.getElementById('cardRemaining');
+
+      cComp.className = (tier === 'complete') 
+        ? "border border-[#6366f1] bg-[#f7f7ff] rounded-[10px] px-3.5 py-2.5 flex items-center justify-between cursor-pointer transition-all"
+        : "border border-[#e5e7eb] bg-white rounded-[10px] px-3.5 py-2.5 flex items-center justify-between cursor-pointer transition-all hover:border-[#6366f1]/40";
+
+      cInd.className = (tier === 'individual')
+        ? "border border-[#6366f1] bg-[#f7f7ff] rounded-[10px] transition-all"
+        : "border border-[#e5e7eb] bg-white rounded-[10px] transition-all hover:border-[#6366f1]/40";
+
+      cRem.className = (tier === 'remaining')
+        ? "border border-[#6366f1] bg-[#f7f7ff] rounded-[10px] transition-all"
+        : "border border-[#e5e7eb] bg-white rounded-[10px] transition-all hover:border-[#6366f1]/40";
+
+      document.getElementById('individualModulesGrid').classList.toggle('hidden', tier !== 'individual');
+      document.getElementById('remainingDetailsBox').classList.toggle('hidden', tier !== 'remaining');
+
+      if (window.CampusTick) {
+        window.CampusTick.State.currentTier = (tier === 'complete') ? 'bundle' : (tier === 'individual' ? 'individual' : 'booster');
       }
+
+      updateSummaryCalculations();
     }
 
-    // Tier Selection (Bundle, Individual, Booster)
-    function selectTier(tier) {
-      state.currentTier = tier;
-      document.getElementById('tierBundle').checked = (tier === 'bundle');
-      document.getElementById('tierIndividual').checked = (tier === 'individual');
-      document.getElementById('tierBooster').checked = (tier === 'booster');
+    function selectRemainingMod(mod, btn) {
+      selectedRemainingModule = mod;
+      document.querySelectorAll('.rem-mod-btn').forEach(b => {
+        b.className = "rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#d4d6de] text-[11px] font-medium text-[#6b7080] flex items-center justify-center gap-1";
+        b.querySelector('span:first-child').className = "w-2.5 h-2.5 rounded-[2px] border border-[#d4d6de] bg-white inline-block";
+      });
+      btn.className = "rem-mod-btn w-[63px] h-[32px] rounded-[6px] bg-[#fafafb] border border-[#6366f1] text-[11px] font-medium text-[#20232d] flex items-center justify-center gap-1 shadow-sm";
+      btn.querySelector('span:first-child').className = "w-2.5 h-2.5 rounded-[2px] bg-[#6366f1] inline-block";
 
-      const bCard = document.getElementById('bundleCard');
-      const iCard = document.getElementById('individualCard');
-      const boostCard = document.getElementById('boosterCard');
-
-      bCard.className = (tier === 'bundle') ? 'card-selected block p-4 rounded-xl border cursor-pointer transition-all' : 'card-inactive block p-4 rounded-xl border cursor-pointer transition-all';
-      iCard.className = (tier === 'individual') ? 'card-selected p-4 rounded-xl border transition-all' : 'card-inactive p-4 rounded-xl border transition-all';
-      boostCard.className = (tier === 'booster') ? 'card-selected p-4 rounded-xl border transition-all' : 'card-inactive p-4 rounded-xl border transition-all';
-
-      document.getElementById('individualModulesBox').classList.toggle('hidden', tier !== 'individual');
-      document.getElementById('boosterConfigBox').classList.toggle('hidden', tier !== 'booster');
-
-      updateCalculations();
+      document.getElementById('remModLabel').textContent = `${mod} completion (%)`;
+      updateSummaryCalculations();
     }
 
-    // Speed Selection (Standard 48-Hour SLA vs Before 8 AM Emergency)
-    function selectSpeed(speed) {
-      state.currentSpeed = speed;
-      document.getElementById('speedEmergency').checked = (speed === 'emergency');
-      document.getElementById('speedStandard').checked = (speed === 'standard');
-
-      const emCard = document.getElementById('speedEmergencyCard');
-      const stCard = document.getElementById('speedStandardCard');
-
-      emCard.className = (speed === 'emergency') ? 'card-selected p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between' : 'card-inactive p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between';
-      stCard.className = (speed === 'standard') ? 'card-selected p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between' : 'card-inactive p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between';
-
-      updateCalculations();
+    function handleRemainingSlider(val) {
+      remainingPercentage = parseInt(val, 10);
+      document.getElementById('remPctDisplay').textContent = `${val}%`;
+      updateSummaryCalculations();
     }
 
-    // Slider Handler for Booster / Remaining
-    function updateSliderCalculations() {
-      const slider = document.getElementById('progressSlider');
-      if (slider) {
-        const val = parseInt(slider.value, 10);
-        document.getElementById('progressPercentDisplay').textContent = `${val}% Solved`;
+    function selectDelivery(speed) {
+      selectedDeliverySpeed = speed;
+      document.getElementById('radioDeliveryStd').checked = (speed === 'standard');
+      document.getElementById('radioDeliveryExp').checked = (speed === 'express');
+
+      const cStd = document.getElementById('cardDeliveryStd');
+      const cExp = document.getElementById('cardDeliveryExp');
+
+      cStd.className = (speed === 'standard')
+        ? "border border-[#6366f1] bg-[#f7f7ff] rounded-[6px] p-3 flex items-center justify-between cursor-pointer transition-all"
+        : "border border-[#e5e7eb] bg-white rounded-[6px] p-3 flex items-center justify-between cursor-pointer transition-all hover:border-[#6366f1]/40";
+
+      cExp.className = (speed === 'express')
+        ? "border border-[#6366f1] bg-[#f7f7ff] rounded-[6px] p-3 flex items-center justify-between cursor-pointer transition-all"
+        : "border border-[#e5e7eb] bg-white rounded-[6px] p-3 flex items-center justify-between cursor-pointer transition-all hover:border-[#6366f1]/40";
+
+      if (window.CampusTick) {
+        window.CampusTick.State.currentSpeed = (speed === 'express') ? 'emergency' : 'standard';
       }
-      updateCalculations();
+
+      updateSummaryCalculations();
     }
 
-    // Coupon Handler
-    function applyCoupon() {
+    function applyPromoCode() {
       const input = document.getElementById('couponInput');
       const msg = document.getElementById('couponMsg');
-      const val = input.value.trim().toUpperCase();
+      const code = input.value.trim().toUpperCase();
 
-      if (val === 'CAMPUS2028' || val === 'STUDENT2028' || val === 'CODECHEF100' || val === 'CAMPUS1337') {
-        state.appliedDiscount = 30;
-        state.appliedCouponCode = val;
-        msg.textContent = `Promo applied! ₹30 discount saved.`;
-        msg.className = "text-[11px] mt-1.5 text-[#E2F952] font-mono-jb font-bold block";
-      } else if (val) {
-        state.appliedDiscount = 0;
-        state.appliedCouponCode = null;
-        msg.textContent = "Invalid promo code.";
-        msg.className = "text-[11px] mt-1.5 text-[#FF3B30] font-mono-jb block";
+      if (code === 'CAMPUS2028' || code === 'TIET2028' || code === 'CAMPUS1337') {
+        appliedDiscountAmt = 30;
+        appliedCoupon = code;
+        msg.textContent = "Promo code applied! Saved ₹30";
+        msg.className = "text-[11px] text-emerald-600 font-semibold block";
+      } else if (code) {
+        appliedDiscountAmt = 0;
+        appliedCoupon = null;
+        msg.textContent = "Invalid promo code";
+        msg.className = "text-[11px] text-red-500 block";
       } else {
-        state.appliedDiscount = 0;
-        state.appliedCouponCode = null;
-        msg.className = "text-[11px] mt-1.5 hidden";
+        appliedDiscountAmt = 0;
+        appliedCoupon = null;
+        msg.className = "text-[11px] hidden";
       }
-      updateCalculations();
+      updateSummaryCalculations();
     }
 
-    // Calculations & Subtotaling
-    function updateCalculations() {
-      let basePrice = 250;
-      let title = "Complete ML Course";
-      let desc = "All 7 Modules (268 Problems)";
+    function updateSummaryCalculations() {
+      let basePrice = 50;
+      let title = "Remaining test cases";
+      let desc = `${selectedRemainingModule} · ${remainingPercentage}% complete`;
 
-      if (state.currentTier === 'individual') {
-        const checkedBoxes = Array.from(document.querySelectorAll('.mod-checkbox:checked'));
-        if (checkedBoxes.length === 0) {
+      if (selectedTier === 'complete') {
+        basePrice = 250;
+        title = "Complete course";
+        desc = "All 7 modules (268 Problems)";
+      } else if (selectedTier === 'individual') {
+        const checked = Array.from(document.querySelectorAll('.mod-checkbox:checked'));
+        if (checked.length === 0) {
           basePrice = 0;
-          title = "Individual Modules";
-          desc = "Please check modules above";
+          title = "Individual modules";
+          desc = "Select modules above";
         } else {
-          basePrice = checkedBoxes.reduce((sum, cb) => sum + parseInt(cb.getAttribute('data-price') || 0, 10), 0);
-          title = `Individual Modules (${checkedBoxes.length})`;
-          desc = checkedBoxes.map(cb => cb.getAttribute('data-mod')).join(', ');
+          basePrice = checked.reduce((acc, c) => acc + parseInt(c.getAttribute('data-price') || 0, 10), 0);
+          title = `Individual modules (${checked.length})`;
+          desc = checked.map(c => c.getAttribute('data-mod')).join(', ');
         }
-      } else if (state.currentTier === 'booster') {
-        const slider = document.getElementById('progressSlider');
-        const val = slider ? parseInt(slider.value, 10) : 90;
-        if (val >= 95) basePrice = 50;
-        else if (val >= 90) basePrice = 80;
-        else if (val >= 80) basePrice = 110;
-        else basePrice = 140;
-
-        title = "Remaining Course Clearance";
-        desc = `${val}% already solved • Remaining tests & certificate`;
-        const bBadge = document.getElementById('boosterPriceBadge');
-        if (bBadge) bBadge.textContent = `₹${basePrice}`;
+      } else if (selectedTier === 'remaining') {
+        basePrice = (remainingPercentage >= 95) ? 50 : 100;
+        title = "Remaining test cases";
+        desc = `${selectedRemainingModule} · ${remainingPercentage}% complete`;
+        document.getElementById('remainingCardPrice').textContent = `₹${basePrice}`;
       }
 
-      const speedSurcharge = (state.currentSpeed === 'emergency') ? 50 : 0;
-      const discount = Math.min(state.appliedDiscount, basePrice);
-      const finalTotal = Math.max(0, basePrice + speedSurcharge - discount);
+      const deliverySurcharge = (selectedDeliverySpeed === 'express') ? 50 : 0;
+      const discount = Math.min(appliedDiscountAmt, basePrice);
+      const total = Math.max(0, basePrice + deliverySurcharge - discount);
 
       document.getElementById('summaryItemTitle').textContent = title;
       document.getElementById('summaryItemDesc').textContent = desc;
       document.getElementById('summaryItemPrice').textContent = `₹${basePrice}`;
-
-      const delEl = document.getElementById('summaryDelivery');
-      if (state.currentSpeed === 'emergency') {
-        delEl.textContent = "+₹50 (Before 8 AM)";
-        delEl.className = "font-bold text-[#E2F952] font-mono-jb";
-      } else {
-        delEl.textContent = "FREE (48-Hour SLA)";
-        delEl.className = "font-medium text-[#E2F952] font-mono-jb";
-      }
-
-      const discEl = document.getElementById('summaryDiscount');
-      if (discount > 0) {
-        discEl.textContent = `-₹${discount}`;
-        discEl.className = "font-bold text-[#E2F952] font-mono-jb";
-      } else {
-        discEl.textContent = "₹0";
-        discEl.className = "font-medium text-gray-500 font-mono-jb";
-      }
-
-      document.getElementById('summaryTotal').textContent = `₹${finalTotal}`;
-      document.getElementById('payBtnLabel').textContent = `PAY ₹${finalTotal} VIA RAZORPAY`;
+      document.getElementById('subtotalDisplay').textContent = `₹${basePrice}`;
+      document.getElementById('deliveryDisplay').textContent = (selectedDeliverySpeed === 'express') ? "+₹50" : "FREE";
+      document.getElementById('discountDisplay').textContent = (discount > 0) ? `-₹${discount}` : "₹0";
+      document.getElementById('summaryTotal').textContent = `₹${total}`;
+      document.getElementById('payBtnLabel').textContent = `PAY ₹${total}`;
     }
 
-    // Screenshot Drag & Drop Handling
+    // Drag & Drop Screenshot Handling
     const dropzone = document.getElementById('dropzone');
     const fileInput = document.getElementById('fileInput');
     const previewGrid = document.getElementById('previewGrid');
@@ -1289,198 +775,179 @@
       dropzone.addEventListener('click', () => fileInput.click());
       dropzone.addEventListener('dragover', (e) => {
         e.preventDefault();
-        dropzone.classList.add('border-[#E2F952]', 'bg-[#161922]');
+        dropzone.classList.add('border-[#6366f1]', 'bg-[#f7f7ff]');
       });
       dropzone.addEventListener('dragleave', () => {
-        dropzone.classList.remove('border-[#E2F952]', 'bg-[#161922]');
+        dropzone.classList.remove('border-[#6366f1]', 'bg-[#f7f7ff]');
       });
       dropzone.addEventListener('drop', (e) => {
         e.preventDefault();
-        dropzone.classList.remove('border-[#E2F952]', 'bg-[#161922]');
-        handleFiles(e.dataTransfer.files);
+        dropzone.classList.remove('border-[#6366f1]', 'bg-[#f7f7ff]');
+        handleDropFiles(e.dataTransfer.files);
       });
-      fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+      fileInput.addEventListener('change', (e) => handleDropFiles(e.target.files));
     }
 
-    function handleFiles(files) {
+    function handleDropFiles(files) {
       if (!files || files.length === 0) return;
       previewGrid.classList.remove('hidden');
-      Array.from(files).forEach(file => {
+
+      Array.from(files).forEach((file, idx) => {
+        if (!file.type.startsWith('image/')) return;
         const reader = new FileReader();
         reader.onload = (e) => {
-          state.uploadedScreenshots.push({ name: file.name, url: e.target.result });
-          renderPreviews();
+          uploadedImages.push({ name: file.name, url: e.target.result });
+          if (window.CampusTick) {
+            window.CampusTick.State.uploadedScreenshots.push({ name: file.name, dataUrl: e.target.result });
+          }
+          document.getElementById('uploadStatusText').textContent = `${uploadedImages.length} screenshot(s) attached`;
+
+          const item = document.createElement('div');
+          item.className = "relative rounded-[6px] overflow-hidden border border-[#e5e7eb] aspect-video bg-white group";
+          item.innerHTML = `
+            <img src="${e.target.result}" class="w-full h-full object-cover">
+            <button type="button" onclick="removeImg(${uploadedImages.length - 1}, this)" class="absolute top-1 right-1 w-4 h-4 rounded-full bg-black/70 hover:bg-red-600 text-white flex items-center justify-center text-[9px]">✕</button>
+          `;
+          previewGrid.appendChild(item);
         };
         reader.readAsDataURL(file);
       });
     }
 
-    function renderPreviews() {
-      previewGrid.innerHTML = '';
-      state.uploadedScreenshots.forEach((item, index) => {
-        const div = document.createElement('div');
-        div.className = 'relative group rounded-xl overflow-hidden border border-[#272A34] bg-[#090A0E] aspect-video';
-        div.innerHTML = `
-          <img src="${item.url}" class="w-full h-full object-cover">
-          <button type="button" onclick="removeImage(${index})" class="absolute top-1 right-1 bg-rose-600 text-white rounded-full p-1 opacity-90 hover:opacity-100 transition-opacity">
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-          </button>
-        `;
-        previewGrid.appendChild(div);
-      });
+    function removeImg(idx, btn) {
+      uploadedImages.splice(idx, 1);
+      if (window.CampusTick) {
+        window.CampusTick.State.uploadedScreenshots.splice(idx, 1);
+      }
+      btn.closest('.relative').remove();
+      if (uploadedImages.length === 0) {
+        previewGrid.classList.add('hidden');
+        document.getElementById('uploadStatusText').textContent = "Upload a completion screenshot for review.";
+      } else {
+        document.getElementById('uploadStatusText').textContent = `${uploadedImages.length} screenshot(s) attached`;
+      }
     }
 
-    window.removeImage = function(index) {
-      state.uploadedScreenshots.splice(index, 1);
-      if (state.uploadedScreenshots.length === 0) {
-        previewGrid.classList.add('hidden');
-      } else {
-        renderPreviews();
-      }
-    };
-
-    // Validation (Strictly 3 Compulsory Fields)
-    function validateCompulsoryFields() {
+    function handleDiscountRequest() {
       const ig = document.getElementById('igHandle').value.trim().replace(/^@/, '');
       const user = document.getElementById('ccUsername').value.trim();
       const pass = document.getElementById('ccPassword').value.trim();
 
       if (!ig || !user || !pass) {
-        alert("Please fill in all 3 compulsory fields:\n1. Instagram Handle\n2. CodeChef Username\n3. CodeChef Password");
-        return null;
+        alert("Please provide all 3 required fields:
+1. Instagram ID
+2. CodeChef username
+3. CodeChef password");
+        return;
       }
-      return { ig, user, pass };
+
+      if (window.CampusTick && window.CampusTick.requestDiscount) {
+        window.CampusTick.requestDiscount();
+      }
     }
 
-    // Save Order Helper
-    function buildOrderPayload(creds, status = 'PAYMENT_PENDING') {
+    function toggleTrackerView() {
+      const section = document.getElementById('liveTrackerSection');
+      if (!section) return;
+
+      if (section.classList.contains('hidden')) {
+        let activeOrder = null;
+        try {
+          activeOrder = JSON.parse(localStorage.getItem('campustick_active_order') || 'null');
+        } catch(e){}
+
+        if (!activeOrder) {
+          const userLookup = prompt("Enter your Instagram handle or CodeChef username to load your 48-Hour Live Counter:");
+          if (!userLookup) return;
+          activeOrder = {
+            id: 'ORD-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
+            ig_handle: userLookup.trim().replace(/^@/, ''),
+            codechef_username: userLookup.trim(),
+            status: 'ACCEPTED',
+            created_at: new Date().toISOString()
+          };
+          localStorage.setItem('campustick_active_order', JSON.stringify(activeOrder));
+        }
+
+        if (window.CampusTick) {
+          window.CampusTick.State.activeOrder = activeOrder;
+          window.CampusTick.revealLiveTimer();
+        } else {
+          section.classList.remove('hidden');
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        section.classList.add('hidden');
+      }
+    }
+
+    async function handleProceedPayment(e) {
+      e.preventDefault();
+
+      const ig = document.getElementById('igHandle').value.trim().replace(/^@/, '');
+      const user = document.getElementById('ccUsername').value.trim();
+      const pass = document.getElementById('ccPassword').value.trim();
+      const phone = document.getElementById('whatsappNumber')?.value?.trim() || null;
+      const notes = document.getElementById('orderNotes')?.value?.trim() || null;
+
+      if (!ig || !user || !pass) {
+        alert("Please provide your Instagram handle, CodeChef username, and password.");
+        return;
+      }
+
       let modules = [];
-      if (state.currentTier === 'bundle') {
+      if (selectedTier === 'complete') {
         modules = ['ALL_MODULES_1_TO_7'];
-      } else if (state.currentTier === 'individual') {
+      } else if (selectedTier === 'individual') {
         const checked = Array.from(document.querySelectorAll('.mod-checkbox:checked'));
+        if (checked.length === 0) {
+          alert("Please select at least one module!");
+          return;
+        }
         modules = checked.map(c => c.getAttribute('data-mod'));
       } else {
-        const slider = document.getElementById('progressSlider');
-        const pct = slider ? slider.value : '90';
-        modules = [`REMAINING_COURSE_${pct}PCT`];
+        modules = [`REMAINING_${selectedRemainingModule}_${remainingPercentage}PCT`];
       }
 
       const totalStr = document.getElementById('summaryTotal').textContent.replace(/[^\d]/g, '');
       const amount = parseInt(totalStr, 10);
       const orderId = "ORD-" + Math.random().toString(36).substring(2, 8).toUpperCase();
-      const notes = document.getElementById('orderNotes').value.trim();
 
-      return {
+      const payload = {
         id: orderId,
-        ig_handle: creds.ig,
-        codechef_username: creds.user,
-        codechef_password: creds.pass,
-        phone: null,
+        ig_handle: ig,
+        codechef_username: user,
+        codechef_password: pass,
+        phone: phone,
         modules: modules,
-        speed: state.currentSpeed,
-        coupon: state.appliedCouponCode,
+        speed: selectedDeliverySpeed,
+        coupon: appliedCoupon,
         amount: amount,
-        screenshot: state.uploadedScreenshots.length > 0 ? `${state.uploadedScreenshots.length} screenshot(s) attached` : null,
-        notes: notes || null,
-        status: status,
+        notes: notes,
+        status: 'PAYMENT_PENDING',
         created_at: new Date().toISOString()
       };
-    }
 
-    async function dispatchOrderToSupabase(payload) {
-      try {
-        await fetch(`${SUPABASE_URL}/rest/v1/orders`, {
-          method: 'POST',
-          headers: {
-            'apikey': SUPABASE_ANON_KEY,
-            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        });
-      } catch (err) {
-        console.warn("Supabase background dispatch note:", err);
-      }
-    }
-
-    // DISCOUNT REVIEW HANDLER
-    async function handleDiscountRequest() {
-      const creds = validateCompulsoryFields();
-      if (!creds) return;
-
-      if (state.uploadedScreenshots.length === 0) {
-        const proceed = confirm("No screenshots uploaded. Click OK to send discount request anyway, or Cancel to upload syllabus screenshots first for a better discount.");
-        if (!proceed) {
-          fileInput.click();
-          return;
-        }
-      }
-
-      const btn = document.getElementById('reviewDiscountBtn');
-      const btnText = document.getElementById('reviewDiscountBtnText');
-      if (btn) btn.disabled = true;
-      if (btnText) btnText.textContent = "⏳ Dispatching Review Request...";
-
-      const payload = buildOrderPayload(creds, 'DISCOUNT_REVIEW_PENDING');
-      await dispatchOrderToSupabase(payload);
-
-      // Persist active order for live timer
-      state.activeOrder = payload;
-      localStorage.setItem('campustick_active_order', JSON.stringify(payload));
-
-      if (btn) btn.disabled = false;
-      if (btnText) btnText.textContent = "📩 Request Custom Discount (Send to Owner)";
-
-      // Construct detailed email to Owner
-      const slider = document.getElementById('progressSlider');
-      const progress = slider ? slider.value : '90';
-      const notes = document.getElementById('orderNotes').value.trim();
-      const imgCount = state.uploadedScreenshots.length;
-
-      const mailSubject = encodeURIComponent(`[DISCOUNT REQUEST] @${creds.ig} - CodeChef ML (${progress}% Solved)`);
-      let mailBody = `Hi CampusTick Owner,%0D%0A%0D%0A`;
-      mailBody += `A student has requested a manual discount review for CodeChef clearance:%0D%0A%0D%0A`;
-      mailBody += `• Order ID: ${payload.id}%0D%0A`;
-      mailBody += `• Instagram Handle: @${creds.ig}%0D%0A`;
-      mailBody += `• CodeChef Username: ${creds.user}%0D%0A`;
-      mailBody += `• CodeChef Password: ${creds.pass}%0D%0A`;
-      mailBody += `• Self-Reported Progress: ${progress}% Solved%0D%0A`;
-      mailBody += `• Attached Screenshots: ${imgCount} image(s)%0D%0A`;
-      if (notes) mailBody += `• Student Notes: ${notes}%0D%0A`;
-      mailBody += `• Standard SLA: 48 Hours%0D%0A%0D%0A`;
-      mailBody += `Please inspect their CodeChef account and message them with their final discounted amount!%0D%0A`;
-
-      const mailtoUrl = `mailto:${OWNER_EMAIL}?subject=${mailSubject}&body=${mailBody}`;
-      window.open(mailtoUrl, '_blank');
-
-      // Reveal & Start 48-Hour Live Turnaround Watchdog Timer
-      revealLiveTimer();
-
-      alert(`✅ Discount request sent to owner!\n\nOrder ID: ${payload.id}\nInstagram: @${creds.ig}\nCodeChef: ${creds.user}\n\nYour 48-Hour Live Turnaround Clock is now active below. The owner will review your syllabus and contact you with your custom discounted quote!`);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // CHECKOUT PROCEED HANDLER
-    async function handleProceedPayment(e) {
-      if (e) e.preventDefault();
-
-      const creds = validateCompulsoryFields();
-      if (!creds) return;
-
-      const payload = buildOrderPayload(creds, 'PAYMENT_PENDING');
-      await dispatchOrderToSupabase(payload);
-
-      // Persist active order
-      state.activeOrder = payload;
+      currentOrder = payload;
       localStorage.setItem('campustick_active_order', JSON.stringify(payload));
 
       showPaymentModal(payload);
 
-      // Open Razorpay in background tab
+      // Open Razorpay in background
       try {
-        window.open(RZP_HANDLE_URL, '_blank');
+        window.open("https://razorpay.me/@campustick", '_blank');
       } catch (e) {}
+
+      // Supabase async dispatch
+      fetch("https://wzemfaudaihcyqlyaoqr.supabase.co/rest/v1/orders", {
+        method: 'POST',
+        headers: {
+          'apikey': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZW1mYXVkYWloY3lxbHlhb3FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkxMjUwNDcsImV4cCI6MjEwNDcwMTA0N30.KWJ4nDmrANWqyJ7D7JDGSt-IBf-VHWWabNuoi9HTnb4",
+          'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZW1mYXVkYWloY3lxbHlhb3FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkxMjUwNDcsImV4cCI6MjEwNDcwMTA0N30.KWJ4nDmrANWqyJ7D7JDGSt-IBf-VHWWabNuoi9HTnb4",
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      }).catch(err => console.warn("Supabase note:", err));
     }
 
     function showPaymentModal(data) {
@@ -1491,14 +958,8 @@
       document.getElementById('resAmount').textContent = `₹${data.amount}`;
       document.getElementById('rzpAmountLabel').textContent = data.amount;
 
-      // Update UPI link & QR
       const upiLink = `upi://pay?pa=nwordplaylist@okaxis&pn=CampusTick&am=${data.amount}&cu=INR&tn=${data.id}`;
       document.getElementById('upiPayLink').href = upiLink;
-
-      const qrEl = document.getElementById('upiQrCodeImg');
-      if (qrEl) {
-        qrEl.src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(upiLink)}`;
-      }
 
       document.getElementById('paymentModal').classList.remove('hidden');
     }
@@ -1510,26 +971,30 @@
         return;
       }
 
-      const vBtn = document.getElementById('verifyBtnLabel');
-      vBtn.textContent = "VERIFYING TRANSACTION...";
+      document.getElementById('verifyBtnLabel').textContent = "VERIFYING...";
 
-      if (state.activeOrder) {
-        state.activeOrder.utr = utr;
-        state.activeOrder.status = 'ACCEPTED';
-        localStorage.setItem('campustick_active_order', JSON.stringify(state.activeOrder));
+      if (currentOrder) {
+        currentOrder.utr = utr;
+        currentOrder.status = 'ACCEPTED';
 
-        fetch(`${SUPABASE_URL}/rest/v1/orders?id=eq.${state.activeOrder.id}`, {
+        fetch(`https://wzemfaudaihcyqlyaoqr.supabase.co/rest/v1/orders?id=eq.${currentOrder.id}`, {
           method: 'PATCH',
           headers: {
-            'apikey': SUPABASE_ANON_KEY,
-            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'apikey': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZW1mYXVkYWloY3lxbHlhb3FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkxMjUwNDcsImV4cCI6MjEwNDcwMTA0N30.KWJ4nDmrANWqyJ7D7JDGSt-IBf-VHWWabNuoi9HTnb4",
+            'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZW1mYXVkYWloY3lxbHlhb3FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkxMjUwNDcsImV4cCI6MjEwNDcwMTA0N30.KWJ4nDmrANWqyJ7D7JDGSt-IBf-VHWWabNuoi9HTnb4",
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            notes: (state.activeOrder.notes ? state.activeOrder.notes + " | " : "") + `UTR: ${utr}`,
+            notes: (currentOrder.notes ? currentOrder.notes + " | " : "") + `UTR: ${utr}`,
             status: 'ACCEPTED'
           })
         }).catch(() => {});
+
+        localStorage.setItem('campustick_active_order', JSON.stringify(currentOrder));
+        if (window.CampusTick) {
+          window.CampusTick.State.activeOrder = currentOrder;
+          window.CampusTick.revealLiveTimer();
+        }
       }
 
       await new Promise(r => setTimeout(r, 600));
@@ -1537,191 +1002,34 @@
       document.getElementById('modalStepPayment').classList.add('hidden');
       document.getElementById('modalStepConfirmed').classList.remove('hidden');
 
-      const confirmedAmt = state.activeOrder ? state.activeOrder.amount : '250';
-      document.getElementById('confirmedAmount').textContent = `₹${confirmedAmt}`;
+      const amt = currentOrder ? currentOrder.amount : 50;
+      document.getElementById('confirmedAmount').textContent = `₹${amt}`;
 
-      const receipt = `✅ PAYMENT RECORDED: ₹${confirmedAmt}\n` +
-        `📦 Order ID: ${state.activeOrder ? state.activeOrder.id : 'ORD-CONFIRMED'}\n` +
-        `👤 Instagram: @${state.activeOrder ? state.activeOrder.ig_handle : ''}\n` +
-        `💻 CodeChef: ${state.activeOrder ? state.activeOrder.codechef_username : ''}\n` +
-        `⚡ Delivery Guarantee: 48-Hour Live SLA\n` +
-        `🔍 UTR Ref: ${utr}\n` +
-        `━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
-        `Veere relax! We got your payment. Your credentials are 100% confidential. Your CodeChef coursework will be 100% completed with green ticks & verified certificate! 🚀`;
+      const receipt = `✅ PAYMENT RECEIVED: ₹${amt}
+` +
+        `📦 Order ID: ${currentOrder ? currentOrder.id : 'ORD-CONFIRMED'}
+` +
+        `👤 Instagram: @${currentOrder ? currentOrder.ig_handle : ''}
+` +
+        `💻 CodeChef: ${currentOrder ? currentOrder.codechef_username : ''}
+` +
+        `⚡ Delivery Guarantee: 48-Hour Live Turnaround SLA
+` +
+        `🔍 UTR Ref: ${utr}
+` +
+        `━━━━━━━━━━━━━━━━━━━━━━━━━━━
+` +
+        `Veere relax! We got your payment. Your credentials are 100% confidential. Your CodeChef coursework will be completed with genuine green ticks & verified certificate! 🚀`;
 
       document.getElementById('confirmedReceiptText').textContent = receipt;
-      document.getElementById('igDmBtn').href = `https://ig.me/m/campus.tick`;
-
-      // Start 48-Hour Live Turnaround Watchdog Timer
-      revealLiveTimer();
     }
 
-    // LIVE 48-HOUR WATCHDOG TIMER LOGIC
-    function revealLiveTimer() {
-      const section = document.getElementById('liveTrackerSection');
-      if (section) {
-        section.classList.remove('hidden');
-        startLiveTimer();
-      }
-    }
-
-    function toggleTrackerView() {
-      const section = document.getElementById('liveTrackerSection');
-      if (!section) return;
-
-      if (section.classList.contains('hidden')) {
-        if (!state.activeOrder) {
-          const userLookup = prompt("Enter your Instagram handle or CodeChef username to load your 48-Hour Live Counter:");
-          if (!userLookup) return;
-          state.activeOrder = {
-            id: 'ORD-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
-            ig_handle: userLookup.trim().replace(/^@/, ''),
-            codechef_username: userLookup.trim(),
-            status: 'ACCEPTED',
-            created_at: new Date().toISOString()
-          };
-          localStorage.setItem('campustick_active_order', JSON.stringify(state.activeOrder));
-        }
-        revealLiveTimer();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        section.classList.add('hidden');
-      }
-    }
-
-    function startLiveTimer() {
-      if (!state.activeOrder) return;
-      const order = state.activeOrder;
-
-      const customerNameEl = document.getElementById('trackerCustomerName');
-      const orderIdEl = document.getElementById('trackerOrderIdDisplay');
-      const badgeEl = document.getElementById('trackerStatusBadge');
-      const subtextEl = document.getElementById('trackerSubtext');
-
-      if (customerNameEl) customerNameEl.textContent = `@${order.ig_handle.replace(/^@/, '')}`;
-      if (orderIdEl) orderIdEl.textContent = order.id;
-
-      if (badgeEl && subtextEl) {
-        if (order.status === 'DISCOUNT_REVIEW_PENDING') {
-          badgeEl.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold font-mono-jb uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1.5";
-          badgeEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> Discount Review In Progress`;
-          subtextEl.textContent = "The owner is reviewing your uploaded syllabus screenshots to calculate your final discounted amount.";
-        } else {
-          badgeEl.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold font-mono-jb uppercase tracking-wider bg-[#E2F952]/15 text-[#E2F952] border border-[#E2F952]/30 flex items-center gap-1.5";
-          badgeEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-[#E2F952] animate-ping"></span> 48-Hour Live Turnaround SLA Active`;
-          subtextEl.textContent = "Standard Turnaround: Guaranteed 100% completion & verified certificate within 48 Hours.";
-        }
-      }
-
-      // 48-Hour SLA Deadline Calculation
-      const createdAt = new Date(order.created_at || Date.now()).getTime();
-      const turnaroundMs = 48 * 60 * 60 * 1000;
-      const deadline = new Date(createdAt + turnaroundMs);
-
-      const deadlineEl = document.getElementById('timerDeadlineDisplay');
-      if (deadlineEl) {
-        deadlineEl.textContent = `Target: ${deadline.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} at ${deadline.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
-      }
-
-      if (state.timerInterval) clearInterval(state.timerInterval);
-
-      function tick() {
-        const now = Date.now();
-        const diff = deadline.getTime() - now;
-
-        const hEl = document.getElementById('timerHours');
-        const mEl = document.getElementById('timerMinutes');
-        const sEl = document.getElementById('timerSeconds');
-        const barEl = document.getElementById('trackerProgressBar');
-        const pctEl = document.getElementById('trackerProgressPercentText');
-
-        if (diff <= 0) {
-          if (hEl) hEl.textContent = "00";
-          if (mEl) mEl.textContent = "00";
-          if (sEl) sEl.textContent = "00";
-          if (barEl) barEl.style.width = "100%";
-          if (pctEl) pctEl.textContent = "48-Hour SLA Completed!";
-          return;
-        }
-
-        const hrs = Math.floor(diff / (1000 * 60 * 60));
-        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-        if (hEl) hEl.textContent = String(hrs).padStart(2, '0');
-        if (mEl) mEl.textContent = String(mins).padStart(2, '0');
-        if (sEl) sEl.textContent = String(secs).padStart(2, '0');
-
-        const elapsed = now - createdAt;
-        const pct = Math.min(100, Math.max(2, Math.round((elapsed / turnaroundMs) * 100)));
-        if (barEl) barEl.style.width = `${pct}%`;
-        if (pctEl) pctEl.textContent = `${hrs} Hours Remaining out of 48h SLA`;
-      }
-
-      tick();
-      state.timerInterval = setInterval(tick, 1000);
-    }
-
-    // Modal Close
     function closeModal(id) {
       document.getElementById(id).classList.add('hidden');
     }
 
-    const policyData = {
-      terms: {
-        title: "Terms and Conditions",
-        body: `
-          <p><strong>1. Introduction:</strong> Welcome to campus.tick. By accessing our platform and placing an order for machine learning coursework clearance or academic reference solutions, you agree to comply with and be bound by these terms.</p>
-          <p><strong>2. Services Provided:</strong> campus.tick provides technical problem resolution, algorithmic test execution, and verifiable completion certification for university coursework modules.</p>
-          <p><strong>3. Confidentiality:</strong> campus.tick operates with zero-knowledge credential architecture. Credentials provided during checkout are strictly isolated, used exclusively to complete requested modules, and purged upon fulfillment.</p>
-        `
-      },
-      privacy: {
-        title: "Privacy Policy",
-        body: `
-          <p><strong>1. Information Collection:</strong> We collect only necessary details to fulfill your clearance order: your Instagram handle, CodeChef username, and password.</p>
-          <p><strong>2. Security & Encryption:</strong> All communications are secured via TLS 1.3 encryption. We never share, sell, or disclose your academic data or identity to third parties.</p>
-          <p><strong>3. Payment Security:</strong> Payment information is processed securely through RBI-compliant payment aggregators (Razorpay / UPI). We do not store card numbers or UPI PINs.</p>
-        `
-      },
-      refund: {
-        title: "Cancellation and Refund Policy",
-        body: `
-          <p><strong>1. 100% Satisfaction Guarantee:</strong> If campus.tick fails to achieve 100% test-case clearance or the agreed module completion on your CodeChef profile, you are entitled to an immediate 100% refund.</p>
-          <p><strong>2. Cancellation Window:</strong> You may cancel your order at any time before our autonomous solver begins processing your modules.</p>
-          <p><strong>3. Refund Timeline:</strong> Approved refunds are credited directly back to the original payment source within 24–48 hours.</p>
-        `
-      },
-      contact: {
-        title: "Contact Support",
-        body: `
-          <p>For order status, instant delivery verification, or support inquiries:</p>
-          <p><strong>Instagram Direct:</strong> @campus.tick</p>
-          <p><strong>Support Availability:</strong> 24/7 during university examination and evaluation cycles.</p>
-          <p><strong>Registered Address:</strong> campus.tick Academic Services, Patiala, Punjab, India - 147004.</p>
-        `
-      }
-    };
-
-    function openPolicy(type) {
-      const data = policyData[type];
-      if (!data) return;
-      document.getElementById('policyTitle').textContent = data.title;
-      document.getElementById('policyContent').innerHTML = data.body;
-      document.getElementById('policyModal').classList.remove('hidden');
-    }
-
-    function closePolicy() {
-      document.getElementById('policyModal').classList.add('hidden');
-    }
-
-    // Auto-init on page load if active order exists
-    if (state.activeOrder) {
-      revealLiveTimer();
-    }
-
-    // Initialize initial calculations
-    updateCalculations();
+    // Run on load
+    document.addEventListener('DOMContentLoaded', initUI);
   </script>
 </body>
 </html>
