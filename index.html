@@ -185,12 +185,13 @@
             <span class="text-[11px] text-[#6b7080]">* Required</span>
           </div>
 
-          <!-- College Email ID Input (Required for Discount/Quote Inquiries; Optional for Full Course) -->
-          <div>
+          <!-- College Email ID Input (Opens only when user does NOT select complete course) -->
+          <div id="collegeEmailContainer" class="hidden">
             <div class="flex items-center justify-between mb-1.5">
               <label class="block text-[12px] font-medium text-[#20232d] flex items-center gap-1.5 flex-wrap" for="studentEmail" id="studentEmailLabel">
                 <span>College Email ID</span>
-                <span id="studentEmailBadge" class="text-[11px] text-[#6b7080] font-normal">(optional for full course)</span>
+                <span class="text-[#6366f1] font-bold">*</span>
+                <span id="studentEmailBadge" class="text-[11px] text-[#6b7080] font-normal">(required for discount/quote review - one request per mail id so be carefull about it)</span>
               </label>
               <button type="button" onclick="showFieldInfo('studentEmail', event)" class="w-4 h-4 rounded-full border border-[#d4d6de] hover:border-[#6366f1] text-[10px] font-bold text-[#979ba7] hover:text-[#6366f1] inline-flex items-center justify-center transition-colors cursor-pointer shrink-0" title="Why we ask for this">i</button>
             </div>
@@ -928,17 +929,17 @@
         }
       }
 
-      // Dynamic Email Requirement:
-      // "the mail is only required when they are quiring like for discount and all so its not mandatory when person taking full course"
+      // Open College Email box ONLY when user does NOT select complete course:
+      // "open this box only when user dont select complete course"
+      const emailBox = document.getElementById('collegeEmailContainer');
       const emailInput = document.getElementById('studentEmail');
-      const emailBadge = document.getElementById('studentEmailBadge');
-      if (emailInput && emailBadge) {
+      if (emailBox && emailInput) {
         if (tier === 'complete') {
+          emailBox.classList.add('hidden');
           emailInput.removeAttribute('required');
-          emailBadge.innerHTML = '<span class="text-[11px] text-[#6b7080] font-normal">(optional for full course)</span>';
         } else {
+          emailBox.classList.remove('hidden');
           emailInput.setAttribute('required', 'required');
-          emailBadge.innerHTML = '<span class="text-[#6366f1] font-bold">*</span> <span class="text-[11px] text-[#6b7080] font-normal">(required for discount/quote review - one request per mail id so be carefull about it)</span>';
         }
       }
 
