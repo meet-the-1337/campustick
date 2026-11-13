@@ -88,18 +88,22 @@
         <span class="text-[20px] font-bold text-[#20232d] tracking-[-0.6px]">CampusTick</span>
       </a>
 
-      <!-- Right Actions: Track SLA & Secure Checkout -->
-      <div class="flex items-center gap-4">
-        <button type="button" id="headerTrackerBtn" onclick="toggleTrackerView()" class="px-2.5 py-1.5 rounded-[6px] bg-[#f7f7ff] hover:bg-[#eef2ff] text-[#5053d4] border border-[#6366f1]/20 font-medium text-[12px] flex items-center gap-1.5 transition-colors">
-          <span>⏱️</span>
-          <span>Track 48h SLA</span>
-        </button>
-        <div class="flex items-center gap-[6px] text-[#6b7080] text-[12px]">
-          <svg class="w-[14px] h-[14px] text-[#6b7080]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+      <!-- Right Actions: Track Request & Replies + 48h SLA -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- NEW: Track Request Status & Replies Button -->
+        <button type="button" id="headerStatusLookupBtn" onclick="openRequestStatusModal()" class="px-3 py-1.5 rounded-[6px] bg-[#6366f1] hover:bg-[#5053d4] text-white font-medium text-[12px] flex items-center gap-1.5 transition-colors shadow-sm cursor-pointer">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
           </svg>
-          <span>Secure checkout</span>
-        </div>
+          <span>Track Request & Replies</span>
+        </button>
+
+        <!-- 48h SLA Button -->
+        <button type="button" id="headerTrackerBtn" onclick="toggleTrackerView()" class="px-2.5 py-1.5 rounded-[6px] bg-[#f7f7ff] hover:bg-[#eef2ff] text-[#5053d4] border border-[#6366f1]/20 font-medium text-[12px] flex items-center gap-1.5 transition-colors cursor-pointer">
+          <span>⏱️</span>
+          <span class="hidden sm:inline">Track 48h SLA</span>
+          <span class="sm:hidden">SLA</span>
+        </button>
       </div>
     </div>
   </header>
@@ -181,31 +185,57 @@
             <span class="text-[11px] text-[#6b7080]">* Required</span>
           </div>
 
+          <!-- College Email ID Input (Required Anti-Spam Field) -->
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label class="block text-[12px] font-medium text-[#20232d] flex items-center gap-1.5 flex-wrap" for="studentEmail">
+                <span>College Email ID</span>
+                <span class="text-[#6366f1]">*</span>
+                <span class="text-[11px] text-[#6b7080] font-normal">(you only have one request per mail id so be carefull about it)</span>
+              </label>
+              <button type="button" onclick="showFieldInfo('studentEmail', event)" class="w-4 h-4 rounded-full border border-[#d4d6de] hover:border-[#6366f1] text-[10px] font-bold text-[#979ba7] hover:text-[#6366f1] inline-flex items-center justify-center transition-colors cursor-pointer shrink-0" title="Why we ask for this">i</button>
+            </div>
+            <input type="email" id="studentEmail" required placeholder="rollnumber_be24@college.edu" class="w-full h-[40px] text-[13px] rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] placeholder-[#979ba7] bg-white transition-all">
+          </div>
+
           <!-- Instagram & CodeChef Username Inputs -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label class="block text-[12px] font-medium text-[#20232d] mb-1.5" for="igHandle">
-                Instagram ID <span class="text-[#6366f1]">*</span>
-              </label>
+              <div class="flex items-center justify-between mb-1.5">
+                <label class="block text-[12px] font-medium text-[#20232d] flex items-center gap-1" for="igHandle">
+                  <span>Instagram ID</span>
+                  <span class="text-[#6366f1]">*</span>
+                </label>
+                <button type="button" onclick="showFieldInfo('igHandle', event)" class="w-4 h-4 rounded-full border border-[#d4d6de] hover:border-[#6366f1] text-[10px] font-bold text-[#979ba7] hover:text-[#6366f1] inline-flex items-center justify-center transition-colors cursor-pointer shrink-0" title="Why we ask for this">i</button>
+              </div>
               <input type="text" id="igHandle" required placeholder="@your.username" class="w-full h-[40px] text-[13px] rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] placeholder-[#979ba7] bg-white transition-all">
             </div>
 
             <div>
-              <label class="block text-[12px] font-medium text-[#20232d] mb-1.5" for="ccUsername">
-                CodeChef username <span class="text-[#6366f1]">*</span>
-              </label>
+              <div class="flex items-center justify-between mb-1.5">
+                <label class="block text-[12px] font-medium text-[#20232d] flex items-center gap-1" for="ccUsername">
+                  <span>CodeChef username</span>
+                  <span class="text-[#6366f1]">*</span>
+                </label>
+                <button type="button" onclick="showFieldInfo('ccUsername', event)" class="w-4 h-4 rounded-full border border-[#d4d6de] hover:border-[#6366f1] text-[10px] font-bold text-[#979ba7] hover:text-[#6366f1] inline-flex items-center justify-center transition-colors cursor-pointer shrink-0" title="Why we ask for this">i</button>
+              </div>
               <input type="text" id="ccUsername" required placeholder="Username" class="w-full h-[40px] text-[13px] rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] placeholder-[#979ba7] bg-white transition-all">
             </div>
           </div>
 
           <!-- CodeChef Password Input with Eye Toggle -->
           <div>
-            <label class="block text-[12px] font-medium text-[#20232d] mb-1.5" for="ccPassword">
-              CodeChef password <span class="text-[#6b7080] font-normal">(only if necessary)</span> <span class="text-[#6366f1]">*</span>
-            </label>
+            <div class="flex items-center justify-between mb-1.5">
+              <label class="block text-[12px] font-medium text-[#20232d] flex items-center gap-1" for="ccPassword">
+                <span>CodeChef password</span>
+                <span class="text-[#6b7080] font-normal">(only if necessary)</span>
+                <span class="text-[#6366f1]">*</span>
+              </label>
+              <button type="button" onclick="showFieldInfo('ccPassword', event)" class="w-4 h-4 rounded-full border border-[#d4d6de] hover:border-[#6366f1] text-[10px] font-bold text-[#979ba7] hover:text-[#6366f1] inline-flex items-center justify-center transition-colors cursor-pointer shrink-0" title="Why we ask for this">i</button>
+            </div>
             <div class="relative">
               <input type="password" id="ccPassword" required placeholder="••••••••" class="w-full h-[40px] text-[13px] rounded-[6px] border border-[#e5e7eb] pl-3 pr-10 text-[#20232d] placeholder-[#979ba7] bg-white transition-all">
-              <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-[#979ba7] hover:text-[#20232d] transition-colors">
+              <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-[#979ba7] hover:text-[#20232d] transition-colors cursor-pointer">
                 <svg id="eyeIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
@@ -216,9 +246,13 @@
 
           <!-- WhatsApp Number (optional) -->
           <div>
-            <label class="block text-[12px] font-medium text-[#20232d] mb-1.5" for="whatsappNumber">
-              WhatsApp number <span class="text-[#6b7080] font-normal">(optional)</span>
-            </label>
+            <div class="flex items-center justify-between mb-1.5">
+              <label class="block text-[12px] font-medium text-[#20232d] flex items-center gap-1" for="whatsappNumber">
+                <span>WhatsApp number</span>
+                <span class="text-[#6b7080] font-normal">(optional)</span>
+              </label>
+              <button type="button" onclick="showFieldInfo('whatsappNumber', event)" class="w-4 h-4 rounded-full border border-[#d4d6de] hover:border-[#6366f1] text-[10px] font-bold text-[#979ba7] hover:text-[#6366f1] inline-flex items-center justify-center transition-colors cursor-pointer shrink-0" title="Why we ask for this">i</button>
+            </div>
             <input type="tel" id="whatsappNumber" placeholder="+91  98765 43210" class="w-full h-[40px] text-[13px] rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] placeholder-[#979ba7] bg-white transition-all">
           </div>
 
@@ -230,7 +264,10 @@
         <!-- 2. SERVICE SELECTION -->
         <div class="space-y-3">
           <div class="flex items-center justify-between">
-            <h2 class="text-[15px] font-semibold text-[#20232d]">Service selection</h2>
+            <div class="flex items-center gap-1.5">
+              <h2 class="text-[15px] font-semibold text-[#20232d]">Service selection</h2>
+              <button type="button" onclick="event.preventDefault(); event.stopPropagation(); showFieldInfo('serviceSelection', event)" class="w-4 h-4 rounded-full border border-[#d4d6de] hover:border-[#6366f1] text-[10px] font-bold text-[#979ba7] hover:text-[#6366f1] inline-flex items-center justify-center transition-colors cursor-pointer" title="Our intention with tiers">i</button>
+            </div>
             <span class="text-[11px] text-[#6b7080]">Select one option</span>
           </div>
 
@@ -257,7 +294,7 @@
                     <div class="text-[11px] text-[#6b7080]">Select the modules you have or need</div>
                   </div>
                 </div>
-                <span class="text-[12px] font-semibold text-[#5053d4]" id="individualCardPriceLabel">From ₹20</span>
+                <span class="text-[12px] font-semibold text-[#5053d4]" id="individualCardPriceLabel">From ₹15</span>
               </label>
 
               <!-- M1-M7 Line Module Selector Box -->
@@ -267,62 +304,62 @@
                   <span class="text-[#5053d4] font-semibold" id="individualSelectedCountText">0 selected</span>
                 </div>
                 
-                <!-- The M1 M2 M3... Line -->
+                <!-- The M1 M2 M3... Line (Exact: 15 20 30 75 15 70 75 = 300) -->
                 <div class="flex flex-wrap gap-2">
-                  <button type="button" data-module="M1" onclick="toggleIndividualModule('M1', 40, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
+                  <button type="button" data-module="M1" onclick="toggleIndividualModule('M1', 15, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
                     <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
                       <span class="pill-check w-3 h-3 rounded-[3px] border border-[#d4d6de] bg-white inline-block"></span>
                       <span>M1</span>
                     </div>
-                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹40</span>
+                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹15</span>
                   </button>
 
-                  <button type="button" data-module="M2" onclick="toggleIndividualModule('M2', 40, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
+                  <button type="button" data-module="M2" onclick="toggleIndividualModule('M2', 20, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
                     <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
                       <span class="pill-check w-3 h-3 rounded-[3px] border border-[#d4d6de] bg-white inline-block"></span>
                       <span>M2</span>
                     </div>
-                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹40</span>
+                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹20</span>
                   </button>
 
-                  <button type="button" data-module="M3" onclick="toggleIndividualModule('M3', 70, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
+                  <button type="button" data-module="M3" onclick="toggleIndividualModule('M3', 30, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
                     <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
                       <span class="pill-check w-3 h-3 rounded-[3px] border border-[#d4d6de] bg-white inline-block"></span>
                       <span>M3</span>
                     </div>
-                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹70</span>
+                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹30</span>
                   </button>
 
-                  <button type="button" data-module="M4" onclick="toggleIndividualModule('M4', 80, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
+                  <button type="button" data-module="M4" onclick="toggleIndividualModule('M4', 75, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
                     <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
                       <span class="pill-check w-3 h-3 rounded-[3px] border border-[#d4d6de] bg-white inline-block"></span>
                       <span>M4</span>
                     </div>
-                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹80</span>
+                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹75</span>
                   </button>
 
-                  <button type="button" data-module="M5" onclick="toggleIndividualModule('M5', 20, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
+                  <button type="button" data-module="M5" onclick="toggleIndividualModule('M5', 15, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
                     <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
                       <span class="pill-check w-3 h-3 rounded-[3px] border border-[#d4d6de] bg-white inline-block"></span>
                       <span>M5</span>
                     </div>
-                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹20</span>
+                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹15</span>
                   </button>
 
-                  <button type="button" data-module="M6" onclick="toggleIndividualModule('M6', 60, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
+                  <button type="button" data-module="M6" onclick="toggleIndividualModule('M6', 70, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
                     <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
                       <span class="pill-check w-3 h-3 rounded-[3px] border border-[#d4d6de] bg-white inline-block"></span>
                       <span>M6</span>
                     </div>
-                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹60</span>
+                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹70</span>
                   </button>
 
-                  <button type="button" data-module="M7" onclick="toggleIndividualModule('M7', 50, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
+                  <button type="button" data-module="M7" onclick="toggleIndividualModule('M7', 75, this)" class="mod-pill-btn w-[63px] h-[53px] rounded-[6px] bg-[#fafafb] border border-[#e5e7eb] hover:border-[#6366f1] flex flex-col items-center justify-center transition-all cursor-pointer">
                     <div class="flex items-center gap-1 text-[11px] font-medium text-[#6b7080]">
                       <span class="pill-check w-3 h-3 rounded-[3px] border border-[#d4d6de] bg-white inline-block"></span>
                       <span>M7</span>
                     </div>
-                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹50</span>
+                    <span class="text-[12px] text-[#6b7080] mt-0.5">₹75</span>
                   </button>
                 </div>
               </div>
@@ -379,6 +416,7 @@
             <div class="flex items-center gap-2">
               <span class="text-base">📸</span>
               <h3 class="text-[13px] font-semibold text-[#20232d]">Upload Syllabus Screenshot Proof <span class="text-[#6366f1]">*</span></h3>
+              <button type="button" onclick="event.preventDefault(); event.stopPropagation(); showFieldInfo('proofSection', event)" class="w-4 h-4 rounded-full border border-[#d4d6de] hover:border-[#6366f1] text-[10px] font-bold text-[#979ba7] hover:text-[#6366f1] inline-flex items-center justify-center transition-colors cursor-pointer" title="Why proof is required">i</button>
             </div>
             <span class="px-2 py-0.5 rounded-[4px] bg-white text-[#5053d4] border border-[#6366f1]/20 text-[10px] font-semibold uppercase">Required for verification</span>
           </div>
@@ -417,7 +455,13 @@
 
         <!-- 3. DELIVERY -->
         <div class="space-y-3">
-          <h2 class="text-[15px] font-semibold text-[#20232d]">Delivery</h2>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <h2 class="text-[15px] font-semibold text-[#20232d]">Delivery</h2>
+              <button type="button" onclick="event.preventDefault(); event.stopPropagation(); showFieldInfo('deliverySpeed', event)" class="w-4 h-4 rounded-full border border-[#d4d6de] hover:border-[#6366f1] text-[10px] font-bold text-[#979ba7] hover:text-[#6366f1] inline-flex items-center justify-center transition-colors cursor-pointer" title="Delivery speed details">i</button>
+            </div>
+            <span class="text-[11px] text-[#6b7080]">Select one speed</span>
+          </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <!-- Standard Delivery -->
@@ -448,9 +492,12 @@
 
         <!-- 4. ORDER NOTES -->
         <div class="space-y-1.5">
-          <label class="block text-[12px] font-medium text-[#20232d]" for="orderNotes">
-            Order notes <span class="text-[#6b7080] font-normal">(optional)</span>
-          </label>
+          <div class="flex items-center justify-between">
+            <label class="block text-[12px] font-medium text-[#20232d]" for="orderNotes">
+              Order notes <span class="text-[#6b7080] font-normal">(optional)</span>
+            </label>
+            <button type="button" onclick="event.preventDefault(); event.stopPropagation(); showFieldInfo('orderNotes', event)" class="w-4 h-4 rounded-full border border-[#d4d6de] hover:border-[#6366f1] text-[10px] font-bold text-[#979ba7] hover:text-[#6366f1] inline-flex items-center justify-center transition-colors cursor-pointer" title="Why add notes">i</button>
+          </div>
           <input type="text" id="orderNotes" placeholder="Add notes for delivery or review" class="w-full h-[40px] text-[13px] rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] placeholder-[#979ba7] bg-white transition-all">
         </div>
 
@@ -480,7 +527,10 @@
 
           <!-- Promo Code Entry -->
           <div class="space-y-2">
-            <label class="block text-[12px] font-medium text-[#20232d]" for="couponInput">Promo code</label>
+            <div class="flex items-center justify-between">
+              <label class="block text-[12px] font-medium text-[#20232d]" for="couponInput">Promo code</label>
+              <button type="button" onclick="event.preventDefault(); event.stopPropagation(); showFieldInfo('promoCode', event)" class="w-4 h-4 rounded-full border border-[#d4d6de] hover:border-[#6366f1] text-[10px] font-bold text-[#979ba7] hover:text-[#6366f1] inline-flex items-center justify-center transition-colors cursor-pointer" title="Promo info">i</button>
+            </div>
             <div class="flex gap-2">
               <input type="text" id="couponInput" placeholder="Enter code" class="flex-1 h-[40px] text-[13px] rounded-[6px] border border-[#e5e7eb] px-3 bg-white text-[#20232d] placeholder-[#979ba7] uppercase font-semibold">
               <button type="button" onclick="applyPromoCode()" class="h-[40px] px-3.5 rounded-[6px] border border-[#e5e7eb] bg-white text-[12px] font-medium text-[#6b7080] hover:text-[#20232d] hover:border-[#6366f1] transition-all">
@@ -550,6 +600,97 @@
       </svg>
       <span>Secure checkout · For engineering students</span>
     </div>
+
+    <!-- 1. FIELD INTENTION INFO POPOVER / MODAL -->
+  <div id="fieldInfoModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/40 backdrop-blur-[2px] hidden" onclick="closeFieldInfoModal(event)">
+    <div class="bg-white rounded-[10px] max-w-sm w-full p-5 shadow-2xl border border-[#e5e7eb] relative animate-in fade-in zoom-in duration-150" onclick="event.stopPropagation()">
+      <div class="flex items-start justify-between gap-3 mb-2">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-[#f7f7ff] text-[#5053d4] border border-[#6366f1]/30 flex items-center justify-center text-xs font-bold">i</span>
+          <h3 class="text-[14px] font-semibold text-[#20232d]" id="infoModalTitle">Why We Ask For This</h3>
+        </div>
+        <button type="button" onclick="document.getElementById('fieldInfoModal').classList.add('hidden')" class="text-[#979ba7] hover:text-[#20232d] text-lg leading-none cursor-pointer">&times;</button>
+      </div>
+      <p class="text-[12px] text-[#6b7080] leading-relaxed" id="infoModalText">...</p>
+      <div class="mt-4 pt-3 border-t border-[#e5e7eb] flex justify-end">
+        <button type="button" onclick="document.getElementById('fieldInfoModal').classList.add('hidden')" class="px-3.5 py-1.5 rounded-[6px] bg-[#6366f1] hover:bg-[#5053d4] text-white text-[12px] font-semibold transition-colors cursor-pointer">Understood</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. TRACK REQUEST STATUS & REPLIES MODAL -->
+  <div id="requestStatusModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm hidden" onclick="closeStatusModalOnBackdrop(event)">
+    <div class="bg-white rounded-[10px] max-w-lg w-full p-6 shadow-2xl border border-[#e5e7eb] relative max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+      <button type="button" onclick="closeModal('requestStatusModal')" class="absolute top-4 right-4 text-[#979ba7] hover:text-[#20232d] cursor-pointer">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="flex items-center gap-2.5 mb-4">
+        <div class="w-9 h-9 rounded-full bg-[#f7f7ff] text-[#5053d4] border border-[#6366f1]/30 flex items-center justify-center font-bold text-base">🔍</div>
+        <div>
+          <h3 class="text-[16px] font-semibold text-[#20232d]">Track Request Status & Replies</h3>
+          <p class="text-[12px] text-[#6b7080]">Search by Request ID (ORD-XXXXXX) or your College Email</p>
+        </div>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="space-y-2 mb-5">
+        <div class="flex gap-2">
+          <input type="text" id="statusLookupInput" placeholder="e.g. ORD-B2F9A1 or rollnumber_be24@college.edu" class="flex-1 h-[42px] text-[13px] rounded-[6px] border border-[#e5e7eb] px-3 text-[#20232d] placeholder-[#979ba7] bg-white focus:outline-none focus:border-[#6366f1]">
+          <button type="button" onclick="lookupRequestStatus()" id="statusSearchBtn" class="h-[42px] px-4 rounded-[6px] bg-[#6366f1] hover:bg-[#5053d4] text-white text-[13px] font-semibold transition-all flex items-center gap-1.5 cursor-pointer">
+            <span id="statusSearchBtnText">Search</span>
+          </button>
+        </div>
+        <p id="statusLookupError" class="text-[12px] text-red-600 hidden font-medium"></p>
+      </div>
+
+      <!-- Result Card -->
+      <div id="statusResultCard" class="hidden border border-[#e5e7eb] rounded-[8px] p-4 bg-[#fafafb] space-y-3.5">
+        <div class="flex items-center justify-between">
+          <span class="text-[12px] font-mono font-bold text-[#5053d4]" id="resultOrderId">ORD-XXXXXX</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200" id="resultStatusBadge">PENDING</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12px] pt-1">
+          <div>
+            <span class="text-[#6b7080] block text-[11px]">College Email:</span>
+            <span class="font-medium text-[#20232d] truncate block" id="resultEmail">-</span>
+          </div>
+          <div>
+            <span class="text-[#6b7080] block text-[11px]">Instagram Handle:</span>
+            <span class="font-medium text-[#20232d] truncate block" id="resultIg">-</span>
+          </div>
+          <div class="sm:col-span-2">
+            <span class="text-[#6b7080] block text-[11px]">Requested Scope:</span>
+            <span class="font-medium text-[#20232d] truncate block" id="resultScope">-</span>
+          </div>
+        </div>
+
+        <!-- Owner Reply / Custom Pricing Quote Box -->
+        <div class="p-3.5 rounded-[6px] bg-white border border-[#6366f1]/30 space-y-1.5" id="ownerReplyBox">
+          <div class="flex items-center gap-1.5 text-[12px] font-semibold text-[#5053d4]">
+            <span>💬</span>
+            <span>Owner Reply & Custom Quote:</span>
+          </div>
+          <p class="text-[12px] text-[#20232d] leading-relaxed" id="ownerReplyText">
+            ⏳ Your request is currently queued for review. The owner is verifying your syllabus and will message your Instagram DM with your final customized quote!
+          </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-2 pt-1">
+          <a id="igDmLink" href="https://ig.me/m/campus.tick" target="_blank" class="flex-1 py-2 px-3 rounded-[6px] bg-[#6366f1] hover:bg-[#5053d4] text-white text-center text-[12px] font-semibold transition-colors flex items-center justify-center gap-1.5">
+            <span>Direct Message on Instagram</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+          <button type="button" onclick="loadFoundOrderToWatchdog(); closeModal('requestStatusModal')" class="py-2 px-3 rounded-[6px] bg-white hover:bg-[#eef2ff] border border-[#6366f1]/30 text-[#5053d4] text-[12px] font-semibold transition-colors cursor-pointer">
+            View Live SLA Timer
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   </main>
 
@@ -826,7 +967,7 @@
           desc = mods.join(', ');
         }
         const indLabel = document.getElementById('individualCardPriceLabel');
-        if (indLabel) indLabel.textContent = basePrice > 0 ? `₹${basePrice}` : "From ₹20";
+        if (indLabel) indLabel.textContent = basePrice > 0 ? `₹${basePrice}` : "From ₹15";
 
       } else if (State.selectedTier === 'remaining') {
         const pct = State.remainingPercentage;
@@ -937,6 +1078,191 @@
     }
 
     // --- 10. DEDICATED DISCOUNT QUEUE SUBMISSION (SUPABASE + OWNER ALERT) ---
+    // --- FIELD INTENTIONS CATALOG ---
+    const FIELD_INTENTIONS = {
+      studentEmail: {
+        title: "Why College Email ID is Required",
+        text: "Anti-Spam Verification: Strictly one request permitted per student college email ID (college institutional email). This prevents duplicate queue spam, protects genuine students, and guarantees our standard 48-hour SLA turnaround time."
+      },
+      igHandle: {
+        title: "Why Instagram ID is Required",
+        text: "Direct Dispatch & Pricing: The owner uses your Instagram DM to review your uploaded syllabus screenshots, send you your finalized discounted price, and deliver authentic full-page completion proofs."
+      },
+      ccUsername: {
+        title: "Why CodeChef Username is Required",
+        text: "Syllabus Audit: Used to load your genuine course syllabus on CodeChef, calculate your exact problem completion count, and verify which modules remain."
+      },
+      ccPassword: {
+        title: "Why CodeChef Password is Required",
+        text: "Automated Platform Solver: Used strictly by our verified container solver engine to access your account and clear your selected coding test cases. Your credentials are strictly confidential and never stored."
+      },
+      whatsappNumber: {
+        title: "Why WhatsApp Number is Optional",
+        text: "Emergency Alert Channel: Strictly optional fallback in case your Instagram account has private DMs or message requests enabled, ensuring you receive timely delivery notifications."
+      },
+      serviceSelection: {
+        title: "Understanding Service Tiers",
+        text: "Choose Complete Course (₹250) for 100% course clearance without uploading screenshots. Choose Individual Modules to clear specific labs (M1: ₹15, M2: ₹20, M3: ₹30, M4: ₹75, M5: ₹15, M6: ₹70, M7: ₹75). Choose Remaining Test Cases if you are between 90% and 100% for dynamic per-percentage rates."
+      },
+      proofSection: {
+        title: "Why Screenshot Proof is Required",
+        text: "Verification & Fair Pricing: When requesting partial modules or custom discounts, screenshot proof verifies your genuine progress so the owner can offer you a fair, personalized quote."
+      },
+      deliverySpeed: {
+        title: "Delivery Speed Options",
+        text: "Standard delivery is completely FREE with guaranteed 48-hour completion. Express (+₹50) prioritizes your container in our overnight queue, completing your coursework in 2–3 hours (before 8 AM)."
+      },
+      orderNotes: {
+        title: "Order Notes",
+        text: "Optional instructions for the owner — you can specify submission deadlines, prioritize certain submodules, or request specific coordination times."
+      },
+      promoCode: {
+        title: "Promo Code",
+        text: "If you have received an authorized CampusTick promotional or student referral code, enter it here for an instant discount on your order subtotal."
+      }
+    };
+
+    function showFieldInfo(fieldKey, event) {
+      if (event) event.stopPropagation();
+      const info = FIELD_INTENTIONS[fieldKey];
+      if (!info) return;
+
+      const titleEl = document.getElementById('infoModalTitle');
+      const textEl = document.getElementById('infoModalText');
+      const modal = document.getElementById('fieldInfoModal');
+
+      if (titleEl) titleEl.textContent = info.title;
+      if (textEl) textEl.textContent = info.text;
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeFieldInfoModal(event) {
+      const modal = document.getElementById('fieldInfoModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    // --- REQUEST STATUS LOOKUP & REPLIES ---
+    function openRequestStatusModal() {
+      const modal = document.getElementById('requestStatusModal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+
+      const stored = getStoredOrder();
+      const input = document.getElementById('statusLookupInput');
+      if (stored && input && !input.value) {
+        input.value = stored.id || stored.email || stored.codechef_username || '';
+      }
+    }
+
+    function closeStatusModalOnBackdrop(event) {
+      if (event.target.id === 'requestStatusModal') {
+        closeModal('requestStatusModal');
+      }
+    }
+
+    async function lookupRequestStatus() {
+      const input = document.getElementById('statusLookupInput');
+      const query = (input?.value || '').trim();
+      const errEl = document.getElementById('statusLookupError');
+      const card = document.getElementById('statusResultCard');
+      const btnText = document.getElementById('statusSearchBtnText');
+
+      if (!query) {
+        if (errEl) {
+          errEl.textContent = "Please enter a Request ID (e.g. ORD-XXXXXX) or College Email.";
+          errEl.classList.remove('hidden');
+        }
+        return;
+      }
+      if (errEl) errEl.classList.add('hidden');
+      if (btnText) btnText.textContent = "Searching...";
+
+      let foundOrder = null;
+
+      // 1. Query Serverless API route
+      try {
+        const isEmail = query.includes('@');
+        const param = isEmail ? `email=${encodeURIComponent(query.toLowerCase())}` : `id=${encodeURIComponent(query.toUpperCase())}`;
+        const resp = await fetch(`/api/status?${param}`);
+        if (resp.ok) {
+          const data = await resp.json();
+          if (data.success && data.order) {
+            foundOrder = data.order;
+          }
+        }
+      } catch (e) {
+        console.warn("API status lookup fallback:", e);
+      }
+
+      // 2. Fallback to localStorage / local active order
+      if (!foundOrder) {
+        const stored = getStoredOrder();
+        if (stored && (
+          (stored.id && stored.id.toUpperCase() === query.toUpperCase()) ||
+          (stored.email && stored.email.toLowerCase() === query.toLowerCase()) ||
+          (stored.codechef_username && stored.codechef_username.toLowerCase() === query.toLowerCase()) ||
+          (stored.ig_handle && stored.ig_handle.toLowerCase() === query.replace(/^@/, '').toLowerCase())
+        )) {
+          foundOrder = stored;
+        }
+      }
+
+      if (btnText) btnText.textContent = "Search";
+
+      if (!foundOrder) {
+        if (errEl) {
+          errEl.textContent = "No request found with this ID or Email. Please verify your details or submit a request below.";
+          errEl.classList.remove('hidden');
+        }
+        if (card) card.classList.add('hidden');
+        return;
+      }
+
+      // Render Found Order
+      if (card) card.classList.remove('hidden');
+      document.getElementById('resultOrderId').textContent = foundOrder.id || 'ORD-UNKNOWN';
+      
+      const statusEl = document.getElementById('resultStatusBadge');
+      const status = (foundOrder.status || 'PENDING').toUpperCase();
+      statusEl.textContent = status;
+
+      if (status === 'COMPLETED') {
+        statusEl.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200";
+      } else if (status === 'ACCEPTED' || status === 'IN PROGRESS') {
+        statusEl.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-indigo-50 text-[#5053d4] border border-[#6366f1]/30";
+      } else {
+        statusEl.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200";
+      }
+
+      document.getElementById('resultEmail').textContent = foundOrder.email || 'Not specified';
+      document.getElementById('resultIg').textContent = foundOrder.ig_handle ? ('@' + foundOrder.ig_handle) : '-';
+
+      const scope = Array.isArray(foundOrder.modules) ? foundOrder.modules.join(', ') : (foundOrder.modules || 'Complete Course');
+      document.getElementById('resultScope').textContent = scope;
+
+      // Owner reply rendering
+      const replyBox = document.getElementById('ownerReplyBox');
+      const replyText = document.getElementById('ownerReplyText');
+      if (foundOrder.admin_reply) {
+        replyText.textContent = foundOrder.admin_reply;
+        replyBox.className = "p-3.5 rounded-[6px] bg-emerald-50 border border-emerald-200 space-y-1.5";
+      } else {
+        replyText.textContent = "⏳ Your request is currently queued for review. The owner is verifying your syllabus screenshots and will message your Instagram DM with your personalized quote!";
+        replyBox.className = "p-3.5 rounded-[6px] bg-white border border-[#6366f1]/30 space-y-1.5";
+      }
+
+      State.foundOrder = foundOrder;
+    }
+
+    function loadFoundOrderToWatchdog() {
+      if (State.foundOrder) {
+        State.currentOrder = State.foundOrder;
+        localStorage.setItem('campustick_active_order', JSON.stringify(State.foundOrder));
+        revealLiveTimer();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
     async function submitDiscountQueue() {
       const creds = validateCredentials();
       if (!creds) return;
@@ -968,6 +1294,7 @@
 
       const payload = {
         id: orderId,
+        email: creds.email,
         ig_handle: creds.ig,
         codechef_username: creds.user,
         codechef_password: creds.pass,
@@ -1172,6 +1499,7 @@
 
       const payload = {
         id: orderId,
+        email: creds.email,
         ig_handle: creds.ig,
         codechef_username: creds.user,
         codechef_password: creds.pass,
