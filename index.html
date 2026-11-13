@@ -143,12 +143,70 @@
       </nav>
 
       <div class="flex items-center gap-2.5">
+        <button type="button" id="toggleTrackerBtn" onclick="toggleTrackerView()" class="px-3 py-2 rounded-lg bg-[#181B24] hover:bg-[#222632] text-gray-300 hover:text-[#E2F952] border border-[#272A34] font-mono-jb font-bold text-xs flex items-center gap-1.5 transition-all">
+          <span>⏱️</span>
+          <span>Track 48h SLA</span>
+        </button>
         <a href="#order" class="px-4 py-2 rounded-lg bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-xs tracking-tight transition-all shadow-[0_0_15px_rgba(226,249,82,0.25)]">
           Clear My Labs ⚡
         </a>
       </div>
     </div>
   </header>
+
+  <!-- LIVE 48-HOUR ORDER SLA WATCHDOG SECTION -->
+  <section id="liveTrackerSection" class="hidden border-b border-[#272A34] bg-[#0E1017] py-6 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="bg-gradient-to-r from-[#12141A] via-[#161922] to-[#12141A] rounded-2xl p-6 border border-[#272A34] shadow-2xl relative overflow-hidden">
+        <div class="absolute -right-10 -top-10 w-44 h-44 bg-[#E2F952]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+          <div>
+            <div class="flex items-center gap-2 mb-2 flex-wrap">
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold font-mono-jb uppercase tracking-wider bg-[#E2F952]/15 text-[#E2F952] border border-[#E2F952]/30 flex items-center gap-1.5" id="trackerStatusBadge">
+                <span class="w-2 h-2 rounded-full bg-[#E2F952] animate-ping"></span>
+                48-Hour Live Turnaround SLA Active
+              </span>
+              <span class="text-xs text-gray-400 font-mono-jb" id="trackerOrderIdDisplay">ORD-XXXXXX</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-black text-white font-display flex items-center gap-2">
+              <span id="trackerCustomerName">@username</span>'s Coursework Countdown
+            </h2>
+            <p class="text-xs text-gray-400 mt-1 font-sans" id="trackerSubtext">
+              Standard Turnaround: Guaranteed 100% completion & verified certificate within 48 Hours.
+            </p>
+          </div>
+
+          <!-- Digital Countdown Box -->
+          <div class="bg-[#090A0E] border border-[#272A34] rounded-xl p-4 sm:p-5 text-center min-w-[260px] shadow-inner">
+            <span class="text-[10px] text-gray-500 font-mono-jb font-bold uppercase tracking-wider block mb-1.5">Guaranteed SLA Delivery Timer</span>
+            <div class="text-3xl sm:text-4xl font-black font-mono-jb tracking-tight text-white flex items-center justify-center gap-1" id="countdownClock">
+              <span class="bg-[#181B24] px-2.5 py-1 rounded-lg text-[#E2F952]" id="timerHours">48</span>
+              <span class="text-[#E2F952] font-bold">:</span>
+              <span class="bg-[#181B24] px-2.5 py-1 rounded-lg text-[#E2F952]" id="timerMinutes">00</span>
+              <span class="text-[#E2F952] font-bold">:</span>
+              <span class="bg-[#181B24] px-2.5 py-1 rounded-lg text-[#E2F952]" id="timerSeconds">00</span>
+            </div>
+            <div class="text-[11px] text-gray-400 font-mono-jb mt-2 flex items-center justify-center gap-1">
+              <span>🎯</span>
+              <span id="timerDeadlineDisplay">Target: 48 Hours from submission</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Turnaround Progress Bar -->
+        <div class="mt-5 pt-4 border-t border-[#272A34] relative z-10">
+          <div class="flex items-center justify-between text-xs font-mono-jb text-gray-400 mb-1.5">
+            <span>Turnaround SLA Elapsed</span>
+            <span class="text-[#E2F952] font-bold" id="trackerProgressPercentText">48 Hours Remaining</span>
+          </div>
+          <div class="w-full h-2.5 bg-[#090A0E] rounded-full overflow-hidden border border-[#272A34] p-0.5">
+            <div id="trackerProgressBar" class="h-full bg-gradient-to-r from-[#E2F952]/60 to-[#E2F952] rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(226,249,82,0.4)]" style="width: 2%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- HERO SECTION (DARK INDUSTRIAL SPLIT) -->
   <section class="relative overflow-hidden pt-12 pb-16 lg:pt-16 lg:pb-20 border-b border-[#272A34] bg-[#090A0E]">
@@ -619,15 +677,8 @@
                 </div>
               </div>
 
-              <div>
-                <label class="block text-xs font-mono-jb text-gray-400 mb-1" for="whatsappNumber">
-                  WhatsApp Number <span class="text-gray-500 font-normal">(for instant delivery alert)</span>
-                </label>
-                <input type="tel" id="whatsappNumber" placeholder="+91 98765 43210" class="w-full h-11 text-xs rounded-xl border border-[#272A34] px-3.5 text-white placeholder-gray-600 bg-[#090A0E] transition-all">
-              </div>
-
               <p class="text-[11px] text-gray-500 pt-1 font-mono-jb">
-                🔒 Credentials are encrypted, used exclusively for your coursework, and purged upon delivery.
+                🔒 Strictly Confidential. Only 3 credentials required (Instagram ID, CodeChef Username, Password). No WhatsApp or roll number needed.
               </p>
             </div>
           </section>
@@ -714,43 +765,31 @@
                 </div>
               </div>
 
-              <!-- TIER 3: FINISHER BOOSTER -->
+              <!-- TIER 3: FINISHER BOOSTER / REMAINING -->
               <div id="boosterCard" class="card-inactive p-4 rounded-xl border transition-all">
                 <label onclick="selectTier('booster')" class="flex items-center justify-between cursor-pointer">
                   <div class="flex items-center gap-3">
                     <input type="radio" name="serviceTier" id="tierBooster" value="booster" class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
                     <div>
-                      <div class="text-xs font-bold text-white font-display">Finisher Booster</div>
-                      <div class="text-[11px] text-gray-400">Stuck at 90%+ or 95%+ completion</div>
+                      <div class="text-xs font-bold text-white font-display">Remaining Test Cases & Cleanup</div>
+                      <div class="text-[11px] text-gray-400">Already partially solved • Select remaining percentage</div>
                     </div>
                   </div>
-                  <div class="text-xs font-semibold text-[#E2F952] font-mono-jb" id="boosterPriceBadge">₹50</div>
+                  <div class="text-xs font-semibold text-[#E2F952] font-mono-jb" id="boosterPriceBadge">₹80</div>
                 </label>
 
-                <!-- NESTED BOOSTER CONFIG -->
+                <!-- NESTED BOOSTER CONFIG WITH SLIDER -->
                 <div id="boosterConfigBox" class="mt-4 pt-3.5 border-t border-[#272A34] hidden space-y-3">
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    <label class="flex items-center justify-between p-3 rounded-xl border border-[#272A34] cursor-pointer bg-[#090A0E] has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
-                      <div class="flex items-center gap-2.5">
-                        <input type="radio" name="boosterPctOption" value="95" checked onchange="updateCalculations()" class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
-                        <div>
-                          <div class="text-xs font-bold text-white font-mono-jb">95% and above</div>
-                          <div class="text-[10px] text-gray-400">Clear final 2-3 container labs</div>
-                        </div>
-                      </div>
-                      <span class="text-xs font-bold text-[#E2F952] font-mono-jb">₹50</span>
-                    </label>
-
-                    <label class="flex items-center justify-between p-3 rounded-xl border border-[#272A34] cursor-pointer bg-[#090A0E] has-[:checked]:border-[#E2F952] has-[:checked]:bg-[#E2F952]/10 transition-all">
-                      <div class="flex items-center gap-2.5">
-                        <input type="radio" name="boosterPctOption" value="90" onchange="updateCalculations()" class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
-                        <div>
-                          <div class="text-xs font-bold text-white font-mono-jb">90% to 94.9%</div>
-                          <div class="text-[10px] text-gray-400">Finish all remaining modules</div>
-                        </div>
-                      </div>
-                      <span class="text-xs font-bold text-[#E2F952] font-mono-jb">₹100</span>
-                    </label>
+                  <div class="flex items-center justify-between text-xs font-mono-jb">
+                    <span class="text-gray-400">Already Solved Progress:</span>
+                    <span class="text-[#E2F952] font-bold" id="progressPercentDisplay">90% Solved</span>
+                  </div>
+                  <input type="range" id="progressSlider" min="50" max="98" step="1" value="90" oninput="updateSliderCalculations()" class="w-full accent-[#E2F952] bg-[#090A0E] cursor-pointer">
+                  <div class="flex justify-between text-[10px] text-gray-500 font-mono-jb">
+                    <span>50% Solved (₹140)</span>
+                    <span>80% (₹110)</span>
+                    <span>90% (₹80)</span>
+                    <span>95%+ (₹50)</span>
                   </div>
                 </div>
               </div>
@@ -758,51 +797,81 @@
             </div>
           </section>
 
-          <!-- 3. DELIVERY SPEED (BEFORE 8:00 AM OPTION) -->
+          <!-- 3. DELIVERY SPEED (48-HOUR SLA VS BEFORE 8 AM) -->
           <section class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34]">
             <div class="flex items-center justify-between mb-4">
-              <h3 class="text-sm font-bold text-white font-mono-jb uppercase tracking-wider">3. Delivery Speed</h3>
-              <span class="text-xs text-gray-500 font-mono-jb">Select turnaround</span>
+              <h3 class="text-sm font-bold text-white font-mono-jb uppercase tracking-wider">3. Turnaround SLA</h3>
+              <span class="text-xs text-gray-500 font-mono-jb">Guaranteed Delivery</span>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              <!-- EXPRESS BEFORE 8 AM -->
-              <label id="speedEmergencyCard" onclick="selectSpeed('emergency')" class="card-selected p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between">
+              <!-- STANDARD 48 HOURS SLA -->
+              <label id="speedStandardCard" onclick="selectSpeed('standard')" class="card-selected p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between">
                 <div class="flex items-start justify-between">
                   <div class="flex items-center gap-2.5">
-                    <input type="radio" name="deliverySpeed" id="speedEmergency" value="emergency" checked class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
+                    <input type="radio" name="deliverySpeed" id="speedStandard" value="standard" checked class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
                     <div>
-                      <div class="text-xs font-bold text-white font-display">⚡ Done Before 8:00 AM</div>
-                      <div class="text-[11px] text-[#E2F952] font-mono-jb">Guaranteed overnight completion</div>
+                      <div class="text-xs font-bold text-white font-display">Standard 48-Hour SLA</div>
+                      <div class="text-[11px] text-[#E2F952] font-mono-jb">Guaranteed 48-hour delivery</div>
                     </div>
                   </div>
-                  <span class="text-xs font-bold text-[#E2F952] font-mono-jb">+₹50</span>
+                  <span class="text-xs font-bold text-[#E2F952] font-mono-jb">FREE</span>
+                </div>
+                <div class="mt-3 text-[11px] text-gray-400 border-t border-[#272A34] pt-2 font-mono-jb">
+                  Trackable live 48-hour counter starts immediately.
+                </div>
+              </label>
+
+              <!-- EXPRESS BEFORE 8 AM -->
+              <label id="speedEmergencyCard" onclick="selectSpeed('emergency')" class="card-inactive p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between">
+                <div class="flex items-start justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <input type="radio" name="deliverySpeed" id="speedEmergency" value="emergency" class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
+                    <div>
+                      <div class="text-xs font-bold text-white font-display">⚡ Done Before 8:00 AM</div>
+                      <div class="text-[11px] text-gray-400 font-mono-jb">Emergency overnight shift</div>
+                    </div>
+                  </div>
+                  <span class="text-xs font-bold text-gray-400 font-mono-jb">+₹50</span>
                 </div>
                 <div class="mt-3 text-[11px] text-gray-400 border-t border-[#272A34] pt-2 font-mono-jb">
                   Cleared before morning lab attendance begins!
                 </div>
               </label>
-
-              <!-- STANDARD DELIVERY -->
-              <label id="speedStandardCard" onclick="selectSpeed('standard')" class="card-inactive p-4 rounded-xl border cursor-pointer transition-all flex flex-col justify-between">
-                <div class="flex items-start justify-between">
-                  <div class="flex items-center gap-2.5">
-                    <input type="radio" name="deliverySpeed" id="speedStandard" value="standard" class="w-4 h-4 text-[#E2F952] focus:ring-[#E2F952] accent-[#E2F952]">
-                    <div>
-                      <div class="text-xs font-bold text-white font-display">Standard Delivery</div>
-                      <div class="text-[11px] text-gray-400">24 – 48 Hours turnaround</div>
-                    </div>
-                  </div>
-                  <span class="text-xs font-bold text-gray-400 font-mono-jb">FREE</span>
-                </div>
-                <div class="mt-3 text-[11px] text-gray-400 border-t border-[#272A34] pt-2 font-mono-jb">
-                  Queued in standard execution batch.
-                </div>
-              </label>
             </div>
           </section>
 
-          <!-- 4. ORDER NOTES -->
+          <!-- 4. DISCOUNT & PREVIOUS WORK REVIEW (UPLOAD SCREENSHOTS) -->
+          <section class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34]">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-sm font-bold text-white font-mono-jb uppercase tracking-wider">4. Custom Discount Review</h3>
+              <span class="text-xs text-[#E2F952] font-mono-jb font-bold">Save More</span>
+            </div>
+            <p class="text-xs text-gray-400 mb-4 font-sans leading-relaxed">
+              Already completed some work on CodeChef? Upload screenshots of your solved problems. The owner will review your syllabus and quote a final discounted amount!
+            </p>
+
+            <!-- DROPZONE -->
+            <div id="dropzone" class="border-2 border-dashed border-[#272A34] hover:border-[#E2F952] rounded-xl p-5 text-center cursor-pointer bg-[#090A0E] transition-all group">
+              <input type="file" id="fileInput" multiple accept="image/*" class="hidden">
+              <div class="text-2xl mb-1.5 group-hover:scale-110 transition-transform">📸</div>
+              <div class="text-xs font-bold text-white font-mono-jb">Drop screenshots here or <span class="text-[#E2F952] underline">browse files</span></div>
+              <div class="text-[10px] text-gray-500 mt-1">Attach syllabus or solved problem screenshots</div>
+            </div>
+
+            <!-- PREVIEWS -->
+            <div id="previewGrid" class="grid grid-cols-3 sm:grid-cols-4 gap-2.5 mt-3 hidden"></div>
+
+            <!-- ACTION BUTTON -->
+            <button type="button" id="reviewDiscountBtn" onclick="handleDiscountRequest()" class="mt-4 w-full py-3.5 px-4 rounded-xl bg-[#181B24] hover:bg-[#222632] border border-[#E2F952]/40 text-[#E2F952] font-mono-jb font-extrabold text-xs flex items-center justify-center gap-2 transition-all shadow-sm">
+              <span id="reviewDiscountBtnText">📩 Request Custom Discount (Send to Owner)</span>
+            </button>
+            <p class="text-[10px] text-gray-500 font-mono-jb text-center mt-2">
+              Sends your credentials & screenshots directly to the owner. Begins your 48-Hour Live Timer.
+            </p>
+          </section>
+
+          <!-- 5. ORDER NOTES -->
           <section class="bg-[#12141A] rounded-2xl p-6 border border-[#272A34]">
             <h3 class="text-sm font-bold text-white font-mono-jb uppercase tracking-wider mb-2">Special Instructions / Viva Deadline</h3>
             <textarea id="orderNotes" rows="2" placeholder="e.g. My lab viva is at 9:00 AM tomorrow morning, please prioritize Module 4!" class="w-full text-xs rounded-xl border border-[#272A34] p-3 text-white placeholder-gray-600 bg-[#090A0E] font-sans"></textarea>
@@ -857,10 +926,16 @@
 
             <!-- SUBMIT BUTTON (ACID LIME HIGH VOLTAGE) -->
             <button type="submit" id="payButton" class="w-full py-4 px-4 rounded-xl bg-[#E2F952] hover:bg-[#CBE62F] text-black font-mono-jb font-extrabold text-sm tracking-tight transition-all flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(226,249,82,0.3)]">
-              <span id="payBtnLabel">PAY ₹300 VIA RAZORPAY</span>
+              <span id="payBtnLabel">PAY ₹250 VIA RAZORPAY</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
               </svg>
+            </button>
+
+            <!-- OR DISCOUNT REVIEW -->
+            <button type="button" onclick="handleDiscountRequest()" class="mt-2.5 w-full py-2.5 px-3 rounded-xl bg-[#181B24] hover:bg-[#222632] text-gray-300 hover:text-[#E2F952] border border-[#272A34] font-mono-jb font-bold text-xs flex items-center justify-center gap-1.5 transition-all">
+              <span>📩</span>
+              <span>Ask for Discount with Screenshots</span>
             </button>
 
             <div class="mt-4 pt-3.5 border-t border-[#272A34] text-center space-y-1">
@@ -1053,20 +1128,30 @@
     const SUPABASE_URL = "https://wzemfaudaihcyqlyaoqr.supabase.co";
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZW1mYXVkYWloY3lxbHlhb3FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkxMjUwNDcsImV4cCI6MjEwNDcwMTA0N30.KWJ4nDmrANWqyJ7D7JDGSt-IBf-VHWWabNuoi9HTnb4";
     const RZP_HANDLE_URL = "https://razorpay.me/@campustick";
+    const OWNER_EMAIL = window.CAMPUS_TICK_OWNER_EMAIL || "support@campustick.internal";
 
-    let currentTier = 'bundle';
-    let currentSpeed = 'emergency'; // Default: Before 8 AM
-    let appliedDiscount = 0;
-    let appliedCouponCode = null;
-    let lastOrderData = null;
+    // Application State
+    const state = {
+      currentTier: 'bundle',
+      currentSpeed: 'standard', // Default: 48-Hour SLA
+      appliedDiscount: 0,
+      appliedCouponCode: null,
+      uploadedScreenshots: [],
+      activeOrder: JSON.parse(localStorage.getItem('campustick_active_order') || 'null'),
+      timerInterval: null
+    };
 
+    // Toggle Password Visibility
     function togglePasswordVisibility() {
       const p = document.getElementById('ccPassword');
-      p.type = (p.type === 'password') ? 'text' : 'password';
+      if (p) {
+        p.type = (p.type === 'password') ? 'text' : 'password';
+      }
     }
 
+    // Tier Selection (Bundle, Individual, Booster)
     function selectTier(tier) {
-      currentTier = tier;
+      state.currentTier = tier;
       document.getElementById('tierBundle').checked = (tier === 'bundle');
       document.getElementById('tierIndividual').checked = (tier === 'individual');
       document.getElementById('tierBooster').checked = (tier === 'booster');
@@ -1085,8 +1170,9 @@
       updateCalculations();
     }
 
+    // Speed Selection (Standard 48-Hour SLA vs Before 8 AM Emergency)
     function selectSpeed(speed) {
-      currentSpeed = speed;
+      state.currentSpeed = speed;
       document.getElementById('speedEmergency').checked = (speed === 'emergency');
       document.getElementById('speedStandard').checked = (speed === 'standard');
 
@@ -1099,35 +1185,47 @@
       updateCalculations();
     }
 
+    // Slider Handler for Booster / Remaining
+    function updateSliderCalculations() {
+      const slider = document.getElementById('progressSlider');
+      if (slider) {
+        const val = parseInt(slider.value, 10);
+        document.getElementById('progressPercentDisplay').textContent = `${val}% Solved`;
+      }
+      updateCalculations();
+    }
+
+    // Coupon Handler
     function applyCoupon() {
       const input = document.getElementById('couponInput');
       const msg = document.getElementById('couponMsg');
       const val = input.value.trim().toUpperCase();
 
       if (val === 'CAMPUS2028' || val === 'STUDENT2028' || val === 'CODECHEF100' || val === 'CAMPUS1337') {
-        appliedDiscount = 30;
-        appliedCouponCode = val;
+        state.appliedDiscount = 30;
+        state.appliedCouponCode = val;
         msg.textContent = `Promo applied! ₹30 discount saved.`;
         msg.className = "text-[11px] mt-1.5 text-[#E2F952] font-mono-jb font-bold block";
       } else if (val) {
-        appliedDiscount = 0;
-        appliedCouponCode = null;
+        state.appliedDiscount = 0;
+        state.appliedCouponCode = null;
         msg.textContent = "Invalid promo code.";
         msg.className = "text-[11px] mt-1.5 text-[#FF3B30] font-mono-jb block";
       } else {
-        appliedDiscount = 0;
-        appliedCouponCode = null;
+        state.appliedDiscount = 0;
+        state.appliedCouponCode = null;
         msg.className = "text-[11px] mt-1.5 hidden";
       }
       updateCalculations();
     }
 
+    // Calculations & Subtotaling
     function updateCalculations() {
       let basePrice = 250;
       let title = "Complete ML Course";
       let desc = "All 7 Modules (268 Problems)";
 
-      if (currentTier === 'individual') {
+      if (state.currentTier === 'individual') {
         const checkedBoxes = Array.from(document.querySelectorAll('.mod-checkbox:checked'));
         if (checkedBoxes.length === 0) {
           basePrice = 0;
@@ -1138,17 +1236,22 @@
           title = `Individual Modules (${checkedBoxes.length})`;
           desc = checkedBoxes.map(cb => cb.getAttribute('data-mod')).join(', ');
         }
-      } else if (currentTier === 'booster') {
-        const pctOption = document.querySelector('input[name="boosterPctOption"]:checked')?.value || '95';
-        basePrice = (pctOption === '95') ? 50 : 100;
-        title = "Finisher Booster";
-        desc = `Whole course · ${pctOption}%+ completion clearance`;
+      } else if (state.currentTier === 'booster') {
+        const slider = document.getElementById('progressSlider');
+        const val = slider ? parseInt(slider.value, 10) : 90;
+        if (val >= 95) basePrice = 50;
+        else if (val >= 90) basePrice = 80;
+        else if (val >= 80) basePrice = 110;
+        else basePrice = 140;
+
+        title = "Remaining Course Clearance";
+        desc = `${val}% already solved • Remaining tests & certificate`;
         const bBadge = document.getElementById('boosterPriceBadge');
         if (bBadge) bBadge.textContent = `₹${basePrice}`;
       }
 
-      const speedSurcharge = (currentSpeed === 'emergency') ? 50 : 0;
-      const discount = Math.min(appliedDiscount, basePrice);
+      const speedSurcharge = (state.currentSpeed === 'emergency') ? 50 : 0;
+      const discount = Math.min(state.appliedDiscount, basePrice);
       const finalTotal = Math.max(0, basePrice + speedSurcharge - discount);
 
       document.getElementById('summaryItemTitle').textContent = title;
@@ -1156,12 +1259,12 @@
       document.getElementById('summaryItemPrice').textContent = `₹${basePrice}`;
 
       const delEl = document.getElementById('summaryDelivery');
-      if (currentSpeed === 'emergency') {
+      if (state.currentSpeed === 'emergency') {
         delEl.textContent = "+₹50 (Before 8 AM)";
         delEl.className = "font-bold text-[#E2F952] font-mono-jb";
       } else {
-        delEl.textContent = "FREE (24–48h)";
-        delEl.className = "font-medium text-gray-500 font-mono-jb";
+        delEl.textContent = "FREE (48-Hour SLA)";
+        delEl.className = "font-medium text-[#E2F952] font-mono-jb";
       }
 
       const discEl = document.getElementById('summaryDiscount');
@@ -1177,101 +1280,207 @@
       document.getElementById('payBtnLabel').textContent = `PAY ₹${finalTotal} VIA RAZORPAY`;
     }
 
-    async function handleProceedPayment(e) {
-      e.preventDefault();
+    // Screenshot Drag & Drop Handling
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const previewGrid = document.getElementById('previewGrid');
 
+    if (dropzone && fileInput) {
+      dropzone.addEventListener('click', () => fileInput.click());
+      dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('border-[#E2F952]', 'bg-[#161922]');
+      });
+      dropzone.addEventListener('dragleave', () => {
+        dropzone.classList.remove('border-[#E2F952]', 'bg-[#161922]');
+      });
+      dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('border-[#E2F952]', 'bg-[#161922]');
+        handleFiles(e.dataTransfer.files);
+      });
+      fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+    }
+
+    function handleFiles(files) {
+      if (!files || files.length === 0) return;
+      previewGrid.classList.remove('hidden');
+      Array.from(files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          state.uploadedScreenshots.push({ name: file.name, url: e.target.result });
+          renderPreviews();
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function renderPreviews() {
+      previewGrid.innerHTML = '';
+      state.uploadedScreenshots.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'relative group rounded-xl overflow-hidden border border-[#272A34] bg-[#090A0E] aspect-video';
+        div.innerHTML = `
+          <img src="${item.url}" class="w-full h-full object-cover">
+          <button type="button" onclick="removeImage(${index})" class="absolute top-1 right-1 bg-rose-600 text-white rounded-full p-1 opacity-90 hover:opacity-100 transition-opacity">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        `;
+        previewGrid.appendChild(div);
+      });
+    }
+
+    window.removeImage = function(index) {
+      state.uploadedScreenshots.splice(index, 1);
+      if (state.uploadedScreenshots.length === 0) {
+        previewGrid.classList.add('hidden');
+      } else {
+        renderPreviews();
+      }
+    };
+
+    // Validation (Strictly 3 Compulsory Fields)
+    function validateCompulsoryFields() {
       const ig = document.getElementById('igHandle').value.trim().replace(/^@/, '');
       const user = document.getElementById('ccUsername').value.trim();
       const pass = document.getElementById('ccPassword').value.trim();
-      const phone = document.getElementById('whatsappNumber').value.trim();
-      const notes = document.getElementById('orderNotes').value.trim();
 
       if (!ig || !user || !pass) {
-        alert("Please provide your Instagram handle, CodeChef username, and password.");
-        return;
+        alert("Please fill in all 3 compulsory fields:\n1. Instagram Handle\n2. CodeChef Username\n3. CodeChef Password");
+        return null;
       }
+      return { ig, user, pass };
+    }
 
+    // Save Order Helper
+    function buildOrderPayload(creds, status = 'PAYMENT_PENDING') {
       let modules = [];
-      if (currentTier === 'bundle') {
+      if (state.currentTier === 'bundle') {
         modules = ['ALL_MODULES_1_TO_7'];
-      } else if (currentTier === 'individual') {
+      } else if (state.currentTier === 'individual') {
         const checked = Array.from(document.querySelectorAll('.mod-checkbox:checked'));
-        if (checked.length === 0) {
-          alert("Please select at least one module!");
-          return;
-        }
         modules = checked.map(c => c.getAttribute('data-mod'));
       } else {
-        const pctOption = document.querySelector('input[name="boosterPctOption"]:checked')?.value || '95';
-        modules = [`REMAINING_COURSE_${pctOption}PLUS`];
+        const slider = document.getElementById('progressSlider');
+        const pct = slider ? slider.value : '90';
+        modules = [`REMAINING_COURSE_${pct}PCT`];
       }
 
       const totalStr = document.getElementById('summaryTotal').textContent.replace(/[^\d]/g, '');
       const amount = parseInt(totalStr, 10);
       const orderId = "ORD-" + Math.random().toString(36).substring(2, 8).toUpperCase();
-      const speedName = (currentSpeed === 'emergency') ? 'Done Before 8:00 AM ⚡' : 'Standard (24–48 Hours)';
+      const notes = document.getElementById('orderNotes').value.trim();
 
-      const payload = {
+      return {
         id: orderId,
-        ig_handle: ig,
-        codechef_username: user,
-        codechef_password: pass,
-        phone: phone,
+        ig_handle: creds.ig,
+        codechef_username: creds.user,
+        codechef_password: creds.pass,
+        phone: null,
         modules: modules,
-        speed: currentSpeed,
-        coupon: appliedCouponCode,
+        speed: state.currentSpeed,
+        coupon: state.appliedCouponCode,
         amount: amount,
+        screenshot: state.uploadedScreenshots.length > 0 ? `${state.uploadedScreenshots.length} screenshot(s) attached` : null,
         notes: notes || null,
-        status: 'PAYMENT_PENDING',
+        status: status,
         created_at: new Date().toISOString()
       };
+    }
 
-      lastOrderData = payload;
+    async function dispatchOrderToSupabase(payload) {
+      try {
+        await fetch(`${SUPABASE_URL}/rest/v1/orders`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.warn("Supabase background dispatch note:", err);
+      }
+    }
 
-      const btn = document.getElementById('payButton');
-      btn.disabled = true;
-      document.getElementById('payBtnLabel').textContent = "REGISTERING ORDER...";
+    // DISCOUNT REVIEW HANDLER
+    async function handleDiscountRequest() {
+      const creds = validateCompulsoryFields();
+      if (!creds) return;
 
-      // Order summary text
-      const orderSummary = `🎓 campus.tick Clearance Order\n` +
-        `━━━━━━━━━━━━━━━━━━━━\n` +
-        `📦 Order ID: ${orderId}\n` +
-        `👤 Instagram: @${ig}\n` +
-        `💻 CodeChef: ${user}\n` +
-        `🔑 Password: ${pass}\n` +
-        `⚡ Speed: ${speedName}\n` +
-        `📚 Scope: ${modules.join(', ')}\n` +
-        `💰 Total: ₹${amount}\n` +
-        `💳 Payment Link: razorpay.me/@campustick\n` +
-        `━━━━━━━━━━━━━━━━━━━━`;
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(orderSummary).catch(() => {});
+      if (state.uploadedScreenshots.length === 0) {
+        const proceed = confirm("No screenshots uploaded. Click OK to send discount request anyway, or Cancel to upload syllabus screenshots first for a better discount.");
+        if (!proceed) {
+          fileInput.click();
+          return;
+        }
       }
 
-      // Present interactive payment modal immediately
-      showPaymentModal(payload);
-      btn.disabled = false;
-      updateCalculations();
+      const btn = document.getElementById('reviewDiscountBtn');
+      const btnText = document.getElementById('reviewDiscountBtnText');
+      if (btn) btn.disabled = true;
+      if (btnText) btnText.textContent = "⏳ Dispatching Review Request...";
 
-      // Open verified Razorpay.me in new tab
+      const payload = buildOrderPayload(creds, 'DISCOUNT_REVIEW_PENDING');
+      await dispatchOrderToSupabase(payload);
+
+      // Persist active order for live timer
+      state.activeOrder = payload;
+      localStorage.setItem('campustick_active_order', JSON.stringify(payload));
+
+      if (btn) btn.disabled = false;
+      if (btnText) btnText.textContent = "📩 Request Custom Discount (Send to Owner)";
+
+      // Construct detailed email to Owner
+      const slider = document.getElementById('progressSlider');
+      const progress = slider ? slider.value : '90';
+      const notes = document.getElementById('orderNotes').value.trim();
+      const imgCount = state.uploadedScreenshots.length;
+
+      const mailSubject = encodeURIComponent(`[DISCOUNT REQUEST] @${creds.ig} - CodeChef ML (${progress}% Solved)`);
+      let mailBody = `Hi CampusTick Owner,%0D%0A%0D%0A`;
+      mailBody += `A student has requested a manual discount review for CodeChef clearance:%0D%0A%0D%0A`;
+      mailBody += `• Order ID: ${payload.id}%0D%0A`;
+      mailBody += `• Instagram Handle: @${creds.ig}%0D%0A`;
+      mailBody += `• CodeChef Username: ${creds.user}%0D%0A`;
+      mailBody += `• CodeChef Password: ${creds.pass}%0D%0A`;
+      mailBody += `• Self-Reported Progress: ${progress}% Solved%0D%0A`;
+      mailBody += `• Attached Screenshots: ${imgCount} image(s)%0D%0A`;
+      if (notes) mailBody += `• Student Notes: ${notes}%0D%0A`;
+      mailBody += `• Standard SLA: 48 Hours%0D%0A%0D%0A`;
+      mailBody += `Please inspect their CodeChef account and message them with their final discounted amount!%0D%0A`;
+
+      const mailtoUrl = `mailto:${OWNER_EMAIL}?subject=${mailSubject}&body=${mailBody}`;
+      window.open(mailtoUrl, '_blank');
+
+      // Reveal & Start 48-Hour Live Turnaround Watchdog Timer
+      revealLiveTimer();
+
+      alert(`✅ Discount request sent to owner!\n\nOrder ID: ${payload.id}\nInstagram: @${creds.ig}\nCodeChef: ${creds.user}\n\nYour 48-Hour Live Turnaround Clock is now active below. The owner will review your syllabus and contact you with your custom discounted quote!`);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // CHECKOUT PROCEED HANDLER
+    async function handleProceedPayment(e) {
+      if (e) e.preventDefault();
+
+      const creds = validateCompulsoryFields();
+      if (!creds) return;
+
+      const payload = buildOrderPayload(creds, 'PAYMENT_PENDING');
+      await dispatchOrderToSupabase(payload);
+
+      // Persist active order
+      state.activeOrder = payload;
+      localStorage.setItem('campustick_active_order', JSON.stringify(payload));
+
+      showPaymentModal(payload);
+
+      // Open Razorpay in background tab
       try {
         window.open(RZP_HANDLE_URL, '_blank');
       } catch (e) {}
-
-      // Sync to Supabase Real-Time DB asynchronously
-      fetch(`${SUPABASE_URL}/rest/v1/orders`, {
-        method: 'POST',
-        headers: {
-          'apikey': SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-          'Content-Type': 'application/json',
-          'Prefer': 'return=representation'
-        },
-        body: JSON.stringify(payload)
-      }).catch(err => {
-        console.warn("Supabase record creation note:", err);
-      });
     }
 
     function showPaymentModal(data) {
@@ -1282,9 +1491,14 @@
       document.getElementById('resAmount').textContent = `₹${data.amount}`;
       document.getElementById('rzpAmountLabel').textContent = data.amount;
 
-      // Construct UPI deep link with exact amount
+      // Update UPI link & QR
       const upiLink = `upi://pay?pa=nwordplaylist@okaxis&pn=CampusTick&am=${data.amount}&cu=INR&tn=${data.id}`;
       document.getElementById('upiPayLink').href = upiLink;
+
+      const qrEl = document.getElementById('upiQrCodeImg');
+      if (qrEl) {
+        qrEl.src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(upiLink)}`;
+      }
 
       document.getElementById('paymentModal').classList.remove('hidden');
     }
@@ -1299,12 +1513,12 @@
       const vBtn = document.getElementById('verifyBtnLabel');
       vBtn.textContent = "VERIFYING TRANSACTION...";
 
-      if (lastOrderData) {
-        lastOrderData.utr = utr;
-        lastOrderData.status = 'ACCEPTED';
+      if (state.activeOrder) {
+        state.activeOrder.utr = utr;
+        state.activeOrder.status = 'ACCEPTED';
+        localStorage.setItem('campustick_active_order', JSON.stringify(state.activeOrder));
 
-        // Update status in Supabase asynchronously
-        fetch(`${SUPABASE_URL}/rest/v1/orders?id=eq.${lastOrderData.id}`, {
+        fetch(`${SUPABASE_URL}/rest/v1/orders?id=eq.${state.activeOrder.id}`, {
           method: 'PATCH',
           headers: {
             'apikey': SUPABASE_ANON_KEY,
@@ -1312,67 +1526,143 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            notes: (lastOrderData.notes ? lastOrderData.notes + " | " : "") + `UTR: ${utr}`,
+            notes: (state.activeOrder.notes ? state.activeOrder.notes + " | " : "") + `UTR: ${utr}`,
             status: 'ACCEPTED'
           })
         }).catch(() => {});
       }
 
-      // Smooth verification transition
       await new Promise(r => setTimeout(r, 600));
 
-      // Transition to Confirmed View
       document.getElementById('modalStepPayment').classList.add('hidden');
       document.getElementById('modalStepConfirmed').classList.remove('hidden');
 
-      document.getElementById('confirmedAmount').textContent = `₹${lastOrderData ? lastOrderData.amount : '300'}`;
+      const confirmedAmt = state.activeOrder ? state.activeOrder.amount : '250';
+      document.getElementById('confirmedAmount').textContent = `₹${confirmedAmt}`;
 
-      // Build confirmation message
-      const courseScope = (lastOrderData && lastOrderData.modules) ? lastOrderData.modules.join(', ') : 'Machine Learning Course';
-      const receipt = `✅ PAYMENT RECEIVED: ₹${lastOrderData ? lastOrderData.amount : '300'}\n` +
-        `📦 Order ID: ${lastOrderData ? lastOrderData.id : 'ORD-CONFIRMED'}\n` +
-        `👤 Instagram: @${lastOrderData ? lastOrderData.ig_handle : ''}\n` +
-        `💻 CodeChef: ${lastOrderData ? lastOrderData.codechef_username : ''}\n` +
-        `⚡ Delivery Guarantee: Done Before 8:00 AM\n` +
+      const receipt = `✅ PAYMENT RECORDED: ₹${confirmedAmt}\n` +
+        `📦 Order ID: ${state.activeOrder ? state.activeOrder.id : 'ORD-CONFIRMED'}\n` +
+        `👤 Instagram: @${state.activeOrder ? state.activeOrder.ig_handle : ''}\n` +
+        `💻 CodeChef: ${state.activeOrder ? state.activeOrder.codechef_username : ''}\n` +
+        `⚡ Delivery Guarantee: 48-Hour Live SLA\n` +
         `🔍 UTR Ref: ${utr}\n` +
         `━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
-        `Veere relax! We got your payment. Your credentials are 100% confidential. Your CodeChef coursework will be completed with green ticks before 8:00 AM! 🚀`;
+        `Veere relax! We got your payment. Your credentials are 100% confidential. Your CodeChef coursework will be 100% completed with green ticks & verified certificate! 🚀`;
 
       document.getElementById('confirmedReceiptText').textContent = receipt;
-
-      // Update Instagram DM & WhatsApp links
-      const encodedReceipt = encodeURIComponent(receipt);
       document.getElementById('igDmBtn').href = `https://ig.me/m/campus.tick`;
-      
-      const phoneNum = lastOrderData ? lastOrderData.phone : '';
-      document.getElementById('whatsappBtn').href = `https://api.whatsapp.com/send?text=${encodedReceipt}`;
 
-      // Start countdown to 8:00 AM
-      start8AMCountdown();
+      // Start 48-Hour Live Turnaround Watchdog Timer
+      revealLiveTimer();
     }
 
-    function start8AMCountdown() {
-      function updateTimer() {
-        const now = new Date();
-        const target = new Date();
-        target.setHours(8, 0, 0, 0);
-        if (now > target) {
-          target.setDate(target.getDate() + 1);
+    // LIVE 48-HOUR WATCHDOG TIMER LOGIC
+    function revealLiveTimer() {
+      const section = document.getElementById('liveTrackerSection');
+      if (section) {
+        section.classList.remove('hidden');
+        startLiveTimer();
+      }
+    }
+
+    function toggleTrackerView() {
+      const section = document.getElementById('liveTrackerSection');
+      if (!section) return;
+
+      if (section.classList.contains('hidden')) {
+        if (!state.activeOrder) {
+          const userLookup = prompt("Enter your Instagram handle or CodeChef username to load your 48-Hour Live Counter:");
+          if (!userLookup) return;
+          state.activeOrder = {
+            id: 'ORD-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
+            ig_handle: userLookup.trim().replace(/^@/, ''),
+            codechef_username: userLookup.trim(),
+            status: 'ACCEPTED',
+            created_at: new Date().toISOString()
+          };
+          localStorage.setItem('campustick_active_order', JSON.stringify(state.activeOrder));
         }
-        const diff = target - now;
-        const hours = Math.floor(diff / (1000 * 60 * 60));
+        revealLiveTimer();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        section.classList.add('hidden');
+      }
+    }
+
+    function startLiveTimer() {
+      if (!state.activeOrder) return;
+      const order = state.activeOrder;
+
+      const customerNameEl = document.getElementById('trackerCustomerName');
+      const orderIdEl = document.getElementById('trackerOrderIdDisplay');
+      const badgeEl = document.getElementById('trackerStatusBadge');
+      const subtextEl = document.getElementById('trackerSubtext');
+
+      if (customerNameEl) customerNameEl.textContent = `@${order.ig_handle.replace(/^@/, '')}`;
+      if (orderIdEl) orderIdEl.textContent = order.id;
+
+      if (badgeEl && subtextEl) {
+        if (order.status === 'DISCOUNT_REVIEW_PENDING') {
+          badgeEl.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold font-mono-jb uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1.5";
+          badgeEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> Discount Review In Progress`;
+          subtextEl.textContent = "The owner is reviewing your uploaded syllabus screenshots to calculate your final discounted amount.";
+        } else {
+          badgeEl.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold font-mono-jb uppercase tracking-wider bg-[#E2F952]/15 text-[#E2F952] border border-[#E2F952]/30 flex items-center gap-1.5";
+          badgeEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-[#E2F952] animate-ping"></span> 48-Hour Live Turnaround SLA Active`;
+          subtextEl.textContent = "Standard Turnaround: Guaranteed 100% completion & verified certificate within 48 Hours.";
+        }
+      }
+
+      // 48-Hour SLA Deadline Calculation
+      const createdAt = new Date(order.created_at || Date.now()).getTime();
+      const turnaroundMs = 48 * 60 * 60 * 1000;
+      const deadline = new Date(createdAt + turnaroundMs);
+
+      const deadlineEl = document.getElementById('timerDeadlineDisplay');
+      if (deadlineEl) {
+        deadlineEl.textContent = `Target: ${deadline.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} at ${deadline.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+      }
+
+      if (state.timerInterval) clearInterval(state.timerInterval);
+
+      function tick() {
+        const now = Date.now();
+        const diff = deadline.getTime() - now;
+
+        const hEl = document.getElementById('timerHours');
+        const mEl = document.getElementById('timerMinutes');
+        const sEl = document.getElementById('timerSeconds');
+        const barEl = document.getElementById('trackerProgressBar');
+        const pctEl = document.getElementById('trackerProgressPercentText');
+
+        if (diff <= 0) {
+          if (hEl) hEl.textContent = "00";
+          if (mEl) mEl.textContent = "00";
+          if (sEl) sEl.textContent = "00";
+          if (barEl) barEl.style.width = "100%";
+          if (pctEl) pctEl.textContent = "48-Hour SLA Completed!";
+          return;
+        }
+
+        const hrs = Math.floor(diff / (1000 * 60 * 60));
         const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const secs = Math.floor((diff % (1000 * 60)) / 1000);
 
-        const el = document.getElementById('countdown8am');
-        if (el) {
-          el.textContent = `${hours}h ${mins}m ${secs}s`;
-        }
+        if (hEl) hEl.textContent = String(hrs).padStart(2, '0');
+        if (mEl) mEl.textContent = String(mins).padStart(2, '0');
+        if (sEl) sEl.textContent = String(secs).padStart(2, '0');
+
+        const elapsed = now - createdAt;
+        const pct = Math.min(100, Math.max(2, Math.round((elapsed / turnaroundMs) * 100)));
+        if (barEl) barEl.style.width = `${pct}%`;
+        if (pctEl) pctEl.textContent = `${hrs} Hours Remaining out of 48h SLA`;
       }
-      updateTimer();
-      setInterval(updateTimer, 1000);
+
+      tick();
+      state.timerInterval = setInterval(tick, 1000);
     }
 
+    // Modal Close
     function closeModal(id) {
       document.getElementById(id).classList.add('hidden');
     }
@@ -1389,7 +1679,7 @@
       privacy: {
         title: "Privacy Policy",
         body: `
-          <p><strong>1. Information Collection:</strong> We collect only necessary details to fulfill your clearance order: your Instagram handle, CodeChef username, password, and optional contact phone number.</p>
+          <p><strong>1. Information Collection:</strong> We collect only necessary details to fulfill your clearance order: your Instagram handle, CodeChef username, and password.</p>
           <p><strong>2. Security & Encryption:</strong> All communications are secured via TLS 1.3 encryption. We never share, sell, or disclose your academic data or identity to third parties.</p>
           <p><strong>3. Payment Security:</strong> Payment information is processed securely through RBI-compliant payment aggregators (Razorpay / UPI). We do not store card numbers or UPI PINs.</p>
         `
@@ -1425,7 +1715,12 @@
       document.getElementById('policyModal').classList.add('hidden');
     }
 
-    // Initialize state
+    // Auto-init on page load if active order exists
+    if (state.activeOrder) {
+      revealLiveTimer();
+    }
+
+    // Initialize initial calculations
     updateCalculations();
   </script>
 </body>
